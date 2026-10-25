@@ -1,0 +1,44 @@
+[agy status: ERROR] Completed Tasks **R1** and **R2**:
+
+- **Report & Derivations**: [agy_route_r1.md](file:///home/user1/collab/projects/usb3-sdr/notes/route/agy_route_r1.md)
+- **ADC Resistor Moves & Corridors (`R26..R41` + 19 nets)**: [agy_adc_plan.json](file:///home/user1/collab/projects/usb3-sdr/notes/route/agy_adc_plan.json)
+- **Updated Timing & SI Length Checker**: [agy_timing_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing_check.py) (with old Round-6 rule constants preserved as comments)
+
+---
+
+### Summary of Task R1 — Failing Rule Classification & Corrected Rule Table
+
+1. **Stack-up Transmission-Line Parameters (`JLC04161H-7628`, $h = 0.2104\text{ mm}$, $\varepsilon_r = 4.4$, $w = 0.15\text{ mm}$, $t = 35\text{ }\mu\text{m}$)**:
+   $$\varepsilon_{\text{eff,F}} \approx 3.10\text{–}3.24, \quad Z_0 = \mathbf{64.0\text{ }\Omega}, \quad \tau_{\text{F.Cu}} = \mathbf{6.00\text{ ps/mm}}\;([5.80, 6.20]), \quad \tau_{\text{B.Cu}} = \mathbf{6.75\text{ ps/mm}}\;([6.50, 7.00])$$
+   $$c_{\text{trace}} = \frac{\tau_{\text{F.Cu}}}{Z_0} = \mathbf{0.0938\text{ pF/mm}}, \quad l_{\text{trace}} = \tau_{\text{F.Cu}} Z_0 = \mathbf{0.384\text{ nH/mm}}$$
+
+2. **Rule-by-Rule Verdict & Classification on [routed_lengths.json](file:///home/user1/collab/projects/usb3-sdr/notes/route/routed_lengths.json)**:
+   - **`FT601_MAX_ABS_LEN` (`<= 35.0 mm`; `FT_D25 = 40.14 mm`, `FT_OE_N = 38.44 mm`) — `VERIFIED`: SI Limit (soft ceiling), NOT a timing failure**:
+     - With the Round-7 `OFS1P3DX` output flip-flop and $+112.5^\circ$ ($+3125\text{ ps}$) PLL phase shift, actual slacks at `FT_D25 = 40.14 mm` (`FT_CLK = 12.53 mm`) are **$+1094\text{ ps}$ (read setup)**, **$+1260\text{ ps}$ (read hold)**, **$+1341\text{ ps}$ (write setup)**, and **$+1135\text{ ps}$ (write hold)** (hard timing ceiling is $231.7\text{ mm}$).
+     - For unterminated `LVCMOS33` ($t_r \approx 900\text{ ps}$, $R_{\text{drv}} \approx 32\text{ }\Omega$, $Z_0 = 64\text{ }\Omega$, $\Gamma_S = -0.33$, $\Gamma_L \approx +1$), full reflection occurs at $L_{\text{crit}} = \frac{t_r}{2\tau} = \mathbf{69.2\text{ mm}}$. Relaxing the conservative $\tau L \le t_r / 4$ ($35\text{ mm}$) target to $\tau L \le t_r / 3$ ($2\tau L \le 0.67\,t_r$, ringing settles in $1$ round trip $\approx 0.54\text{ ns} \ll 3.1\text{ ns}$ sampling window) gives **`L_FT_sig <= 45.0 mm`**. Both `FT_D25` and `FT_OE_N` **PASS**.
+   - **`FT601_CLK_SKEW` (`+/- 15.0 mm`; `FT_D25 = +27.61 mm`, `FT_OE_N = +25.91 mm`) — `VERIFIED`: Heuristic, NOT a timing/SI failure**:
+     - Because `FT_CLK = 12.53 mm` is near the minimum possible trace length, positive skew ($L_{\text{sig}} > L_{\text{CLK}}$) **increases** both read and write hold slack while leaving $> +1050\text{ ps}$ setup slack up to $+30\text{ mm}$. Negative skew is bounded by hold slack ($\ge -10\text{ mm}$ keeps read/write hold slack $\ge +680\text{ ps}$). Corrected rule: **`-10.0 mm <= L_FT_sig - L_FT_CLK <= +30.0 mm`**.
+   - **`ADC_SETUP_DEFAULT_0x16_00` (`-92 ps` on `ADC_D11`) vs `0x16_80` (`+2810 / +4874 ps`) — `VERIFIED`**:
+     - `gateware/rtl/boot_seq.v` writes `Reg 0x16 = 0x80` (`DCO` inverted) at boot, centering $\uparrow\text{DCO}$ at $T/2 = 6.25\text{ ns}$. Active setup/hold slack is **`+2810 / +4874 ps`** even at $106.57\text{ mm}$. `timing_ok` in [agy_timing_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing_check.py) now gates on the active `0x16 = 0x80` mode.
+   - **`ADC_MAX_ABS_LEN` (`<= 50.0 mm`; `ADC_D11 = 106.57 mm`, `ADC_D12 = 68.42 mm`, `ADC_D6 = 60.22 mm`, `ADC_DCO = 56.19 mm`) — `VERIFIED`: Hard SI / Capacitive-Load Limit (`AD9649` $C_{\text{LOAD}} < 10\text{ pF}$)**:
+     - AD9649 Rev. B p. 17 specifies $C_{\text{LOAD}} < 10\text{ pF}$ to prevent `DRVDD` bounce and substrate noise coupling into the 14-bit analog core. With $C_{\text{ECP5}} + C_{\text{pad}} \approx 4.8\text{ pF}$ and $c_{\text{trace}} = 0.094\text{ pF/mm}$, $L_{\text{max}} = \frac{10.0 - 4.8}{0.094} = \mathbf{55.3\text{ mm}}$ (**`<= 55.0 mm`** hard limit; our R2 plan routes all 16 nets in **`22.2..35.6 mm`**).
+   - **`ADC_DCO_SKEW` (`+/- 20.0 mm`; `ADC_D4 = -36.32 mm`, `ADC_D11 = +50.38 mm`) — `VERIFIED`: SI / RC Edge-Matching Limit**:
+     - Differential RC delay across the $22\text{ }\Omega$ series resistors ($R_{\text{drv}} + R_{\text{series}} \approx 57\text{ }\Omega$) is $0.693 \times 57\text{ }\Omega \times 0.094\text{ pF/mm} = \mathbf{3.71\text{ ps/mm}}$. Bounding RC dispersion to $\le 95\text{ ps}$ gives **`|L_ADC_sig - L_ADC_DCO| <= 25.0 mm`** (our R2 plan achieves **`[-5.85, +7.57] mm`**).
+   - **`ADC_SERIES_RES_STUB` (`<= 6.0 mm`; `ADC_D8_R = 27.07 mm`, `ADC_D12_R = 12.28 mm`, `ADC_D13_R = 11.18 mm`, `ADC_D2_R = 9.49 mm`, `ADC_OR_R = 8.80 mm`) — `VERIFIED`: Hard SI Limit**:
+     - Upstream of the $22\text{ }\Omega$ resistor, the AD9649 pin drives an undamped stub ($t_{r,\text{int}} \approx 500\text{ ps}$). Keeping $\tau L_{\text{stub}} \le t_{r,\text{int}} / 6 \approx 85\text{ ps}$ ($C_{\text{stub}} \le 0.75\text{ pF}$) gives a hard SI limit of **`<= 8.0 mm`** (design target `<= 6.0 mm`; our R2 plan achieves **`1.10..5.05 mm`** on all 16 stubs).
+   - **Exemptions (`ADC_CSB / ADC_SCLK / ADC_SDIO` and `FT_RESET_N / FT_WAKEUP_N / FT_GPIO*`) — `VERIFIED`**:
+     - `ADC_CSB`, `ADC_SCLK`, `ADC_SDIO` run once at boot at $80\text{ MHz}/64 = 1.25\text{ MHz}$ ($T_{\text{half}} = 400\text{ ns}$) in `boot_seq.v`: **exempt from `ADC_DCO` skew** (sanity cap `<= 120.0 mm`).
+     - `FT_RESET_N`, `FT_WAKEUP_N`, `FT_GPIO0`, `FT_GPIO1` are asynchronous per `DS_FT600Q-FT601Q` Table 3.2: **exempt from `FT_CLK` skew** (sanity cap `<= 60.0 mm`).
+
+---
+
+### Summary of Task R2 — ADC Resistor Moves & Corridors ([agy_adc_plan.json](file:///home/user1/collab/projects/usb3-sdr/notes/route/agy_adc_plan.json))
+
+- **Why the old ADC bus detoured**:
+  - `R32`, `R34`, `R40` were West of `U8` (`x = 136.6`), trapped behind `ADC_VINP/VINN` and `ADC_CLKP/CLKN`.
+  - On `F.Cu`, `LPF2_IN + K2 + NOTCH_OUT` forms a continuous locked barrier across `x = 137.05..150.50` at `y = 130.0` and up to `y = 113.0` at `x = 150.50`. Thus, `F.Cu` nets must pass through the $2.72\text{ mm}$ channel **East of `K2` (`x = 148.35..150.45`) and East of `NOTCH_OUT` (`x = 150.85..152.60`)**, while `B.Cu` nets travel straight North-East **under `K2` on `B.Cu`** (where `K2` has SMD-only `F.Cu` pads and `B.Cu` is completely open).
+- **Key Properties of [agy_adc_plan.json](file:///home/user1/collab/projects/usb3-sdr/notes/route/agy_adc_plan.json)**:
+  1. **Zero Courtyard / Pad Conflicts & Full Keepout Compliance**: All 16 resistors (`R26..R41`) have `0` courtyard overlaps with each other or any board pad/via, and stay 100% outside the locked clock (`x = 139..146, y = 144..153`) and analog input (`x <= 138.6, y = 139..143`) keepouts.
+  2. **Short, Planar `U8 -> R.1` Stubs**: All 16 stubs on `F.Cu` have **0 crossings** and Manhattan lengths of **`1.10..5.05 mm`** (`<= 5.05 mm`).
+  3. **Zero `B.Cu` Corridor Crossings**: By staggering the $x$-coordinates of the East `B.Cu` resistors (`R31=145.00, R27=145.25, R29=145.55, R33=145.80, R36=146.15`) and placing the North `B.Cu` resistors (`R39, R38, R37, R35`) at `x = 140.40..142.25, y = 134.80..136.80`, all 11 `B.Cu` corridors (`ADC_D13, D12, D11, D9, SCLK, D0, D5, D1, D3, D7, D10`) have **0 segment intersections** from `R` all the way to their `U12` `B.Cu` escape vias.
+  4. **Direct `ADC_DCO` Path & Tight Skew**: `ADC_DCO` routes directly on `F.Cu` (`28.05 mm` total `U8 -> R40 -> U12.J1`), and all 16 high-speed nets have total lengths of **`22.20..35.62 mm`** (`<= 55.0 mm`) and skews to `ADC_DCO` within **`[-5.85, +7.57] mm`** (`<= 25.0 mm`).

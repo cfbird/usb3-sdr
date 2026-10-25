@@ -36,3 +36,41 @@ krt6 failures are not at the FPGA any more: 11 of the 19 failed FT nets (D2 D3 D
 (y = 118.6, x 180.8-186.4) and 4 (BE1 BE2 RD_N RXF_N) on its **bottom row** (y = 127.4). Those pins can only be
 approached from outside the package, where the FT601's own decaps sit (C73 C68 C69 C70 C76 above, C80 C72 C71 C79
 below). Next bottleneck: FT601 decap/crystal placement (move them to U11's east side or between the pin rows' far ends).
+
+## Round 3 (agy_fanout_plan_v3.json, 21:38)
+| Item | Verdict | How checked |
+|---|---|---|
+| All four rails fill as one piece; 0 copper conflicts; 0 long rail gaps | VERIFIED | Claude re-ran `kicad/gen/fanout_trial.py` on v3 (scratchpad/fo3): identical output to AGY's |
+| Long / merged core dog-bones (G6 -> (163.0,122.4) 2.04 mm etc.) | VERIFIED | full DRC on the trial board: no shorting/clearance items |
+| T5 FT601 decap moves, 0 courtyard overlaps | DISPUTED (minor) | DRC: C69 at (189.85,123.0) overlaps the U11 and C63 courtyards. place_free.py moves it to (191.85,123.6) rot 270 (about 3.3 mm from U11.28, over the 2 mm target) |
+| 3V3_D via (168.40,139.63) for J3.1 | DISPUTED (minor) | lands inside a keep-out area (DRC items_not_allowed) and on an FPGA_TMS track, so KiCad gives it the TMS net. Dropped; J3.1 gets a surface stub |
+
+Routing trial krt7 (v3 + the two fixes + AGY's 27 escape vias; KRT strict rules): FT601 31/46 routed (was 27/46 on v1);
+U11 top-row failures 11 -> 4. Remaining FT failures: 7 on U11's west side (FT_D16 D22 D25 D27-D29 D31, from the deeper
+SE balls M13 N11-N14 P11 that escape on B.Cu), 4 bottom row, 4 top row. ADC 15/35 (U8 -> resistor side is local
+congestion near the ADC, which the fan-out plan does not touch). KRT also broke FPGA_TDI.
+
+## Applied to kicad/work + DeepPCB run 3 (2026-10-24 22:30-23:15)
+- Applied `plan_v3_claude.json` (v3 + C69 move, minus the keep-out via) with fanout_apply, repair_conflicts and
+  escape_apply. DRC: 0 copper conflicts, 181 unconnected, parity 0. Backup: kicad/deeppcb/work_before_fanout.kicad_pcb.
+- DeepPCB run 3 (CurrentProtectedWiring, 17 min, ~$8.50): 181 -> 69 open (its count). All existing copper kept (a
+  locked 1V8_A stub was only re-segmented), no parts moved, nothing on inner layers. Lock flags restored (relock.py,
+  454). Raw: kicad/deeppcb/r3_deeppcb_routed.kicad_pcb.
+- DeepPCB broke the rules in two places: Q1_G and Q2_G ran 20-30 mm along the top edge at 0.34 mm (rule 0.5), and
+  FPGA_TCK sat too close to J3's NPTH. Claude ripped those (50 items with stubs): 80 open. Saved as
+  kicad/deeppcb/work_after_r3.kicad_pcb.
+- KRT on top (strict rules, existing copper kept or rerouted unlocked only): fixed 16 nets, broke 1 (ADC_D4_R). Work
+  board now: **65 unconnected**, DRC only the 10 inherent SMA edge items + dangling stubs/vias, parity 0.
+
+## DeepPCB run 4 (2026-10-25 00:23-00:53, 30 min) on the prepared board
+Prep (scratchpad/r4, kept as kicad/deeppcb/r4_input.kicad_pcb): FT601 lanes cleared of non-bus copper
+(kicad/gen/lane_clear.py), FT_D25 detour ripped, AGY's ADC resistor moves (4 nudged off K2/U8 by place_free), whole
+ADC bus ripped for a fresh route, C80 -> (190.40,127.50), R47 -> (193.46,122.40) rot 90 out of the USB2 path,
+0.6 mm edge keep-outs (kicad/gen/edge_keepout.py). Result 93 -> 49 (DeepPCB count); after relock/refill: DRC clean
+(10 inherent SMA items only), **54 unconnected**, parity 0. All routed FT/ADC nets pass AGY's corrected length/skew
+rules. Adopted into kicad/work (previous: kicad/deeppcb/work_before_r4.kicad_pcb).
+
+The same 19 FT601 nets stay open through every router: BE1-3, RD_N, WR_N, RXF_N, TXE_N (U11 bottom row), D0 D1 D2
+D4 D6 D9 D12 (east half of U11's top row), D16 D18 D24 D25 D27 (U11 west side). Render: the corridor is full of the
+nets that did route, wrapping round U11's corners; the east half of the top row can only be entered from the north,
+where C71 C72 C73 C76 now sit at y ~116.3 (T5 moves). Needs an explicit escape plan for U11, not more router time.

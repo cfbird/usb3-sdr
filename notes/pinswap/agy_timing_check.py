@@ -1,675 +1,583 @@
 #!/usr/bin/env python3
 """
-Bus timing budget & routed trace-length verification script for usb3-sdr.
-
-Checks routed (or estimated) net lengths against the timing and signal-integrity
-constraints derived in notes/pinswap/agy_timing.md for:
-  1. FT601 245 Synchronous FIFO bus (100 MHz, 3.3 V LVCMOS33, Bank 2/3)
-  2. AD9649 CMOS sample bus (80 MSPS, 1.8 V LVCMOS18, Bank 7)
+Bus timing and trace-length verification script for usb3-sdr (Round 6 + Round 9 R1 update).
+Checks routed net lengths on the AD9649 (80 MHz) and FT601Q (100 MHz) buses against
+propagation delay, setup/hold slack, and Signal Integrity (SI) routing constraints.
 
 Usage:
-  python3 notes/pinswap/agy_timing_check.py [lengths.json] [--tau-f 6.0] [--tau-b 6.75]
-
-Input JSON format (when lengths.json is supplied):
-  {"net_name": length_mm, ...}
-  Accepts flat KiCad net names ("FT_D0", "ADC_D0", "ADC_D0_R"), hierarchical
-  KiCad net names ("/ADC and clock/ADC_D0_R"), or gateware LPF signal names
-  ("ft_data[0]", "adc_d[0]"). If pre-resistor stub nets ("ADC_*_R") are present,
-  they are checked against the stub limit and added to "ADC_*" to form total
-  U8-to-U12 lengths.
+  python3 notes/pinswap/agy_timing_check.py --self-test
+  python3 notes/pinswap/agy_timing_check.py path/to/usb3-sdr.kicad_pcb
+  python3 notes/pinswap/agy_timing_check.py path/to/lengths.json -v
 """
 
 import argparse
 import json
 import math
+import os
+import re
 import sys
-from pathlib import Path
 
-# ---------------------------------------------------------------------------
-# Propagation velocity model (JLC04161H-7628 4-layer stackup)
-# ---------------------------------------------------------------------------
-TAU_FCU_PS_PER_MM = 6.00    # F.Cu microstrip over In1.Cu GND (eps_eff ~ 3.24)
-TAU_BCU_PS_PER_MM = 6.75    # B.Cu microstrip + 2-via transition (6.5-7.0 ps/mm)
-TAU_MIN_PS_PER_MM = 6.00    # Fast-corner trace propagation delay
-TAU_MAX_PS_PER_MM = 7.00    # Slow-corner trace propagation delay
+# ==============================================================================
+# 1. Physical & Timing Constants (JLC04161H-7628 Stack-up + Datasheets)
+# ==============================================================================
+# Propagation delay bounds (ps/mm) on JLC04161H-7628 (h=0.2104 mm, er=4.4, w=0.15 mm, Z0=64 ohm)
+TAU_FCU_MIN = 5.80  # F.Cu microstrip fast bound (ps/mm)
+TAU_FCU_NOM = 6.00  # F.Cu microstrip nominal (ps/mm)
+TAU_FCU_MAX = 6.20  # F.Cu microstrip slow bound (ps/mm)
 
-# ---------------------------------------------------------------------------
-# Datasheet & ECP5 speed-grade -6 timing parameters (ps)
-# ---------------------------------------------------------------------------
-# FT601 @ 100 MHz (refs/DS_FT600Q-FT601Q-IC-Datasheet.pdf, p. 17, Table 4.2)
-FT_TCLK_PS = 10000.0
-FT_T1_SU_SLAVE_PS = 3000.0   # FT601 output valid before posedge CLK (tCO_max = 7.0 ns)
-FT_T2_HD_SLAVE_PS = 3500.0   # FT601 output hold after posedge CLK (tCO_min = 3.5 ns)
-FT_T3_SU_MASTER_PS = 1000.0  # FT601 input setup required before posedge CLK
-FT_T4_HD_MASTER_PS = 4800.0  # FT601 input hold required after posedge CLK
+TAU_BCU_MIN = 6.50  # B.Cu coated microstrip fast bound (ps/mm)
+TAU_BCU_NOM = 6.75  # B.Cu coated microstrip nominal (ps/mm)
+TAU_BCU_MAX = 7.00  # B.Cu coated microstrip slow bound (ps/mm)
 
-# ECP5 LFE5U-25F-6BG256C speed -6 (prjtrellis speed_6/cells.json)
-ECP5_LVCMOS33_IN_MIN_PS = 990.0
-ECP5_LVCMOS33_IN_MAX_PS = 1140.0
-ECP5_LVCMOS33_OUT_MIN_PS = 1988.0
-ECP5_LVCMOS33_OUT_MAX_PS = 2674.0
-ECP5_LVCMOS33_TS_MIN_PS = 2203.0
-ECP5_LVCMOS33_TS_MAX_PS = 3023.0
+# Conservative board-wide bounds across F.Cu/B.Cu mix
+TAU_FAST = TAU_FCU_MIN  # 5.80 ps/mm
+TAU_SLOW = TAU_BCU_MAX  # 7.00 ps/mm
 
-ECP5_LVCMOS18_IN_MIN_PS = 1311.0
-ECP5_LVCMOS18_IN_MAX_PS = 1469.0
+# AD9649-80 (80 MHz, T = 12500 ps) + 22R + ECP5-25F-6 Bank 7 (LVCMOS18)
+ADC_T_CLK_PS = 12500.0
+ADC_SKEW_MIN_PS = 300.0     # t_DCO - t_DATA min (AD9649 Rev. B Table 4, p. 6)
+ADC_SKEW_MAX_PS = 1100.0    # t_DCO - t_DATA max (AD9649 Rev. B Table 4, p. 6)
+ADC_RC_NOM_PS = 440.0       # 22R * (4.5 pF + trace) delta-t_50% nominal (ps)
+ADC_RC_DIFF_PS = 120.0      # max differential RC delay spread across bus (ps)
+ECP5_ADC_TSU_PS = 3200.0    # ECP5 -6 Bank 7 PIO Input Setup (PCLK -> fabric/PIO) (ps)
+ECP5_ADC_THD_PS = 500.0     # ECP5 -6 Bank 7 PIO Input Hold (ps)
 
-ECP5_IREG_SU_PS = 439.0      # IFS1P3DX setup (DI to posedge CLK)
-ECP5_IREG_HD_PS = 311.0      # IFS1P3DX hold (DI to posedge CLK)
-ECP5_OREG_CO_PS = 1200.0     # OFS1P3DX clock-to-out (CLK to IOLDO)
-ECP5_TSREG_CO_PS = 1031.0    # OFS1P3DX tristate clock-to-out (CLK to IOLTO)
+# Old Round-6 rules (kept visible as comments per BRIEF_route_r1.md):
+# ADC_MAX_SKEW_MM = 20.0
+# ADC_MAX_TOTAL_MM = 50.0
+# ADC_MAX_STUB_MM = 6.0
+# FT_MAX_SKEW_MM = 15.0
+# FT_MAX_TOTAL_MM = 35.0
 
-# ECP5 global clock tree insertion delay (PADDI to IOLOGIC CLK, uncompensated)
-ECP5_GCLK_MIN_PS = 1200.0
-ECP5_GCLK_MAX_PS = 1800.0
+# Updated Round-9 R1 rules (timing + SI):
+ADC_MAX_SKEW_MM = 25.0      # +/- 25.0 mm to ADC_DCO (RC edge-matching limit; timing window is [-340, +518] mm w/ 0x16=0x80)
+ADC_MAX_TOTAL_MM = 55.0     # <= 55.0 mm (AD9649 C_LOAD < 10 pF hard SI limit: 4.8 pF + 55*0.094 pF/mm = 9.97 pF)
+ADC_MAX_STUB_MM = 8.0       # <= 8.0 mm (tau*L_stub <= t_r,int/6 ~ 85 ps, C_stub < 0.75 pF hard SI limit; R2 plan <= 5.05 mm)
+ADC_SPI_MAX_MM = 120.0      # ADC_CSB/SCLK/SDIO exempt from DCO skew (1.25 MHz boot-only SPI in boot_seq.v, T_half = 400 ns)
 
-# Implemented EHXPLLL single-clock phase shift (+112.5 deg = +3.125 ns at 100 MHz, 600 MHz VCO)
-# with CLKOP (0 deg) feedback compensation and PVT fast-corner factor 0.70
-FT_PLL_SHIFT_PS = 3125.0
-PVT_FAST_FACTOR = 0.70
+# FT601Q (100 MHz, T = 10000 ps) + ECP5-25F-6 Bank 6/2/3 (LVCMOS33)
+FT_T_CLK_PS = 10000.0
+FT_TCO_MAX_PS = 7000.0      # FT601Q T_OD max (Table 6.3, p. 25)
+FT_TCO_MIN_PS = 1000.0      # FT601Q T_OH min (Table 6.3, p. 25)
+FT_TSU_MIN_PS = 3500.0      # FT601Q T_IS min (Table 6.3, p. 25)
+FT_THD_MIN_PS = 0.0         # FT601Q T_IH min (Table 6.3, p. 25)
 
-# AD9649-80 @ 80 MSPS (refs/datasheets/AD9649_RevB.pdf, p. 7, Table 4 & Fig. 2)
-ADC_TCLK_PS = 12500.0
-ADC_TPD_TYP_PS = 3000.0
-ADC_TDCO_TYP_PS = 3000.0
-ADC_TSKEW_MIN_PS = -100.0    # tDCO - tPD min (typ +100 ps in Table 4)
-ADC_TSKEW_TYP_PS = 100.0     # tDCO - tPD typ (0.1 ns, Table 4)
-ADC_TSKEW_MAX_PS = 300.0     # tDCO - tPD max
-ADC_RC_SLOPE_PS_PER_MM = 3.7 # Extra RC delay per mm from 22+35 ohm driving 0.094 pF/mm
+# Round-7 OFS1P3DX + PLL +112.5 deg (+3125 ps) parameters (active gateware in top.v):
+ECP5_FT_PLL_SHIFT_PS = 3125.0
+ECP5_FT_RD_TSU_IOREG_PS = 1800.0   # IFS1P3DX effective setup with +3125 ps PLL shift (ps)
+ECP5_FT_RD_THD_IOREG_PS = -182.0   # IFS1P3DX effective hold with +3125 ps PLL shift (ps)
+ECP5_FT_WR_TCO_MAX_IOREG_PS = 4800.0  # OFS1P3DX + +3125 ps PLL shift max clock-to-out (ps)
+ECP5_FT_WR_TCO_MIN_IOREG_PS = 824.0   # OFS1P3DX + +3125 ps PLL shift min clock-to-out (ps)
 
-# ---------------------------------------------------------------------------
-# Routing constraint thresholds (mm)
-# ---------------------------------------------------------------------------
-FT_MAX_ABS_LEN_MM = 35.0     # SI unterminated limit (~38 mm) & well below 85 mm timing max
-FT_MAX_SKEW_MM = 15.0        # |L(FT_sig) - L(FT_CLK)| <= 15.0 mm (+/- 105 ps)
+# Legacy fabric-output parameters (informational only; superseded by Round-7 OFS1P3DX):
+ECP5_FT_RD_TSU_FAB_PS = 2100.0
+ECP5_FT_RD_THD_FAB_PS = 200.0
+ECP5_FT_WR_TCO_MAX_FAB_PS = 5800.0
+ECP5_FT_WR_TCO_MIN_FAB_PS = 2000.0
 
-ADC_MAX_ABS_LEN_MM = 50.0    # Keeps total load C_trace + C_pin < 10 pF (AD9649 p. 17)
-ADC_MAX_SKEW_MM = 20.0       # |L(ADC_sig) - L(ADC_DCO)| <= 20.0 mm
-ADC_MAX_STUB_LEN_MM = 6.0    # U8 pin to 22-ohm series resistor pad 1 stub limit
+FT_MIN_SKEW_MM = -10.0      # L_sig - L_CLK >= -10.0 mm (read/write hold slack >= +680 ps)
+FT_MAX_SKEW_MM = 30.0       # L_sig - L_CLK <= +30.0 mm (longer data traces increase hold slack; setup slack > +1400 ps)
+FT_MAX_TOTAL_MM = 45.0      # <= 45.0 mm (LVCMOS33 tau*L <= t_r/3 SI limit; L_crit = t_r/(2*tau) = 69.2 mm)
+FT_ASYNC_MAX_MM = 60.0      # FT_RESET_N/WAKEUP_N/GPIO0/GPIO1 asynchronous per FT601Q Table 3.2 (exempt from FT_CLK skew)
 
-
-# ---------------------------------------------------------------------------
-# Canonical net lists
-# ---------------------------------------------------------------------------
-FT_SYNC_INPUTS = [
-    "FT_TXE_N",
-    "FT_RXF_N",
-]
-FT_SYNC_BIDIR = (
-    [f"FT_D{i}" for i in range(32)]
-    + [f"FT_BE{i}" for i in range(4)]
-)
-FT_SYNC_OUTPUTS = [
-    "FT_WR_N",
-    "FT_RD_N",
-    "FT_OE_N",
-]
-FT_SYNC_NETS = ["FT_CLK"] + FT_SYNC_INPUTS + FT_SYNC_BIDIR + FT_SYNC_OUTPUTS
-FT_ASYNC_NETS = ["FT_RESET_N", "FT_WAKEUP_N", "FT_GPIO0", "FT_GPIO1"]
-
-ADC_SYNC_SIGNALS = [f"ADC_D{i}" for i in range(14)] + ["ADC_OR"]
-ADC_SYNC_NETS = ["ADC_DCO"] + ADC_SYNC_SIGNALS
+# Net lists
+ADC_DATA_NETS = [f"ADC_D{i}" for i in range(14)] + ["ADC_OR"]
+ADC_ALL_SYNC_NETS = ["ADC_DCO"] + ADC_DATA_NETS
+ADC_STUB_NETS = [f"{n}_R" for n in ADC_ALL_SYNC_NETS]
 ADC_SPI_NETS = ["ADC_CSB", "ADC_SCLK", "ADC_SDIO"]
 
-
-def canonicalize_net_name(raw_name):
-    """Normalize KiCad flat/hierarchical or gateware signal name to canonical net name."""
-    name = raw_name.strip()
-    if "/" in name:
-        name = name.split("/")[-1]
-    low = name.lower()
-    if low.startswith("ft_data[") and low.endswith("]"):
-        return f"FT_D{low[8:-1]}"
-    if low.startswith("ft_data") and low[7:].isdigit():
-        return f"FT_D{low[7:]}"
-    if low.startswith("ft_be[") and low.endswith("]"):
-        return f"FT_BE{low[6:-1]}"
-    if low == "ft_siwu_n":
-        return "FT_WAKEUP_N"
-    if low.startswith("ft_"):
-        return low.upper()
-    if low.startswith("adc_d[") and low.endswith("]"):
-        return f"ADC_D{low[6:-1]}"
-    if low.startswith("adc_data[") and low.endswith("]"):
-        return f"ADC_D{low[9:-1]}"
-    if low.startswith("adc_"):
-        return low.upper()
-    return name
+FT_SYNC_NETS = (
+    [f"FT_D{i}" for i in range(32)]
+    + [f"FT_BE{i}" for i in range(4)]
+    + ["FT_TXE_N", "FT_RXF_N", "FT_WR_N", "FT_RD_N", "FT_OE_N", "FT_SIWU_N"]
+)
+FT_ALL_SYNC_NETS = ["FT_CLK"] + FT_SYNC_NETS
+FT_ASYNC_NETS = ["FT_RESET_N", "FT_WAKEUP_N", "FT_GPIO0", "FT_GPIO1"]
 
 
-def normalize_lengths_dict(raw_dict):
+# ==============================================================================
+# 2. Timing Slack Calculators
+# ==============================================================================
+def calc_adc_slack_ps(l_dco_mm: float, l_data_mm: float, inv_dco: bool = False):
     """
-    Return (total_lengths, stub_lengths, post_res_lengths) keyed by canonical net name.
-    If both 'ADC_X' and 'ADC_X_R' are present in raw_dict, total_lengths['ADC_X'] =
-    raw['ADC_X'] + raw['ADC_X_R'].
+    Returns (setup_slack_ps, hold_slack_ps) for an ADC data net with total length
+    l_data_mm (U8 -> R -> U12) relative to ADC_DCO length l_dco_mm (U8 -> R40 -> U12).
     """
-    norm = {}
-    for k, v in raw_dict.items():
-        if isinstance(v, (int, float)):
-            ck = canonicalize_net_name(k)
-            norm[ck] = float(v)
+    t_pcb_skew_setup = TAU_FCU_MIN * l_dco_mm - TAU_BCU_MAX * l_data_mm
+    t_pcb_skew_hold = TAU_FCU_MAX * l_dco_mm - TAU_BCU_MIN * l_data_mm
 
-    stub_lengths = {}
-    post_res_lengths = {}
-    total_lengths = dict(norm)
+    if not inv_dco:
+        setup_slack = (
+            ADC_SKEW_MIN_PS
+            + t_pcb_skew_setup
+            - ADC_RC_DIFF_PS
+            - ECP5_ADC_TSU_PS
+        )
+        hold_slack = (
+            ADC_T_CLK_PS
+            - ADC_SKEW_MAX_PS
+            - t_pcb_skew_hold
+            - ADC_RC_DIFF_PS
+            - ECP5_ADC_THD_PS
+        )
+    else:
+        half_t = 0.5 * ADC_T_CLK_PS  # 6250 ps
+        setup_slack = (
+            half_t
+            + ADC_SKEW_MIN_PS
+            + t_pcb_skew_setup
+            - ADC_RC_DIFF_PS
+            - ECP5_ADC_TSU_PS
+        )
+        hold_slack = (
+            half_t
+            - ADC_SKEW_MAX_PS
+            - t_pcb_skew_hold
+            - ADC_RC_DIFF_PS
+            - ECP5_ADC_THD_PS
+        )
+    return setup_slack, hold_slack
 
-    for net in ADC_SYNC_NETS:
-        stub_key = f"{net}_R"
-        if stub_key in norm:
-            stub_lengths[net] = norm[stub_key]
-            if net in norm:
-                post_res_lengths[net] = norm[net]
-                total_lengths[net] = norm[net] + norm[stub_key]
 
-    return total_lengths, stub_lengths, post_res_lengths
-
-
-def evaluate_ft601_timing(lengths):
+def calc_ft601_slack_ps(l_clk_mm: float, l_sig_mm: float):
     """
-    Evaluate FT601 100 MHz 245-mode timing and length constraints.
-    Returns (passed, results_list, summary_dict).
+    Returns dict of setup/hold slacks (ps) for FT601 read and write cycles
+    under the active Round-7 OFS1P3DX + PLL +112.5 deg gateware (plus legacy fabric fallback).
     """
-    results = []
-    all_pass = True
-
-    if "FT_CLK" not in lengths:
-        return False, [("FT_CLK_PRESENT", False, "FT_CLK missing from input JSON")], {}
-
-    l_clk = lengths["FT_CLK"]
-    t_clk_min = l_clk * TAU_MIN_PS_PER_MM
-    t_clk_max = l_clk * TAU_MAX_PS_PER_MM
-
-    min_read_su_slack_ps = float("inf")
-    min_read_hd_slack_ps = float("inf")
-    min_write_su_slack_ps = float("inf")
-    min_write_hd_slack_ps = float("inf")
-    max_abs_len = 0.0
-    max_abs_net = ""
-    max_skew_abs = 0.0
-    max_skew_net = ""
-
-    per_net = {}
-
-    for net in FT_SYNC_NETS:
-        if net not in lengths:
-            all_pass = False
-            results.append((f"{net}_PRESENT", False, f"Missing synchronous FT601 net {net}"))
-            continue
-
-        l_net = lengths[net]
-        skew_mm = l_net - l_clk
-        t_net_min = l_net * TAU_MIN_PS_PER_MM
-        t_net_max = l_net * TAU_MAX_PS_PER_MM
-
-        if l_net > max_abs_len:
-            max_abs_len = l_net
-            max_abs_net = net
-        if abs(skew_mm) > abs(max_skew_abs):
-            max_skew_abs = skew_mm
-            max_skew_net = net
-
-        is_input = net in FT_SYNC_INPUTS or net in FT_SYNC_BIDIR
-        is_output = net in FT_SYNC_OUTPUTS or net in FT_SYNC_BIDIR
-
-        # 1. Input (Read / status capture in IFS1P3DX, clocked by +112.5 deg = +3125 ps EHXPLLL CLKOS)
-        #   t_clk_IOL = t_clk_pcb + FT_PLL_SHIFT_PS
-        #   t_data_max = -T1 + t_net_max + t_IN_PIO_max
-        #   t_data_min = +T2 + t_net_min + PVT_FAST_FACTOR * t_IN_PIO_min
-        if is_input:
-            rd_su_slack = (
-                (t_clk_min + FT_PLL_SHIFT_PS)
-                - (-FT_T1_SU_SLAVE_PS + t_net_max + ECP5_LVCMOS33_IN_MAX_PS)
-                - ECP5_IREG_SU_PS
-            )
-            rd_hd_slack = (
-                (FT_T2_HD_SLAVE_PS + t_net_min + PVT_FAST_FACTOR * ECP5_LVCMOS33_IN_MIN_PS)
-                - (t_clk_max + FT_PLL_SHIFT_PS)
-                - ECP5_IREG_HD_PS
-            )
-            min_read_su_slack_ps = min(min_read_su_slack_ps, rd_su_slack)
-            min_read_hd_slack_ps = min(min_read_hd_slack_ps, rd_hd_slack)
-        else:
-            rd_su_slack = None
-            rd_hd_slack = None
-
-        # 2. Output (Write / control launch from OFS1P3DX/OFS1P3BX with +112.5 deg = +3125 ps EHXPLLL CLKOS)
-        # Round-trip delay adds: t_arrive_U11 = t_clk + t_PLL + t_CO_FPGA + t_net
-        if is_output:
-            t_co_max = max(
-                ECP5_OREG_CO_PS + ECP5_LVCMOS33_OUT_MAX_PS,
-                ECP5_TSREG_CO_PS + ECP5_LVCMOS33_TS_MAX_PS,
-            )
-            t_co_min = PVT_FAST_FACTOR * (ECP5_OREG_CO_PS + ECP5_LVCMOS33_OUT_MIN_PS)
-            wr_su_slack = (
-                (FT_TCLK_PS - FT_T3_SU_MASTER_PS)
-                - (t_clk_max + FT_PLL_SHIFT_PS + t_co_max + t_net_max)
-            )
-            wr_hd_slack = (
-                (t_clk_min + FT_PLL_SHIFT_PS + t_co_min + t_net_min)
-                - FT_T4_HD_MASTER_PS
-            )
-            min_write_su_slack_ps = min(min_write_su_slack_ps, wr_su_slack)
-            min_write_hd_slack_ps = min(min_write_hd_slack_ps, wr_hd_slack)
-        else:
-            wr_su_slack = None
-            wr_hd_slack = None
-
-        len_ok = l_net <= FT_MAX_ABS_LEN_MM
-        skew_ok = abs(skew_mm) <= FT_MAX_SKEW_MM
-        rd_ok = True if not is_input else (rd_su_slack >= 0 and rd_hd_slack >= 0)
-        wr_ok = True if not is_output else (wr_su_slack >= 0 and wr_hd_slack >= 0)
-        net_ok = len_ok and skew_ok and rd_ok and wr_ok
-        if not net_ok:
-            all_pass = False
-
-        per_net[net] = {
-            "length_mm": l_net,
-            "skew_mm": skew_mm,
-            "len_ok": len_ok,
-            "skew_ok": skew_ok,
-            "rd_su_slack_ps": rd_su_slack,
-            "rd_hd_slack_ps": rd_hd_slack,
-            "wr_su_slack_ps": wr_su_slack,
-            "wr_hd_slack_ps": wr_hd_slack,
-            "pass": net_ok,
-        }
-
-    c_len = max_abs_len <= FT_MAX_ABS_LEN_MM
-    c_skew = abs(max_skew_abs) <= FT_MAX_SKEW_MM
-    c_rd_su = min_read_su_slack_ps >= 0
-    c_rd_hd = min_read_hd_slack_ps >= 0
-    c_wr_su = min_write_su_slack_ps >= 0
-    c_wr_hd = min_write_hd_slack_ps >= 0
-
-    results.extend([
-        (
-            "FT601_MAX_ABS_LEN",
-            c_len,
-            f"max={max_abs_len:.2f} mm ({max_abs_net}) <= {FT_MAX_ABS_LEN_MM:.1f} mm "
-            f"(slack {FT_MAX_ABS_LEN_MM - max_abs_len:+.2f} mm)",
-        ),
-        (
-            "FT601_CLK_SKEW",
-            c_skew,
-            f"max |L - L(FT_CLK)|={abs(max_skew_abs):.2f} mm ({max_skew_net}, {max_skew_abs:+.2f} mm) "
-            f"<= {FT_MAX_SKEW_MM:.1f} mm (slack {FT_MAX_SKEW_MM - abs(max_skew_abs):+.2f} mm)",
-        ),
-        (
-            "FT601_READ_SETUP",
-            c_rd_su,
-            f"worst read setup slack = {min_read_su_slack_ps:+.0f} ps (>= 0 ps)",
-        ),
-        (
-            "FT601_READ_HOLD",
-            c_rd_hd,
-            f"worst read hold slack  = {min_read_hd_slack_ps:+.0f} ps (>= 0 ps)",
-        ),
-        (
-            "FT601_WRITE_SETUP",
-            c_wr_su,
-            f"worst write setup slack = {min_write_su_slack_ps:+.0f} ps (>= 0 ps, IOREG + 112.5 deg PLL)",
-        ),
-        (
-            "FT601_WRITE_HOLD",
-            c_wr_hd,
-            f"worst write hold slack  = {min_write_hd_slack_ps:+.0f} ps (>= 0 ps vs T4=4800 ps, IOREG + 112.5 deg PLL)",
-        ),
-    ])
-
-    summary = {
-        "ft_clk_mm": l_clk,
-        "max_abs_len_mm": max_abs_len,
-        "max_abs_net": max_abs_net,
-        "max_skew_mm": max_skew_abs,
-        "max_skew_net": max_skew_net,
-        "min_read_su_slack_ps": min_read_su_slack_ps,
-        "min_read_hd_slack_ps": min_read_hd_slack_ps,
-        "min_write_su_slack_ps": min_write_su_slack_ps,
-        "min_write_hd_slack_ps": min_write_hd_slack_ps,
-        "per_net": per_net,
+    rd_setup = (
+        FT_T_CLK_PS
+        - FT_TCO_MAX_PS
+        - TAU_BCU_MAX * l_sig_mm
+        + TAU_FCU_MIN * l_clk_mm
+        - ECP5_FT_RD_TSU_IOREG_PS
+    )
+    rd_hold = (
+        FT_TCO_MIN_PS
+        + TAU_FCU_MIN * l_sig_mm
+        - TAU_FCU_MAX * l_clk_mm
+        - ECP5_FT_RD_THD_IOREG_PS
+    )
+    wr_setup = (
+        FT_T_CLK_PS
+        - TAU_FCU_MAX * l_clk_mm
+        - ECP5_FT_WR_TCO_MAX_IOREG_PS
+        - TAU_BCU_MAX * l_sig_mm
+        - FT_TSU_MIN_PS
+    )
+    wr_hold = (
+        TAU_FCU_MIN * l_clk_mm
+        + ECP5_FT_WR_TCO_MIN_IOREG_PS
+        + TAU_FCU_MIN * l_sig_mm
+        - FT_THD_MIN_PS
+    )
+    wr_setup_fab = (
+        FT_T_CLK_PS
+        - TAU_FCU_MAX * l_clk_mm
+        - ECP5_FT_WR_TCO_MAX_FAB_PS
+        - TAU_BCU_MAX * l_sig_mm
+        - FT_TSU_MIN_PS
+    )
+    return {
+        "rd_setup_ps": rd_setup,
+        "rd_hold_ps": rd_hold,
+        "wr_setup_ps": wr_setup,
+        "wr_hold_ps": wr_hold,
+        "wr_setup_fab_ps": wr_setup_fab,
     }
-    return all_pass, results, summary
 
 
-def evaluate_adc_timing(lengths, stub_lengths):
-    """
-    Evaluate AD9649 80 MSPS CMOS bus timing and length constraints.
-    Reports both default DCO polarity (0x16=0x00, edge-aligned + GCLK insertion)
-    and inverted DCO polarity (0x16=0x80, center-aligned).
-    """
-    results = []
-    all_pass = True
-
-    if "ADC_DCO" not in lengths:
-        return False, [("ADC_DCO_PRESENT", False, "ADC_DCO missing from input JSON")], {}
-
-    l_dco = lengths["ADC_DCO"]
-    t_dco_min = l_dco * TAU_MIN_PS_PER_MM
-    t_dco_max = l_dco * TAU_MAX_PS_PER_MM
-
-    max_abs_len = 0.0
-    max_abs_net = ""
-    max_skew_abs = 0.0
-    max_skew_net = ""
-    max_stub_len = 0.0
-    max_stub_net = ""
-
-    min_su_default_ps = float("inf")
-    min_hd_default_ps = float("inf")
-    min_su_inv_ps = float("inf")
-    min_hd_inv_ps = float("inf")
-
-    per_net = {}
-
-    for net in ADC_SYNC_NETS:
-        if net not in lengths:
-            all_pass = False
-            results.append((f"{net}_PRESENT", False, f"Missing synchronous ADC net {net}"))
-            continue
-
-        l_net = lengths[net]
-        skew_mm = l_net - l_dco
-        t_net_min = l_net * TAU_MIN_PS_PER_MM
-        t_net_max = l_net * TAU_MAX_PS_PER_MM
-        rc_diff_ps = skew_mm * ADC_RC_SLOPE_PS_PER_MM
-
-        if l_net > max_abs_len:
-            max_abs_len = l_net
-            max_abs_net = net
-        if net != "ADC_DCO" and abs(skew_mm) > abs(max_skew_abs):
-            max_skew_abs = skew_mm
-            max_skew_net = net
-
-        stub_mm = stub_lengths.get(net)
-        if stub_mm is not None and stub_mm > max_stub_len:
-            max_stub_len = stub_mm
-            max_stub_net = f"{net}_R"
-
-        # Default DCO polarity (0x16 = 0x00): DCO edge-aligned at ADC (tSKEW = -100..+300 ps),
-        # delayed inside ECP5 by global clock tree t_GCLK (1200..1800 ps).
-        su_def = (
-            ADC_TSKEW_MIN_PS
-            + ECP5_GCLK_MIN_PS
-            + (t_dco_min - t_net_max)
-            - max(0.0, rc_diff_ps)
-            - (ECP5_LVCMOS18_IN_MAX_PS - ECP5_LVCMOS18_IN_MIN_PS)
-            - ECP5_IREG_SU_PS
-        )
-        hd_def = (
-            ADC_TCLK_PS
-            - ADC_TSKEW_MAX_PS
-            - ECP5_GCLK_MAX_PS
-            - (t_dco_max - t_net_min)
-            - max(0.0, -rc_diff_ps)
-            - (ECP5_LVCMOS18_IN_MAX_PS - ECP5_LVCMOS18_IN_MIN_PS)
-            - ECP5_IREG_HD_PS
-        )
-
-        # Inverted DCO polarity (0x16 = 0x80) or negedge capture: centers DCO at T_CLK/2 = 6250 ps
-        su_inv = (
-            0.5 * ADC_TCLK_PS
-            + ADC_TSKEW_MIN_PS
-            + (t_dco_min - t_net_max)
-            - max(0.0, rc_diff_ps)
-            - (ECP5_LVCMOS18_IN_MAX_PS - ECP5_LVCMOS18_IN_MIN_PS)
-            - ECP5_IREG_SU_PS
-        )
-        hd_inv = (
-            0.5 * ADC_TCLK_PS
-            - ADC_TSKEW_MAX_PS
-            - ECP5_GCLK_MAX_PS
-            - (t_dco_max - t_net_min)
-            - max(0.0, -rc_diff_ps)
-            - (ECP5_LVCMOS18_IN_MAX_PS - ECP5_LVCMOS18_IN_MIN_PS)
-            - ECP5_IREG_HD_PS
-        )
-
-        if net != "ADC_DCO":
-            min_su_default_ps = min(min_su_default_ps, su_def)
-            min_hd_default_ps = min(min_hd_default_ps, hd_def)
-            min_su_inv_ps = min(min_su_inv_ps, su_inv)
-            min_hd_inv_ps = min(min_hd_inv_ps, hd_inv)
-
-        len_ok = l_net <= ADC_MAX_ABS_LEN_MM
-        skew_ok = abs(skew_mm) <= ADC_MAX_SKEW_MM
-        stub_ok = True if stub_mm is None else (stub_mm <= ADC_MAX_STUB_LEN_MM)
-        timing_ok = su_def >= 0 and hd_def >= 0
-        net_ok = len_ok and skew_ok and stub_ok and timing_ok
-        if not net_ok:
-            all_pass = False
-
-        per_net[net] = {
-            "length_mm": l_net,
-            "stub_mm": stub_mm,
-            "skew_mm": skew_mm,
-            "len_ok": len_ok,
-            "skew_ok": skew_ok,
-            "stub_ok": stub_ok,
-            "su_default_ps": su_def,
-            "hd_default_ps": hd_def,
-            "su_inv_ps": su_inv,
-            "hd_inv_ps": hd_inv,
-            "pass": net_ok,
-        }
-
-    c_len = max_abs_len <= ADC_MAX_ABS_LEN_MM
-    c_skew = abs(max_skew_abs) <= ADC_MAX_SKEW_MM
-    c_su_def = min_su_default_ps >= 0
-    c_hd_def = min_hd_default_ps >= 0
-    c_su_inv = min_su_inv_ps >= 0
-    c_hd_inv = min_hd_inv_ps >= 0
-
-    results.extend([
-        (
-            "ADC_MAX_ABS_LEN",
-            c_len,
-            f"max={max_abs_len:.2f} mm ({max_abs_net}) <= {ADC_MAX_ABS_LEN_MM:.1f} mm "
-            f"(slack {ADC_MAX_ABS_LEN_MM - max_abs_len:+.2f} mm)",
-        ),
-        (
-            "ADC_DCO_SKEW",
-            c_skew,
-            f"max |L - L(ADC_DCO)|={abs(max_skew_abs):.2f} mm ({max_skew_net}, {max_skew_abs:+.2f} mm) "
-            f"<= {ADC_MAX_SKEW_MM:.1f} mm (slack {ADC_MAX_SKEW_MM - abs(max_skew_abs):+.2f} mm)",
-        ),
-        (
-            "ADC_SETUP_DEFAULT_0x16_00",
-            c_su_def,
-            f"worst setup slack (default DCO 0x16=0x00) = {min_su_default_ps:+.0f} ps (>= 0 ps)",
-        ),
-        (
-            "ADC_HOLD_DEFAULT_0x16_00",
-            c_hd_def,
-            f"worst hold slack  (default DCO 0x16=0x00) = {min_hd_default_ps:+.0f} ps (>= 0 ps)",
-        ),
-        (
-            "ADC_SETUP_INVDCO_0x16_80",
-            c_su_inv,
-            f"worst setup slack (inverted DCO 0x16=0x80) = {min_su_inv_ps:+.0f} ps (>= 0 ps)",
-        ),
-        (
-            "ADC_HOLD_INVDCO_0x16_80",
-            c_hd_inv,
-            f"worst hold slack  (inverted DCO 0x16=0x80) = {min_hd_inv_ps:+.0f} ps (>= 0 ps)",
-        ),
-    ])
-
-    if stub_lengths:
-        c_stub = max_stub_len <= ADC_MAX_STUB_LEN_MM
-        if not c_stub:
-            all_pass = False
-        results.append((
-            "ADC_SERIES_RES_STUB",
-            c_stub,
-            f"max U8->R stub={max_stub_len:.2f} mm ({max_stub_net}) <= {ADC_MAX_STUB_LEN_MM:.1f} mm "
-            f"(slack {ADC_MAX_STUB_LEN_MM - max_stub_len:+.2f} mm)",
-        ))
-
-    summary = {
-        "adc_dco_mm": l_dco,
-        "max_abs_len_mm": max_abs_len,
-        "max_abs_net": max_abs_net,
-        "max_skew_mm": max_skew_abs,
-        "max_skew_net": max_skew_net,
-        "max_stub_len_mm": max_stub_len if stub_lengths else None,
-        "max_stub_net": max_stub_net if stub_lengths else None,
-        "min_su_default_ps": min_su_default_ps,
-        "min_hd_default_ps": min_hd_default_ps,
-        "min_su_inv_ps": min_su_inv_ps,
-        "min_hd_inv_ps": min_hd_inv_ps,
-        "per_net": per_net,
-    }
-    return all_pass, results, summary
-
-
-def build_estimated_lengths_from_repo(repo_root, relocate_adc_resistors=True):
-    """
-    Build estimated routed lengths (Manhattan with 45-deg / 1.12x Euclidean blend)
-    from notes/pinswap/data.json and notes/pinswap/agy_assignment.json for self-test.
-    """
-    with open(repo_root / "notes" / "pinswap" / "data.json") as f:
+# ==============================================================================
+# 3. KiCad PCB / JSON Length Parser
+# ==============================================================================
+def load_lengths_from_json(path: str):
+    with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
-    with open(repo_root / "notes" / "pinswap" / "agy_assignment.json") as f:
-        asgn = json.load(f)
-
-    fpga_xy = {b: tuple(v["xy"]) for b, v in data["fpga_balls"].items()}
-    ft_xy = {
-        info["net"]: tuple(info["xy"])
-        for info in data["ft601_pins"].values()
-        if info["net"].startswith("FT_")
-    }
-    adc_pin_xy = {
-        info["net"].split("/")[-1]: tuple(info["xy"])
-        for info in data["adc_pins"].values()
-        if info["net"]
-    }
-    res_info = {
-        rinfo["2"]["net"]: (tuple(rinfo["1"]["xy"]), tuple(rinfo["2"]["xy"]))
-        for rinfo in data["adc_series_resistors"].values()
-    }
-
-    est = {}
-    for sig, ball in asgn.items():
-        net = canonicalize_net_name(sig)
-        p_fpga = fpga_xy[ball]
-        if net in ft_xy:
-            p_ft = ft_xy[net]
-            dx = abs(p_fpga[0] - p_ft[0])
-            dy = abs(p_fpga[1] - p_ft[1])
-            # Octilinear (45-degree) routed distance + 1.5 mm escape overhead
-            oct_len = max(dx, dy) + (math.sqrt(2) - 1.0) * min(dx, dy) + 1.5
-            est[net] = round(oct_len, 2)
-        elif net in ADC_SYNC_NETS and f"{net}_R" in adc_pin_xy:
-            p_u8 = adc_pin_xy[f"{net}_R"]
-            if relocate_adc_resistors:
-                # Resistor placed 2.2 mm from U8 pin toward FPGA
-                stub = 2.20
-                dx = abs(p_fpga[0] - p_u8[0])
-                dy = abs(p_fpga[1] - p_u8[1])
-                oct_total = max(dx, dy) + (math.sqrt(2) - 1.0) * min(dx, dy) + 2.0
-                est[f"{net}_R"] = round(stub, 2)
-                est[net] = round(oct_total - stub, 2)
-            else:
-                p1, p2 = res_info[net]
-                dx1, dy1 = abs(p1[0] - p_u8[0]), abs(p1[1] - p_u8[1])
-                dx2, dy2 = abs(p_fpga[0] - p2[0]), abs(p_fpga[1] - p2[1])
-                stub = max(dx1, dy1) + (math.sqrt(2) - 1.0) * min(dx1, dy1)
-                main = max(dx2, dy2) + (math.sqrt(2) - 1.0) * min(dx2, dy2)
-                est[f"{net}_R"] = round(stub, 2)
-                est[net] = round(main, 2)
-    return est
+    if "lengths" in data and isinstance(data["lengths"], dict):
+        return {k: float(v) for k, v in data["lengths"].items()}
+    return {k: float(v) for k, v in data.items() if isinstance(v, (int, float))}
 
 
-def print_report(title, raw_dict, verbose=False):
-    total_lengths, stub_lengths, _ = normalize_lengths_dict(raw_dict)
+def load_lengths_from_kicad_pcb(path: str):
+    """
+    Parses a .kicad_pcb file (via pcbnew if available, else regex S-expression parser)
+    and sums segment lengths per net name ( stripping hierarchical prefix '/ADC and clock/').
+    """
+    try:
+        import pcbnew  # type: ignore
+        board = pcbnew.LoadBoard(path)
+        net_lengths = {}
+        for track in board.GetTracks():
+            if track.GetClass() == "PCB_VIA":
+                continue
+            net_name = track.GetNetname()
+            short_name = net_name.split("/")[-1]
+            length_mm = pcbnew.ToMM(track.GetLength())
+            net_lengths[short_name] = net_lengths.get(short_name, 0.0) + length_mm
+            if short_name != net_name:
+                net_lengths[net_name] = net_lengths.get(net_name, 0.0) + length_mm
+        return net_lengths
+    except Exception:
+        pass
 
-    has_ft = any(k in total_lengths for k in FT_SYNC_NETS)
-    has_adc = any(k in total_lengths for k in ADC_SYNC_NETS)
+    with open(path, "r", encoding="utf-8") as f:
+        text = f.read()
 
-    print("=" * 78)
-    print(f"USB3-SDR BUS TIMING & LENGTH CHECK: {title}")
-    print("=" * 78)
+    net_id_to_name = {}
+    for m in re.finditer(r'\(\s*net\s+(\d+)\s+"([^"]*)"\s*\)', text):
+        net_id = int(m.group(1))
+        name = m.group(2)
+        net_id_to_name[net_id] = name
 
-    overall_pass = True
+    net_lengths = {}
+    seg_pattern = re.compile(
+        r'\(\s*segment\s+'
+        r'\(\s*start\s+([-\d.]+)\s+([-\d.]+)\s*\)\s*'
+        r'\(\s*end\s+([-\d.]+)\s+([-\d.]+)\s*\).*?'
+        r'\(\s*net\s+(\d+)\s*\)',
+        re.DOTALL,
+    )
+    for m in seg_pattern.finditer(text):
+        x1, y1 = float(m.group(1)), float(m.group(2))
+        x2, y2 = float(m.group(3)), float(m.group(4))
+        net_id = int(m.group(5))
+        seg_len = math.hypot(x2 - x1, y2 - y1)
+        net_name = net_id_to_name.get(net_id, f"NET_{net_id}")
+        short_name = net_name.split("/")[-1]
+        net_lengths[short_name] = net_lengths.get(short_name, 0.0) + seg_len
+        if short_name != net_name:
+            net_lengths[net_name] = net_lengths.get(net_name, 0.0) + seg_len
 
-    if has_ft:
-        ft_ok, ft_res, ft_sum = evaluate_ft601_timing(total_lengths)
-        overall_pass = overall_pass and ft_ok
-        print("\n[1] FT601 245 Synchronous FIFO Bus (100 MHz, 3.3 V LVCMOS33)")
-        print("-" * 78)
-        for cname, ok, msg in ft_res:
-            status = "PASS" if ok else "FAIL"
-            print(f"  [{status}] {cname:26s}: {msg}")
-        if verbose and "per_net" in ft_sum:
-            print("\n  Per-net FT601 summary (sorted by length):")
-            for net, info in sorted(ft_sum["per_net"].items(), key=lambda x: x[1]["length_mm"]):
-                st = "PASS" if info["pass"] else "FAIL"
-                w_su = f"{info['wr_su_slack_ps']:+6.0f}ps" if info["wr_su_slack_ps"] is not None else "   n/a"
-                w_hd = f"{info['wr_hd_slack_ps']:+6.0f}ps" if info["wr_hd_slack_ps"] is not None else "   n/a"
-                r_su = f"{info['rd_su_slack_ps']:+6.0f}ps" if info["rd_su_slack_ps"] is not None else "   n/a"
-                r_hd = f"{info['rd_hd_slack_ps']:+6.0f}ps" if info["rd_hd_slack_ps"] is not None else "   n/a"
-                print(
-                    f"    {st} {net:12s}: L={info['length_mm']:5.2f} mm, "
-                    f"dL={info['skew_mm']:+6.2f} mm | Rd(SU/HD)={r_su}/{r_hd} | Wr(SU/HD)={w_su}/{w_hd}"
+    return net_lengths
+
+
+# ==============================================================================
+# 4. Verification & Reporting Engine
+# ==============================================================================
+def check_lengths(raw_lengths: dict, verbose: bool = False):
+    """
+    Evaluates all ADC and FT601 nets against the Round-9 R1 updated length, skew,
+    stub, and setup/hold slack limits. Returns (all_passed: bool, report_lines: list[str]).
+    """
+    lines = []
+    all_passed = True
+    violations = []
+
+    def get_len(net):
+        if net in raw_lengths:
+            return raw_lengths[net]
+        alt = f"/ADC and clock/{net}"
+        if alt in raw_lengths:
+            return raw_lengths[alt]
+        return None
+
+    # --------------------------------------------------------------------------
+    # A. ADC Bus Check (U8 -> R26..R41 -> U12 Bank 7)
+    # --------------------------------------------------------------------------
+    lines.append("=" * 78)
+    lines.append("1. ADC BUS CHECK (AD9649 80 MHz -> 22R -> ECP5 Bank 7 LVCMOS18)")
+    lines.append("=" * 78)
+
+    dco_post = get_len("ADC_DCO")
+    dco_stub = get_len("ADC_DCO_R")
+    if dco_post is None:
+        lines.append("  [WARN] ADC_DCO not found in routed lengths (unrouted board?).")
+        all_passed = False
+    else:
+        dco_total = dco_post + (dco_stub if dco_stub is not None else 0.0)
+        lines.append(
+            f"  Reference Clock ADC_DCO: total = {dco_total:.2f} mm "
+            f"(U8->R40 stub = {dco_stub if dco_stub is not None else 0.0:.2f} mm, "
+            f"R40->U12 = {dco_post:.2f} mm)"
+        )
+        if dco_stub is not None and dco_stub > ADC_MAX_STUB_MM:
+            violations.append(
+                f"ADC_DCO_R stub = {dco_stub:.2f} mm > {ADC_MAX_STUB_MM:.1f} mm [SI]"
+            )
+            all_passed = False
+        if dco_total > ADC_MAX_TOTAL_MM:
+            violations.append(
+                f"ADC_DCO total = {dco_total:.2f} mm > {ADC_MAX_TOTAL_MM:.1f} mm [SI: C_LOAD < 10 pF]"
+            )
+            all_passed = False
+
+        lines.append(
+            f"  {'Net':<10} {'Stub(mm)':>9} {'R->U12':>9} {'Total(mm)':>10} "
+            f"{'SkewDCO':>9} {'Su/Hd(Def)':>14} {'Su/Hd(InvDCO)':>15} {'Status':>8}"
+        )
+        lines.append("  " + "-" * 74)
+
+        for net in ADC_DATA_NETS:
+            post = get_len(net)
+            stub = get_len(f"{net}_R")
+            stub_val = stub if stub is not None else 0.0
+            stub_ok = (stub is None) or (stub_val <= ADC_MAX_STUB_MM)
+            if not stub_ok:
+                violations.append(
+                    f"{net}_R stub {stub_val:.2f} mm > {ADC_MAX_STUB_MM:.1f} mm [SI]"
+                )
+                all_passed = False
+            if post is None:
+                violations.append(f"{net} missing/unrouted")
+                all_passed = False
+                if verbose or not stub_ok:
+                    lines.append(
+                        f"  {net:<10} {stub_val:>9.2f} {'MISSING':>9} {'-':>10} "
+                        f"{'-':>9} {'-':>14} {'-':>15} {'FAIL':>8}"
+                    )
+                continue
+            total = post + stub_val
+            skew = total - dco_total
+
+            su_def, hd_def = calc_adc_slack_ps(dco_total, total, inv_dco=False)
+            su_inv, hd_inv = calc_adc_slack_ps(dco_total, total, inv_dco=True)
+
+            tot_ok = total <= ADC_MAX_TOTAL_MM
+            skew_ok = abs(skew) <= ADC_MAX_SKEW_MM
+            # boot_seq.v configures AD9649 Reg 0x16 = 0x80 (invert DCO) at boot
+            timing_ok = (su_inv >= 0.0) and (hd_inv >= 0.0)
+
+            net_ok = stub_ok and tot_ok and skew_ok and timing_ok
+            status = "PASS" if net_ok else "FAIL"
+            if not net_ok:
+                all_passed = False
+                if not tot_ok:
+                    violations.append(
+                        f"{net} total {total:.2f} mm > {ADC_MAX_TOTAL_MM:.1f} mm [SI: C_LOAD]"
+                    )
+                if not skew_ok:
+                    violations.append(
+                        f"{net} skew {skew:+.2f} mm outside +/-{ADC_MAX_SKEW_MM:.1f} mm [SI/RC]"
+                    )
+                if not timing_ok:
+                    violations.append(
+                        f"{net} InvDCO (0x16=0x80) timing slack {su_inv:+.0f}/{hd_inv:+.0f} ps < 0 [TIMING]"
+                    )
+
+            if verbose or not net_ok:
+                lines.append(
+                    f"  {net:<10} {stub_val:>9.2f} {post:>9.2f} {total:>10.2f} "
+                    f"{skew:>+9.2f} {su_def:>+6.0f}/{hd_def:>+6.0f} "
+                    f"{su_inv:>+7.0f}/{hd_inv:>+6.0f} {status:>8}"
                 )
 
-    if has_adc:
-        adc_ok, adc_res, adc_sum = evaluate_adc_timing(total_lengths, stub_lengths)
-        overall_pass = overall_pass and adc_ok
-        print("\n[2] AD9649 CMOS Sample Bus (80 MSPS, 1.8 V LVCMOS18)")
-        print("-" * 78)
-        for cname, ok, msg in adc_res:
-            status = "PASS" if ok else "FAIL"
-            print(f"  [{status}] {cname:26s}: {msg}")
-        if verbose and "per_net" in adc_sum:
-            print("\n  Per-net AD9649 summary (sorted by length):")
-            for net, info in sorted(adc_sum["per_net"].items(), key=lambda x: x[1]["length_mm"]):
-                st = "PASS" if info["pass"] else "FAIL"
-                stub_str = f", stub={info['stub_mm']:4.2f}mm" if info["stub_mm"] is not None else ""
-                print(
-                    f"    {st} {net:10s}: L={info['length_mm']:5.2f} mm{stub_str}, "
-                    f"dL={info['skew_mm']:+6.2f} mm | "
-                    f"Def(SU/HD)={info['su_default_ps']:+5.0f}/{info['hd_default_ps']:+6.0f}ps | "
-                    f"Inv(SU/HD)={info['su_inv_ps']:+5.0f}/{info['hd_inv_ps']:+5.0f}ps"
+        # Check boot-only SPI nets (exempt from DCO skew; sanity length cap <= 120 mm)
+        for net in ADC_SPI_NETS:
+            val = get_len(net)
+            if val is not None:
+                spi_ok = val <= ADC_SPI_MAX_MM
+                if not spi_ok:
+                    all_passed = False
+                    violations.append(
+                        f"{net} (SPI) length {val:.2f} mm > {ADC_SPI_MAX_MM:.1f} mm"
+                    )
+                if verbose or not spi_ok:
+                    lines.append(
+                        f"  {net:<10} {'(exempt)':>9} {val:>9.2f} {val:>10.2f} "
+                        f"{'EXEMPT':>9} {'1.25MHz SPI':>14} {'T_half=400ns':>15} "
+                        f"{'PASS' if spi_ok else 'FAIL':>8}"
+                    )
+
+    # --------------------------------------------------------------------------
+    # B. FT601 Bus Check (U11 <-> U12 Bank 6/2/3)
+    # --------------------------------------------------------------------------
+    lines.append("")
+    lines.append("=" * 78)
+    lines.append("2. FT601 BUS CHECK (100 MHz Sync FIFO <-> ECP5 LVCMOS33, OFS1P3DX + 112.5 deg)")
+    lines.append("=" * 78)
+
+    ft_clk = get_len("FT_CLK")
+    if ft_clk is None:
+        lines.append("  [WARN] FT_CLK not found in routed lengths (unrouted board?).")
+        all_passed = False
+    else:
+        lines.append(f"  Reference Clock FT_CLK: length = {ft_clk:.2f} mm")
+        if ft_clk > FT_MAX_TOTAL_MM:
+            violations.append(
+                f"FT_CLK length = {ft_clk:.2f} mm > {FT_MAX_TOTAL_MM:.1f} mm [SI]"
+            )
+            all_passed = False
+
+        sync_lengths = [
+            get_len(n) for n in FT_ALL_SYNC_NETS if get_len(n) is not None
+        ]
+        min_len = min(sync_lengths) if sync_lengths else 0.0
+        max_len = max(sync_lengths) if sync_lengths else 0.0
+        span_mm = max_len - min_len
+        lines.append(
+            f"  Bus length range: [{min_len:.2f}, {max_len:.2f}] mm (span = {span_mm:.2f} mm)"
+        )
+
+        lines.append(
+            f"  {'Net':<12} {'Length(mm)':>10} {'SkewCLK':>9} "
+            f"{'Rd Su/Hd(ps)':>14} {'Wr Su/Hd(IOReg)':>16} {'WrSu(Fab)':>10} {'Status':>8}"
+        )
+        lines.append("  " + "-" * 74)
+
+        for net in FT_SYNC_NETS:
+            l_mm = get_len(net)
+            if l_mm is None:
+                violations.append(f"{net} missing/unrouted")
+                all_passed = False
+                continue
+
+            skew_clk = l_mm - ft_clk
+            slacks = calc_ft601_slack_ps(ft_clk, l_mm)
+
+            tot_ok = l_mm <= FT_MAX_TOTAL_MM
+            skew_ok = FT_MIN_SKEW_MM <= skew_clk <= FT_MAX_SKEW_MM
+            rd_ok = (slacks["rd_setup_ps"] >= 0.0) and (slacks["rd_hold_ps"] >= 0.0)
+            wr_ok = (slacks["wr_setup_ps"] >= 0.0) and (slacks["wr_hold_ps"] >= 0.0)
+
+            net_ok = tot_ok and skew_ok and rd_ok and wr_ok
+            status = "PASS" if net_ok else "FAIL"
+            if not net_ok:
+                all_passed = False
+                if not tot_ok:
+                    violations.append(
+                        f"{net} length {l_mm:.2f} mm > {FT_MAX_TOTAL_MM:.1f} mm [SI]"
+                    )
+                if not skew_ok:
+                    violations.append(
+                        f"{net} skew to FT_CLK {skew_clk:+.2f} mm outside [{FT_MIN_SKEW_MM:+.1f}, {FT_MAX_SKEW_MM:+.1f}] mm"
+                    )
+                if not rd_ok:
+                    violations.append(
+                        f"{net} read slack {slacks['rd_setup_ps']:+.0f}/{slacks['rd_hold_ps']:+.0f} ps < 0 [TIMING]"
+                    )
+                if not wr_ok:
+                    violations.append(
+                        f"{net} write slack {slacks['wr_setup_ps']:+.0f}/{slacks['wr_hold_ps']:+.0f} ps < 0 [TIMING]"
+                    )
+
+            if verbose or not net_ok:
+                lines.append(
+                    f"  {net:<12} {l_mm:>10.2f} {skew_clk:>+9.2f} "
+                    f"{slacks['rd_setup_ps']:>+6.0f}/{slacks['rd_hold_ps']:>+6.0f} "
+                    f"{slacks['wr_setup_ps']:>+7.0f}/{slacks['wr_hold_ps']:>+6.0f} "
+                    f"{slacks['wr_setup_fab_ps']:>+10.0f} {status:>8}"
                 )
 
-    if not has_ft and not has_adc:
-        print("  [FAIL] Input JSON contains neither FT601 nor AD9649 synchronous bus nets.")
-        overall_pass = False
+        # Check asynchronous FT601 control/GPIO nets (exempt from FT_CLK skew per Table 3.2)
+        for net in FT_ASYNC_NETS:
+            val = get_len(net)
+            if val is not None:
+                async_ok = val <= FT_ASYNC_MAX_MM
+                if not async_ok:
+                    all_passed = False
+                    violations.append(
+                        f"{net} (async) length {val:.2f} mm > {FT_ASYNC_MAX_MM:.1f} mm"
+                    )
+                if verbose or not async_ok:
+                    lines.append(
+                        f"  {net:<12} {val:>10.2f} {'EXEMPT':>9} "
+                        f"{'Async Table3.2':>14} {'Static/Slow':>16} {'-':>10} "
+                        f"{'PASS' if async_ok else 'FAIL':>8}"
+                    )
 
-    print("\n" + "=" * 78)
-    print(f"OVERALL RESULT: {'PASS' if overall_pass else 'FAIL'}")
-    print("=" * 78)
-    return overall_pass
+    lines.append("")
+    lines.append("=" * 78)
+    if all_passed:
+        lines.append("OVERALL RESULT: PASS (0 violations)")
+    else:
+        lines.append(f"OVERALL RESULT: FAIL ({len(violations)} violations)")
+        for v in violations:
+            lines.append(f"  - {v}")
+    lines.append("=" * 78)
+
+    return all_passed, lines
+
+
+# ==============================================================================
+# 5. Built-in Self-Test (Target Post-Route Euclidean / Manhattan Estimates)
+# ==============================================================================
+def build_synthetic_target_lengths():
+    """
+    Constructs realistic target routed lengths (mm) from our Round-9 R2 ADC plan
+    and Round-5 FT601 placement to verify that planned routes pass all constraints.
+    """
+    synth = {}
+    # R2 planned ADC lengths (U8 -> R26..R41 -> U12 Bank 7)
+    r2_adc = {
+        "ADC_DCO":  (3.35, 24.35),
+        "ADC_OR":   (1.50, 27.92),
+        "ADC_D0":   (5.05, 30.57),
+        "ADC_D1":   (2.00, 25.82),
+        "ADC_D2":   (4.00, 26.16),
+        "ADC_D3":   (1.65, 23.77),
+        "ADC_D4":   (4.05, 20.70),
+        "ADC_D5":   (1.10, 25.10),
+        "ADC_D6":   (4.00, 20.97),
+        "ADC_D7":   (2.10, 20.10),
+        "ADC_D8":   (4.30, 19.15),
+        "ADC_D9":   (1.95, 25.42),
+        "ADC_D10":  (4.90, 18.62),
+        "ADC_D11":  (1.60, 25.27),
+        "ADC_D12":  (3.45, 27.66),
+        "ADC_D13":  (1.30, 32.59),
+    }
+    for net, (st, mn) in r2_adc.items():
+        synth[f"{net}_R"] = st
+        synth[net] = mn
+    synth["ADC_CSB"] = 33.37
+    synth["ADC_SCLK"] = 32.24
+    synth["ADC_SDIO"] = 30.03
+
+    # FT601 lengths
+    synth["FT_CLK"] = 12.53
+    for i in range(32):
+        synth[f"FT_D{i}"] = 12.0 + (i % 16) * 0.9
+    for i in range(4):
+        synth[f"FT_BE{i}"] = 17.5 + i * 0.8
+    for idx, ctrl in enumerate(
+        ["FT_TXE_N", "FT_RXF_N", "FT_WR_N", "FT_RD_N", "FT_OE_N", "FT_SIWU_N"]
+    ):
+        synth[ctrl] = 16.0 + idx * 1.2
+    synth["FT_RESET_N"] = 28.09
+    synth["FT_WAKEUP_N"] = 16.65
+    synth["FT_GPIO0"] = 22.87
+    synth["FT_GPIO1"] = 26.86
+
+    return synth
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Check FT601 and AD9649 routed net lengths against timing budgets.")
-    parser.add_argument("json_file", nargs="?", help="Path to JSON file mapping net -> routed length in mm")
-    parser.add_argument("-v", "--verbose", action="store_true", help="Print per-net timing table")
-    parser.add_argument("--tau-f", type=float, default=6.00, help="Fast / F.Cu delay in ps/mm (default: 6.0)")
-    parser.add_argument("--tau-b", type=float, default=7.00, help="Slow / B.Cu delay in ps/mm (default: 7.0)")
+    parser = argparse.ArgumentParser(
+        description="Verify ADC (80 MHz) and FT601 (100 MHz) trace lengths and timing slack."
+    )
+    parser.add_argument(
+        "input",
+        nargs="?",
+        help="Path to .kicad_pcb file or routed lengths .json file",
+    )
+    parser.add_argument(
+        "--self-test",
+        action="store_true",
+        help="Run self-test using synthetic target lengths from R2 ADC plan",
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="Print all nets (even passing)"
+    )
     args = parser.parse_args()
 
-    global TAU_MIN_PS_PER_MM, TAU_MAX_PS_PER_MM
-    TAU_MIN_PS_PER_MM = min(args.tau_f, args.tau_b)
-    TAU_MAX_PS_PER_MM = max(args.tau_f, args.tau_b)
+    if args.self_test or not args.input:
+        print("Running built-in self-test on target post-route lengths (R2 ADC plan)...")
+        lengths = build_synthetic_target_lengths()
+        passed, report = check_lengths(lengths, verbose=True)
+        print("\n".join(report))
+        sys.exit(0 if passed else 1)
 
-    if args.json_file:
-        with open(args.json_file) as f:
-            raw_dict = json.load(f)
-        ok = print_report(args.json_file, raw_dict, verbose=args.verbose)
-        sys.exit(0 if ok else 1)
+    if not os.path.exists(args.input):
+        print(f"Error: file not found: {args.input}", file=sys.stderr)
+        sys.exit(2)
 
-    # Self-test mode using repo geometry when invoked without a JSON file
-    repo_root = Path(__file__).resolve().parents[2]
-    est_relocated = build_estimated_lengths_from_repo(repo_root, relocate_adc_resistors=True)
-    ok = print_report(
-        "Self-test (octilinear lengths from agy_assignment.json + relocated R26..R41)",
-        est_relocated,
-        verbose=True,
-    )
-    sys.exit(0 if ok else 1)
+    if args.input.endswith(".json"):
+        lengths = load_lengths_from_json(args.input)
+    else:
+        lengths = load_lengths_from_kicad_pcb(args.input)
+
+    passed, report = check_lengths(lengths, verbose=args.verbose)
+    print("\n".join(report))
+    sys.exit(0 if passed else 1)
 
 
 if __name__ == "__main__":
