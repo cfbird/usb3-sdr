@@ -1,0 +1,229 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "0fd21f4d-9109-45ef-8f72-4b18b5f55bfa")
+	(paper "A3")
+	(title_block
+		(title "usb3-sdr Rev A")
+		(date "2026-10-22")
+		(rev "A0")
+		(comment 1 "Direct-sampling HF SDR: AD9649 + ECP5 + FT601 (see ~/collab/projects/usb3-sdr/notes)")
+	)
+	(lib_symbols)
+	(sheet
+		(at 30 40)
+		(size 90 40)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "86bbe94e-4550-4890-a9f9-2c4e86ccd0a7")
+		(property "Sheetname" "Power"
+			(at 30 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 30 80.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "usb3-sdr"
+				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 150 40)
+		(size 90 40)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "06422148-ae1e-4f9b-b5cd-0f4f74180ac6")
+		(property "Sheetname" "RF front end"
+			(at 150 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "rf.kicad_sch"
+			(at 150 80.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "usb3-sdr"
+				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 270 40)
+		(size 90 40)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "d7d2ad4d-a6d3-431c-97be-f2c10fa3ccad")
+		(property "Sheetname" "ADC and clock"
+			(at 270 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "adc_clk.kicad_sch"
+			(at 270 80.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "usb3-sdr"
+				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30 110)
+		(size 90 40)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "566c5d97-0413-4baa-9790-86df02814a87")
+		(property "Sheetname" "USB 3 bridge"
+			(at 30 109.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "usb.kicad_sch"
+			(at 30 150.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "usb3-sdr"
+				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 150 110)
+		(size 90 40)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "28f4b367-87d4-44e6-b30d-1d1dabd766b0")
+		(property "Sheetname" "FPGA"
+			(at 150 109.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "fpga.kicad_sch"
+			(at 150 150.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "usb3-sdr"
+				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

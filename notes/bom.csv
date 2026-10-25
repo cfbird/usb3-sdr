@@ -1,0 +1,27 @@
+Ref,Qty,MPN,Description,Source,LCSC,Unit_USD,Note
+U8,1,AD9649BCPZ-80,ADC 14b 80 MSPS,DigiKey (consign),—,49.56,"269 @DigiKey snapshot; LCSC C514292 $67.49, 9 stk"
+U12,1,LFE5U-25F-6BG256C,ECP5 FPGA 24k LUT (45F = drop-in),LCSC,C1521614,15.37,"160 stk; 45F C1550834 $15.94, 0 stk"
+U11,1,FT601Q-B-T,USB3-FIFO bridge,LCSC,C1550513,13.35,79 stk
+U9,1,LMK61E2-100M00SIAR,Programmable osc 90 fs,LCSC,C2871770,10.73,5 stk (!)
+U13,1,PHA-13LN+,"LNA 1 MHz–1 GHz (LHA-13LN+ alt, DigiKey)",LCSC,C3008204,11.71,193 stk
+T1,1,ADT4-6T+,1:4 transformer 0.06–300 MHz,LCSC,C3304892,7.04,7 stk
+U10,1,W25Q128JVSIQ,Config flash 128 Mb,LCSC,C97521,2.88,0 stk: any W25Q128JV pkg
+"U2,U3",2,TPS62A02ADRLR,Buck 2 A forced PWM (used for both rails),LCSC,C5820994,0.16,1175 stk; TPS62A01A C5181455 0 stk
+U6,1,TPS7A2033PDBVR,LDO 3.3 V low noise,LCSC,C2862740,0.21,155k stk
+"U5,U7",2,TPS7A2018PDBVR,LDO 1.8 V low noise,DigiKey,—,0.32,no LCSC listing found
+U4,1,TLV75525PDBVR,LDO 2.5 V,LCSC,C2867155,0.23,0 stk: substitute
+U1,1,TPS22918DBVR,Load switch,LCSC,C131941,0.35,58k stk
+U14,1,74LVC1G17,Schmitt buffer (10 MHz ref),LCSC,est.,0.1,basic
+"K1,K2",2,HFD4/5-SR,DPDT signal relay 5 V SMD,LCSC,C64399,1.46,21.7k stk; HF isolation unverified
+Y1,1,X322530MSB4SI,30 MHz ±10 ppm 20 pF xtal (FT601 asks 18 pF: adjust caps),LCSC,C29538,0.1,12k stk
+J1,1,GSB343133HR,USB 3.0 Micro-B SMD,DigiKey,—,1.09,LCSC C464578 0 stk $3.08
+Q1-3,3,2N7002,Relay/LNA drivers,LCSC,C8545,0.02,basic
+"D2,D3",2,"BAV99,215",RF limiter clamp,LCSC,C2500,0.01,basic
+L (AAF/notch),9,Coilcraft 0805HP-xxxXGRB,AAF/notch inductors 47–270 nH 2 %,DigiKey/Coilcraft,—,0.9,Murata LQW18A rejected: 3.4 Ω DCR at 270 nH
+C (AAF/notch),17,C0G 0603 2 %,Filter caps 10–160 pF,LCSC,basic,0.02,
+L (power/LNA),6,1 µH / 15 µH shielded,Buck + π-filter + LNA choke,LCSC,est.,0.2,
+"J2,J4",2,SMA edge,"RF in, 10 MHz ref",LCSC,est.,0.8,
+GDT1,1,90 V GDT,Input surge,LCSC,est.,0.5,
+"F1,D1",2,PTC 1.1 A + SMF5.0A,VBUS protection,LCSC,est.,0.06,
+Shield,2,Shield can ~30×25 mm,RF section,LCSC,est.,1.0,
+misc,150,R/C/ferrites 0402,"Decoupling, pull-ups, terminations",LCSC,basic,0.01,

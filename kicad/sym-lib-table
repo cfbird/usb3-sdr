@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "usb3sdr") (type "KiCad") (uri "${KIPRJMOD}/usb3sdr.kicad_sym") (options "") (descr "project symbols"))
+)

@@ -1,0 +1,6 @@
+.venv/
+gateware/build/
+kicad/*-backups/
+kicad/*.kicad_prl
+kicad/fp-info-cache
+__pycache__/
