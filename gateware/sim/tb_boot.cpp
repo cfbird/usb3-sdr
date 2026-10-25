@@ -53,7 +53,7 @@ int main() {
         "SPI WR addr 0x008 = 0x02 (24 bits)", "SPI WR addr 0x0ff = 0x01 (24 bits)",
         "I2C dev 0x58 R21 = 0x02", "I2C dev 0x58 R22 = 0x00", "I2C dev 0x58 R23 = 0x3c",
         "I2C dev 0x58 R25 = 0x00", "I2C dev 0x58 R26 = 0x30", "I2C dev 0x58 R72 = 0x02",
-        "SPI WR addr 0x014 = 0x81 (24 bits)", "SPI WR addr 0x008 = 0x00 (24 bits)", "SPI WR addr 0x0ff = 0x01 (24 bits)"};
+        "SPI WR addr 0x014 = 0x81 (24 bits)", "SPI WR addr 0x016 = 0x80 (24 bits)", "SPI WR addr 0x008 = 0x00 (24 bits)", "SPI WR addr 0x0ff = 0x01 (24 bits)"};
     int n = sizeof expect / sizeof *expect, bad = 0;
     for (size_t i = 0; i < got.size(); i++) {
         bool ok = (int)i < n && got[i] == expect[i];

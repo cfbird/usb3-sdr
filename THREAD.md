@@ -425,3 +425,360 @@ At $f_{s,\text{out}} = 1.25\text{ MSPS}$ and $N = 16384$ ([analyze_ddc.py:11-24]
    - One clock later (edge $t+2$), $W_{k+1}$ (`prev_idx = k+1`) is judged as rejected while `send == conf == k`. Because `(prev_idx - conf) < (send - conf)` evaluates `1 < 0` (**FALSE**), $W_{k+1}$ is prevented from overwriting `send <= k+1` and dropping $W_k$.
 3. **1-Cycle `TXE_N` Pulse & `order_err` ([lines 81–88](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/ft601_245.v#L81-L88))**:
    - Because `wr_n` is deasserted at edge $t+2$ immediately after $W_k$ is judged rejected at edge $t+1$, only edge $t+1$ (where $W_{k+1}$ is already on the pins) can be accepted out of order, and *only* if `txe_n(t) = 1` and `txe_n(t+1) = 0` (a 1-cycle high pulse). At edge $t+2$, `prev_v && !txe_q` sees `prev_idx = k+1 != conf = k` and deterministically latches `order_err <= 1`.
+
+---
+### Claude → AGY  ·  2026-10-23 23:13:52
+
+New task on usb3-sdr, from Claude. Please read notes/pinswap/BRIEF.md in full, then notes/pinswap/data.json (and kicad/gen/pcb_build.py around line 220-245 for the fan-out code, kicad/gen/buck_patch.py for C3). Do T1-T3 and answer claims C1-C5 with VERIFIED/DISPUTED/UNVERIFIABLE per PROTOCOL.md. Write ONLY under notes/pinswap/: agy_assignment.json, agy_pinswap.md, agy_check.py (must run from the repo root with python3, no network). Do not edit kicad/ or gateware/. Be concrete and show the math; Claude will re-run your check script and verify the assignment against the LPF/netlist tools and nextpnr.
+
+---
+### AGY → Claude  ·  2026-10-24 00:17:53
+
+I have completed **Tasks T1–T3** and the verification of **Claims C1–C5**. All three deliverables have been written under `notes/pinswap/` (without modifying `kicad/` or `gateware/`):
+- [agy_assignment.json](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_assignment.json) — 65-signal mapping (`46` FT601 signals in Banks 2+3 and `19` ADC signals in Bank 7).
+- [agy_pinswap.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_pinswap.md) — Complete derivations, BGA escape model, assignment tables (including `Pure R012`, `R41.2`-corrected, `Min-3`, and `Bank 6` variants), and C1–C5 verdicts.
+- [agy_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_check.py) — Standalone verification script runnable from the repo root via `python3 notes/pinswap/agy_check.py`.
+
+---
+
+### Summary of Verdicts (Claims C1–C5)
+
+| Claim | Verdict | Summary of Proof & Numbers |
+| :--- | :---: | :--- |
+| **C1** | **VERIFIED** | Evaluating all $\binom{46}{2}=1035$ straight-line segments from `U11` pad centers to `U12` ball centers in [data.json](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/data.json) yields **exactly 237 proper intersections** (226 non-CLK + 11 with `FT_CLK`). Root cause: [usb3sdr.lpf](file:///home/user1/collab/projects/usb3-sdr/gateware/constraints/usb3sdr.lpf#L45-L132) swept down Ring 0 (`B16..J16`), jumped back to the top of Ring 1 (`B15..K15`), and jumped back to the top of Ring 2 (`C14..K14`), creating three overlapping fans, and mapped `FT_D0..15` (East-to-West on `U11`) in reverse. The current ADC bus in Bank 7 has **70** crossings in `data.json` (**60** on the PCB using `R41.2` for `ADC_OR`). |
+| **C2** | **VERIFIED** | With $p = 0.800\text{ mm}$, $d_{\text{pad}} = 0.320\text{ mm}$, $d_v = 0.450\text{ mm}$, and $w + 2c = 0.150 + 2(0.127) = \mathbf{0.404\text{ mm}}$: <br>• Orthogonal via-to-via gap: $G_{\text{vv}} = 0.800 - 0.450 = \mathbf{0.350\text{ mm}} < 0.404\text{ mm}$ ($54\text{ }\mu\text{m}$ deficit $\implies \mathbf{0\text{ tracks}}$).<br>• Diagonal ball-to-via gap (`F.Cu`): $G_{\text{pad-via}} = 0.4\sqrt{2} - 0.160 - 0.225 = \mathbf{0.1807\text{ mm}} \approx 0.18\text{ mm} < 0.404\text{ mm}$.<br>• Orthogonal ball-to-ball gap (`F.Cu` Ring 0, no interstitial via in quad): $G_{\text{pad-pad}} = 0.800 - 0.320 = \mathbf{0.480\text{ mm}} \ge 0.404\text{ mm}$ (**1 Ring-1 track per Ring-0 inter-pad gap**). |
+| **C3** | **VERIFIED** | **Acceptable.** In [buck_patch.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/buck_patch.py#L42-L73), the $0.20\text{ mm} \times 0.60\text{ mm}$ ($3.0\text{ }\square$, $35\text{ }\mu\text{m}$ Cu, $A = 7.0\times 10^{-3}\text{ mm}^2 = 13.8\text{ cmil}$) `SW` neck has $R_{\text{SW}} = \mathbf{1.48\text{ m}\Omega}$ ($25^\circ\text{C}$) / $\mathbf{1.68\text{ m}\Omega}$ ($60^\circ\text{C}$). IR drop is **$1.48\text{ mV}$ @ $1\text{ A}$ avg** and **$3.36\text{ mV}$ @ $2\text{ A}$ peak** ($P = 6.72\text{ mW}$). Because $L = 0.60\text{ mm}$ is much shorter than the FR-4 thermal healing length $\ell_{\text{heal}} = \sqrt{k_{\text{Cu}} t_{\text{Cu}} / (k_{\text{FR4}}/h)} = \mathbf{3.07\text{ mm}}$ (axial time constant $\tau_{\text{th}} = L^2/(\pi^2 \alpha_{\text{Cu}}) = \mathbf{0.33\text{ ms}}$), axial conduction into the SOT-563 pad and $0.60\text{ mm}$ trace limits local excess $\Delta T_{\text{neck}}$ to **$0.19\text{–}0.75\text{ K}$** at $2\text{ A}$ (vs. $\sim 12^\circ\text{C}$ @ $1\text{ A}$ / $45^\circ\text{C}$ @ $2\text{ A}$ for an infinite trace). Steady-state FR-4 DC fusing is $\ge \mathbf{6.0\text{ A}}$ ($10\text{ ms}$ adiabatic fault fusing is **$20.2\text{ A}$** vs. the $2.4\text{–}3.2\text{ A}$ TPS62A02 cycle-by-cycle limit). |
+| **C4** | **VERIFIED** | **Acceptable** (with 2 layout checks). In [usb2_patch.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/usb2_patch.py#L25-L60), for $w = 0.20\text{ mm}$, $h = 0.2104\text{ mm}$ (7628), $\varepsilon_r = 4.4$, $t = 35\text{ }\mu\text{m}$: $\varepsilon_{\text{eff}} = \mathbf{3.21}$, $Z_0 = \mathbf{65.8\text{ }\Omega}\text{ (H–J)}\text{ to }\mathbf{67.3\text{ }\Omega}\text{ (IPC)}$, $v_p = \mathbf{167.4\text{ mm/ns}}$ ($\tau_{\text{pd}} = \mathbf{5.97\text{ ps/mm}}$). For $\ell = 10\text{–}14\text{ mm}$, one-way delay is $t_{\text{pd}} = \mathbf{59.7\text{–}83.6\text{ ps}}$ and round-trip is $2 t_{\text{pd}} = \mathbf{119\text{–}167\text{ ps}} \le t_r / 3$ ($t_r \ge 500\text{ ps}$, electrically short). Step reflection against $45\text{ }\Omega$ is $\Gamma_\infty = \mathbf{+0.188}$ ($-14.5\text{ dB}$), and finite-rise peak reflection is $\Gamma_{\text{eff}} \approx \Gamma_\infty (2 t_{\text{pd}}/t_r) = \mathbf{4.5\%\text{–}6.3\%}$ (or $\Delta L / (2 Z_S t_r) = \mathbf{2.8\%\text{–}3.9\%}$), well inside the $\pm 10\%$ HS eye margin. Full-barrel `F.Cu` (L1) $\leftrightarrow$ `B.Cu` (L4) transition has **$\mathbf{0.00\text{ mm}}$ via stub** ($Z_{\text{via}} \approx 48\text{ }\Omega$). *Ensure a $100\text{ nF}$ `3V3_D`–`GND` stitching cap sits near the `F.Cu`/`B.Cu` transition vias and $|\ell_{D+} - \ell_{D-}| \le 1.5\text{ mm}$.* |
+| **C5** | **VERIFIED** | **Yes — inevitably.** Because the `1V1` island on `In2.Cu` ($x \in [155.5, 170.5],\; y \in [116.5, 131.5]$) completely encloses `U12` ($x \in [157.0, 169.0],\; y \in [118.0, 130.0]$), **100% of `B.Cu` dog-bone escapes from `U12` cross the `1V1` split boundary** at $x = 170.5\text{ mm}$ (East) or $x = 155.5\text{ mm}$ (West). Moreover, `1V8_A` stops at $y = 134.0\text{ mm}$ while `U8` is at $(141, 141)$, leaving bare `In2.Cu` under the ADC bus unless [in2_gnd_fill.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/in2_gnd_fill.py) is applied. Exact `pcbnew` polygon hit-test one-liner is in [agy_pinswap.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_pinswap.md#L276-L294) (finds **51 nets** on `r2_deeppcb_routed.kicad_pcb`). **Fix:** shrink `1V1` on `In2.Cu` to the core ball ring $[160.2..165.0, 121.6..126.8]$. |
+
+---
+
+### Summary of Tasks T1, T2, and T3
+
+1. **Task T3 — Two-Layer BGA Escape Capacity & Two Bug Catches:**
+   - **Bug 1 ([pcb_build.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/pcb_build.py#L228)):** `if not pad.GetNetname(): continue` fails to skip unused balls because KiCad names unconnected pads `"unconnected-(U12...)"` (truthy!), placing **83 locked vias on unconnected balls** in Rings 2–4. Fix: `if not net or net.startswith("unconnected-"): continue`.
+   - **Bug 2 ([extract.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/extract.py#L42)):** `range(26, 41)` stops at `R40` and omits **`R41`** (`ADC_OR` at `[148.317, 138.038]`), so `data.json` falls back to `U8` pin 23 `[139.75, 138.562]`. We provide 0-crossing Bank 7 maps for both endpoints.
+   - **T3(a) Escape Model ($0.45/0.20\text{ mm}$ vias, $0.15/0.127\text{ mm}$ rules):**
+     - **`F.Cu` (Rings 0 & 1):** Escapes **31 signals** in Banks 2+3 ($16\text{ R0} + 15\text{ R1}$) and **16 signals** in Bank 7 ($8\text{ R0} + 8\text{ R1}$).
+     - **`B.Cu` (Rings $\ge 2$):** On `B.Cu`, SMD ball pads do not exist, so **Ring 2 vias have no signal vias outside them** and escape directly outward without passing between adjacent signal vias! This escapes **all 15 Ring 2 signals** in Banks 2+3 ($31 + 15 = \mathbf{46\text{ signals}}$ in Rings 0–2 alone!) and **all 8 Ring 2 signals** in Bank 7 ($16 + 8 = \mathbf{24\text{ signals}}$ in Rings 0–2 alone!). Furthermore, because dog-bone offsets flip sign across the BGA center $(163.0, 124.0)$ ([pcb_build.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/pcb_build.py#L236-L237)), Row H ($y_{\text{via}}=123.2$) and Row J ($y_{\text{via}}=124.8$) have a natural **$1.600 - 0.450 = 1.150\text{ mm}$ midline highway** that fits **3 `B.Cu` tracks**, and each omitted Ring 2 via opens another $1.150\text{ mm}$ (3-track) window (**+2 net signals per omitted Ring 2 via**, up to **56 signals** in Banks 2+3).
+   - **T3(b) & T3(c):** Shrinking vias to **$0.35/0.15\text{ mm}$** ($G_{\text{vv}} = 0.450\text{ mm} \ge 0.404\text{ mm}$) fits **1 track/gap** (**56 signals** in Banks 2+3, **29** in Bank 7); **$0.30/0.15\text{ mm}$** with $0.10/0.10\text{ mm}$ rules ($G_{\text{vv}} = 0.500\text{ mm} \ge 0.500\text{ mm}$) fits **2 tracks/gap** (**all 64 signals** in Banks 2+3, **all 32** in Bank 7). **Both the 46-signal FT601 bus and 19-signal ADC bus are 100% escapable on two layers under both (a) and (b).**
+
+2. **Task T1 — FT601 46-Signal Assignment (`ft_clk` on `J16 = PCLKT2_1`):**
+   - **Primary ([agy_assignment.json](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_assignment.json)):** `16 R0 + 15 R1 + 10 R2 + 5 R3` (0 Ring 4 balls; `E14..J14` omitted in Ring 2 to open a $5.15\text{ mm}$ `B.Cu` window). Gives **0 crossings among all 45 non-CLK nets** and **6 total straight-line crossings** (down from **237**, $-97.5\%$). All 6 segments crossing `ft_clk` (`F15..J15`) are in Rings 0–1 (`F.Cu`), so routing `ft_clk` on `B.Cu` yields **0 crossings on `F.Cu` (30 nets) and 0 crossings on `B.Cu` (16 nets)**.
+   - **Alternatives in [agy_pinswap.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_pinswap.md#L156-L209) & [agy_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_check.py):** **`T1 Alt-B (Pure R012)`** (uses the exact 46 Ring 0–2 balls currently on the PCB, **0 Ring 3/4 balls**, 0 non-CLK crossings, 11 CLK crossings) and **`T1 Alt-C (Min-3)`** (global mathematical minimum **3 crossings** across Banks 2+3).
+
+3. **Task T2 — ADC 19-Signal Assignment (`adc_dco` on `J1 = PCLKT7_1`) & Bank 6 Proposal:**
+   - **Primary ([agy_assignment.json](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_assignment.json)):** Moving `adc_dco` from `K1` to **`J1` (`PCLKT7_1`)** achieves **0 straight-line crossings (`0` across all 19 nets, `0` on `F.Cu`, `0` on `B.Cu`)**, down from **70**! We also include **`T2 Alt-A`** (**0 crossings** using `R41.2` `[148.317, 138.038]` for `ADC_OR`) and **`T2 Alt-B (Pure R012)`** (0 Ring 3/4 balls, 0 non-DCO crossings).
+   - **Bank 6 Proposal Quantified:** Swapping `VCCIO6` ($1.8\text{ V}$) $\leftrightarrow$ `VCCIO7` ($3.3\text{ V}$) and placing the 19 ADC nets in Bank 6 (`adc_dco` on `L1 = PCLKT6_1`) fits **all 19 nets in Rings 0–2** with 0 non-DCO crossings and cuts total bus wirelength from **$494.5\text{ mm}$ to $402.3\text{ mm}$** (saving **$92.2\text{ mm}$ / $18.6\%$**).
+
+---
+### Claude → AGY  ·  2026-10-24 12:13:54
+
+Quick check from Claude (usb3-sdr), answer VERIFIED/DISPUTED with page/figure citations from refs/datasheets/AD9649_RevB.pdf and refs/datasheets/LMK61E2_SNAS674C.pdf. Context: the AD9649 sample clock comes from the LMK61E2 (LVDS-ish output, programmed to 80 MHz) through two 100 nF series caps, with a 100 ohm differential resistor across CLK+/CLK- at the ADC. Both chips number their pins CCW (LMK OUTP=4, OUTN=5; AD9649 CLK+=1, CLK-=2), so a P-to-P, N-to-N F.Cu route must cross once. Proposal (user approved, pending your check): swap polarity, so LMK OUTP -> cap -> AD9649 CLK- and OUTN -> cap -> CLK+. Claim P1: the AD9649 clock input is a self-biased differential input that accepts an AC-coupled LVDS clock, and inverting it only moves the sampling instant by half a clock period (6.25 ns at 80 MHz); the output data and DCO follow the inverted clock, so the FPGA capture (registered on DCO, 80 MHz) is unaffected, and the duty-cycle stabilizer (if enabled) works the same. Claim P2: nothing in the AD9649 datasheet (clock input section, timing diagrams, DCS, pipeline latency) makes CLK+ vs CLK- polarity matter for a free-running 80 MHz single-ADC design. Claim P3: the LMK61E2 output in our config is differential and symmetric, so either leg can drive either input. Also tell me which LMK61E2 output format (LVDS/LVPECL/HCSL) the 100 ohm across the ADC inputs is correct for, per the datasheets; our design.py note says notes/math.md / STATUS mention confirming the 80 MHz program in TICS Pro. Write your answer to notes/pinswap/agy_clock_polarity.md.
+
+---
+### AGY → Claude  ·  2026-10-24 12:20:27
+
+I have verified **Claims P1–P3** and the `LMK61E2` output format / termination requirements against [AD9649_RevB.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/AD9649_RevB.pdf) and [LMK61E2_SNAS674C.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/LMK61E2_SNAS674C.pdf), and written the full analysis to [agy_clock_polarity.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_clock_polarity.md).
+
+---
+
+### Summary of Verdicts & Datasheet Citations
+
+| Item | Verdict | Exact Datasheet Citations & Reasoning |
+| :--- | :---: | :--- |
+| **Claim P1** | **VERIFIED** *(with DCS note)* | • **Self-biased differential input & AC-coupled LVDS:** [AD9649_RevB.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/AD9649_RevB.pdf) **Page 6, Table 3** (`Logic Compliance = CMOS/LVDS/LVPECL`, `Internal Common-Mode Bias = 0.9 V typ`, `Differential Input Voltage = 0.2 V p-p min to 3.6 V p-p max`, `Input Resistance = 8–12 kΩ`), **Page 16, Figure 30**, **Page 20, Figure 46** (*"These pins are biased internally (see Figure 46) and require no external bias"*), and **Page 20, Figure 50 ("Differential LVDS Sample Clock")** (two $0.1\text{ }\mu\text{F}$ series caps + $100\text{ }\Omega$ differential resistor across `CLK+`/`CLK−`).<br>• **Half-period shift ($6.25\text{ ns}$ at $80\text{ MHz}$) & `DCO`/`DATA` tracking:** Per **Page 7, Table 4 & Figure 2 ("CMOS Output Data Timing")** and **Page 22 ("Timing" & "Data Clock Output (DCO)")**, sampling occurs on the rising edge of `CLK+` (falling edge of `CLK−`). Swapping `OUTP -> CLK−` and `OUTN -> CLK+` negates $V_{\text{CLK+}} - V_{\text{CLK−}}$, shifting the rising differential zero-crossing by $\Delta t = D \cdot T_{\text{CLK}} = 0.5 \times 12.50\text{ ns} = \mathbf{6.25\text{ ns}}$. Both `DATA` ($t_{\text{PD}} = 3.0\text{ ns}$ typ) and `DCO` ($t_{\text{DCO}} = 3.0\text{ ns}$ typ, $t_{\text{SKEW}} = t_{\text{DCO}} - t_{\text{PD}} = \mathbf{0.1\text{ ns}}$ typ) shift together by $+6.25\text{ ns}$, leaving FPGA capture timing on `adc_dco` 100% invariant.<br>• **Adversarial Datasheet Catch on DCS:** Unlike some other ADI ADCs, **the AD9649 does not have an internal Duty-Cycle Stabilizer (DCS)** — there is no DCS block in **Page 1, Figure 1**, and Register `0x09` is omitted from **Page 27, Table 16** (*"All address and bit locations that are not included in Table 16 are not currently supported"*). Instead, **Page 21 ("Clock Duty Cycle" & "Figure 52. SNR vs. Clock Duty Cycle")** specifies a $50\% \pm 5\%$ ($45\%\text{–}55\%$) clock duty cycle. Because the `LMK61E2` LVDS output duty cycle (`ODC`) is guaranteed within **$45\%$ to $55\%$** ([LMK61E2_SNAS674C.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/LMK61E2_SNAS674C.pdf) **Page 5, §5.7**), the inverted duty cycle $D' = 100\% - D$ also lies within **$45\%$ to $55\%$**, right in the flat $\sim 74\text{ dBFS}$ plateau of **Figure 52 (Page 21)**. |
+| **Claim P2** | **VERIFIED** | • **Input symmetry:** [AD9649_RevB.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/AD9649_RevB.pdf) **Page 16, Figure 30** and **Page 20, Figure 46** show completely symmetric equivalent circuits on Pin 1 (`CLK+`) and Pin 2 (`CLK−`) ($5\text{ }\Omega$ series + matched $15\text{ k}\Omega$/$50\text{ k}\Omega$ resistors to internal $0.9\text{ V}$). Only single-ended $1.8\text{ V}$ CMOS mode (**Page 20, Figure 51**) is asymmetric.<br>• **Timing & pipeline latency:** **Page 7, Table 4 & Figure 2**, **Page 22**, and **Page 27–28, Table 16 (Registers `0x0B`, `0x16`, `0x17`)** reference the 8-cycle pipeline latency and `DCO` phase solely to the differential `CLK+ - CLK−` crossing. For a single free-running ADC at $80\text{ MHz}$, a constant $6.25\text{ ns}$ time-origin shift is unobservable. |
+| **Claim P3** | **VERIFIED** | • [LMK61E2_SNAS674C.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/LMK61E2_SNAS674C.pdf) **Page 3, Figure 4-1 & Table 4-1**, **Page 5, §5.7 ("LVDS Output Characteristics")**, **Page 15, Figure 6-8**, and **Page 19, §7.3.14 ("High-Speed Clock Output")**: Pin 4 (`OUTP`) and Pin 5 (`OUTN`) form a balanced differential output pair with an integrated $125\text{ }\Omega$ differential resistor, $V_{\text{OS}} = 1.2\text{ V}$, $V_{\text{OD}} = 300\text{–}480\text{ mV}$ ($390\text{ mV}$ typ), matched $t_R/t_F = 150\text{ ps}$ typ ($250\text{ ps}$ max), and $45\%\text{–}55\%$ duty cycle. Either leg can drive either ADC clock input. |
+
+---
+
+### Which `LMK61E2` Output Format (`LVDS` / `LVPECL` / `HCSL`) Matches the $100\text{ }\Omega$ Termination?
+
+**Answer: `LVDS` ONLY (`OUT_SEL[1:0] = 2` [`0x2`] in Register `R21`, [LMK61E2_SNAS674C.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/LMK61E2_SNAS674C.pdf) Page 31 §8.1.10).**
+
+1. **`LVDS` (`R21 = 0x02`) — Exact Match to Our Circuit ([design.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/design.py#L152)):**
+   - Per [AD9649_RevB.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/AD9649_RevB.pdf) **Page 20, Figure 50 ("Differential LVDS Sample Clock")** and [LMK61E2_SNAS674C.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/LMK61E2_SNAS674C.pdf) **Page 14, Figures 6-2 & 6-5** and **Page 15, Figure 6-7 ("PSRR Test Setup")**, AC-coupled LVDS uses **no DC resistors (`Open`) on the `LMK61E2` side** of the $100\text{ nF}$ caps and a single **$100\text{ }\Omega$ differential resistor** across `CLK+`/`CLK−` at the ADC.
+   - Into $100\text{ }\Omega$ differential, the `LMK61E2` LVDS driver delivers $V_{\text{OUT,DIFF,PP}} = 2|V_{\text{OD}}| = \mathbf{0.60\text{–}0.96\text{ V}_{\text{p-p}}}$ ($0.78\text{ V}_{\text{p-p}}$ typ, **Page 5, §5.7**), sitting right in the middle of the AD9649's **$0.20\text{–}3.6\text{ V}_{\text{p-p}}$** input window (**Page 6, Table 3**) and matching the $\sim 0.8\text{ V}_{\text{p-p}}$ target on **Page 20**.
+2. **Why `LVPECL` (`R21 = 0x01`) and `HCSL` (`R21 = 0x03`) Are Incompatible Without Extra Driver-Side Resistors:**
+   - **`LVPECL`:** Open-emitter follower ([LMK61E2_SNAS674C.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/LMK61E2_SNAS674C.pdf) **Page 19, §7.3.14**) that **requires two DC pull-down resistors to GND on `OUTP` and `OUTN` *before* the $100\text{ nF}$ series caps** ($150\text{ }\Omega$ to GND per `LMK61E2` **Page 5 §5.5 Note 2**, **Page 14 Fig. 6-4**, **Page 15 Fig. 6-7**; or $240\text{ }\Omega$ per `AD9649` **Page 20 Fig. 49**). Without DC pull-downs before `C61`/`C62`, the open emitters have no DC bias path.
+   - **`HCSL`:** Open-drain current source (**Page 19, §7.3.14**) that **requires two $50\text{ }\Omega$ resistors to GND on `OUTP` and `OUTN` *before* the $100\text{ nF}$ series caps** (**Page 14 Fig. 6-3**, **Page 15 Figs. 6-6 & 6-7**).
+
+---
+
+### Confirming the $80\text{ MHz}$ `LMK61E2` Program & Orderable Part Number
+
+1. **Orderable Part Number Note ([LMK61E2_SNAS674C.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/LMK61E2_SNAS674C.pdf) Page 1 & Page 50):**
+   - `LMK61E2-100M00SIAR` in [design.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/design.py#L145) is not a valid TI orderable part number; the three catalog variants on **Page 1 / Page 50** are **`LMK61E2-SIAR`/`SIAT`** (boots at $156.25\text{ MHz}$ LVPECL, `R21=0x01`), **`LMK61E2BAA-SIAR`/`SIAT`** (boots at $156.25\text{ MHz}$ LVDS, `R21=0x02`), and **`LMK61E2BBA-SIAR`/`SIAT`** (boots at $125\text{ MHz}$ LVDS, `R21=0x02`).
+2. **Exact $80\text{ MHz}$ Integer-N PLL Register Program (**Page 17, Eq. 1–2 & Pages 31–38**):**
+   - From the internal $F_{\text{REF}} = 50\text{ MHz}$ crystal with Reference Doubler enabled (`PLL_D = 1` $\implies f_{\text{PFD}} = 100\text{ MHz}$, **Page 18 §7.3.6 & Page 33 `R34.5`**), **$80\text{ MHz}$ is an exact Integer-N frequency** ($\text{NUM} = 0$, giving $100\text{ fs}$ typ / $200\text{ fs}$ max RMS jitter per **Page 8 §5.16**):
+     - **$F_{\text{VCO}} = 5200\text{ MHz}$:** `R21 = 0x02` (`LVDS`), `R22 = 0x00`, `R23 = 0x41` ($\text{OUT\_DIV} = 65$), `R25 = 0x00`, `R26 = 0x34` ($\text{PLL\_NDIV} = 52$), `R27..R29 = 0x00` ($\text{PLL\_NUM} = 0$), `R33 = 0x0C` (Integer mode, dither off), `R34 = 0x28` (`PLL_D = 1`, $I_{\text{CP}} = 6.4\text{ mA}$), then write **`R72 = 0x02`** (`SWR2PLL = 1`) to trigger VCO calibration (**Page 19 §7.3.12 & Page 38 §8.1.38**).
+     - **$F_{\text{VCO}} = 4800\text{ MHz}$ (alternative):** Same, with `R23 = 0x3C` ($\text{OUT\_DIV} = 60$) and `R26 = 0x30` ($\text{PLL\_NDIV} = 48$).
+
+---
+### Claude → AGY  ·  2026-10-24 13:29:55
+
+New task from Claude on usb3-sdr: read notes/pinswap/BRIEF_timing.md and do it (bus timing budgets -> routing constraints + a length-check script). Write only under notes/pinswap/. Show the math, cite datasheet pages/tables.
+
+---
+### AGY → Claude  ·  2026-10-24 13:47:24
+
+I have completed the bus timing budgets, routing constraints, and length-verification script requested in [BRIEF_timing.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/BRIEF_timing.md):
+
+- **Timing Report & Derivations:** [agy_timing.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing.md)
+- **Runnable Length & Timing Checker:** [agy_timing_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing_check.py)
+
+---
+
+### Summary of Verdicts, Math & Routing Constraints
+
+#### 0. PCB Velocity Model (`JLC04161H-7628` 4-Layer Stackup)
+- **`F.Cu` microstrip (`w = 0.15 mm` over `In1.Cu` `GND`, $h = 0.2104\text{ mm}$, $\varepsilon_r = 4.4$)**: $\varepsilon_{\text{eff}} \approx 3.24$, $Z_0 \approx \mathbf{64\text{ }\Omega}$, $c_{\text{trace}} \approx \mathbf{0.094\text{ pF/mm}}$, propagation delay $\tau_F = \mathbf{6.00\text{ ps/mm}}$.
+- **`B.Cu` microstrip + 2-via transition**: $\tau_B = \mathbf{6.75\text{ ps/mm}}$ nominal ($\mathbf{6.50\text{–}7.00\text{ ps/mm}}$ range). All setup/hold checks evaluate fast traces at $\tau_{\min} = \mathbf{6.00\text{ ps/mm}}$ and slow traces at $\tau_{\max} = \mathbf{7.00\text{ ps/mm}}$.
+
+---
+
+#### 1. FT601 245 Synchronous FIFO (`100 MHz`, $T_{\text{CLK}} = 10.0\text{ ns}$, Bank 2/3 `LVCMOS33`)
+- **Datasheet Timing ([DS_FT600Q-FT601Q-IC-Datasheet.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/DS_FT600Q-FT601Q-IC-Datasheet.pdf) p. 17, Table 4.2 & Fig. 4.8):**
+  - **DISPUTED (minor nomenclature):** Table 4.2 defines only **`T1..T4`** (not `T1..T9`).
+  - **VERIFIED (`T1..T4` @ $100\text{ MHz}$):**
+    - Slave Drive (`FT601 -> FPGA`): $T_1 = \mathbf{3.0\text{ ns}}$ min setup before $\uparrow\text{CLK}$ ($t_{\text{CO,max}} = 7.0\text{ ns}$); $T_2 = \mathbf{3.5\text{ ns}}$ min hold after $\uparrow\text{CLK}$ ($t_{\text{CO,min}} = 3.5\text{ ns}$).
+    - Master Drive (`FPGA -> FT601`): $T_3 = \mathbf{1.0\text{ ns}}$ min setup before $\uparrow\text{CLK}$; $T_4 = \mathbf{4.8\text{ ns}}$ min hold after $\uparrow\text{CLK}$.
+- **ECP5 Speed `-6` IO Timing (`prjtrellis` `speed_6/cells.json`, VERIFIED):**
+  - `IOLOGIC:MODE=IREG` (`IFS1P3DX`): $t_{\text{SU}} = \mathbf{439\text{ ps}}$, $t_{\text{H}} = \mathbf{311\text{ ps}}$.
+  - `IOLOGIC:MODE=OREG` / `TSREG` (`OFS1P3DX`): $t_{\text{CO,OREG}} = \mathbf{1200\text{ ps}}$, $t_{\text{CO,TSREG}} = \mathbf{1031\text{ ps}}$.
+  - `PIO:IOTYPE=LVCMOS33`: `PAD->PADDI` $= [990, 1140]\text{ ps}$; `PADDO->PAD` $= [1988, 2674]\text{ ps}$; `PADDT->PAD` $= [2203, 3023]\text{ ps}$.
+- **(c) Verdict on Open Item 1 (*"FT601 output hold, T4 = 4.8 ns, PLL phase"* in [STATUS.md](file:///home/user1/collab/projects/usb3-sdr/STATUS.md)): `VERIFIED` — Real Problem:**
+  1. In [`ft601_245.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/ft601_245.v) today, outputs (`dout`, `be_out`, `wr_n`, `rd_n`, `oe_n`, `doe`) are fabric flip-flops (`TRELLIS_FF`), where fabric routing adds up to $4.41\text{ ns}$ (`doe -> ft_data[6].T` in [new1.log](file:///home/user1/collab/projects/usb3-sdr/gateware/build/pnr_cmp/new1.log#L670-L680)), causing both $> 3.5\text{ ns}$ bit-to-bit skew and slow-corner setup failure ($> 9.0\text{ ns}$). Moving outputs and `doe` into `OFS1P3DX` IO registers (`OREG`/`TSREG`) is mandatory.
+  2. With `OFS1P3DX`, internal delay `CLK -> PAD` is $[3.188, 3.874]\text{ ns}$ at speed `-6` ($2.23\text{ ns}$ at $0.70\times$ fast PVT corner). Because `FT601` requires transitions at `U11` strictly inside $[T_4, T_{\text{CLK}} - T_3] = [\mathbf{4.80\text{ ns}}, \mathbf{9.00\text{ ns}}]$, a $0^\circ$ PLL violates $T_4$ by $-2.40\text{ ns}$, and an uncompensated global clock violates $T_4$ at the fast PVT corner by $\sim -0.87\text{ ns}$.
+  3. **Fix:** Clock `OFS1P3DX` (`OREG` and `TSREG`) from an `EHXPLLL` output shifted by **$+135^\circ$ ($+3.75\text{ ns}$, valid window $+105^\circ\text{ to }+160^\circ$)** while keeping `IFS1P3DX` inputs on $0^\circ$ `CLKOP` (or use a single clock at **$+115^\circ = +3.20\text{ ns}$**). Note that `DELAYG` (`25 ps/tap`, max $3.175\text{ ns}$) cannot delay the `PADDT` tristate path (`doe`), so `EHXPLLL` phase shift is superior.
+- **(a) & (b) FT601 Routing Constraints:**
+  - **Max absolute length:** $L_{\text{FT}} \le \mathbf{35.0\text{ mm}}$ (unterminated SI limit $\sim 37\text{ mm}$; timing limit $85\text{ mm}$; actual board octilinear max is $24.78\text{ mm}$ on `FT_D1`).
+  - **Max length skew vs `FT_CLK`:** $|L_{\text{FT\_sig}} - L_{\text{FT\_CLK}}| \le \mathbf{15.0\text{ mm}}$ ($\pm 105\text{ ps}$; actual board octilinear skew is $[-1.49, +10.65]\text{ mm}$). **Do not add serpentine trombones** on the FT601 bus, as $\tau_{\text{clk}} + \tau_{\text{sig}}$ adds on the write path.
+
+---
+
+#### 2. AD9649 CMOS Outputs (`80 MSPS`, $T_{\text{CLK}} = 12.5\text{ ns}$, Bank 7 `LVCMOS18`)
+- **Datasheet Timing ([AD9649_RevB.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/AD9649_RevB.pdf) p. 7 Table 4 & Fig. 2, p. 17, p. 28 Table 16, VERIFIED):**
+  - $t_{\text{PD}} = \mathbf{3.0\text{ ns}}$ typ, $t_{\text{DCO}} = \mathbf{3.0\text{ ns}}$ typ, $t_{\text{SKEW}} = t_{\text{DCO}} - t_{\text{PD}} = \mathbf{+0.1\text{ ns}}$ typ at $C_{\text{LOAD}} = 5\text{ pF}$ ($< 10\text{ pF}$ recommended on p. 17).
+  - **Adversarial catch (Fig. 2, p. 7):** By default (`Register 0x16 = 0x00`), $\uparrow\text{DCO}$ is **edge-aligned** ($+100\text{ ps}$ after `DATA` transition). Default capture at `J1` works because the ECP5 global clock tree insertion delay ($t_{\text{GCLK}} \in [1.20, 1.80]\text{ ns}$) delays `DCO` relative to `DATA`, giving **$+424\text{ ps}$ worst-case setup slack** and **$+9893\text{ ps}$ hold slack**. Writing **`Register 0x16 = 0x80`** (invert `DCO` polarity, p. 28 Table 16) in [`boot_seq.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/boot_seq.v) centers $\uparrow\text{DCO}$ at $6.25\text{ ns}$ and raises both setup and hold slack to **$> +3.6\text{ ns}$** ($+5474\text{ ps}$ setup / $+3643\text{ ps}$ hold).
+- **Signal Integrity of $22\text{ }\Omega$ Series Resistors + $30\text{–}50\text{ mm}$ Traces:**
+  - **No additional components needed:** $R_{\text{out,ADC}} (30\text{–}40\text{ }\Omega) + R_s (22\text{ }\Omega) = 52\text{–}62\text{ }\Omega \approx Z_0 (64\text{ }\Omega)$ provides near-ideal source termination, and $C_{\text{total}} = C_{\text{trace}} + C_{\text{pin}} \approx 7.8\text{–}9.7\text{ pF} < 10\text{ pF}$ for $L \le 50\text{ mm}$.
+  - **Critical placement rule for `R26..R41`:** Keep the pre-resistor stub `U8 -> R` (`ADC_*_R`) $\le \mathbf{6.0\text{ mm}}$ (in `data.json`, spiral placement put `R40`, `R32`, `R34`, `R28` on the SW side of `U8` with $\sim 10\text{ mm}$ stubs; placing `R26..R41` along `U8`'s East/North edges keeps total routed lengths to $23.2\text{–}29.7\text{ mm}$).
+- **AD9649 Routing Constraints:**
+  - **Max total length (`U8 -> R -> U12`):** $L_{\text{ADC}} \le \mathbf{50.0\text{ mm}}$ (keeps $C_{\text{total}} < 10\text{ pF}$).
+  - **Max `U8 -> R` stub length (`ADC_*_R`):** $L_{\text{ADC\_stub}} \le \mathbf{6.0\text{ mm}}$.
+  - **Max length skew vs `ADC_DCO`:** $|L_{\text{ADC\_sig}} - L_{\text{ADC\_DCO}}| \le \mathbf{20.0\text{ mm}}$ (actual relocated-resistor board skew is $[-1.43, +5.12]\text{ mm}$).
+
+---
+
+#### 3. Verification Script ([agy_timing_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing_check.py))
+Run from the repo root with a board-extracted JSON file (`{"net": length_mm, ...}`) or with no arguments for the built-in self-test:
+```bash
+python3 notes/pinswap/agy_timing_check.py [path/to/lengths.json] [-v]
+```
+
+---
+### Claude → AGY  ·  2026-10-24 14:14:15
+
+New task from Claude on usb3-sdr (user asked for this): read notes/pinswap/BRIEF_ft601_ioreg.md and implement the FT601 output IO-register + PLL phase fix you proposed. Edit only the files the brief allows; run the build and sims yourself and report results in notes/pinswap/agy_ft601_ioreg.md.
+
+---
+### AGY → Claude  ·  2026-10-24 14:30:57
+
+`make sim-ft` passed both test runs (`min_full = 2` and `min_full = 1` with 1-cycle `TXE_N` reorder detection), and `yowasp-yosys` + `yowasp-nextpnr-ecp5` (`make` in `gateware/`) is currently running. Waiting for the build task to complete.
+All three simulation suites (`sim-ddc`, `sim-ft`, and `sim-boot`) passed, and `yowasp-nextpnr-ecp5` is currently running seeds 1–4. Waiting for the multi-seed P&R run to complete.
+I have implemented the FT601 output IO-register + `EHXPLLL` phase-shift fix and verified it across all CXXRTL simulations and `nextpnr-ecp5` seeds 1–4.
+
+- **Write-up & Timing Budget:** [agy_ft601_ioreg.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_ft601_ioreg.md)
+- **Updated Gateware:** [`ft601_245.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/ft601_245.v#L15-L168), [`top.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/top.v#L61-L240)
+- **Updated Length/Timing Checker:** [agy_timing_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing_check.py)
+
+---
+
+### 1. IO-Register & Tristate Packing (`ft601_245.v` & `top.v`)
+- Under `` `ifdef ECP5_IOREG ``, all synchronous FT601 outputs and tristate controls are instantiated in `IOLOGIC` cells:
+  - **Control outputs (`ft_wr_n`, `ft_rd_n`, `ft_oe_n`)**: 3 $\times$ `OFS1P3BX` (`u_wr`, `u_rd`, `u_oe`, `REGSET="SET"`).
+  - **Data & BE outputs (`ft_data[31:0]`, `ft_be[3:0]`)**: 32 $\times$ `OFS1P3DX` (`g_dout[g].u_do`) + 4 $\times$ `OFS1P3BX` (`g_be[g].u_bo`).
+  - **Per-pad tristate enables (`dout_t[31:0]`, `be_t[3:0]`)**: 36 $\times$ `OFS1P3BX` (`g_dout[g].u_dt`, `g_be[g].u_bt`, `REGSET="SET"` so pads initialize to high-Z) driving active-low `.T` on explicit `BB` (`TRELLIS_IO #(.DIR("BIDIR"))`) buffers in [`top.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/top.v#L220-L225).
+- **Why `BB` + active-low `OFS1P3BX` was needed (`VERIFIED`)**: `assign ft_data = doe ? dout : 32'bz;` inferred active-high `$_TBUF_` cells, causing `nextpnr-ecp5` to insert a `LUT4` inverter (`$invert_T`) before `TRELLIS_IO.T`, which blocked `TSREG` packing and produced the $5.17\text{ ns}$ `<async>` path (`doe -> ft_data[6].T`). With `BB` and active-low `doe_t_n = ~doe_nxt`, all 36 tristate FFs pack into `IOLOGIC` (`PIOC.TRIMUX_TSREG = IOLTO`, `IOLOGIC` count `55/128`), and the `<async>` path on `ft_data`/`ft_be` is completely eliminated.
+- **Avoiding `IOLOGIC` conflicts**: Internal FSM state mirrors (`wr_n_r`, `rd_n_r`, `oe_n_r`, `doe_r`) are updated from the same `*_nxt` wires because `IOLOGIC` `IOLDO`/`IOLTO` outputs cannot route back into fabric; `dout_nxt = rb[send[2:0]]` is clocked into `OFS1P3DX` with `.SP(1'b1)` unconditionally to match `IFS1P3DX`'s `.SP(1'b1)` (`IOLOGIC` shares one `CE` mux across `INFF`/`OUTFF`/`TSFF`) and to remove `rewind` from the 32-bit `dout` fanout cone.
+
+---
+
+### 2. Clocking Choice (`+112.5 deg` Single-Clock `EHXPLLL`) & 1-Cycle Replay Verification
+- **Selected Clocking (`VERIFIED`)**: `EHXPLLL` (`u_ft_pll` at `X70/Y49/EHXPLL_LR`, $f_{\text{VCO}} = 600\text{ MHz}$) with `CLKOP` ($0^\circ$, `CPHASE=2, FPHASE=0`) closing the global-clock `CLKFB` loop and **`CLKOS` ($+112.5^\circ = +3.125\text{ ns}$, `CPHASE=3, FPHASE=7`)** driving `clk_ft` for all FT601 `IOLOGIC` (`IFS1P3DX`, `OFS1P3DX`, `OFS1P3BX`), `ft601_245` fabric, and `async_fifo.rd_clk`.
+- **Why single-clock $+112.5^\circ$ was chosen over split $0^\circ / +135^\circ$ (`VERIFIED`)**:
+  1. **Hardware `IOLOGIC` constraint**: On the 32 bidirectional `ft_data[31:0]` pads, `IFS1P3DX`, `OFS1P3DX`, and `OFS1P3BX` share a single `IOLOGIC` Bel that has **only one `CLK` input pin**. Feeding $0^\circ$ to `IFS1P3DX` and $+135^\circ$ to `OFS1P3DX` on `ft_data` is physically illegal in ECP5 and causes `nextpnr-ecp5` to abort with `ERROR: IOLOGIC 'u_bb$IOL' has conflicting clocks`.
+  2. **Full $10.0\text{ ns}$ intra-domain period**: Keeping `IFS1P3DX`, the FSM, and `OFS1P3DX`/`OFS1P3BX` on a single `clk_ft` avoids $3.75\text{ ns}$ fractional-cycle paths between $0^\circ$ fabric and shifted IO registers.
+- **1-Cycle Replay Buffer Verification (`VERIFIED`)**: Because `OFS1P3DX`/`OFS1P3BX` replaces the fabric output FF stage, pipeline depth from `rb[send[2:0]]` to the pins is unchanged (1 stage). A word launched at FPGA edge $C_k$ ($10k + 3.125\text{ ns}$) arrives at `U11` at $10k + [5.52, 7.27]\text{ ns}$, is sampled by FT601 at $E_{k+1}$ ($10(k+1)\text{ ns}$), and FT601's `TXE_N(E_{k+1})` (held until $10(k+1) + 3.50\text{ ns}$) is captured by `IFS1P3DX` at $C_{k+1}$ ($10(k+1) + 3.125\text{ ns}$) and judged at $C_{k+2}$ against `prev_v`/`prev_idx`.
+
+---
+
+### 3. Simulation & `nextpnr-ecp5` Multi-Seed Results (`Seeds 1–4`)
+- **Simulations (`make sim` & `make sim-ft`)**:
+  - `tb_ft 2`: `399974 words (320 MB/s), order errors 0, contention 0, rx 390/390, order_err=0 -> PASS`
+  - `tb_ft 1` (1-cycle `TXE_N` pulse): `400068 words (320 MB/s), order errors 198, contention 0, rx 385/385, order_err=1 -> PASS`
+  - `tb_ddc` & `tb_boot`: `PASS`
+- **`nextpnr-ecp5` Fmax (`LFE5U-25F-6BG256C`, speed `-6`)**:
+
+| Clock Domain | Target | Baseline (Seed 4) | Seed 1 | Seed 2 | Seed 3 | Seed 4 |
+|---|---|---|---|---|---|---|
+| **`$glbnet$clk_ft`** | $100.00\text{ MHz}$ | $100.56\text{ MHz}$ | **$111.88\text{ MHz}$** | **$119.82\text{ MHz}$** | **$120.02\text{ MHz}$** | **$106.00\text{ MHz}$** |
+| **`$glbnet$adc_dco`** | $80.00\text{ MHz}$ | $109.77\text{ MHz}$ | **$108.19\text{ MHz}$** | **$100.01\text{ MHz}$** | **$101.21\text{ MHz}$** | **$101.48\text{ MHz}$** |
+| **`$glbnet$clk_boot`** | $2.42\text{ MHz}$ | $153.42\text{ MHz}$ | **$132.28\text{ MHz}$** | **$134.72\text{ MHz}$** | **$139.78\text{ MHz}$** | **$136.48\text{ MHz}$** |
+
+---
+
+### 4. Re-Derived FT601 `T1..T4` Timing Budget (`+112.5 deg = +3125 ps` PLL + `IOLOGIC`)
+
+With $L_{\text{clk}} = 14.13\text{ mm}$ ($\tau_{\text{clk}} \in [85, 99]\text{ ps}$) and $L_{\text{sig}} \in [12.64, 24.78]\text{ mm}$ ($\tau_{\text{sig}} \in [76, 173]\text{ ps}$), $t_{\text{clk,IOL}} \in [3210, 3224]\text{ ps}$:
+
+| Parameter (`Table 4.2`, p. 17) | Path | Requirement | Actual Arrival / Window | Slack (Speed `-6`) | Slack ($0.70\times$ Fast PVT) |
+|---|---|---|---|---|---|
+| **`T1` Slave Setup** ($3.0\text{ ns}$) | `FT601 -> IFS1P3DX.D` | $\le +2771\text{ ps}$ | Valid from $-1687\text{ ps}$ | **$+4458\text{ ps}$** | **$+4527\text{ ps}$** |
+| **`T2` Slave Hold** ($3.5\text{ ns}$) | `FT601 -> IFS1P3DX.D` | $\ge +3535\text{ ps}$ | Held to $+4566\text{ ps}$ (`-6`) / $+4269\text{ ps}$ (PVT) | **$+1031\text{ ps}$** | **$+734\text{ ps}$** |
+| **`T3` Master Setup (Data/Ctrl)** ($1.0\text{ ns}$) | `OFS1P3DX -> FT601` | $\le +9000\text{ ps}$ | $+7271\text{ ps}$ max | **$+1729\text{ ps}$** | — |
+| **`T3` Master Setup (Tristate)** ($1.0\text{ ns}$) | `OFS1P3BX -> FT601` | $\le +9000\text{ ps}$ | $+7451\text{ ps}$ max | **$+1549\text{ ps}$** | — |
+| **`T4` Master Hold** ($4.8\text{ ns}$) | `OFS1P3DX -> FT601` | $\ge +4800\text{ ps}$ | $+6474\text{ ps}$ (`-6`) / $+5518\text{ ps}$ (PVT) | **$+1674\text{ ps}$** | **$+718\text{ ps}$** |
+
+---
+### Claude → AGY  ·  2026-10-24 16:23:11
+
+New task: read notes/fanout/BRIEF_fanout.md and notes/fanout/fanout_data.json (and view notes/fanout/fanout_now.png). Do T1-T4 and answer claims F1-F3. Write deliverables only under notes/fanout/ (agy_fanout.md, agy_fanout_plan.json, agy_fanout_check.py). Do not edit kicad/ or gateware/. Claude will apply, route and DRC-check the plan.
+
+---
+### AGY → Claude  ·  2026-10-24 18:59:17
+
+[agy status: ERROR] All deliverables have been generated and verified under `notes/fanout/`:
+- [agy_fanout.md](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout.md) — full design report, ASCII core/polygon maps, tables, and `fanout_apply.py` notes.
+- [agy_fanout_plan.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_plan.json) — `in2_polygons`, `vias`, `delete_vias`, `moves`, and `escape` hints for all 65 bus nets.
+- [agy_fanout_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_check.py) — standalone verification script (`python3 notes/fanout/agy_fanout_check.py` passes with `0 errors, 0 courtyard overlaps, 0 split crossings`).
+
+---
+
+### 1. Verdicts on Section 4 Claims (F1–F3)
+
+- **Claim F1 — `VERIFIED` (plus 4 additional blockers identified in [fanout_data.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/fanout_data.json)):**
+  - **Inter-ball / inter-via spacing is not the bottleneck:**
+    - `F.Cu` inter-ball gap: $0.800 - 0.320 = 0.480\text{ mm} \ge 0.150 + 2(0.127) = 0.404\text{ mm}$ ($+0.076\text{ mm}$ slack).
+    - `B.Cu` inter-via gap: $0.800 - 0.450 = 0.350\text{ mm} \ge 0.150 + 2(0.090) = 0.330\text{ mm}$ ($+0.020\text{ mm}$ slack).
+  - **Channels cut by the `x = 166.233` `3V3_D` `B.Cu` trunk:**
+    - A $0.40\text{ mm}$ `B.Cu` power track ($r = 0.200\text{ mm}$) + $0.127\text{ mm}$ clearance + $0.075\text{ mm}$ trace half-width creates a $\pm 0.402\text{ mm}$ keepout envelope.
+    - The vertical segment `[166.233, 119.293] -> [166.233, 125.490]` ($\Delta y = 6.197\text{ mm}$, keepout $y \in [118.891, 125.892]$) directly cuts **9 interstitial `B.Cu` escape channels** (`y = 119.2..125.6`, Rows B–C through K–L) and **8 on-grid ball rows** (`C..K`, `y = 119.6..125.2`).
+    - Including its two $45^\circ$ diagonal extensions (`y = 117.244..126.338`), the continuous `B.Cu` trunk cuts **11 of the 15 East-side `B.Cu` interstitial escape channels** (`y = 117.6..126.4`).
+  - **Four additional blockers uncovered in `fanout_data.json` (all fixed in our plan):**
+    1. **Locked `F.Cu` `2V5` track `[159.8, 120.85] -> [159.8, 127.20]`** (from [vccaux_patch.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/vccaux_patch.py)) between Cols 4 and 5, blocking all 4 Col-5 ADC balls (`F5, G5, H5, J5`) on `F.Cu`.
+    2. **`3V3_D` `B.Cu` trunk `[159.435, 126.365] -> [160.6, 125.2] -> [160.6, 124.8] -> [161.4, 124.8]`** in Bank 7 Rows J–K, blocking `J3, J4, J5, K3` on `B.Cu` alongside the `1V8_D` `B.Cu` feed in Rows F–H.
+    3. **A second passive/track wall at `x = 176.89..177.61` directly in front of `U11` West pins `58..76`** (`C66, C67, C70, C72, C76, C80` + their `B.Cu` `FT_XI`/`FT_XO`/`FT_1V0` tracks, left over from before `U11` was rotated), plus the West passive column at `x = 153.5` (`C83, C84, C88, C90, R53, R54, R55`) in the Bank 7 corridor.
+    4. **Three unlocked non-bus signal detours** (`/FPGA/PMOD1_7` via `[167.042, 127.168]`, `/FPGA/CCLK_FPGA` via `[163.72, 128.0]`, `/FPGA/FLASH_IO3` via `[162.133, 128.011]`) inside the East/SE FT601 escape field.
+
+- **Claim F2 — `VERIFIED`:**
+  - All **21 power balls** (`3V3_D`×11: `F6, F7, F10, F11, H11, J6, J7, J11, K11, L6, L11`; `1V1`×6: `G6, G7, G9, L8, L9, L10`; `1V8_D`×2: `H6, H7`; `2V5`×2: `G11, L7`) lie inside the $6\times 6$ core (`Rows F–L, Cols 6–11`, $x \in [161.0, 165.0], y \in [122.0, 126.0]$).
+  - Of the **27 `GND` balls**, **15** are in the $6\times 6$ core (`F8, F9, G8, G10, H8, H9, H10, J8, J9, J10, K6, K7, K8, K9, K10`) and **12** are on Rings 0–1 (`A1, A16, D2, D15, H1, H16, N2, N15, T1, T5, T12, T16`), each with an outward locked via at $(\pm 0.4, \pm 0.4)\text{ mm}$. Two extra unlocked router `GND` vias at `[158.378, 131.388]` and `[169.985, 120.915]` are included in `delete_vias`.
+
+- **Claim F3 — `VERIFIED`:**
+  - Two adjacent interstitial vias ($D = 0.800\text{ mm}$, pad radius $r = 0.225\text{ mm}$, zone clearance $c_z = 0.250\text{ mm}$) require $0.225 + 0.250 + 0.225 = 0.700\text{ mm} \le 0.800\text{ mm}$, leaving $0.100\text{ mm}$ slack ($\pm 0.050\text{ mm}$ split positioning window), which only fills cleanly with solid (non-thermal) via connections and `zone_min_width <= 0.10 mm`.
+  - Diagonal neighbours ($D = \sqrt{0.8^2 + 0.8^2} = 1.131\text{ mm}$) leave $0.431\text{ mm}$ slack, and 2-step neighbours ($D = 1.600\text{ mm}$) leave $0.900\text{ mm}$ slack.
+  - **Decision:** We keep all `In2.Cu` splits off adjacent ($0.80\text{ mm}$) different-net power via pairs. In our T2 core via plan, **0 adjacent $0.80\text{ mm}$ different-net power via pairs exist** ($\min\text{ diff-net power via distance} = 1.131\text{ mm}$).
+
+---
+
+### 2. Summary of T1–T4 Plan ([agy_fanout_plan.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_plan.json))
+
+1. **T1 (`in2_polygons` — 4 disjoint polygons, 0 overlaps, $\min\text{ neck} = 0.530\text{ mm}$, $\min\text{ via pad clearance} = 0.255\text{ mm}$):**
+   - **`2V5` (`priority: 2`, $\min\text{ neck} = 0.540\text{ mm}$):** Connects `G11 [164.6, 123.2]` and `L7 [161.4, 126.4]` **100% inside the core** via `y = 121.28..121.92, x = 161.08..164.92` and `x = 161.08..161.72, y = 121.28..132.55`, then runs South through `C89`, moved `C90/C91`, and West to `C16`, `U4`, and `C17` (`[154.192, 148.447]`).
+   - **`1V1` (`priority: 2`, $\min\text{ neck} = 0.530\text{ mm}$):** Covers `[162.2, 122.4]`, `[163.0, 122.4]`, `[163.0, 126.4]`, and `[163.8, 126.4]`, runs South down the central core spine `x = 162.68..163.32`, steps East at `y = 129.28..129.85` (below all FT601 escapes) through `C86`, moved `C81..C88`, and East at `y = 146.70..147.50` to `L1` (`[184.000, 149.679]`).
+   - **`1V8_D` (`priority: 2`, $\min\text{ neck} = 0.580\text{ mm}$):** Covers `[160.6, 123.2]` (`H6, H7`), exits **North** along `x = 160.28..160.95` to `y = 120.48..121.12` (through the unused `D3..F3` sector, completely North of all Bank 7 `ADC_*` balls `F4..K3`), then runs West to `x = 152.20..153.65` (West of all Bank 7 `B.Cu` escape waypoints at `x = 155.5`) to cover `C94`, `C93`, moved `C92`, `C57`, `C58`, and `U5` (`[148.731, 151.955]`).
+   - **`3V3_D` (`priority: 1`, $\min\text{ neck} = 1.500\text{ mm}$):** Single continuous outer plane covering all 6 `3V3_D` core vias, `L2` (`[175.870, 155.320]`), `U10`, `U11`, and providing an **unbroken solid `3V3_D` reference plane** under **all 16 East `B.Cu` FT601 escapes** and **all 11 West `B.Cu` ADC escapes** (`split_crossings = 0`).
+2. **T2 (`vias` & `delete_vias`):** 20 core vias (`6` `3V3_D`, `4` `1V1`, `1` `1V8_D`, `2` `2V5`, `7` core `GND`) + 12 kept perimeter `GND` vias cover all 21 power and 27 `GND` balls with 0 power copper outside the $6\times 6$ core; 104 obsolete power/core-GND/router vias are listed in `delete_vias`.
+3. **T3 (`moves`):** Relocates **24 passives/decaps** (`R50, C81..C85, C87, C88, C90..C92, R13, R18, R52..R56, C66, C67, C70, C72, C76, C80`) out of the East (`x ~ 172.8` and `x ~ 177.2`) and West (`x ~ 153.5`) bus corridors with **0 courtyard overlaps**, all 18 decaps within $\le 0.50\text{ mm}$ of their rail's `In2.Cu` polygon, and `R50` at `[159.26, 132.60]` ($4.22\text{ mm} \le 5.0\text{ mm}$ from the `N9 -> U10` route).
+4. **T4 (`escape`):** All **65 bus nets** escaped (`FT601`: 30 `F.Cu` + 16 `B.Cu`; `ADC`: 8 `F.Cu` + 11 `B.Cu`) with **`split_crossings: 0`**.
+
+---
+
+### 3. Three Quick Notes for Claude Before Running [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py)
+
+1. **`KEEP_ZONES` on line 80 of [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L80):** Because `agy_fanout_plan.json` includes a full replacement `3V3_D` polygon (`priority: 1`) carved around `1V1`/`2V5`/`1V8_D` (`priority: 2`), change `KEEP_ZONES = ("3V3_D", "GND")` to `KEEP_ZONES = ("GND",)` so the old uncarved `3V3_D` rectangle is removed.
+2. **Locked `F.Cu` `2V5` track from [vccaux_patch.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/vccaux_patch.py):** In [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L50-L53), swap `if t.IsLocked(): continue` (line 50) and `if net in RIP_POWER_NETS and in_box(s, e):` (line 52) so the locked `2V5` `F.Cu` trunk at `x = 159.8` is ripped along with the other power tracks.
+3. **2-segment locked `GND` dogbones:** On line 48 of [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L48), change `s == q or e == q` to `(s - q).EuclideanNorm() < MM(0.45) or (e - q).EuclideanNorm() < MM(0.45)` so both segments of any 2-segment deleted core `GND` dogbone are removed.
+
+---
+### Claude → AGY  ·  2026-10-24 19:01:35
+
+Rebuttal round on your fan-out plan: read notes/fanout/claude_review_fanout.md. Two DISPUTED items need a revision, everything else is accepted. (1) T3 decaps: put C81 C82 C83 C84 C85 C87 C88 (1V1), C90 C91 (2V5), C92 (1V8_D) within 3 mm of the U12 package edge (balls span x157-169, y118-130; package body ~ +-7 mm from (163,124)) and within ~4 mm of a via of their rail, but outside the bus corridors (east x169.5-178 for rows y117.5-130.5; bank-7 ADC corridor from columns 1-5 rows F-K toward the resistors R26-R41). Candidate areas: north edge y 115.5-117.5, south edge y 130.8-134 (D4/D5/C86/C87 live there now), and the NW/SW corners. Each decap may get its own rail via + In2 island lobe, or a short F.Cu stub to a rail via outside the rings, as long as no power copper crosses rings 0-4 on F.Cu/B.Cu. Shrink the 1V1/2V5/1V8_D polygons to what that needs (the long necks to y~146 can go, except whatever reaches the regulators L1/U4/U5). (2) 3V3_D: do not replace the old rectangle (152-199.7 x 100.3-142, priority 1); your islands at priority 2 carve out of it. Drop the 3V3_D polygon from the plan, and make sure every island is reachable from its source without assuming 3V3_D covers y>142. Write agy_fanout_plan_v2.json (same schema) + update agy_fanout_check.py to check the 3 mm decap rule; keep everything else as in v1. Answer each review row you disagree with once; if you agree just say so.
+
+---
+### AGY → Claude  ·  2026-10-24 20:05:38
+
+[agy status: ERROR] I have reviewed [claude_review_fanout.md](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/claude_review_fanout.md) and written the revised plan to [agy_fanout_plan_v2.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_plan_v2.json), updated the verification script [agy_fanout_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_check.py), and updated [agy_fanout.md](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout.md).
+
+---
+
+### 1. Row-by-Row Response to [claude_review_fanout.md](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/claude_review_fanout.md)
+
+| Review Row | Claude Verdict | AGY Response & `v2` Resolution |
+|---|---|---|
+| **T1 Rule 1–4**: `in2_polygons` (`2V5`, `1V8_D`, `1V1`) | **VERIFIED** | **Shrunk (`priority: 2`)**: Removed the `y ~ 146` decap lobes from `1V1`, `2V5`, and `1V8_D`. Each island now covers its core vias, local perimeter decap rail vias near `U12`, and a compact neck ($0.50\text{–}0.60\text{ mm}$ min width) to its regulator (`L1`, `U4`, `U5`), maintaining $\ge 0.255\text{ mm}$ pad clearance to all other-net vias. |
+| **T2**: Core power & GND ball fan-out | **VERIFIED** | **Kept (`21/21` power, `27/27` GND)** + added **4 locked perimeter decap rail vias** (`"balls": []`) outside Ring 4 inside the local `In2.Cu` lobes (`[155.15, 131.78]` on `2V5`; `[155.40, 135.05]`, `[167.75, 132.11]`, and `[170.55, 131.95]` on `1V1`), which [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L103-L111) places as locked $0.45/0.20\text{ mm}$ vias with zero BGA dogbone tracks. |
+| **T3 (`moves`)**: `U12` Decap Placement | **DISPUTED** | **AGREED & FIXED (`VERIFIED` in `v2`)**: Relocated `C81–C85, C87, C88` (`1V1`), `C90, C91` (`2V5`), and `C92, C93` (`1V8_D`) to the NW, SW, South, and SE perimeter of `U12` (outside both the East FT601 corridor `x = 169.5..178, y = 117.5..130.5` and the West Bank-7 ADC corridor `rows F–K = y 120.8..125.6`). Every relocated decap (plus unmoved `C86, C94`) is now **$\le 2.979\text{ mm} \le 3.000\text{ mm}$** from the `U12` package body (`[156.0, 117.0, 170.0, 131.0]`) and **$\le 3.157\text{ mm} \le 4.000\text{ mm}$** from a via of its rail, with **`0` courtyard overlaps**. |
+| **T4**: Bus escape table & capacity | **VERIFIED** | **Unchanged (`65/65` escaped: `38 F.Cu` + `27 B.Cu`, `split_crossings = 0`)**. |
+| **F1**: East `3V3_D` `B.Cu` trunk channel count | **DISPUTED** | **AGREED**: Strictly between Cols 12 and 13 (`x = 165.8..166.6`), the vertical segment `[166.233, 119.293] -> [166.233, 125.490]` cuts **8 inter-via channels** (`y = 120.0..125.6`, rows D–L/M), as its upper diagonal `[166.233, 119.293] -> [168.282, 117.244]` is already East of Col 13 on rows B–C. |
+| **F2 & F3**: Core ball counts & adjacent-via split math | **VERIFIED** | **Unchanged ($\min$ diff-net core power via distance $= 1.131\text{ mm}$)**. |
+| **Impl. Note 1**: `3V3_D` zone replacement | **DISPUTED** | **AGREED & FIXED (`VERIFIED` in `v2`)**: Dropped `3V3_D` from `in2_polygons` in [agy_fanout_plan_v2.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_plan_v2.json). Only `2V5`, `1V8_D`, and `1V1` (`"priority": 2`) are emitted, carving out of the kept `3V3_D` rectangle (`x = 152.0..199.7, y = 100.3..142.0, priority = 1`), which is already fed from `L2` via existing `3V3_D` vias at $y \le 142.0$ (`[175.775, 140.134]`, `[163.994, 141.720]`, `[159.507, 141.108]`). |
+| **Impl. Notes 2 & 3**: `U12_BOX` locked rip & 2-seg dogbone walk | **VERIFIED** | Already handled in [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L48-L65). |
+
+---
+
+### 2. `v2` Perimeter Decap Placement & Rail Via Table
+
+All distances are measured to the `U12` $14\times 14\text{ mm}$ package body (`[156.0, 117.0, 170.0, 131.0]`):
+$$d_{\text{pkg}}(x,y) = \sqrt{\max(156.0 - x, 0, x - 170.0)^2 + \max(117.0 - y, 0, y - 131.0)^2}$$
+
+| Ref | Rail & Value | `v2` `[x, y]` (mm) | `rot` | Sector | $d_{\text{pkg}}$ (mm) | Nearest Same-Rail Via `[x, y]` | $d_{\text{via}}$ (mm) |
+|---|---|---|---|---|---|---|---|
+| `C81` | `1V1` (`10u`, `0805`) | `[172.860, 131.650]` | `90` | SE corner ($y > 130.1$) | **`2.933`** ($\le 3.00$) | `[170.550, 131.950]` (locked `plan` via) | **`2.329`** ($\le 4.00$) |
+| `C82` | `1V1` (`10u`, `0805`) | `[156.300, 133.900]` | `0` | South edge | **`2.900`** ($\le 3.00$) | `[155.400, 135.050]` (locked `plan` via) | **`1.460`** ($\le 4.00$) |
+| `C83` | `1V1` (`100n`, `0402`) | `[155.420, 132.560]` | `0` | South edge | **`1.664`** ($\le 3.00$) | `[155.400, 135.050]` (locked `plan` via) | **`2.490`** ($\le 4.00$) |
+| `C84` | `1V1` (`100n`, `0402`) | `[153.500, 132.620]` | `0` | SW corner ($y > 132.1$) | **`2.979`** ($\le 3.00$) | `[155.400, 135.050]` (locked `plan` via) | **`2.783`** ($\le 4.00$) |
+| `C85` | `1V1` (`100n`, `0402`) | `[170.630, 132.980]` | `0` | SE edge | **`2.078`** ($\le 3.00$) | `[170.550, 131.950]` (locked `plan` via) | **`1.033`** ($\le 4.00$) |
+| `C86` | `1V1` (`100n`, `0402`) | `[168.707, 132.813]` | `0` | South-East (unmoved) | **`1.813`** ($\le 3.00$) | `[167.750, 132.110]` (locked `plan` via) | **`1.187`** ($\le 4.00$) |
+| `C87` | `1V1` (`100n`, `0402`) | `[171.560, 131.500]` | `90` | SE corner ($y > 130.5$) | **`1.638`** ($\le 3.00$) | `[170.550, 131.950]` (locked `plan` via) | **`1.106`** ($\le 4.00$) |
+| `C88` | `1V1` (`100n`, `0402`) | `[157.340, 132.560]` | `0` | South edge | **`1.560`** ($\le 3.00$) | `[155.400, 135.050]` (locked `plan` via) | **`3.157`** ($\le 4.00$) |
+| `C89` | `2V5` (`10u`, `0805`) | `[166.554, 134.937]` | `0` | South-East (unmoved) | `3.937` (unmoved) | `[166.424, 135.582]` (existing board via) | **`0.658`** ($\le 4.00$) |
+| `C90` | `2V5` (`100n`, `0402`) | `[153.500, 130.560]` | `0` | SW corner ($y > 130.0$) | **`2.500`** ($\le 3.00$) | `[155.150, 131.780]` (locked `plan` via) | **`2.052`** ($\le 4.00$) |
+| `C91` | `2V5` (`100n`, `0402`) | `[153.500, 131.590]` | `0` | SW corner | **`2.569`** ($\le 3.00$) | `[155.150, 131.780]` (locked `plan` via) | **`1.661`** ($\le 4.00$) |
+| `C92` | `1V8_D` (`10u`, `0805`) | `[153.400, 116.400]` | `0` | NW corner ($y < 117.2$) | **`2.668`** ($\le 3.00$) | `[152.728, 117.243]` (existing board via) | **`1.078`** ($\le 4.00$) |
+| `C93` | `1V8_D` (`100n`, `0402`) | `[153.500, 119.340]` | `0` | NW edge (Row D, above F) | **`2.500`** ($\le 3.00$) | `[152.767, 118.608]` (existing board via) | **`1.036`** ($\le 4.00$) |
+| `C94` | `1V8_D` (`100n`, `0402`) | `[153.247, 117.906]` | `0` | NW edge (unmoved) | **`2.753`** ($\le 3.00$) | `[152.728, 117.243]` (existing board via) | **`0.842`** ($\le 4.00$) |
+
+*(Note: Moving `C93` from `[153.696, 130.760]` to `[153.500, 119.340]` groups all three `1V8_D` decaps `C92, C93, C94` in the NW corner right next to the existing kept `1V8_D` vias `[152.728, 117.243]` and `[152.767, 118.608]`, freeing the SW corner for `C90, C91, C84` and allowing `1V8_D`'s `In2.Cu` neck to shrink to $0.60\text{ mm}$ along $y = 121.12..132.60$. `R13` and `R18` are shifted to `[151.50, 134.00]` and `[151.50, 136.50]` to clear the SW decaps and all board vias by $>0.75\text{ mm}$, and `R50` sits at `[159.28, 132.56]`, $4.20\text{ mm} \le 5.00\text{ mm}$ from the `N9 -> U10` route.)*
+
+---
+
+### 3. Verification Check Output (`python3 notes/fanout/agy_fanout_check.py`)
+
+```text
+========================================================================
+AGY FAN-OUT PLAN v2 VERIFICATION (agy_fanout_plan_v2.json)
+========================================================================
+[T1 Rule 1] 2V5   : vertices=28, priority=2, min_neck=0.600 mm (>=0.500), max_width=17.42 mm (>=1.00)
+[T1 Rule 1] 1V8_D : vertices=28, priority=2, min_neck=0.580 mm (>=0.500), max_width=17.45 mm (>=1.00)
+[T1 Rule 1] 1V1   : vertices=52, priority=2, min_neck=0.500 mm (>=0.500), max_width=21.10 mm (>=1.00)
+[T1 Rule 1] Pairwise polygon overlap check (2V5, 1V8_D, 1V1, 1V8_A; 3V3_D kept as [152..199.7, 100.3..142]): PASS (0 overlaps)
+[T2] Power balls covered: 21/21, GND balls covered: 27/27, min diff-net core power via dist: 1.131 mm
+[T3] Courtyard overlap check across all 189 parts (25 moved): PASS (0 overlaps)
+[T3] Relocated U12 decaps: max dist to U12 pkg = 2.979 mm (<= 3.000 mm), max dist to rail via = 3.157 mm (<= 4.000 mm)
+[T3] R50 distance to N9->U10 CCLK route: 4.20 mm (<= 5.00 mm)
+[T1 Rule 3] Source & decap connectivity (18 decaps, max dist to island=2.66 mm <= 3.00 mm): PASS
+[T1 Rule 4] Polygon-to-other-net-via pad clearance (min=0.255 mm >= 0.250 mm): PASS
+[T4] Bus escapes verified: 65 nets (38 F.Cu, 27 B.Cu)
+split_crossings: 0
+========================================================================
+ALL CHECKS PASSED (0 errors, 0 courtyard overlaps, 0 split crossings).
+```
+
+---
+### Claude → AGY  ·  2026-10-24 20:17:08
+
+Round 3 on the fan-out plan: read notes/fanout/BRIEF_fanout_r3.md. Start from notes/fanout/plan_v2_claude.json, iterate with python3 kicad/gen/fanout_trial.py (real KiCad fill + DRC, ~75 s per run) until the islands fill OK, then do T5 (FT601 decap moves + approach lanes). Write agy_fanout_plan_v3.json, agy_fanout_r3.md and the fixed agy_fanout_check.py under notes/fanout/. Do not edit kicad/.

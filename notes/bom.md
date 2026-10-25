@@ -7,7 +7,7 @@ Prices come from the LCSC product API (live at time of writing) unless the sourc
 | U8 | 1 | AD9649BCPZ-80 | ADC 14b 80 MSPS | DigiKey (consign) | — | 49.56 | 49.56 | 269 @DigiKey snapshot; LCSC C514292 $67.49, 9 stk |
 | U12 | 1 | LFE5U-25F-6BG256C | ECP5 FPGA 24k LUT (45F = drop-in) | LCSC | C1521614 | 15.37 | 15.37 | 160 stk; 45F C1550834 $15.94, 0 stk |
 | U11 | 1 | FT601Q-B-T | USB3-FIFO bridge | LCSC | C1550513 | 13.35 | 13.35 | 79 stk |
-| U9 | 1 | LMK61E2-100M00SIAR | Programmable osc 90 fs | LCSC | C2871770 | 10.73 | 10.73 | 5 stk (!) |
+| U9 | 1 | **LMK61E2-SIAR** (or LMK61E2BAA-SIAR / LMK61E2BBA-SIAR) | Programmable osc, 8-pin QFM with I2C | TI / DigiKey / Mouser (LCSC # to find) | — | ~10.7 | ~10.7 | **TO SOURCE.** Not C2871770: see note 1 |
 | U13 | 1 | PHA-13LN+ | LNA 1 MHz–1 GHz (LHA-13LN+ alt, DigiKey) | LCSC | C3008204 | 11.71 | 11.71 | 193 stk |
 | T1 | 1 | ADT4-6T+ | 1:4 transformer 0.06–300 MHz | LCSC | C3304892 | 7.04 | 7.04 | 7 stk |
 | U10 | 1 | W25Q128JVSIQ | Config flash 128 Mb | LCSC | C97521 | 2.88 | 2.88 | 0 stk: any W25Q128JV pkg |
@@ -45,7 +45,7 @@ Prices come from the LCSC product API (live at time of writing) unless the sourc
 For comparison, RX888 MkII retail is $150–230.
 
 ## Sourcing risks (as of 2026-10-22)
-1. **LMK61E2-100M00: only 5 at LCSC.** Buy them now, or have DigiKey/TI ship the base LMK61E2-SIAR. Fallback footprint: a fixed 80 MHz low-jitter XO.
+1. **U9 must be the 8-pin, I2C-programmable LMK61E2** (LMK61E2-SIAR, -BAA-SIAR or -BBA-SIAR, SNAS674C orderable table). The previously listed LMK61E2-100M00SIAR (LCSC C2871770) is a *different* part: 6-pin, fixed 100 MHz LVDS, no I2C (TI LMK61E2-100M datasheet, refs/datasheets/LMK61E2-100M_fixed_6pin.pdf). It would clock the 80 MSPS ADC at 100 MHz and the FPGA's I2C program (boot_seq.v: LVDS, 80 MHz) would fail. Found 2026-10-24 (AGY flag, Claude check).
 2. **ADT4-6T+: only 7 at LCSC.** Mini-Circuits sells direct.
 3. **ECP5-45F is 0 at LCSC.** The 25F (160 in stock) is ball- and bank-compatible on CABGA-256 (verified against the prjtrellis-db; only PLL-input labels differ). It has 28 multipliers, enough for ~4 DDCs.
 4. **AD9649**: LCSC $67.49 with 9 in stock, DigiKey ~$49.56 with 269 in stock (snapshot). Consign from DigiKey.

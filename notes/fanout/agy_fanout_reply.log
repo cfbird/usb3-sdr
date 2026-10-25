@@ -1,0 +1,52 @@
+[agy status: ERROR] All deliverables have been generated and verified under `notes/fanout/`:
+- [agy_fanout.md](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout.md) — full design report, ASCII core/polygon maps, tables, and `fanout_apply.py` notes.
+- [agy_fanout_plan.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_plan.json) — `in2_polygons`, `vias`, `delete_vias`, `moves`, and `escape` hints for all 65 bus nets.
+- [agy_fanout_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_check.py) — standalone verification script (`python3 notes/fanout/agy_fanout_check.py` passes with `0 errors, 0 courtyard overlaps, 0 split crossings`).
+
+---
+
+### 1. Verdicts on Section 4 Claims (F1–F3)
+
+- **Claim F1 — `VERIFIED` (plus 4 additional blockers identified in [fanout_data.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/fanout_data.json)):**
+  - **Inter-ball / inter-via spacing is not the bottleneck:**
+    - `F.Cu` inter-ball gap: $0.800 - 0.320 = 0.480\text{ mm} \ge 0.150 + 2(0.127) = 0.404\text{ mm}$ ($+0.076\text{ mm}$ slack).
+    - `B.Cu` inter-via gap: $0.800 - 0.450 = 0.350\text{ mm} \ge 0.150 + 2(0.090) = 0.330\text{ mm}$ ($+0.020\text{ mm}$ slack).
+  - **Channels cut by the `x = 166.233` `3V3_D` `B.Cu` trunk:**
+    - A $0.40\text{ mm}$ `B.Cu` power track ($r = 0.200\text{ mm}$) + $0.127\text{ mm}$ clearance + $0.075\text{ mm}$ trace half-width creates a $\pm 0.402\text{ mm}$ keepout envelope.
+    - The vertical segment `[166.233, 119.293] -> [166.233, 125.490]` ($\Delta y = 6.197\text{ mm}$, keepout $y \in [118.891, 125.892]$) directly cuts **9 interstitial `B.Cu` escape channels** (`y = 119.2..125.6`, Rows B–C through K–L) and **8 on-grid ball rows** (`C..K`, `y = 119.6..125.2`).
+    - Including its two $45^\circ$ diagonal extensions (`y = 117.244..126.338`), the continuous `B.Cu` trunk cuts **11 of the 15 East-side `B.Cu` interstitial escape channels** (`y = 117.6..126.4`).
+  - **Four additional blockers uncovered in `fanout_data.json` (all fixed in our plan):**
+    1. **Locked `F.Cu` `2V5` track `[159.8, 120.85] -> [159.8, 127.20]`** (from [vccaux_patch.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/vccaux_patch.py)) between Cols 4 and 5, blocking all 4 Col-5 ADC balls (`F5, G5, H5, J5`) on `F.Cu`.
+    2. **`3V3_D` `B.Cu` trunk `[159.435, 126.365] -> [160.6, 125.2] -> [160.6, 124.8] -> [161.4, 124.8]`** in Bank 7 Rows J–K, blocking `J3, J4, J5, K3` on `B.Cu` alongside the `1V8_D` `B.Cu` feed in Rows F–H.
+    3. **A second passive/track wall at `x = 176.89..177.61` directly in front of `U11` West pins `58..76`** (`C66, C67, C70, C72, C76, C80` + their `B.Cu` `FT_XI`/`FT_XO`/`FT_1V0` tracks, left over from before `U11` was rotated), plus the West passive column at `x = 153.5` (`C83, C84, C88, C90, R53, R54, R55`) in the Bank 7 corridor.
+    4. **Three unlocked non-bus signal detours** (`/FPGA/PMOD1_7` via `[167.042, 127.168]`, `/FPGA/CCLK_FPGA` via `[163.72, 128.0]`, `/FPGA/FLASH_IO3` via `[162.133, 128.011]`) inside the East/SE FT601 escape field.
+
+- **Claim F2 — `VERIFIED`:**
+  - All **21 power balls** (`3V3_D`×11: `F6, F7, F10, F11, H11, J6, J7, J11, K11, L6, L11`; `1V1`×6: `G6, G7, G9, L8, L9, L10`; `1V8_D`×2: `H6, H7`; `2V5`×2: `G11, L7`) lie inside the $6\times 6$ core (`Rows F–L, Cols 6–11`, $x \in [161.0, 165.0], y \in [122.0, 126.0]$).
+  - Of the **27 `GND` balls**, **15** are in the $6\times 6$ core (`F8, F9, G8, G10, H8, H9, H10, J8, J9, J10, K6, K7, K8, K9, K10`) and **12** are on Rings 0–1 (`A1, A16, D2, D15, H1, H16, N2, N15, T1, T5, T12, T16`), each with an outward locked via at $(\pm 0.4, \pm 0.4)\text{ mm}$. Two extra unlocked router `GND` vias at `[158.378, 131.388]` and `[169.985, 120.915]` are included in `delete_vias`.
+
+- **Claim F3 — `VERIFIED`:**
+  - Two adjacent interstitial vias ($D = 0.800\text{ mm}$, pad radius $r = 0.225\text{ mm}$, zone clearance $c_z = 0.250\text{ mm}$) require $0.225 + 0.250 + 0.225 = 0.700\text{ mm} \le 0.800\text{ mm}$, leaving $0.100\text{ mm}$ slack ($\pm 0.050\text{ mm}$ split positioning window), which only fills cleanly with solid (non-thermal) via connections and `zone_min_width <= 0.10 mm`.
+  - Diagonal neighbours ($D = \sqrt{0.8^2 + 0.8^2} = 1.131\text{ mm}$) leave $0.431\text{ mm}$ slack, and 2-step neighbours ($D = 1.600\text{ mm}$) leave $0.900\text{ mm}$ slack.
+  - **Decision:** We keep all `In2.Cu` splits off adjacent ($0.80\text{ mm}$) different-net power via pairs. In our T2 core via plan, **0 adjacent $0.80\text{ mm}$ different-net power via pairs exist** ($\min\text{ diff-net power via distance} = 1.131\text{ mm}$).
+
+---
+
+### 2. Summary of T1–T4 Plan ([agy_fanout_plan.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_plan.json))
+
+1. **T1 (`in2_polygons` — 4 disjoint polygons, 0 overlaps, $\min\text{ neck} = 0.530\text{ mm}$, $\min\text{ via pad clearance} = 0.255\text{ mm}$):**
+   - **`2V5` (`priority: 2`, $\min\text{ neck} = 0.540\text{ mm}$):** Connects `G11 [164.6, 123.2]` and `L7 [161.4, 126.4]` **100% inside the core** via `y = 121.28..121.92, x = 161.08..164.92` and `x = 161.08..161.72, y = 121.28..132.55`, then runs South through `C89`, moved `C90/C91`, and West to `C16`, `U4`, and `C17` (`[154.192, 148.447]`).
+   - **`1V1` (`priority: 2`, $\min\text{ neck} = 0.530\text{ mm}$):** Covers `[162.2, 122.4]`, `[163.0, 122.4]`, `[163.0, 126.4]`, and `[163.8, 126.4]`, runs South down the central core spine `x = 162.68..163.32`, steps East at `y = 129.28..129.85` (below all FT601 escapes) through `C86`, moved `C81..C88`, and East at `y = 146.70..147.50` to `L1` (`[184.000, 149.679]`).
+   - **`1V8_D` (`priority: 2`, $\min\text{ neck} = 0.580\text{ mm}$):** Covers `[160.6, 123.2]` (`H6, H7`), exits **North** along `x = 160.28..160.95` to `y = 120.48..121.12` (through the unused `D3..F3` sector, completely North of all Bank 7 `ADC_*` balls `F4..K3`), then runs West to `x = 152.20..153.65` (West of all Bank 7 `B.Cu` escape waypoints at `x = 155.5`) to cover `C94`, `C93`, moved `C92`, `C57`, `C58`, and `U5` (`[148.731, 151.955]`).
+   - **`3V3_D` (`priority: 1`, $\min\text{ neck} = 1.500\text{ mm}$):** Single continuous outer plane covering all 6 `3V3_D` core vias, `L2` (`[175.870, 155.320]`), `U10`, `U11`, and providing an **unbroken solid `3V3_D` reference plane** under **all 16 East `B.Cu` FT601 escapes** and **all 11 West `B.Cu` ADC escapes** (`split_crossings = 0`).
+2. **T2 (`vias` & `delete_vias`):** 20 core vias (`6` `3V3_D`, `4` `1V1`, `1` `1V8_D`, `2` `2V5`, `7` core `GND`) + 12 kept perimeter `GND` vias cover all 21 power and 27 `GND` balls with 0 power copper outside the $6\times 6$ core; 104 obsolete power/core-GND/router vias are listed in `delete_vias`.
+3. **T3 (`moves`):** Relocates **24 passives/decaps** (`R50, C81..C85, C87, C88, C90..C92, R13, R18, R52..R56, C66, C67, C70, C72, C76, C80`) out of the East (`x ~ 172.8` and `x ~ 177.2`) and West (`x ~ 153.5`) bus corridors with **0 courtyard overlaps**, all 18 decaps within $\le 0.50\text{ mm}$ of their rail's `In2.Cu` polygon, and `R50` at `[159.26, 132.60]` ($4.22\text{ mm} \le 5.0\text{ mm}$ from the `N9 -> U10` route).
+4. **T4 (`escape`):** All **65 bus nets** escaped (`FT601`: 30 `F.Cu` + 16 `B.Cu`; `ADC`: 8 `F.Cu` + 11 `B.Cu`) with **`split_crossings: 0`**.
+
+---
+
+### 3. Three Quick Notes for Claude Before Running [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py)
+
+1. **`KEEP_ZONES` on line 80 of [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L80):** Because `agy_fanout_plan.json` includes a full replacement `3V3_D` polygon (`priority: 1`) carved around `1V1`/`2V5`/`1V8_D` (`priority: 2`), change `KEEP_ZONES = ("3V3_D", "GND")` to `KEEP_ZONES = ("GND",)` so the old uncarved `3V3_D` rectangle is removed.
+2. **Locked `F.Cu` `2V5` track from [vccaux_patch.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/vccaux_patch.py):** In [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L50-L53), swap `if t.IsLocked(): continue` (line 50) and `if net in RIP_POWER_NETS and in_box(s, e):` (line 52) so the locked `2V5` `F.Cu` trunk at `x = 159.8` is ripped along with the other power tracks.
+3. **2-segment locked `GND` dogbones:** On line 48 of [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L48), change `s == q or e == q` to `(s - q).EuclideanNorm() < MM(0.45) or (e - q).EuclideanNorm() < MM(0.45)` so both segments of any 2-segment deleted core `GND` dogbone are removed.

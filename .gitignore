@@ -4,3 +4,10 @@ kicad/*-backups/
 kicad/*.kicad_prl
 kicad/fp-info-cache
 __pycache__/
+**/*.kicad_prl
+*.drc.json
+notes/**/__pycache__/
+# vendor datasheets: copyrighted, not redistributed (see refs/datasheets.md)
+refs/**/*.pdf
+# stray ecppll output
+/-

@@ -36,11 +36,13 @@ module boot_seq (
         rom[8]  = {OP_I2C,  14'd72,   8'h02};   // R72 SWR2PLL: recalibrate VCO and reset dividers
         rom[9]  = {OP_WAIT, 14'h0000, 8'd50};   // ~20 ms for VCO cal + lock
         rom[10] = {OP_SPI,  14'h0014, 8'h81};   // AD9649 0x14: 1.8 V CMOS, two's complement
-        rom[11] = {OP_SPI,  14'h0008, 8'h00};   // chip run
-        rom[12] = {OP_SPI,  14'h00FF, 8'h01};   // transfer
-        rom[13] = {OP_WAIT, 14'h0000, 8'd5};
-        rom[14] = {OP_END,  22'h0};
-        rom[15] = {OP_END,  22'h0};
+        rom[11] = {OP_SPI,  14'h0016, 8'h80};   // AD9649 0x16 bit 7: invert DCO. By default DCO switches with the
+                                                //   data (tSKEW 0.1 ns, Table 4); inverted, the capture edge sits
+                                                //   mid-eye (AGY notes/pinswap/agy_timing.md, Table 16 checked)
+        rom[12] = {OP_SPI,  14'h0008, 8'h00};   // chip run
+        rom[13] = {OP_SPI,  14'h00FF, 8'h01};   // transfer
+        rom[14] = {OP_WAIT, 14'h0000, 8'd5};
+        rom[15] = {OP_END,  22'h0};             // last ROM slot: the sequencer stops here
     end
 
     reg [3:0]  pc;

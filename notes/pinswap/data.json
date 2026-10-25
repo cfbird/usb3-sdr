@@ -1,0 +1,4267 @@
+{
+ "units": "mm, KiCad board coordinates (y grows downward)",
+ "parts": {
+  "U12_FPGA_LFE5U25_CABGA256_0p8mm": {
+   "center": [
+    163.0,
+    124.0
+   ],
+   "rot": 0.0
+  },
+  "U11_FT601Q_QFN76": {
+   "center": [
+    184.0,
+    123.0
+   ],
+   "rot": 90.0
+  },
+  "U8_AD9649_LFCSP32": {
+   "center": [
+    141.0,
+    141.0
+   ],
+   "rot": 90.0
+  }
+ },
+ "fpga_balls": {
+  "A1": {
+   "xy": [
+    157.0,
+    118.0
+   ],
+   "ring": 0,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A2": {
+   "xy": [
+    157.8,
+    118.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/PMOD0_0",
+   "bank": "0",
+   "pio": "PT4A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A3": {
+   "xy": [
+    158.6,
+    118.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/PMOD0_1",
+   "bank": "0",
+   "pio": "PT6A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A4": {
+   "xy": [
+    159.4,
+    118.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/PMOD0_2",
+   "bank": "0",
+   "pio": "PT6B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A5": {
+   "xy": [
+    160.2,
+    118.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/PMOD0_3",
+   "bank": "0",
+   "pio": "PT18A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A6": {
+   "xy": [
+    161.0,
+    118.0
+   ],
+   "ring": 0,
+   "net": "unconnected-(U12A-B0:PT18B-PadA6)",
+   "bank": "0",
+   "pio": "PT18B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A7": {
+   "xy": [
+    161.8,
+    118.0
+   ],
+   "ring": 0,
+   "net": "unconnected-(U12A-B0:PT29A{slash}PCLKT0_0-PadA7)",
+   "bank": "0",
+   "pio": "PT29A",
+   "special": "PCLKT0_0",
+   "gateware_signal": ""
+  },
+  "A8": {
+   "xy": [
+    162.6,
+    118.0
+   ],
+   "ring": 0,
+   "net": "unconnected-(U12A-B0:PT29B{slash}PCLKC0_0-PadA8)",
+   "bank": "0",
+   "pio": "PT29B",
+   "special": "PCLKC0_0",
+   "gateware_signal": ""
+  },
+  "A9": {
+   "xy": [
+    163.4,
+    118.0
+   ],
+   "ring": 0,
+   "net": "unconnected-(U12A-B1:PT42A-PadA9)",
+   "bank": "1",
+   "pio": "PT42A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A10": {
+   "xy": [
+    164.2,
+    118.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/PMOD1_0",
+   "bank": "1",
+   "pio": "PT42B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A11": {
+   "xy": [
+    165.0,
+    118.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/PMOD1_1",
+   "bank": "1",
+   "pio": "PT53A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A12": {
+   "xy": [
+    165.8,
+    118.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/PMOD1_2",
+   "bank": "1",
+   "pio": "PT53B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A13": {
+   "xy": [
+    166.6,
+    118.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/PMOD1_3",
+   "bank": "1",
+   "pio": "PT65A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A14": {
+   "xy": [
+    167.4,
+    118.0
+   ],
+   "ring": 0,
+   "net": "unconnected-(U12A-B1:PT65B-PadA14)",
+   "bank": "1",
+   "pio": "PT65B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A15": {
+   "xy": [
+    168.2,
+    118.0
+   ],
+   "ring": 0,
+   "net": "unconnected-(U12A-B1:PT67B-PadA15)",
+   "bank": "1",
+   "pio": "PT67B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "A16": {
+   "xy": [
+    169.0,
+    118.0
+   ],
+   "ring": 0,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B1": {
+   "xy": [
+    157.0,
+    118.8
+   ],
+   "ring": 0,
+   "net": "ADC_D0",
+   "bank": "7",
+   "pio": "PL2A",
+   "special": "",
+   "gateware_signal": "adc_d[0]"
+  },
+  "B2": {
+   "xy": [
+    157.8,
+    118.8
+   ],
+   "ring": 1,
+   "net": "ADC_D1",
+   "bank": "7",
+   "pio": "PL2B",
+   "special": "",
+   "gateware_signal": "adc_d[1]"
+  },
+  "B3": {
+   "xy": [
+    158.6,
+    118.8
+   ],
+   "ring": 1,
+   "net": "/FPGA/PMOD0_4",
+   "bank": "0",
+   "pio": "PT4B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B4": {
+   "xy": [
+    159.4,
+    118.8
+   ],
+   "ring": 1,
+   "net": "/FPGA/PMOD0_5",
+   "bank": "0",
+   "pio": "PT11B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B5": {
+   "xy": [
+    160.2,
+    118.8
+   ],
+   "ring": 1,
+   "net": "/FPGA/PMOD0_6",
+   "bank": "0",
+   "pio": "PT15B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B6": {
+   "xy": [
+    161.0,
+    118.8
+   ],
+   "ring": 1,
+   "net": "/FPGA/PMOD0_7",
+   "bank": "0",
+   "pio": "PT22B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B7": {
+   "xy": [
+    161.8,
+    118.8
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12A-B0:PT27B{slash}PCLKC0_1-PadB7)",
+   "bank": "0",
+   "pio": "PT27B",
+   "special": "PCLKC0_1",
+   "gateware_signal": ""
+  },
+  "B8": {
+   "xy": [
+    162.6,
+    118.8
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12A-B1:PT35B{slash}PCLKC1_0-PadB8)",
+   "bank": "1",
+   "pio": "PT35B",
+   "special": "PCLKC1_0",
+   "gateware_signal": ""
+  },
+  "B9": {
+   "xy": [
+    163.4,
+    118.8
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12A-B1:PT38A{slash}GR_PCLK1_0-PadB9)",
+   "bank": "1",
+   "pio": "PT38A",
+   "special": "GR_PCLK1_0",
+   "gateware_signal": ""
+  },
+  "B10": {
+   "xy": [
+    164.2,
+    118.8
+   ],
+   "ring": 1,
+   "net": "/FPGA/PMOD1_4",
+   "bank": "1",
+   "pio": "PT44A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B11": {
+   "xy": [
+    165.0,
+    118.8
+   ],
+   "ring": 1,
+   "net": "/FPGA/PMOD1_5",
+   "bank": "1",
+   "pio": "PT49A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B12": {
+   "xy": [
+    165.8,
+    118.8
+   ],
+   "ring": 1,
+   "net": "/FPGA/PMOD1_6",
+   "bank": "1",
+   "pio": "PT56A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B13": {
+   "xy": [
+    166.6,
+    118.8
+   ],
+   "ring": 1,
+   "net": "/FPGA/PMOD1_7",
+   "bank": "1",
+   "pio": "PT60A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B14": {
+   "xy": [
+    167.4,
+    118.8
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12A-B1:PT67A-PadB14)",
+   "bank": "1",
+   "pio": "PT67A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "B15": {
+   "xy": [
+    168.2,
+    118.8
+   ],
+   "ring": 1,
+   "net": "FT_D7",
+   "bank": "2",
+   "pio": "PR2B",
+   "special": "S0_IN",
+   "gateware_signal": "ft_data[7]"
+  },
+  "B16": {
+   "xy": [
+    169.0,
+    118.8
+   ],
+   "ring": 0,
+   "net": "FT_D0",
+   "bank": "2",
+   "pio": "PR2A",
+   "special": "",
+   "gateware_signal": "ft_data[0]"
+  },
+  "C1": {
+   "xy": [
+    157.0,
+    119.6
+   ],
+   "ring": 0,
+   "net": "ADC_D2",
+   "bank": "7",
+   "pio": "PL5A",
+   "special": "",
+   "gateware_signal": "adc_d[2]"
+  },
+  "C2": {
+   "xy": [
+    157.8,
+    119.6
+   ],
+   "ring": 1,
+   "net": "ADC_D3",
+   "bank": "7",
+   "pio": "PL5B",
+   "special": "",
+   "gateware_signal": "adc_d[3]"
+  },
+  "C3": {
+   "xy": [
+    158.6,
+    119.6
+   ],
+   "ring": 2,
+   "net": "ADC_SCLK",
+   "bank": "7",
+   "pio": "PL2C",
+   "special": "",
+   "gateware_signal": "adc_sclk"
+  },
+  "C4": {
+   "xy": [
+    159.4,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B0:PT11A-PadC4)",
+   "bank": "0",
+   "pio": "PT11A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "C5": {
+   "xy": [
+    160.2,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B0:PT15A-PadC5)",
+   "bank": "0",
+   "pio": "PT15A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "C6": {
+   "xy": [
+    161.0,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B0:PT22A-PadC6)",
+   "bank": "0",
+   "pio": "PT22A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "C7": {
+   "xy": [
+    161.8,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B0:PT27A{slash}PCLKT0_1-PadC7)",
+   "bank": "0",
+   "pio": "PT27A",
+   "special": "PCLKT0_1",
+   "gateware_signal": ""
+  },
+  "C8": {
+   "xy": [
+    162.6,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B1:PT35A{slash}PCLKT1_0-PadC8)",
+   "bank": "1",
+   "pio": "PT35A",
+   "special": "PCLKT1_0",
+   "gateware_signal": ""
+  },
+  "C9": {
+   "xy": [
+    163.4,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B1:PT38B{slash}GR_PCLK1_1-PadC9)",
+   "bank": "1",
+   "pio": "PT38B",
+   "special": "GR_PCLK1_1",
+   "gateware_signal": ""
+  },
+  "C10": {
+   "xy": [
+    164.2,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B1:PT44B-PadC10)",
+   "bank": "1",
+   "pio": "PT44B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "C11": {
+   "xy": [
+    165.0,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B1:PT49B-PadC11)",
+   "bank": "1",
+   "pio": "PT49B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "C12": {
+   "xy": [
+    165.8,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B1:PT56B-PadC12)",
+   "bank": "1",
+   "pio": "PT56B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "C13": {
+   "xy": [
+    166.6,
+    119.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12A-B1:PT60B-PadC13)",
+   "bank": "1",
+   "pio": "PT60B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "C14": {
+   "xy": [
+    167.4,
+    119.6
+   ],
+   "ring": 2,
+   "net": "FT_D15",
+   "bank": "2",
+   "pio": "PR2C",
+   "special": "",
+   "gateware_signal": "ft_data[15]"
+  },
+  "C15": {
+   "xy": [
+    168.2,
+    119.6
+   ],
+   "ring": 1,
+   "net": "FT_D8",
+   "bank": "2",
+   "pio": "PR5B",
+   "special": "",
+   "gateware_signal": "ft_data[8]"
+  },
+  "C16": {
+   "xy": [
+    169.0,
+    119.6
+   ],
+   "ring": 0,
+   "net": "FT_D1",
+   "bank": "2",
+   "pio": "PR5A",
+   "special": "",
+   "gateware_signal": "ft_data[1]"
+  },
+  "D1": {
+   "xy": [
+    157.0,
+    120.4
+   ],
+   "ring": 0,
+   "net": "ADC_D4",
+   "bank": "7",
+   "pio": "PL8A",
+   "special": "",
+   "gateware_signal": "adc_d[4]"
+  },
+  "D2": {
+   "xy": [
+    157.8,
+    120.4
+   ],
+   "ring": 1,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D3": {
+   "xy": [
+    158.6,
+    120.4
+   ],
+   "ring": 2,
+   "net": "ADC_SDIO",
+   "bank": "7",
+   "pio": "PL2D",
+   "special": "",
+   "gateware_signal": "adc_sdio"
+  },
+  "D4": {
+   "xy": [
+    159.4,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B0:PT9B-PadD4)",
+   "bank": "0",
+   "pio": "PT9B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D5": {
+   "xy": [
+    160.2,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B0:PT13B-PadD5)",
+   "bank": "0",
+   "pio": "PT13B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D6": {
+   "xy": [
+    161.0,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B0:PT20B-PadD6)",
+   "bank": "0",
+   "pio": "PT20B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D7": {
+   "xy": [
+    161.8,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B0:PT24B{slash}GR_PCLK0_0-PadD7)",
+   "bank": "0",
+   "pio": "PT24B",
+   "special": "GR_PCLK0_0",
+   "gateware_signal": ""
+  },
+  "D8": {
+   "xy": [
+    162.6,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B1:PT33B{slash}PCLKC1_1-PadD8)",
+   "bank": "1",
+   "pio": "PT33B",
+   "special": "PCLKC1_1",
+   "gateware_signal": ""
+  },
+  "D9": {
+   "xy": [
+    163.4,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B1:PT40A-PadD9)",
+   "bank": "1",
+   "pio": "PT40A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D10": {
+   "xy": [
+    164.2,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B1:PT47A-PadD10)",
+   "bank": "1",
+   "pio": "PT47A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D11": {
+   "xy": [
+    165.0,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B1:PT51A-PadD11)",
+   "bank": "1",
+   "pio": "PT51A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D12": {
+   "xy": [
+    165.8,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B1:PT58A-PadD12)",
+   "bank": "1",
+   "pio": "PT58A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D13": {
+   "xy": [
+    166.6,
+    120.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B1:PT62A-PadD13)",
+   "bank": "1",
+   "pio": "PT62A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D14": {
+   "xy": [
+    167.4,
+    120.4
+   ],
+   "ring": 2,
+   "net": "FT_D16",
+   "bank": "2",
+   "pio": "PR2D",
+   "special": "",
+   "gateware_signal": "ft_data[16]"
+  },
+  "D15": {
+   "xy": [
+    168.2,
+    120.4
+   ],
+   "ring": 1,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "D16": {
+   "xy": [
+    169.0,
+    120.4
+   ],
+   "ring": 0,
+   "net": "FT_D2",
+   "bank": "2",
+   "pio": "PR8A",
+   "special": "",
+   "gateware_signal": "ft_data[2]"
+  },
+  "E1": {
+   "xy": [
+    157.0,
+    121.2
+   ],
+   "ring": 0,
+   "net": "ADC_D6",
+   "bank": "7",
+   "pio": "PL11D",
+   "special": "",
+   "gateware_signal": "adc_d[6]"
+  },
+  "E2": {
+   "xy": [
+    157.8,
+    121.2
+   ],
+   "ring": 1,
+   "net": "ADC_D5",
+   "bank": "7",
+   "pio": "PL8B",
+   "special": "",
+   "gateware_signal": "adc_d[5]"
+  },
+  "E3": {
+   "xy": [
+    158.6,
+    121.2
+   ],
+   "ring": 2,
+   "net": "ADC_CSB",
+   "bank": "7",
+   "pio": "PL5C",
+   "special": "",
+   "gateware_signal": "adc_csb"
+  },
+  "E4": {
+   "xy": [
+    159.4,
+    121.2
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B0:PT9A-PadE4)",
+   "bank": "0",
+   "pio": "PT9A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "E5": {
+   "xy": [
+    160.2,
+    121.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12A-B0:PT13A-PadE5)",
+   "bank": "0",
+   "pio": "PT13A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "E6": {
+   "xy": [
+    161.0,
+    121.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12A-B0:PT20A-PadE6)",
+   "bank": "0",
+   "pio": "PT20A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "E7": {
+   "xy": [
+    161.8,
+    121.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12A-B0:PT24A{slash}GR_PCLK0_1-PadE7)",
+   "bank": "0",
+   "pio": "PT24A",
+   "special": "GR_PCLK0_1",
+   "gateware_signal": ""
+  },
+  "E8": {
+   "xy": [
+    162.6,
+    121.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12A-B1:PT33A{slash}PCLKT1_1-PadE8)",
+   "bank": "1",
+   "pio": "PT33A",
+   "special": "PCLKT1_1",
+   "gateware_signal": ""
+  },
+  "E9": {
+   "xy": [
+    163.4,
+    121.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12A-B1:PT40B-PadE9)",
+   "bank": "1",
+   "pio": "PT40B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "E10": {
+   "xy": [
+    164.2,
+    121.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12A-B1:PT47B-PadE10)",
+   "bank": "1",
+   "pio": "PT47B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "E11": {
+   "xy": [
+    165.0,
+    121.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12A-B1:PT51B-PadE11)",
+   "bank": "1",
+   "pio": "PT51B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "E12": {
+   "xy": [
+    165.8,
+    121.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12A-B1:PT58B-PadE12)",
+   "bank": "1",
+   "pio": "PT58B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "E13": {
+   "xy": [
+    166.6,
+    121.2
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12A-B1:PT62B-PadE13)",
+   "bank": "1",
+   "pio": "PT62B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "E14": {
+   "xy": [
+    167.4,
+    121.2
+   ],
+   "ring": 2,
+   "net": "FT_D17",
+   "bank": "2",
+   "pio": "PR5C",
+   "special": "",
+   "gateware_signal": "ft_data[17]"
+  },
+  "E15": {
+   "xy": [
+    168.2,
+    121.2
+   ],
+   "ring": 1,
+   "net": "FT_D9",
+   "bank": "2",
+   "pio": "PR8B",
+   "special": "",
+   "gateware_signal": "ft_data[9]"
+  },
+  "E16": {
+   "xy": [
+    169.0,
+    121.2
+   ],
+   "ring": 0,
+   "net": "FT_D3",
+   "bank": "2",
+   "pio": "PR11D",
+   "special": "",
+   "gateware_signal": "ft_data[3]"
+  },
+  "F1": {
+   "xy": [
+    157.0,
+    122.0
+   ],
+   "ring": 0,
+   "net": "ADC_D8",
+   "bank": "7",
+   "pio": "PL14A",
+   "special": "",
+   "gateware_signal": "adc_d[8]"
+  },
+  "F2": {
+   "xy": [
+    157.8,
+    122.0
+   ],
+   "ring": 1,
+   "net": "ADC_D7",
+   "bank": "7",
+   "pio": "PL11C",
+   "special": "",
+   "gateware_signal": "adc_d[7]"
+  },
+  "F3": {
+   "xy": [
+    158.6,
+    122.0
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B7:PL5D-PadF3)",
+   "bank": "7",
+   "pio": "PL5D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F4": {
+   "xy": [
+    159.4,
+    122.0
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B7:PL8C-PadF4)",
+   "bank": "7",
+   "pio": "PL8C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F5": {
+   "xy": [
+    160.2,
+    122.0
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12C-B7:PL8D-PadF5)",
+   "bank": "7",
+   "pio": "PL8D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F6": {
+   "xy": [
+    161.0,
+    122.0
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F7": {
+   "xy": [
+    161.8,
+    122.0
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F8": {
+   "xy": [
+    162.6,
+    122.0
+   ],
+   "ring": 5,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F9": {
+   "xy": [
+    163.4,
+    122.0
+   ],
+   "ring": 5,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F10": {
+   "xy": [
+    164.2,
+    122.0
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F11": {
+   "xy": [
+    165.0,
+    122.0
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F12": {
+   "xy": [
+    165.8,
+    122.0
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12B-B2:PR8D-PadF12)",
+   "bank": "2",
+   "pio": "PR8D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F13": {
+   "xy": [
+    166.6,
+    122.0
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B2:PR8C-PadF13)",
+   "bank": "2",
+   "pio": "PR8C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "F14": {
+   "xy": [
+    167.4,
+    122.0
+   ],
+   "ring": 2,
+   "net": "FT_D18",
+   "bank": "2",
+   "pio": "PR5D",
+   "special": "",
+   "gateware_signal": "ft_data[18]"
+  },
+  "F15": {
+   "xy": [
+    168.2,
+    122.0
+   ],
+   "ring": 1,
+   "net": "FT_D10",
+   "bank": "2",
+   "pio": "PR11C",
+   "special": "",
+   "gateware_signal": "ft_data[10]"
+  },
+  "F16": {
+   "xy": [
+    169.0,
+    122.0
+   ],
+   "ring": 0,
+   "net": "FT_D4",
+   "bank": "2",
+   "pio": "PR14A",
+   "special": "",
+   "gateware_signal": "ft_data[4]"
+  },
+  "G1": {
+   "xy": [
+    157.0,
+    122.8
+   ],
+   "ring": 0,
+   "net": "ADC_D10",
+   "bank": "7",
+   "pio": "PL20A",
+   "special": "GR_PCLK7_1",
+   "gateware_signal": "adc_d[10]"
+  },
+  "G2": {
+   "xy": [
+    157.8,
+    122.8
+   ],
+   "ring": 1,
+   "net": "ADC_D9",
+   "bank": "7",
+   "pio": "PL14B",
+   "special": "",
+   "gateware_signal": "adc_d[9]"
+  },
+  "G3": {
+   "xy": [
+    158.6,
+    122.8
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B7:PL14C{slash}VREF1_7-PadG3)",
+   "bank": "7",
+   "pio": "PL14C",
+   "special": "VREF1_7",
+   "gateware_signal": ""
+  },
+  "G4": {
+   "xy": [
+    159.4,
+    122.8
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B7:PL11B-PadG4)",
+   "bank": "7",
+   "pio": "PL11B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G5": {
+   "xy": [
+    160.2,
+    122.8
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12C-B7:PL11A-PadG5)",
+   "bank": "7",
+   "pio": "PL11A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G6": {
+   "xy": [
+    161.0,
+    122.8
+   ],
+   "ring": 5,
+   "net": "1V1",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G7": {
+   "xy": [
+    161.8,
+    122.8
+   ],
+   "ring": 6,
+   "net": "1V1",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G8": {
+   "xy": [
+    162.6,
+    122.8
+   ],
+   "ring": 6,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G9": {
+   "xy": [
+    163.4,
+    122.8
+   ],
+   "ring": 6,
+   "net": "1V1",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G10": {
+   "xy": [
+    164.2,
+    122.8
+   ],
+   "ring": 6,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G11": {
+   "xy": [
+    165.0,
+    122.8
+   ],
+   "ring": 5,
+   "net": "2V5",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G12": {
+   "xy": [
+    165.8,
+    122.8
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12B-B2:PR11A-PadG12)",
+   "bank": "2",
+   "pio": "PR11A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G13": {
+   "xy": [
+    166.6,
+    122.8
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B2:PR11B-PadG13)",
+   "bank": "2",
+   "pio": "PR11B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "G14": {
+   "xy": [
+    167.4,
+    122.8
+   ],
+   "ring": 2,
+   "net": "FT_D19",
+   "bank": "2",
+   "pio": "PR14C",
+   "special": "VREF1_2",
+   "gateware_signal": "ft_data[19]"
+  },
+  "G15": {
+   "xy": [
+    168.2,
+    122.8
+   ],
+   "ring": 1,
+   "net": "FT_D11",
+   "bank": "2",
+   "pio": "PR14B",
+   "special": "",
+   "gateware_signal": "ft_data[11]"
+  },
+  "G16": {
+   "xy": [
+    169.0,
+    122.8
+   ],
+   "ring": 0,
+   "net": "FT_D5",
+   "bank": "2",
+   "pio": "PR20A",
+   "special": "GR_PCLK2_1",
+   "gateware_signal": "ft_data[5]"
+  },
+  "H1": {
+   "xy": [
+    157.0,
+    123.6
+   ],
+   "ring": 0,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H2": {
+   "xy": [
+    157.8,
+    123.6
+   ],
+   "ring": 1,
+   "net": "ADC_D11",
+   "bank": "7",
+   "pio": "PL20B",
+   "special": "",
+   "gateware_signal": "adc_d[11]"
+  },
+  "H3": {
+   "xy": [
+    158.6,
+    123.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B7:PL14D-PadH3)",
+   "bank": "7",
+   "pio": "PL14D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H4": {
+   "xy": [
+    159.4,
+    123.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B7:PL17B-PadH4)",
+   "bank": "7",
+   "pio": "PL17B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H5": {
+   "xy": [
+    160.2,
+    123.6
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12C-B7:PL17A-PadH5)",
+   "bank": "7",
+   "pio": "PL17A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H6": {
+   "xy": [
+    161.0,
+    123.6
+   ],
+   "ring": 5,
+   "net": "1V8_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H7": {
+   "xy": [
+    161.8,
+    123.6
+   ],
+   "ring": 6,
+   "net": "1V8_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H8": {
+   "xy": [
+    162.6,
+    123.6
+   ],
+   "ring": 7,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H9": {
+   "xy": [
+    163.4,
+    123.6
+   ],
+   "ring": 7,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H10": {
+   "xy": [
+    164.2,
+    123.6
+   ],
+   "ring": 6,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H11": {
+   "xy": [
+    165.0,
+    123.6
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H12": {
+   "xy": [
+    165.8,
+    123.6
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12B-B2:PR17A-PadH12)",
+   "bank": "2",
+   "pio": "PR17A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H13": {
+   "xy": [
+    166.6,
+    123.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B2:PR17B-PadH13)",
+   "bank": "2",
+   "pio": "PR17B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "H14": {
+   "xy": [
+    167.4,
+    123.6
+   ],
+   "ring": 2,
+   "net": "FT_D20",
+   "bank": "2",
+   "pio": "PR14D",
+   "special": "",
+   "gateware_signal": "ft_data[20]"
+  },
+  "H15": {
+   "xy": [
+    168.2,
+    123.6
+   ],
+   "ring": 1,
+   "net": "FT_D12",
+   "bank": "2",
+   "pio": "PR20B",
+   "special": "",
+   "gateware_signal": "ft_data[12]"
+  },
+  "H16": {
+   "xy": [
+    169.0,
+    123.6
+   ],
+   "ring": 0,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J1": {
+   "xy": [
+    157.0,
+    124.4
+   ],
+   "ring": 0,
+   "net": "ADC_D12",
+   "bank": "7",
+   "pio": "PL23A",
+   "special": "PCLKT7_1",
+   "gateware_signal": "adc_d[12]"
+  },
+  "J2": {
+   "xy": [
+    157.8,
+    124.4
+   ],
+   "ring": 1,
+   "net": "ADC_D13",
+   "bank": "7",
+   "pio": "PL23B",
+   "special": "PCLKC7_1",
+   "gateware_signal": "adc_d[13]"
+  },
+  "J3": {
+   "xy": [
+    158.6,
+    124.4
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B7:PL20C{slash}GR_PCLK7_0-PadJ3)",
+   "bank": "7",
+   "pio": "PL20C",
+   "special": "GR_PCLK7_0",
+   "gateware_signal": ""
+  },
+  "J4": {
+   "xy": [
+    159.4,
+    124.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B7:PL17C-PadJ4)",
+   "bank": "7",
+   "pio": "PL17C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J5": {
+   "xy": [
+    160.2,
+    124.4
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12C-B7:PL17D-PadJ5)",
+   "bank": "7",
+   "pio": "PL17D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J6": {
+   "xy": [
+    161.0,
+    124.4
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J7": {
+   "xy": [
+    161.8,
+    124.4
+   ],
+   "ring": 6,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J8": {
+   "xy": [
+    162.6,
+    124.4
+   ],
+   "ring": 7,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J9": {
+   "xy": [
+    163.4,
+    124.4
+   ],
+   "ring": 7,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J10": {
+   "xy": [
+    164.2,
+    124.4
+   ],
+   "ring": 6,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J11": {
+   "xy": [
+    165.0,
+    124.4
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J12": {
+   "xy": [
+    165.8,
+    124.4
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12B-B2:PR17D-PadJ12)",
+   "bank": "2",
+   "pio": "PR17D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J13": {
+   "xy": [
+    166.6,
+    124.4
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B2:PR17C-PadJ13)",
+   "bank": "2",
+   "pio": "PR17C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "J14": {
+   "xy": [
+    167.4,
+    124.4
+   ],
+   "ring": 2,
+   "net": "FT_D21",
+   "bank": "2",
+   "pio": "PR20C",
+   "special": "GR_PCLK2_0",
+   "gateware_signal": "ft_data[21]"
+  },
+  "J15": {
+   "xy": [
+    168.2,
+    124.4
+   ],
+   "ring": 1,
+   "net": "FT_D13",
+   "bank": "2",
+   "pio": "PR23B",
+   "special": "PCLKC2_1",
+   "gateware_signal": "ft_data[13]"
+  },
+  "J16": {
+   "xy": [
+    169.0,
+    124.4
+   ],
+   "ring": 0,
+   "net": "FT_D6",
+   "bank": "2",
+   "pio": "PR23A",
+   "special": "PCLKT2_1",
+   "gateware_signal": "ft_data[6]"
+  },
+  "K1": {
+   "xy": [
+    157.0,
+    125.2
+   ],
+   "ring": 0,
+   "net": "ADC_DCO",
+   "bank": "7",
+   "pio": "PL23C",
+   "special": "PCLKT7_0",
+   "gateware_signal": "adc_dco"
+  },
+  "K2": {
+   "xy": [
+    157.8,
+    125.2
+   ],
+   "ring": 1,
+   "net": "ADC_OR",
+   "bank": "7",
+   "pio": "PL23D",
+   "special": "PCLKC7_0",
+   "gateware_signal": "adc_or"
+  },
+  "K3": {
+   "xy": [
+    158.6,
+    125.2
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B7:PL20D-PadK3)",
+   "bank": "7",
+   "pio": "PL20D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K4": {
+   "xy": [
+    159.4,
+    125.2
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B6:PL29A{slash}GR_PCLK6_0-PadK4)",
+   "bank": "6",
+   "pio": "PL29A",
+   "special": "GR_PCLK6_0",
+   "gateware_signal": ""
+  },
+  "K5": {
+   "xy": [
+    160.2,
+    125.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12C-B6:PL29B-PadK5)",
+   "bank": "6",
+   "pio": "PL29B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K6": {
+   "xy": [
+    161.0,
+    125.2
+   ],
+   "ring": 5,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K7": {
+   "xy": [
+    161.8,
+    125.2
+   ],
+   "ring": 6,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K8": {
+   "xy": [
+    162.6,
+    125.2
+   ],
+   "ring": 6,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K9": {
+   "xy": [
+    163.4,
+    125.2
+   ],
+   "ring": 6,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K10": {
+   "xy": [
+    164.2,
+    125.2
+   ],
+   "ring": 6,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K11": {
+   "xy": [
+    165.0,
+    125.2
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K12": {
+   "xy": [
+    165.8,
+    125.2
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12B-B3:PR29B-PadK12)",
+   "bank": "3",
+   "pio": "PR29B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "K13": {
+   "xy": [
+    166.6,
+    125.2
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B3:PR29A{slash}GR_PCLK3_0-PadK13)",
+   "bank": "3",
+   "pio": "PR29A",
+   "special": "GR_PCLK3_0",
+   "gateware_signal": ""
+  },
+  "K14": {
+   "xy": [
+    167.4,
+    125.2
+   ],
+   "ring": 2,
+   "net": "FT_D22",
+   "bank": "2",
+   "pio": "PR20D",
+   "special": "",
+   "gateware_signal": "ft_data[22]"
+  },
+  "K15": {
+   "xy": [
+    168.2,
+    125.2
+   ],
+   "ring": 1,
+   "net": "FT_D14",
+   "bank": "2",
+   "pio": "PR23D",
+   "special": "PCLKC2_0",
+   "gateware_signal": "ft_data[14]"
+  },
+  "K16": {
+   "xy": [
+    169.0,
+    125.2
+   ],
+   "ring": 0,
+   "net": "FT_CLK",
+   "bank": "2",
+   "pio": "PR23C",
+   "special": "PCLKT2_0",
+   "gateware_signal": "ft_clk"
+  },
+  "L1": {
+   "xy": [
+    157.0,
+    126.0
+   ],
+   "ring": 0,
+   "net": "unconnected-(U12C-B6:PL26A{slash}PCLKT6_1-PadL1)",
+   "bank": "6",
+   "pio": "PL26A",
+   "special": "PCLKT6_1",
+   "gateware_signal": ""
+  },
+  "L2": {
+   "xy": [
+    157.8,
+    126.0
+   ],
+   "ring": 1,
+   "net": "/FPGA/LED1",
+   "bank": "6",
+   "pio": "PL26B",
+   "special": "PCLKC6_1",
+   "gateware_signal": "led[1]"
+  },
+  "L3": {
+   "xy": [
+    158.6,
+    126.0
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B6:PL32C-PadL3)",
+   "bank": "6",
+   "pio": "PL32C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L4": {
+   "xy": [
+    159.4,
+    126.0
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B6:PL29C{slash}GR_PCLK6_1-PadL4)",
+   "bank": "6",
+   "pio": "PL29C",
+   "special": "GR_PCLK6_1",
+   "gateware_signal": ""
+  },
+  "L5": {
+   "xy": [
+    160.2,
+    126.0
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12C-B6:PL29D-PadL5)",
+   "bank": "6",
+   "pio": "PL29D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L6": {
+   "xy": [
+    161.0,
+    126.0
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L7": {
+   "xy": [
+    161.8,
+    126.0
+   ],
+   "ring": 5,
+   "net": "2V5",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L8": {
+   "xy": [
+    162.6,
+    126.0
+   ],
+   "ring": 5,
+   "net": "1V1",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L9": {
+   "xy": [
+    163.4,
+    126.0
+   ],
+   "ring": 5,
+   "net": "1V1",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L10": {
+   "xy": [
+    164.2,
+    126.0
+   ],
+   "ring": 5,
+   "net": "1V1",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L11": {
+   "xy": [
+    165.0,
+    126.0
+   ],
+   "ring": 5,
+   "net": "3V3_D",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L12": {
+   "xy": [
+    165.8,
+    126.0
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12B-B3:PR29D-PadL12)",
+   "bank": "3",
+   "pio": "PR29D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "L13": {
+   "xy": [
+    166.6,
+    126.0
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B3:PR29C{slash}GR_PCLK3_1-PadL13)",
+   "bank": "3",
+   "pio": "PR29C",
+   "special": "GR_PCLK3_1",
+   "gateware_signal": ""
+  },
+  "L14": {
+   "xy": [
+    167.4,
+    126.0
+   ],
+   "ring": 2,
+   "net": "FT_WR_N",
+   "bank": "3",
+   "pio": "PR32C",
+   "special": "",
+   "gateware_signal": "ft_wr_n"
+  },
+  "L15": {
+   "xy": [
+    168.2,
+    126.0
+   ],
+   "ring": 1,
+   "net": "FT_D31",
+   "bank": "3",
+   "pio": "PR26B",
+   "special": "PCLKC3_1",
+   "gateware_signal": "ft_data[31]"
+  },
+  "L16": {
+   "xy": [
+    169.0,
+    126.0
+   ],
+   "ring": 0,
+   "net": "FT_D23",
+   "bank": "3",
+   "pio": "PR26A",
+   "special": "PCLKT3_1",
+   "gateware_signal": "ft_data[23]"
+  },
+  "M1": {
+   "xy": [
+    157.0,
+    126.8
+   ],
+   "ring": 0,
+   "net": "/FPGA/REF10M",
+   "bank": "6",
+   "pio": "PL26C",
+   "special": "PCLKT6_0",
+   "gateware_signal": "ref10m"
+  },
+  "M2": {
+   "xy": [
+    157.8,
+    126.8
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12C-B6:PL26D{slash}PCLKC6_0-PadM2)",
+   "bank": "6",
+   "pio": "PL26D",
+   "special": "PCLKC6_0",
+   "gateware_signal": ""
+  },
+  "M3": {
+   "xy": [
+    158.6,
+    126.8
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B6:PL32D-PadM3)",
+   "bank": "6",
+   "pio": "PL32D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "M4": {
+   "xy": [
+    159.4,
+    126.8
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B6:PL35C-PadM4)",
+   "bank": "6",
+   "pio": "PL35C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "M5": {
+   "xy": [
+    160.2,
+    126.8
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12C-B6:PL44C-PadM5)",
+   "bank": "6",
+   "pio": "PL44C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "M6": {
+   "xy": [
+    161.0,
+    126.8
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12C-B6:PL47A-PadM6)",
+   "bank": "6",
+   "pio": "PL47A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "M7": {
+   "xy": [
+    161.8,
+    126.8
+   ],
+   "ring": 4,
+   "net": "/FPGA/FLASH_IO2",
+   "bank": "8",
+   "pio": "PB9B",
+   "special": "D2/IO2",
+   "gateware_signal": ""
+  },
+  "M8": {
+   "xy": [
+    162.6,
+    126.8
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12D-B8:PB15B{slash}DOUT{slash}CSON-PadM8)",
+   "bank": "8",
+   "pio": "PB15B",
+   "special": "DOUT/CSON",
+   "gateware_signal": ""
+  },
+  "M9": {
+   "xy": [
+    163.4,
+    126.8
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12D-B8:PB18A{slash}WRITEN-PadM9)",
+   "bank": "8",
+   "pio": "PB18A",
+   "special": "WRITEN",
+   "gateware_signal": ""
+  },
+  "M10": {
+   "xy": [
+    164.2,
+    126.8
+   ],
+   "ring": 4,
+   "net": "/FPGA/FPGA_TDO",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "M11": {
+   "xy": [
+    165.0,
+    126.8
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12B-B3:PR47A-PadM11)",
+   "bank": "3",
+   "pio": "PR47A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "M12": {
+   "xy": [
+    165.8,
+    126.8
+   ],
+   "ring": 4,
+   "net": "unconnected-(U12B-B3:PR44C-PadM12)",
+   "bank": "3",
+   "pio": "PR44C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "M13": {
+   "xy": [
+    166.6,
+    126.8
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B3:PR35C-PadM13)",
+   "bank": "3",
+   "pio": "PR35C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "M14": {
+   "xy": [
+    167.4,
+    126.8
+   ],
+   "ring": 2,
+   "net": "FT_RD_N",
+   "bank": "3",
+   "pio": "PR32D",
+   "special": "",
+   "gateware_signal": "ft_rd_n"
+  },
+  "M15": {
+   "xy": [
+    168.2,
+    126.8
+   ],
+   "ring": 1,
+   "net": "FT_BE0",
+   "bank": "3",
+   "pio": "PR26D",
+   "special": "PCLKC3_0",
+   "gateware_signal": "ft_be[0]"
+  },
+  "M16": {
+   "xy": [
+    169.0,
+    126.8
+   ],
+   "ring": 0,
+   "net": "FT_D24",
+   "bank": "3",
+   "pio": "PR26C",
+   "special": "PCLKT3_0",
+   "gateware_signal": "ft_data[24]"
+  },
+  "N1": {
+   "xy": [
+    157.0,
+    127.6
+   ],
+   "ring": 0,
+   "net": "LMK_SCL",
+   "bank": "6",
+   "pio": "PL32A",
+   "special": "",
+   "gateware_signal": "lmk_scl"
+  },
+  "N2": {
+   "xy": [
+    157.8,
+    127.6
+   ],
+   "ring": 1,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N3": {
+   "xy": [
+    158.6,
+    127.6
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B6:PL35D-PadN3)",
+   "bank": "6",
+   "pio": "PL35D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N4": {
+   "xy": [
+    159.4,
+    127.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B6:PL38A-PadN4)",
+   "bank": "6",
+   "pio": "PL38A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N5": {
+   "xy": [
+    160.2,
+    127.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B6:PL44D-PadN5)",
+   "bank": "6",
+   "pio": "PL44D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N6": {
+   "xy": [
+    161.0,
+    127.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12C-B6:PL47B-PadN6)",
+   "bank": "6",
+   "pio": "PL47B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N7": {
+   "xy": [
+    161.8,
+    127.6
+   ],
+   "ring": 3,
+   "net": "/FPGA/FLASH_IO3",
+   "bank": "8",
+   "pio": "PB9A",
+   "special": "D3/IO3",
+   "gateware_signal": ""
+  },
+  "N8": {
+   "xy": [
+    162.6,
+    127.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12D-B8:PB15A{slash}HOLDN{slash}DI{slash}BUSY{slash}CSSPIN{slash}CEN-PadN8)",
+   "bank": "8",
+   "pio": "PB15A",
+   "special": "HOLDN/DI/BUSY/CSSPIN/CEN",
+   "gateware_signal": ""
+  },
+  "N9": {
+   "xy": [
+    163.4,
+    127.6
+   ],
+   "ring": 3,
+   "net": "/FPGA/CCLK_FPGA",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N10": {
+   "xy": [
+    164.2,
+    127.6
+   ],
+   "ring": 3,
+   "net": "/FPGA/FPGA_CFG0",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N11": {
+   "xy": [
+    165.0,
+    127.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B3:PR47B-PadN11)",
+   "bank": "3",
+   "pio": "PR47B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N12": {
+   "xy": [
+    165.8,
+    127.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B3:PR44D-PadN12)",
+   "bank": "3",
+   "pio": "PR44D",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N13": {
+   "xy": [
+    166.6,
+    127.6
+   ],
+   "ring": 3,
+   "net": "unconnected-(U12B-B3:PR38A-PadN13)",
+   "bank": "3",
+   "pio": "PR38A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N14": {
+   "xy": [
+    167.4,
+    127.6
+   ],
+   "ring": 2,
+   "net": "FT_OE_N",
+   "bank": "3",
+   "pio": "PR35D",
+   "special": "",
+   "gateware_signal": "ft_oe_n"
+  },
+  "N15": {
+   "xy": [
+    168.2,
+    127.6
+   ],
+   "ring": 1,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "N16": {
+   "xy": [
+    169.0,
+    127.6
+   ],
+   "ring": 0,
+   "net": "FT_D25",
+   "bank": "3",
+   "pio": "PR32A",
+   "special": "",
+   "gateware_signal": "ft_data[25]"
+  },
+  "P1": {
+   "xy": [
+    157.0,
+    128.4
+   ],
+   "ring": 0,
+   "net": "LMK_SDA",
+   "bank": "6",
+   "pio": "PL35A",
+   "special": "",
+   "gateware_signal": "lmk_sda"
+  },
+  "P2": {
+   "xy": [
+    157.8,
+    128.4
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12C-B6:PL32B-PadP2)",
+   "bank": "6",
+   "pio": "PL32B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "P3": {
+   "xy": [
+    158.6,
+    128.4
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B6:PL38B-PadP3)",
+   "bank": "6",
+   "pio": "PL38B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "P4": {
+   "xy": [
+    159.4,
+    128.4
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B6:PL41A-PadP4)",
+   "bank": "6",
+   "pio": "PL41A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "P5": {
+   "xy": [
+    160.2,
+    128.4
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B6:PL47D{slash}LLC_GPLL0C_IN-PadP5)",
+   "bank": "6",
+   "pio": "PL47D",
+   "special": "LLC_GPLL0C_IN",
+   "gateware_signal": ""
+  },
+  "P6": {
+   "xy": [
+    161.0,
+    128.4
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12C-B6:PL47C{slash}LLC_GPLL0T_IN-PadP6)",
+   "bank": "6",
+   "pio": "PL47C",
+   "special": "LLC_GPLL0T_IN",
+   "gateware_signal": ""
+  },
+  "P7": {
+   "xy": [
+    161.8,
+    128.4
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12D-B8:PB6B{slash}D4{slash}MOSI2{slash}IO4-PadP7)",
+   "bank": "8",
+   "pio": "PB6B",
+   "special": "D4/MOSI2/IO4",
+   "gateware_signal": ""
+  },
+  "P8": {
+   "xy": [
+    162.6,
+    128.4
+   ],
+   "ring": 2,
+   "net": "unconnected-(U12D-B8:PB13B{slash}CS1N-PadP8)",
+   "bank": "8",
+   "pio": "PB13B",
+   "special": "CS1N",
+   "gateware_signal": ""
+  },
+  "P9": {
+   "xy": [
+    163.4,
+    128.4
+   ],
+   "ring": 2,
+   "net": "/FPGA/FPGA_DONE",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "P10": {
+   "xy": [
+    164.2,
+    128.4
+   ],
+   "ring": 2,
+   "net": "/FPGA/FPGA_CFG1",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "P11": {
+   "xy": [
+    165.0,
+    128.4
+   ],
+   "ring": 2,
+   "net": "FT_RESET_N",
+   "bank": "3",
+   "pio": "PR47C",
+   "special": "LRC_GPLL0T_IN",
+   "gateware_signal": "ft_reset_n"
+  },
+  "P12": {
+   "xy": [
+    165.8,
+    128.4
+   ],
+   "ring": 2,
+   "net": "FT_WAKEUP_N",
+   "bank": "3",
+   "pio": "PR47D",
+   "special": "LRC_GPLL0C_IN",
+   "gateware_signal": "ft_wakeup_n"
+  },
+  "P13": {
+   "xy": [
+    166.6,
+    128.4
+   ],
+   "ring": 2,
+   "net": "FT_GPIO0",
+   "bank": "3",
+   "pio": "PR41A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "P14": {
+   "xy": [
+    167.4,
+    128.4
+   ],
+   "ring": 2,
+   "net": "FT_GPIO1",
+   "bank": "3",
+   "pio": "PR38B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "P15": {
+   "xy": [
+    168.2,
+    128.4
+   ],
+   "ring": 1,
+   "net": "FT_BE1",
+   "bank": "3",
+   "pio": "PR32B",
+   "special": "",
+   "gateware_signal": "ft_be[1]"
+  },
+  "P16": {
+   "xy": [
+    169.0,
+    128.4
+   ],
+   "ring": 0,
+   "net": "FT_D26",
+   "bank": "3",
+   "pio": "PR35A",
+   "special": "",
+   "gateware_signal": "ft_data[26]"
+  },
+  "R1": {
+   "xy": [
+    157.0,
+    129.2
+   ],
+   "ring": 0,
+   "net": "RLY_PAD",
+   "bank": "6",
+   "pio": "PL35B",
+   "special": "VREF1_6",
+   "gateware_signal": "rly_pad"
+  },
+  "R2": {
+   "xy": [
+    157.8,
+    129.2
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12C-B6:PL38C-PadR2)",
+   "bank": "6",
+   "pio": "PL38C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "R3": {
+   "xy": [
+    158.6,
+    129.2
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12C-B6:PL41B-PadR3)",
+   "bank": "6",
+   "pio": "PL41B",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "R4": {
+   "xy": [
+    159.4,
+    129.2
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12C-B6:PL41C-PadR4)",
+   "bank": "6",
+   "pio": "PL41C",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "R5": {
+   "xy": [
+    160.2,
+    129.2
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12C-B6:PL44A-PadR5)",
+   "bank": "6",
+   "pio": "PL44A",
+   "special": "",
+   "gateware_signal": ""
+  },
+  "R6": {
+   "xy": [
+    161.0,
+    129.2
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12D-B8:PB4B{slash}D6{slash}IO6-PadR6)",
+   "bank": "8",
+   "pio": "PB4B",
+   "special": "D6/IO6",
+   "gateware_signal": ""
+  },
+  "R7": {
+   "xy": [
+    161.8,
+    129.2
+   ],
+   "ring": 1,
+   "net": "unconnected-(U12D-B8:PB6A{slash}D5{slash}MISO2{slash}IO5-PadR7)",
+   "bank": "8",
+   "pio": "PB6A",
+   "special": "D5/MISO2/IO5",
+   "gateware_signal": ""
+  },
+  "R8": {
+   "xy": [
+    162.6,
+    129.2
+   ],
+   "ring": 1,
+   "net": "/FPGA/FLASH_CS_N",
+   "bank": "8",
+   "pio": "PB13A",
+   "special": "SN/CSN",
+   "gateware_signal": ""
+  },
+  "R9": {
+   "xy": [
+    163.4,
+    129.2
+   ],
+   "ring": 1,
+   "net": "/FPGA/FPGA_PROGRAM_N",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "R10": {
+   "xy": [
+    164.2,
+    129.2
+   ],
+   "ring": 1,
+   "net": "/FPGA/FPGA_CFG2",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "R11": {
+   "xy": [
+    165.0,
+    129.2
+   ],
+   "ring": 1,
+   "net": "/FPGA/FPGA_TDI",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "R12": {
+   "xy": [
+    165.8,
+    129.2
+   ],
+   "ring": 1,
+   "net": "FT_BE2",
+   "bank": "3",
+   "pio": "PR44A",
+   "special": "",
+   "gateware_signal": "ft_be[2]"
+  },
+  "R13": {
+   "xy": [
+    166.6,
+    129.2
+   ],
+   "ring": 1,
+   "net": "FT_BE3",
+   "bank": "3",
+   "pio": "PR41C",
+   "special": "",
+   "gateware_signal": "ft_be[3]"
+  },
+  "R14": {
+   "xy": [
+    167.4,
+    129.2
+   ],
+   "ring": 1,
+   "net": "FT_TXE_N",
+   "bank": "3",
+   "pio": "PR41B",
+   "special": "",
+   "gateware_signal": "ft_txe_n"
+  },
+  "R15": {
+   "xy": [
+    168.2,
+    129.2
+   ],
+   "ring": 1,
+   "net": "FT_RXF_N",
+   "bank": "3",
+   "pio": "PR38C",
+   "special": "",
+   "gateware_signal": "ft_rxf_n"
+  },
+  "R16": {
+   "xy": [
+    169.0,
+    129.2
+   ],
+   "ring": 0,
+   "net": "FT_D27",
+   "bank": "3",
+   "pio": "PR35B",
+   "special": "VREF1_3",
+   "gateware_signal": "ft_data[27]"
+  },
+  "T1": {
+   "xy": [
+    157.0,
+    130.0
+   ],
+   "ring": 0,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "T2": {
+   "xy": [
+    157.8,
+    130.0
+   ],
+   "ring": 0,
+   "net": "RLY_LNA",
+   "bank": "6",
+   "pio": "PL38D",
+   "special": "",
+   "gateware_signal": "rly_lna"
+  },
+  "T3": {
+   "xy": [
+    158.6,
+    130.0
+   ],
+   "ring": 0,
+   "net": "LNA_EN",
+   "bank": "6",
+   "pio": "PL41D",
+   "special": "",
+   "gateware_signal": "lna_en"
+  },
+  "T4": {
+   "xy": [
+    159.4,
+    130.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/LED0",
+   "bank": "6",
+   "pio": "PL44B",
+   "special": "",
+   "gateware_signal": "led[0]"
+  },
+  "T5": {
+   "xy": [
+    160.2,
+    130.0
+   ],
+   "ring": 0,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "T6": {
+   "xy": [
+    161.0,
+    130.0
+   ],
+   "ring": 0,
+   "net": "unconnected-(U12D-B8:PB4A{slash}D7{slash}IO7-PadT6)",
+   "bank": "8",
+   "pio": "PB4A",
+   "special": "D7/IO7",
+   "gateware_signal": ""
+  },
+  "T7": {
+   "xy": [
+    161.8,
+    130.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/FLASH_IO1",
+   "bank": "8",
+   "pio": "PB11A",
+   "special": "D1/MISO/IO1",
+   "gateware_signal": ""
+  },
+  "T8": {
+   "xy": [
+    162.6,
+    130.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/FLASH_IO0",
+   "bank": "8",
+   "pio": "PB11B",
+   "special": "D0/MOSI/IO0",
+   "gateware_signal": ""
+  },
+  "T9": {
+   "xy": [
+    163.4,
+    130.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/FPGA_INIT_N",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "T10": {
+   "xy": [
+    164.2,
+    130.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/FPGA_TCK",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "T11": {
+   "xy": [
+    165.0,
+    130.0
+   ],
+   "ring": 0,
+   "net": "/FPGA/FPGA_TMS",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "T12": {
+   "xy": [
+    165.8,
+    130.0
+   ],
+   "ring": 0,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  },
+  "T13": {
+   "xy": [
+    166.6,
+    130.0
+   ],
+   "ring": 0,
+   "net": "FT_D28",
+   "bank": "3",
+   "pio": "PR44B",
+   "special": "",
+   "gateware_signal": "ft_data[28]"
+  },
+  "T14": {
+   "xy": [
+    167.4,
+    130.0
+   ],
+   "ring": 0,
+   "net": "FT_D29",
+   "bank": "3",
+   "pio": "PR41D",
+   "special": "",
+   "gateware_signal": "ft_data[29]"
+  },
+  "T15": {
+   "xy": [
+    168.2,
+    130.0
+   ],
+   "ring": 0,
+   "net": "FT_D30",
+   "bank": "3",
+   "pio": "PR38D",
+   "special": "",
+   "gateware_signal": "ft_data[30]"
+  },
+  "T16": {
+   "xy": [
+    169.0,
+    130.0
+   ],
+   "ring": 0,
+   "net": "GND",
+   "bank": null,
+   "pio": null,
+   "special": "",
+   "gateware_signal": ""
+  }
+ },
+ "ft601_pins": {
+  "": {
+   "xy": [
+    186.1,
+    121.06
+   ],
+   "net": "",
+   "datasheet_name": ""
+  },
+  "1": {
+   "xy": [
+    180.4,
+    127.438
+   ],
+   "net": "GND",
+   "datasheet_name": "GND"
+  },
+  "2": {
+   "xy": [
+    180.8,
+    127.438
+   ],
+   "net": "/USB 3 bridge/FT_1V0",
+   "datasheet_name": "AVDD"
+  },
+  "3": {
+   "xy": [
+    181.2,
+    127.438
+   ],
+   "net": "/USB 3 bridge/FT_1V0",
+   "datasheet_name": "VD10"
+  },
+  "4": {
+   "xy": [
+    181.6,
+    127.438
+   ],
+   "net": "FT_BE0",
+   "datasheet_name": "BE_0"
+  },
+  "5": {
+   "xy": [
+    182.0,
+    127.438
+   ],
+   "net": "FT_BE1",
+   "datasheet_name": "BE_1"
+  },
+  "6": {
+   "xy": [
+    182.4,
+    127.438
+   ],
+   "net": "FT_BE2",
+   "datasheet_name": "BE_2"
+  },
+  "7": {
+   "xy": [
+    182.8,
+    127.438
+   ],
+   "net": "FT_BE3",
+   "datasheet_name": "BE_3"
+  },
+  "8": {
+   "xy": [
+    183.2,
+    127.438
+   ],
+   "net": "FT_TXE_N",
+   "datasheet_name": "~{TXE}"
+  },
+  "9": {
+   "xy": [
+    183.6,
+    127.438
+   ],
+   "net": "FT_RXF_N",
+   "datasheet_name": "~{RXF}"
+  },
+  "10": {
+   "xy": [
+    184.0,
+    127.438
+   ],
+   "net": "/USB 3 bridge/FT_SIWU",
+   "datasheet_name": "~{SIWU}"
+  },
+  "11": {
+   "xy": [
+    184.4,
+    127.438
+   ],
+   "net": "FT_WR_N",
+   "datasheet_name": "~{WR}"
+  },
+  "12": {
+   "xy": [
+    184.8,
+    127.438
+   ],
+   "net": "FT_RD_N",
+   "datasheet_name": "~{RD}"
+  },
+  "13": {
+   "xy": [
+    185.2,
+    127.438
+   ],
+   "net": "FT_OE_N",
+   "datasheet_name": "~{OE}"
+  },
+  "14": {
+   "xy": [
+    185.6,
+    127.438
+   ],
+   "net": "3V3_D",
+   "datasheet_name": "VCCIO"
+  },
+  "15": {
+   "xy": [
+    186.0,
+    127.438
+   ],
+   "net": "FT_RESET_N",
+   "datasheet_name": "~{RESET}"
+  },
+  "16": {
+   "xy": [
+    186.4,
+    127.438
+   ],
+   "net": "FT_WAKEUP_N",
+   "datasheet_name": "~{WAKEUP}"
+  },
+  "17": {
+   "xy": [
+    186.8,
+    127.438
+   ],
+   "net": "FT_GPIO0",
+   "datasheet_name": "GPIO0"
+  },
+  "18": {
+   "xy": [
+    187.2,
+    127.438
+   ],
+   "net": "FT_GPIO1",
+   "datasheet_name": "GPIO1"
+  },
+  "19": {
+   "xy": [
+    187.6,
+    127.438
+   ],
+   "net": "unconnected-(U11-Reserved-Pad19)",
+   "datasheet_name": "Reserved"
+  },
+  "20": {
+   "xy": [
+    188.438,
+    126.6
+   ],
+   "net": "3V3_D",
+   "datasheet_name": "VCC33"
+  },
+  "21": {
+   "xy": [
+    188.438,
+    126.2
+   ],
+   "net": "/USB 3 bridge/FT_XI",
+   "datasheet_name": "XI"
+  },
+  "22": {
+   "xy": [
+    188.438,
+    125.8
+   ],
+   "net": "/USB 3 bridge/FT_XO",
+   "datasheet_name": "XO"
+  },
+  "23": {
+   "xy": [
+    188.438,
+    125.4
+   ],
+   "net": "/USB 3 bridge/USB_D_P",
+   "datasheet_name": "DP"
+  },
+  "24": {
+   "xy": [
+    188.438,
+    125.0
+   ],
+   "net": "3V3_D",
+   "datasheet_name": "VCC33"
+  },
+  "25": {
+   "xy": [
+    188.438,
+    124.6
+   ],
+   "net": "/USB 3 bridge/USB_D_N",
+   "datasheet_name": "DM"
+  },
+  "26": {
+   "xy": [
+    188.438,
+    124.2
+   ],
+   "net": "GND",
+   "datasheet_name": "GND"
+  },
+  "27": {
+   "xy": [
+    188.438,
+    123.8
+   ],
+   "net": "/USB 3 bridge/FT_RREF",
+   "datasheet_name": "RREF"
+  },
+  "28": {
+   "xy": [
+    188.438,
+    123.4
+   ],
+   "net": "/USB 3 bridge/FT_VDDA",
+   "datasheet_name": "VDDA"
+  },
+  "29": {
+   "xy": [
+    188.438,
+    123.0
+   ],
+   "net": "GND",
+   "datasheet_name": "GND"
+  },
+  "30": {
+   "xy": [
+    188.438,
+    122.6
+   ],
+   "net": "/USB 3 bridge/FT_1V0",
+   "datasheet_name": "VD10"
+  },
+  "31": {
+   "xy": [
+    188.438,
+    122.2
+   ],
+   "net": "/USB 3 bridge/FT_TXN",
+   "datasheet_name": "TODN"
+  },
+  "32": {
+   "xy": [
+    188.438,
+    121.8
+   ],
+   "net": "/USB 3 bridge/FT_TXP",
+   "datasheet_name": "TODP"
+  },
+  "33": {
+   "xy": [
+    188.438,
+    121.4
+   ],
+   "net": "/USB 3 bridge/FT_1V0",
+   "datasheet_name": "VD10"
+  },
+  "34": {
+   "xy": [
+    188.438,
+    121.0
+   ],
+   "net": "/USB 3 bridge/USB_SSRXN",
+   "datasheet_name": "RIDN"
+  },
+  "35": {
+   "xy": [
+    188.438,
+    120.6
+   ],
+   "net": "/USB 3 bridge/USB_SSRXP",
+   "datasheet_name": "RIDP"
+  },
+  "36": {
+   "xy": [
+    188.438,
+    120.2
+   ],
+   "net": "GND",
+   "datasheet_name": "GND"
+  },
+  "37": {
+   "xy": [
+    188.438,
+    119.8
+   ],
+   "net": "/USB 3 bridge/FT_VBUS",
+   "datasheet_name": "VBUS"
+  },
+  "38": {
+   "xy": [
+    188.438,
+    119.4
+   ],
+   "net": "3V3_D",
+   "datasheet_name": "VCC33"
+  },
+  "39": {
+   "xy": [
+    187.6,
+    118.562
+   ],
+   "net": "/USB 3 bridge/FT_1V0",
+   "datasheet_name": "DV10"
+  },
+  "40": {
+   "xy": [
+    187.2,
+    118.562
+   ],
+   "net": "FT_D0",
+   "datasheet_name": "DATA_0"
+  },
+  "41": {
+   "xy": [
+    186.8,
+    118.562
+   ],
+   "net": "FT_D1",
+   "datasheet_name": "DATA_1"
+  },
+  "42": {
+   "xy": [
+    186.4,
+    118.562
+   ],
+   "net": "FT_D2",
+   "datasheet_name": "DATA_2"
+  },
+  "43": {
+   "xy": [
+    186.0,
+    118.562
+   ],
+   "net": "FT_D3",
+   "datasheet_name": "DATA_3"
+  },
+  "44": {
+   "xy": [
+    185.6,
+    118.562
+   ],
+   "net": "FT_D4",
+   "datasheet_name": "DATA_4"
+  },
+  "45": {
+   "xy": [
+    185.2,
+    118.562
+   ],
+   "net": "FT_D5",
+   "datasheet_name": "DATA_5"
+  },
+  "46": {
+   "xy": [
+    184.8,
+    118.562
+   ],
+   "net": "FT_D6",
+   "datasheet_name": "DATA_6"
+  },
+  "47": {
+   "xy": [
+    184.4,
+    118.562
+   ],
+   "net": "FT_D7",
+   "datasheet_name": "DATA_7"
+  },
+  "48": {
+   "xy": [
+    184.0,
+    118.562
+   ],
+   "net": "/USB 3 bridge/FT_1V0",
+   "datasheet_name": "VD10"
+  },
+  "49": {
+   "xy": [
+    183.6,
+    118.562
+   ],
+   "net": "3V3_D",
+   "datasheet_name": "VCCIO"
+  },
+  "50": {
+   "xy": [
+    183.2,
+    118.562
+   ],
+   "net": "FT_D8",
+   "datasheet_name": "DATA_8"
+  },
+  "51": {
+   "xy": [
+    182.8,
+    118.562
+   ],
+   "net": "FT_D9",
+   "datasheet_name": "DATA_9"
+  },
+  "52": {
+   "xy": [
+    182.4,
+    118.562
+   ],
+   "net": "FT_D10",
+   "datasheet_name": "DATA_10"
+  },
+  "53": {
+   "xy": [
+    182.0,
+    118.562
+   ],
+   "net": "FT_D11",
+   "datasheet_name": "DATA_11"
+  },
+  "54": {
+   "xy": [
+    181.6,
+    118.562
+   ],
+   "net": "FT_D12",
+   "datasheet_name": "DATA_12"
+  },
+  "55": {
+   "xy": [
+    181.2,
+    118.562
+   ],
+   "net": "FT_D13",
+   "datasheet_name": "DATA_13"
+  },
+  "56": {
+   "xy": [
+    180.8,
+    118.562
+   ],
+   "net": "FT_D14",
+   "datasheet_name": "DATA_14"
+  },
+  "57": {
+   "xy": [
+    180.4,
+    118.562
+   ],
+   "net": "FT_D15",
+   "datasheet_name": "DATA_15"
+  },
+  "58": {
+   "xy": [
+    179.562,
+    119.4
+   ],
+   "net": "FT_CLK",
+   "datasheet_name": "CLK"
+  },
+  "59": {
+   "xy": [
+    179.562,
+    119.8
+   ],
+   "net": "3V3_D",
+   "datasheet_name": "VCCIO"
+  },
+  "60": {
+   "xy": [
+    179.562,
+    120.2
+   ],
+   "net": "FT_D16",
+   "datasheet_name": "DATA_16"
+  },
+  "61": {
+   "xy": [
+    179.562,
+    120.6
+   ],
+   "net": "FT_D17",
+   "datasheet_name": "DATA_17"
+  },
+  "62": {
+   "xy": [
+    179.562,
+    121.0
+   ],
+   "net": "FT_D18",
+   "datasheet_name": "DATA_18"
+  },
+  "63": {
+   "xy": [
+    179.562,
+    121.4
+   ],
+   "net": "FT_D19",
+   "datasheet_name": "DATA_19"
+  },
+  "64": {
+   "xy": [
+    179.562,
+    121.8
+   ],
+   "net": "FT_D20",
+   "datasheet_name": "DATA_20"
+  },
+  "65": {
+   "xy": [
+    179.562,
+    122.2
+   ],
+   "net": "FT_D21",
+   "datasheet_name": "DATA_21"
+  },
+  "66": {
+   "xy": [
+    179.562,
+    122.6
+   ],
+   "net": "FT_D22",
+   "datasheet_name": "DATA_22"
+  },
+  "67": {
+   "xy": [
+    179.562,
+    123.0
+   ],
+   "net": "FT_D23",
+   "datasheet_name": "DATA_23"
+  },
+  "68": {
+   "xy": [
+    179.562,
+    123.4
+   ],
+   "net": "3V3_D",
+   "datasheet_name": "VCCIO"
+  },
+  "69": {
+   "xy": [
+    179.562,
+    123.8
+   ],
+   "net": "FT_D24",
+   "datasheet_name": "DATA_24"
+  },
+  "70": {
+   "xy": [
+    179.562,
+    124.2
+   ],
+   "net": "FT_D25",
+   "datasheet_name": "DATA_25"
+  },
+  "71": {
+   "xy": [
+    179.562,
+    124.6
+   ],
+   "net": "FT_D26",
+   "datasheet_name": "DATA_26"
+  },
+  "72": {
+   "xy": [
+    179.562,
+    125.0
+   ],
+   "net": "FT_D27",
+   "datasheet_name": "DATA_27"
+  },
+  "73": {
+   "xy": [
+    179.562,
+    125.4
+   ],
+   "net": "FT_D28",
+   "datasheet_name": "DATA_28"
+  },
+  "74": {
+   "xy": [
+    179.562,
+    125.8
+   ],
+   "net": "FT_D29",
+   "datasheet_name": "DATA_29"
+  },
+  "75": {
+   "xy": [
+    179.562,
+    126.2
+   ],
+   "net": "FT_D30",
+   "datasheet_name": "DATA_30"
+  },
+  "76": {
+   "xy": [
+    179.562,
+    126.6
+   ],
+   "net": "FT_D31",
+   "datasheet_name": "DATA_31"
+  },
+  "77": {
+   "xy": [
+    184.0,
+    123.0
+   ],
+   "net": "GND",
+   "datasheet_name": "GND"
+  }
+ },
+ "adc_pins": {
+  "": {
+   "xy": [
+    141.875,
+    140.125
+   ],
+   "net": "",
+   "datasheet_name": ""
+  },
+  "1": {
+   "xy": [
+    139.25,
+    143.438
+   ],
+   "net": "/ADC and clock/ADC_CLKP",
+   "datasheet_name": "CLK+"
+  },
+  "2": {
+   "xy": [
+    139.75,
+    143.438
+   ],
+   "net": "/ADC and clock/ADC_CLKN",
+   "datasheet_name": "CLK-"
+  },
+  "3": {
+   "xy": [
+    140.25,
+    143.438
+   ],
+   "net": "1V8_A",
+   "datasheet_name": "AVDD"
+  },
+  "4": {
+   "xy": [
+    140.75,
+    143.438
+   ],
+   "net": "ADC_CSB",
+   "datasheet_name": "~{CSB}"
+  },
+  "5": {
+   "xy": [
+    141.25,
+    143.438
+   ],
+   "net": "ADC_SCLK",
+   "datasheet_name": "SCLK/DFS"
+  },
+  "6": {
+   "xy": [
+    141.75,
+    143.438
+   ],
+   "net": "ADC_SDIO",
+   "datasheet_name": "SDIO/PDWN"
+  },
+  "7": {
+   "xy": [
+    142.25,
+    143.438
+   ],
+   "net": "/ADC and clock/ADC_D0_R",
+   "datasheet_name": "D0"
+  },
+  "8": {
+   "xy": [
+    142.75,
+    143.438
+   ],
+   "net": "/ADC and clock/ADC_D1_R",
+   "datasheet_name": "D1"
+  },
+  "9": {
+   "xy": [
+    143.438,
+    142.75
+   ],
+   "net": "/ADC and clock/ADC_D2_R",
+   "datasheet_name": "D2"
+  },
+  "10": {
+   "xy": [
+    143.438,
+    142.25
+   ],
+   "net": "/ADC and clock/ADC_D3_R",
+   "datasheet_name": "D3"
+  },
+  "11": {
+   "xy": [
+    143.438,
+    141.75
+   ],
+   "net": "/ADC and clock/ADC_D4_R",
+   "datasheet_name": "D4"
+  },
+  "12": {
+   "xy": [
+    143.438,
+    141.25
+   ],
+   "net": "/ADC and clock/ADC_D5_R",
+   "datasheet_name": "D5"
+  },
+  "13": {
+   "xy": [
+    143.438,
+    140.75
+   ],
+   "net": "1V8_D",
+   "datasheet_name": "DRVDD"
+  },
+  "14": {
+   "xy": [
+    143.438,
+    140.25
+   ],
+   "net": "/ADC and clock/ADC_D6_R",
+   "datasheet_name": "D6"
+  },
+  "15": {
+   "xy": [
+    143.438,
+    139.75
+   ],
+   "net": "/ADC and clock/ADC_D7_R",
+   "datasheet_name": "D7"
+  },
+  "16": {
+   "xy": [
+    143.438,
+    139.25
+   ],
+   "net": "/ADC and clock/ADC_D8_R",
+   "datasheet_name": "D8"
+  },
+  "17": {
+   "xy": [
+    142.75,
+    138.562
+   ],
+   "net": "/ADC and clock/ADC_D9_R",
+   "datasheet_name": "D9"
+  },
+  "18": {
+   "xy": [
+    142.25,
+    138.562
+   ],
+   "net": "/ADC and clock/ADC_D10_R",
+   "datasheet_name": "D10"
+  },
+  "19": {
+   "xy": [
+    141.75,
+    138.562
+   ],
+   "net": "/ADC and clock/ADC_D11_R",
+   "datasheet_name": "D11"
+  },
+  "20": {
+   "xy": [
+    141.25,
+    138.562
+   ],
+   "net": "/ADC and clock/ADC_D12_R",
+   "datasheet_name": "D12"
+  },
+  "21": {
+   "xy": [
+    140.75,
+    138.562
+   ],
+   "net": "/ADC and clock/ADC_D13_R",
+   "datasheet_name": "D13"
+  },
+  "22": {
+   "xy": [
+    140.25,
+    138.562
+   ],
+   "net": "/ADC and clock/ADC_DCO_R",
+   "datasheet_name": "DCO"
+  },
+  "23": {
+   "xy": [
+    139.75,
+    138.562
+   ],
+   "net": "/ADC and clock/ADC_OR_R",
+   "datasheet_name": "MODE/OR"
+  },
+  "24": {
+   "xy": [
+    139.25,
+    138.562
+   ],
+   "net": "1V8_A",
+   "datasheet_name": "AVDD"
+  },
+  "25": {
+   "xy": [
+    138.562,
+    139.25
+   ],
+   "net": "/ADC and clock/ADC_VREF",
+   "datasheet_name": "VREF"
+  },
+  "26": {
+   "xy": [
+    138.562,
+    139.75
+   ],
+   "net": "GND",
+   "datasheet_name": "SENSE"
+  },
+  "27": {
+   "xy": [
+    138.562,
+    140.25
+   ],
+   "net": "ADC_VCM",
+   "datasheet_name": "VCM"
+  },
+  "28": {
+   "xy": [
+    138.562,
+    140.75
+   ],
+   "net": "/ADC and clock/ADC_RBIAS",
+   "datasheet_name": "RBIAS"
+  },
+  "29": {
+   "xy": [
+    138.562,
+    141.25
+   ],
+   "net": "1V8_A",
+   "datasheet_name": "AVDD"
+  },
+  "30": {
+   "xy": [
+    138.562,
+    141.75
+   ],
+   "net": "ADC_VINN",
+   "datasheet_name": "VIN-"
+  },
+  "31": {
+   "xy": [
+    138.562,
+    142.25
+   ],
+   "net": "ADC_VINP",
+   "datasheet_name": "VIN+"
+  },
+  "32": {
+   "xy": [
+    138.562,
+    142.75
+   ],
+   "net": "1V8_A",
+   "datasheet_name": "AVDD"
+  },
+  "33": {
+   "xy": [
+    142.45,
+    139.55
+   ],
+   "net": "GND",
+   "datasheet_name": "EPAD"
+  }
+ },
+ "adc_series_resistors": {
+  "R26": {
+   "1": {
+    "xy": [
+     144.99,
+     141.188
+    ],
+    "net": "/ADC and clock/ADC_D0_R"
+   },
+   "2": {
+    "xy": [
+     146.01,
+     141.188
+    ],
+    "net": "ADC_D0"
+   }
+  },
+  "R27": {
+   "1": {
+    "xy": [
+     141.881,
+     145.467
+    ],
+    "net": "/ADC and clock/ADC_D1_R"
+   },
+   "2": {
+    "xy": [
+     142.901,
+     145.467
+    ],
+    "net": "ADC_D1"
+   }
+  },
+  "R28": {
+   "1": {
+    "xy": [
+     138.721,
+     145.325
+    ],
+    "net": "/ADC and clock/ADC_D2_R"
+   },
+   "2": {
+    "xy": [
+     139.741,
+     145.325
+    ],
+    "net": "ADC_D2"
+   }
+  },
+  "R29": {
+   "1": {
+    "xy": [
+     145.233,
+     142.771
+    ],
+    "net": "/ADC and clock/ADC_D3_R"
+   },
+   "2": {
+    "xy": [
+     146.253,
+     142.771
+    ],
+    "net": "ADC_D3"
+   }
+  },
+  "R30": {
+   "1": {
+    "xy": [
+     144.917,
+     138.864
+    ],
+    "net": "/ADC and clock/ADC_D4_R"
+   },
+   "2": {
+    "xy": [
+     145.937,
+     138.864
+    ],
+    "net": "ADC_D4"
+   }
+  },
+  "R31": {
+   "1": {
+    "xy": [
+     145.077,
+     144.222
+    ],
+    "net": "/ADC and clock/ADC_D5_R"
+   },
+   "2": {
+    "xy": [
+     146.097,
+     144.222
+    ],
+    "net": "ADC_D5"
+   }
+  },
+  "R32": {
+   "1": {
+    "xy": [
+     136.137,
+     144.549
+    ],
+    "net": "/ADC and clock/ADC_D6_R"
+   },
+   "2": {
+    "xy": [
+     137.157,
+     144.549
+    ],
+    "net": "ADC_D6"
+   }
+  },
+  "R33": {
+   "1": {
+    "xy": [
+     144.661,
+     145.5
+    ],
+    "net": "/ADC and clock/ADC_D7_R"
+   },
+   "2": {
+    "xy": [
+     145.681,
+     145.5
+    ],
+    "net": "ADC_D7"
+   }
+  },
+  "R34": {
+   "1": {
+    "xy": [
+     135.965,
+     145.854
+    ],
+    "net": "/ADC and clock/ADC_D8_R"
+   },
+   "2": {
+    "xy": [
+     136.985,
+     145.854
+    ],
+    "net": "ADC_D8"
+   }
+  },
+  "R35": {
+   "1": {
+    "xy": [
+     147.49,
+     141.188
+    ],
+    "net": "/ADC and clock/ADC_D9_R"
+   },
+   "2": {
+    "xy": [
+     148.51,
+     141.188
+    ],
+    "net": "ADC_D9"
+   }
+  },
+  "R36": {
+   "1": {
+    "xy": [
+     144.67,
+     146.802
+    ],
+    "net": "/ADC and clock/ADC_D10_R"
+   },
+   "2": {
+    "xy": [
+     145.69,
+     146.802
+    ],
+    "net": "ADC_D10"
+   }
+  },
+  "R37": {
+   "1": {
+    "xy": [
+     147.301,
+     139.573
+    ],
+    "net": "/ADC and clock/ADC_D11_R"
+   },
+   "2": {
+    "xy": [
+     148.321,
+     139.573
+    ],
+    "net": "ADC_D11"
+   }
+  },
+  "R38": {
+   "1": {
+    "xy": [
+     147.815,
+     142.8
+    ],
+    "net": "/ADC and clock/ADC_D12_R"
+   },
+   "2": {
+    "xy": [
+     148.835,
+     142.8
+    ],
+    "net": "ADC_D12"
+   }
+  },
+  "R39": {
+   "1": {
+    "xy": [
+     147.297,
+     144.337
+    ],
+    "net": "/ADC and clock/ADC_D13_R"
+   },
+   "2": {
+    "xy": [
+     148.317,
+     144.337
+    ],
+    "net": "ADC_D13"
+   }
+  },
+  "R40": {
+   "1": {
+    "xy": [
+     136.281,
+     147.395
+    ],
+    "net": "/ADC and clock/ADC_DCO_R"
+   },
+   "2": {
+    "xy": [
+     137.301,
+     147.395
+    ],
+    "net": "ADC_DCO"
+   }
+  },
+  "R41": {
+   "1": {
+    "xy": [
+     147.297,
+     138.038
+    ],
+    "net": "/ADC and clock/ADC_OR_R"
+   },
+   "2": {
+    "xy": [
+     148.317,
+     138.038
+    ],
+    "net": "ADC_OR"
+   }
+  }
+ },
+ "bank_vccio": {
+  "0": 3.3,
+  "1": 3.3,
+  "2": 3.3,
+  "3": 3.3,
+  "6": 3.3,
+  "7": 1.8,
+  "8": 3.3
+ }
+}

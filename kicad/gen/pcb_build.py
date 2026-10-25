@@ -225,7 +225,7 @@ bga = fps["U12"]
 cx, cy = 63.0, 24.0
 fan_vias = 0
 for pad in bga.Pads():
-    if not pad.GetNetname():
+    if not pad.GetNetname() or pad.GetNetname().startswith("unconnected-"):   # KiCad names unused pads "unconnected-(...)"
         continue
     row = "ABCDEFGHJKLMNPRT".index(pad.GetNumber()[0]); col = int(pad.GetNumber()[1:]) - 1
     ring = min(row, 15 - row, col, 15 - col)

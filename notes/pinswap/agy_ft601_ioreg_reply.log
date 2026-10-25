@@ -1,0 +1,56 @@
+root agent idle; waiting up to 30m0s for 1 background task(s)
+`make sim-ft` passed both test runs (`min_full = 2` and `min_full = 1` with 1-cycle `TXE_N` reorder detection), and `yowasp-yosys` + `yowasp-nextpnr-ecp5` (`make` in `gateware/`) is currently running. Waiting for the build task to complete.
+All three simulation suites (`sim-ddc`, `sim-ft`, and `sim-boot`) passed, and `yowasp-nextpnr-ecp5` is currently running seeds 1–4. Waiting for the multi-seed P&R run to complete.
+I have implemented the FT601 output IO-register + `EHXPLLL` phase-shift fix and verified it across all CXXRTL simulations and `nextpnr-ecp5` seeds 1–4.
+
+- **Write-up & Timing Budget:** [agy_ft601_ioreg.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_ft601_ioreg.md)
+- **Updated Gateware:** [`ft601_245.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/ft601_245.v#L15-L168), [`top.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/top.v#L61-L240)
+- **Updated Length/Timing Checker:** [agy_timing_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing_check.py)
+
+---
+
+### 1. IO-Register & Tristate Packing (`ft601_245.v` & `top.v`)
+- Under `` `ifdef ECP5_IOREG ``, all synchronous FT601 outputs and tristate controls are instantiated in `IOLOGIC` cells:
+  - **Control outputs (`ft_wr_n`, `ft_rd_n`, `ft_oe_n`)**: 3 $\times$ `OFS1P3BX` (`u_wr`, `u_rd`, `u_oe`, `REGSET="SET"`).
+  - **Data & BE outputs (`ft_data[31:0]`, `ft_be[3:0]`)**: 32 $\times$ `OFS1P3DX` (`g_dout[g].u_do`) + 4 $\times$ `OFS1P3BX` (`g_be[g].u_bo`).
+  - **Per-pad tristate enables (`dout_t[31:0]`, `be_t[3:0]`)**: 36 $\times$ `OFS1P3BX` (`g_dout[g].u_dt`, `g_be[g].u_bt`, `REGSET="SET"` so pads initialize to high-Z) driving active-low `.T` on explicit `BB` (`TRELLIS_IO #(.DIR("BIDIR"))`) buffers in [`top.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/top.v#L220-L225).
+- **Why `BB` + active-low `OFS1P3BX` was needed (`VERIFIED`)**: `assign ft_data = doe ? dout : 32'bz;` inferred active-high `$_TBUF_` cells, causing `nextpnr-ecp5` to insert a `LUT4` inverter (`$invert_T`) before `TRELLIS_IO.T`, which blocked `TSREG` packing and produced the $5.17\text{ ns}$ `<async>` path (`doe -> ft_data[6].T`). With `BB` and active-low `doe_t_n = ~doe_nxt`, all 36 tristate FFs pack into `IOLOGIC` (`PIOC.TRIMUX_TSREG = IOLTO`, `IOLOGIC` count `55/128`), and the `<async>` path on `ft_data`/`ft_be` is completely eliminated.
+- **Avoiding `IOLOGIC` conflicts**: Internal FSM state mirrors (`wr_n_r`, `rd_n_r`, `oe_n_r`, `doe_r`) are updated from the same `*_nxt` wires because `IOLOGIC` `IOLDO`/`IOLTO` outputs cannot route back into fabric; `dout_nxt = rb[send[2:0]]` is clocked into `OFS1P3DX` with `.SP(1'b1)` unconditionally to match `IFS1P3DX`'s `.SP(1'b1)` (`IOLOGIC` shares one `CE` mux across `INFF`/`OUTFF`/`TSFF`) and to remove `rewind` from the 32-bit `dout` fanout cone.
+
+---
+
+### 2. Clocking Choice (`+112.5 deg` Single-Clock `EHXPLLL`) & 1-Cycle Replay Verification
+- **Selected Clocking (`VERIFIED`)**: `EHXPLLL` (`u_ft_pll` at `X70/Y49/EHXPLL_LR`, $f_{\text{VCO}} = 600\text{ MHz}$) with `CLKOP` ($0^\circ$, `CPHASE=2, FPHASE=0`) closing the global-clock `CLKFB` loop and **`CLKOS` ($+112.5^\circ = +3.125\text{ ns}$, `CPHASE=3, FPHASE=7`)** driving `clk_ft` for all FT601 `IOLOGIC` (`IFS1P3DX`, `OFS1P3DX`, `OFS1P3BX`), `ft601_245` fabric, and `async_fifo.rd_clk`.
+- **Why single-clock $+112.5^\circ$ was chosen over split $0^\circ / +135^\circ$ (`VERIFIED`)**:
+  1. **Hardware `IOLOGIC` constraint**: On the 32 bidirectional `ft_data[31:0]` pads, `IFS1P3DX`, `OFS1P3DX`, and `OFS1P3BX` share a single `IOLOGIC` Bel that has **only one `CLK` input pin**. Feeding $0^\circ$ to `IFS1P3DX` and $+135^\circ$ to `OFS1P3DX` on `ft_data` is physically illegal in ECP5 and causes `nextpnr-ecp5` to abort with `ERROR: IOLOGIC 'u_bb$IOL' has conflicting clocks`.
+  2. **Full $10.0\text{ ns}$ intra-domain period**: Keeping `IFS1P3DX`, the FSM, and `OFS1P3DX`/`OFS1P3BX` on a single `clk_ft` avoids $3.75\text{ ns}$ fractional-cycle paths between $0^\circ$ fabric and shifted IO registers.
+- **1-Cycle Replay Buffer Verification (`VERIFIED`)**: Because `OFS1P3DX`/`OFS1P3BX` replaces the fabric output FF stage, pipeline depth from `rb[send[2:0]]` to the pins is unchanged (1 stage). A word launched at FPGA edge $C_k$ ($10k + 3.125\text{ ns}$) arrives at `U11` at $10k + [5.52, 7.27]\text{ ns}$, is sampled by FT601 at $E_{k+1}$ ($10(k+1)\text{ ns}$), and FT601's `TXE_N(E_{k+1})` (held until $10(k+1) + 3.50\text{ ns}$) is captured by `IFS1P3DX` at $C_{k+1}$ ($10(k+1) + 3.125\text{ ns}$) and judged at $C_{k+2}$ against `prev_v`/`prev_idx`.
+
+---
+
+### 3. Simulation & `nextpnr-ecp5` Multi-Seed Results (`Seeds 1–4`)
+- **Simulations (`make sim` & `make sim-ft`)**:
+  - `tb_ft 2`: `399974 words (320 MB/s), order errors 0, contention 0, rx 390/390, order_err=0 -> PASS`
+  - `tb_ft 1` (1-cycle `TXE_N` pulse): `400068 words (320 MB/s), order errors 198, contention 0, rx 385/385, order_err=1 -> PASS`
+  - `tb_ddc` & `tb_boot`: `PASS`
+- **`nextpnr-ecp5` Fmax (`LFE5U-25F-6BG256C`, speed `-6`)**:
+
+| Clock Domain | Target | Baseline (Seed 4) | Seed 1 | Seed 2 | Seed 3 | Seed 4 |
+|---|---|---|---|---|---|---|
+| **`$glbnet$clk_ft`** | $100.00\text{ MHz}$ | $100.56\text{ MHz}$ | **$111.88\text{ MHz}$** | **$119.82\text{ MHz}$** | **$120.02\text{ MHz}$** | **$106.00\text{ MHz}$** |
+| **`$glbnet$adc_dco`** | $80.00\text{ MHz}$ | $109.77\text{ MHz}$ | **$108.19\text{ MHz}$** | **$100.01\text{ MHz}$** | **$101.21\text{ MHz}$** | **$101.48\text{ MHz}$** |
+| **`$glbnet$clk_boot`** | $2.42\text{ MHz}$ | $153.42\text{ MHz}$ | **$132.28\text{ MHz}$** | **$134.72\text{ MHz}$** | **$139.78\text{ MHz}$** | **$136.48\text{ MHz}$** |
+
+---
+
+### 4. Re-Derived FT601 `T1..T4` Timing Budget (`+112.5 deg = +3125 ps` PLL + `IOLOGIC`)
+
+With $L_{\text{clk}} = 14.13\text{ mm}$ ($\tau_{\text{clk}} \in [85, 99]\text{ ps}$) and $L_{\text{sig}} \in [12.64, 24.78]\text{ mm}$ ($\tau_{\text{sig}} \in [76, 173]\text{ ps}$), $t_{\text{clk,IOL}} \in [3210, 3224]\text{ ps}$:
+
+| Parameter (`Table 4.2`, p. 17) | Path | Requirement | Actual Arrival / Window | Slack (Speed `-6`) | Slack ($0.70\times$ Fast PVT) |
+|---|---|---|---|---|---|
+| **`T1` Slave Setup** ($3.0\text{ ns}$) | `FT601 -> IFS1P3DX.D` | $\le +2771\text{ ps}$ | Valid from $-1687\text{ ps}$ | **$+4458\text{ ps}$** | **$+4527\text{ ps}$** |
+| **`T2` Slave Hold** ($3.5\text{ ns}$) | `FT601 -> IFS1P3DX.D` | $\ge +3535\text{ ps}$ | Held to $+4566\text{ ps}$ (`-6`) / $+4269\text{ ps}$ (PVT) | **$+1031\text{ ps}$** | **$+734\text{ ps}$** |
+| **`T3` Master Setup (Data/Ctrl)** ($1.0\text{ ns}$) | `OFS1P3DX -> FT601` | $\le +9000\text{ ps}$ | $+7271\text{ ps}$ max | **$+1729\text{ ps}$** | — |
+| **`T3` Master Setup (Tristate)** ($1.0\text{ ns}$) | `OFS1P3BX -> FT601` | $\le +9000\text{ ps}$ | $+7451\text{ ps}$ max | **$+1549\text{ ps}$** | — |
+| **`T4` Master Hold** ($4.8\text{ ns}$) | `OFS1P3DX -> FT601` | $\ge +4800\text{ ps}$ | $+6474\text{ ps}$ (`-6`) / $+5518\text{ ps}$ (PVT) | **$+1674\text{ ps}$** | **$+718\text{ ps}$** |

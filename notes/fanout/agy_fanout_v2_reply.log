@@ -1,0 +1,66 @@
+[agy status: ERROR] I have reviewed [claude_review_fanout.md](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/claude_review_fanout.md) and written the revised plan to [agy_fanout_plan_v2.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_plan_v2.json), updated the verification script [agy_fanout_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_check.py), and updated [agy_fanout.md](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout.md).
+
+---
+
+### 1. Row-by-Row Response to [claude_review_fanout.md](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/claude_review_fanout.md)
+
+| Review Row | Claude Verdict | AGY Response & `v2` Resolution |
+|---|---|---|
+| **T1 Rule 1–4**: `in2_polygons` (`2V5`, `1V8_D`, `1V1`) | **VERIFIED** | **Shrunk (`priority: 2`)**: Removed the `y ~ 146` decap lobes from `1V1`, `2V5`, and `1V8_D`. Each island now covers its core vias, local perimeter decap rail vias near `U12`, and a compact neck ($0.50\text{–}0.60\text{ mm}$ min width) to its regulator (`L1`, `U4`, `U5`), maintaining $\ge 0.255\text{ mm}$ pad clearance to all other-net vias. |
+| **T2**: Core power & GND ball fan-out | **VERIFIED** | **Kept (`21/21` power, `27/27` GND)** + added **4 locked perimeter decap rail vias** (`"balls": []`) outside Ring 4 inside the local `In2.Cu` lobes (`[155.15, 131.78]` on `2V5`; `[155.40, 135.05]`, `[167.75, 132.11]`, and `[170.55, 131.95]` on `1V1`), which [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L103-L111) places as locked $0.45/0.20\text{ mm}$ vias with zero BGA dogbone tracks. |
+| **T3 (`moves`)**: `U12` Decap Placement | **DISPUTED** | **AGREED & FIXED (`VERIFIED` in `v2`)**: Relocated `C81–C85, C87, C88` (`1V1`), `C90, C91` (`2V5`), and `C92, C93` (`1V8_D`) to the NW, SW, South, and SE perimeter of `U12` (outside both the East FT601 corridor `x = 169.5..178, y = 117.5..130.5` and the West Bank-7 ADC corridor `rows F–K = y 120.8..125.6`). Every relocated decap (plus unmoved `C86, C94`) is now **$\le 2.979\text{ mm} \le 3.000\text{ mm}$** from the `U12` package body (`[156.0, 117.0, 170.0, 131.0]`) and **$\le 3.157\text{ mm} \le 4.000\text{ mm}$** from a via of its rail, with **`0` courtyard overlaps**. |
+| **T4**: Bus escape table & capacity | **VERIFIED** | **Unchanged (`65/65` escaped: `38 F.Cu` + `27 B.Cu`, `split_crossings = 0`)**. |
+| **F1**: East `3V3_D` `B.Cu` trunk channel count | **DISPUTED** | **AGREED**: Strictly between Cols 12 and 13 (`x = 165.8..166.6`), the vertical segment `[166.233, 119.293] -> [166.233, 125.490]` cuts **8 inter-via channels** (`y = 120.0..125.6`, rows D–L/M), as its upper diagonal `[166.233, 119.293] -> [168.282, 117.244]` is already East of Col 13 on rows B–C. |
+| **F2 & F3**: Core ball counts & adjacent-via split math | **VERIFIED** | **Unchanged ($\min$ diff-net core power via distance $= 1.131\text{ mm}$)**. |
+| **Impl. Note 1**: `3V3_D` zone replacement | **DISPUTED** | **AGREED & FIXED (`VERIFIED` in `v2`)**: Dropped `3V3_D` from `in2_polygons` in [agy_fanout_plan_v2.json](file:///home/user1/collab/projects/usb3-sdr/notes/fanout/agy_fanout_plan_v2.json). Only `2V5`, `1V8_D`, and `1V1` (`"priority": 2`) are emitted, carving out of the kept `3V3_D` rectangle (`x = 152.0..199.7, y = 100.3..142.0, priority = 1`), which is already fed from `L2` via existing `3V3_D` vias at $y \le 142.0$ (`[175.775, 140.134]`, `[163.994, 141.720]`, `[159.507, 141.108]`). |
+| **Impl. Notes 2 & 3**: `U12_BOX` locked rip & 2-seg dogbone walk | **VERIFIED** | Already handled in [fanout_apply.py](file:///home/user1/collab/projects/usb3-sdr/kicad/gen/fanout_apply.py#L48-L65). |
+
+---
+
+### 2. `v2` Perimeter Decap Placement & Rail Via Table
+
+All distances are measured to the `U12` $14\times 14\text{ mm}$ package body (`[156.0, 117.0, 170.0, 131.0]`):
+$$d_{\text{pkg}}(x,y) = \sqrt{\max(156.0 - x, 0, x - 170.0)^2 + \max(117.0 - y, 0, y - 131.0)^2}$$
+
+| Ref | Rail & Value | `v2` `[x, y]` (mm) | `rot` | Sector | $d_{\text{pkg}}$ (mm) | Nearest Same-Rail Via `[x, y]` | $d_{\text{via}}$ (mm) |
+|---|---|---|---|---|---|---|---|
+| `C81` | `1V1` (`10u`, `0805`) | `[172.860, 131.650]` | `90` | SE corner ($y > 130.1$) | **`2.933`** ($\le 3.00$) | `[170.550, 131.950]` (locked `plan` via) | **`2.329`** ($\le 4.00$) |
+| `C82` | `1V1` (`10u`, `0805`) | `[156.300, 133.900]` | `0` | South edge | **`2.900`** ($\le 3.00$) | `[155.400, 135.050]` (locked `plan` via) | **`1.460`** ($\le 4.00$) |
+| `C83` | `1V1` (`100n`, `0402`) | `[155.420, 132.560]` | `0` | South edge | **`1.664`** ($\le 3.00$) | `[155.400, 135.050]` (locked `plan` via) | **`2.490`** ($\le 4.00$) |
+| `C84` | `1V1` (`100n`, `0402`) | `[153.500, 132.620]` | `0` | SW corner ($y > 132.1$) | **`2.979`** ($\le 3.00$) | `[155.400, 135.050]` (locked `plan` via) | **`2.783`** ($\le 4.00$) |
+| `C85` | `1V1` (`100n`, `0402`) | `[170.630, 132.980]` | `0` | SE edge | **`2.078`** ($\le 3.00$) | `[170.550, 131.950]` (locked `plan` via) | **`1.033`** ($\le 4.00$) |
+| `C86` | `1V1` (`100n`, `0402`) | `[168.707, 132.813]` | `0` | South-East (unmoved) | **`1.813`** ($\le 3.00$) | `[167.750, 132.110]` (locked `plan` via) | **`1.187`** ($\le 4.00$) |
+| `C87` | `1V1` (`100n`, `0402`) | `[171.560, 131.500]` | `90` | SE corner ($y > 130.5$) | **`1.638`** ($\le 3.00$) | `[170.550, 131.950]` (locked `plan` via) | **`1.106`** ($\le 4.00$) |
+| `C88` | `1V1` (`100n`, `0402`) | `[157.340, 132.560]` | `0` | South edge | **`1.560`** ($\le 3.00$) | `[155.400, 135.050]` (locked `plan` via) | **`3.157`** ($\le 4.00$) |
+| `C89` | `2V5` (`10u`, `0805`) | `[166.554, 134.937]` | `0` | South-East (unmoved) | `3.937` (unmoved) | `[166.424, 135.582]` (existing board via) | **`0.658`** ($\le 4.00$) |
+| `C90` | `2V5` (`100n`, `0402`) | `[153.500, 130.560]` | `0` | SW corner ($y > 130.0$) | **`2.500`** ($\le 3.00$) | `[155.150, 131.780]` (locked `plan` via) | **`2.052`** ($\le 4.00$) |
+| `C91` | `2V5` (`100n`, `0402`) | `[153.500, 131.590]` | `0` | SW corner | **`2.569`** ($\le 3.00$) | `[155.150, 131.780]` (locked `plan` via) | **`1.661`** ($\le 4.00$) |
+| `C92` | `1V8_D` (`10u`, `0805`) | `[153.400, 116.400]` | `0` | NW corner ($y < 117.2$) | **`2.668`** ($\le 3.00$) | `[152.728, 117.243]` (existing board via) | **`1.078`** ($\le 4.00$) |
+| `C93` | `1V8_D` (`100n`, `0402`) | `[153.500, 119.340]` | `0` | NW edge (Row D, above F) | **`2.500`** ($\le 3.00$) | `[152.767, 118.608]` (existing board via) | **`1.036`** ($\le 4.00$) |
+| `C94` | `1V8_D` (`100n`, `0402`) | `[153.247, 117.906]` | `0` | NW edge (unmoved) | **`2.753`** ($\le 3.00$) | `[152.728, 117.243]` (existing board via) | **`0.842`** ($\le 4.00$) |
+
+*(Note: Moving `C93` from `[153.696, 130.760]` to `[153.500, 119.340]` groups all three `1V8_D` decaps `C92, C93, C94` in the NW corner right next to the existing kept `1V8_D` vias `[152.728, 117.243]` and `[152.767, 118.608]`, freeing the SW corner for `C90, C91, C84` and allowing `1V8_D`'s `In2.Cu` neck to shrink to $0.60\text{ mm}$ along $y = 121.12..132.60$. `R13` and `R18` are shifted to `[151.50, 134.00]` and `[151.50, 136.50]` to clear the SW decaps and all board vias by $>0.75\text{ mm}$, and `R50` sits at `[159.28, 132.56]`, $4.20\text{ mm} \le 5.00\text{ mm}$ from the `N9 -> U10` route.)*
+
+---
+
+### 3. Verification Check Output (`python3 notes/fanout/agy_fanout_check.py`)
+
+```text
+========================================================================
+AGY FAN-OUT PLAN v2 VERIFICATION (agy_fanout_plan_v2.json)
+========================================================================
+[T1 Rule 1] 2V5   : vertices=28, priority=2, min_neck=0.600 mm (>=0.500), max_width=17.42 mm (>=1.00)
+[T1 Rule 1] 1V8_D : vertices=28, priority=2, min_neck=0.580 mm (>=0.500), max_width=17.45 mm (>=1.00)
+[T1 Rule 1] 1V1   : vertices=52, priority=2, min_neck=0.500 mm (>=0.500), max_width=21.10 mm (>=1.00)
+[T1 Rule 1] Pairwise polygon overlap check (2V5, 1V8_D, 1V1, 1V8_A; 3V3_D kept as [152..199.7, 100.3..142]): PASS (0 overlaps)
+[T2] Power balls covered: 21/21, GND balls covered: 27/27, min diff-net core power via dist: 1.131 mm
+[T3] Courtyard overlap check across all 189 parts (25 moved): PASS (0 overlaps)
+[T3] Relocated U12 decaps: max dist to U12 pkg = 2.979 mm (<= 3.000 mm), max dist to rail via = 3.157 mm (<= 4.000 mm)
+[T3] R50 distance to N9->U10 CCLK route: 4.20 mm (<= 5.00 mm)
+[T1 Rule 3] Source & decap connectivity (18 decaps, max dist to island=2.66 mm <= 3.00 mm): PASS
+[T1 Rule 4] Polygon-to-other-net-via pad clearance (min=0.255 mm >= 0.250 mm): PASS
+[T4] Bus escapes verified: 65 nets (38 F.Cu, 27 B.Cu)
+split_crossings: 0
+========================================================================
+ALL CHECKS PASSED (0 errors, 0 courtyard overlaps, 0 split crossings).
+```

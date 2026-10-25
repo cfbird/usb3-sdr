@@ -1,0 +1,14314 @@
+{
+ "board": "kicad/work/usb3-sdr.kicad_pcb",
+ "balls": {
+  "A1": {
+   "xy": [
+    157.0,
+    118.0
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "A2": {
+   "xy": [
+    157.8,
+    118.0
+   ],
+   "net": "/FPGA/PMOD0_0",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "A3": {
+   "xy": [
+    158.6,
+    118.0
+   ],
+   "net": "/FPGA/PMOD0_1",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "A4": {
+   "xy": [
+    159.4,
+    118.0
+   ],
+   "net": "/FPGA/PMOD0_2",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "A5": {
+   "xy": [
+    160.2,
+    118.0
+   ],
+   "net": "/FPGA/PMOD0_3",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "A6": {
+   "xy": [
+    161.0,
+    118.0
+   ],
+   "net": "unconnected-(U12A-B0:PT18B-PadA6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "A7": {
+   "xy": [
+    161.8,
+    118.0
+   ],
+   "net": "unconnected-(U12A-B0:PT29A{slash}PCLKT0_0-PadA7)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "A8": {
+   "xy": [
+    162.6,
+    118.0
+   ],
+   "net": "unconnected-(U12A-B0:PT29B{slash}PCLKC0_0-PadA8)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "A9": {
+   "xy": [
+    163.4,
+    118.0
+   ],
+   "net": "unconnected-(U12A-B1:PT42A-PadA9)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "A10": {
+   "xy": [
+    164.2,
+    118.0
+   ],
+   "net": "/FPGA/PMOD1_0",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "A11": {
+   "xy": [
+    165.0,
+    118.0
+   ],
+   "net": "/FPGA/PMOD1_1",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "A12": {
+   "xy": [
+    165.8,
+    118.0
+   ],
+   "net": "/FPGA/PMOD1_2",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "A13": {
+   "xy": [
+    166.6,
+    118.0
+   ],
+   "net": "/FPGA/PMOD1_3",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "A14": {
+   "xy": [
+    167.4,
+    118.0
+   ],
+   "net": "unconnected-(U12A-B1:PT65B-PadA14)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "A15": {
+   "xy": [
+    168.2,
+    118.0
+   ],
+   "net": "unconnected-(U12A-B1:PT67B-PadA15)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "A16": {
+   "xy": [
+    169.0,
+    118.0
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "B1": {
+   "xy": [
+    157.0,
+    118.8
+   ],
+   "net": "unconnected-(U12C-B7:PL2A-PadB1)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "B2": {
+   "xy": [
+    157.8,
+    118.8
+   ],
+   "net": "unconnected-(U12C-B7:PL2B-PadB2)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "B3": {
+   "xy": [
+    158.6,
+    118.8
+   ],
+   "net": "/FPGA/PMOD0_4",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "B4": {
+   "xy": [
+    159.4,
+    118.8
+   ],
+   "net": "/FPGA/PMOD0_5",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "B5": {
+   "xy": [
+    160.2,
+    118.8
+   ],
+   "net": "/FPGA/PMOD0_6",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "B6": {
+   "xy": [
+    161.0,
+    118.8
+   ],
+   "net": "/FPGA/PMOD0_7",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "B7": {
+   "xy": [
+    161.8,
+    118.8
+   ],
+   "net": "unconnected-(U12A-B0:PT27B{slash}PCLKC0_1-PadB7)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "B8": {
+   "xy": [
+    162.6,
+    118.8
+   ],
+   "net": "unconnected-(U12A-B1:PT35B{slash}PCLKC1_0-PadB8)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "B9": {
+   "xy": [
+    163.4,
+    118.8
+   ],
+   "net": "unconnected-(U12A-B1:PT38A{slash}GR_PCLK1_0-PadB9)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "B10": {
+   "xy": [
+    164.2,
+    118.8
+   ],
+   "net": "/FPGA/PMOD1_4",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "B11": {
+   "xy": [
+    165.0,
+    118.8
+   ],
+   "net": "/FPGA/PMOD1_5",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "B12": {
+   "xy": [
+    165.8,
+    118.8
+   ],
+   "net": "/FPGA/PMOD1_6",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "B13": {
+   "xy": [
+    166.6,
+    118.8
+   ],
+   "net": "/FPGA/PMOD1_7",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "B14": {
+   "xy": [
+    167.4,
+    118.8
+   ],
+   "net": "unconnected-(U12A-B1:PT67A-PadB14)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "B15": {
+   "xy": [
+    168.2,
+    118.8
+   ],
+   "net": "FT_D15",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[15]"
+  },
+  "B16": {
+   "xy": [
+    169.0,
+    118.8
+   ],
+   "net": "FT_D14",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[14]"
+  },
+  "C1": {
+   "xy": [
+    157.0,
+    119.6
+   ],
+   "net": "unconnected-(U12C-B7:PL5A-PadC1)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C2": {
+   "xy": [
+    157.8,
+    119.6
+   ],
+   "net": "unconnected-(U12C-B7:PL5B-PadC2)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C3": {
+   "xy": [
+    158.6,
+    119.6
+   ],
+   "net": "unconnected-(U12C-B7:PL2C-PadC3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C4": {
+   "xy": [
+    159.4,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B0:PT11A-PadC4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C5": {
+   "xy": [
+    160.2,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B0:PT15A-PadC5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C6": {
+   "xy": [
+    161.0,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B0:PT22A-PadC6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C7": {
+   "xy": [
+    161.8,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B0:PT27A{slash}PCLKT0_1-PadC7)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C8": {
+   "xy": [
+    162.6,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B1:PT35A{slash}PCLKT1_0-PadC8)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C9": {
+   "xy": [
+    163.4,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B1:PT38B{slash}GR_PCLK1_1-PadC9)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C10": {
+   "xy": [
+    164.2,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B1:PT44B-PadC10)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C11": {
+   "xy": [
+    165.0,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B1:PT49B-PadC11)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C12": {
+   "xy": [
+    165.8,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B1:PT56B-PadC12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C13": {
+   "xy": [
+    166.6,
+    119.6
+   ],
+   "net": "unconnected-(U12A-B1:PT60B-PadC13)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "C14": {
+   "xy": [
+    167.4,
+    119.6
+   ],
+   "net": "FT_D13",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[13]"
+  },
+  "C15": {
+   "xy": [
+    168.2,
+    119.6
+   ],
+   "net": "FT_D12",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[12]"
+  },
+  "C16": {
+   "xy": [
+    169.0,
+    119.6
+   ],
+   "net": "FT_D11",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[11]"
+  },
+  "D1": {
+   "xy": [
+    157.0,
+    120.4
+   ],
+   "net": "unconnected-(U12C-B7:PL8A-PadD1)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D2": {
+   "xy": [
+    157.8,
+    120.4
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "D3": {
+   "xy": [
+    158.6,
+    120.4
+   ],
+   "net": "unconnected-(U12C-B7:PL2D-PadD3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D4": {
+   "xy": [
+    159.4,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B0:PT9B-PadD4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D5": {
+   "xy": [
+    160.2,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B0:PT13B-PadD5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D6": {
+   "xy": [
+    161.0,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B0:PT20B-PadD6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D7": {
+   "xy": [
+    161.8,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B0:PT24B{slash}GR_PCLK0_0-PadD7)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D8": {
+   "xy": [
+    162.6,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B1:PT33B{slash}PCLKC1_1-PadD8)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D9": {
+   "xy": [
+    163.4,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B1:PT40A-PadD9)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D10": {
+   "xy": [
+    164.2,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B1:PT47A-PadD10)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D11": {
+   "xy": [
+    165.0,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B1:PT51A-PadD11)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D12": {
+   "xy": [
+    165.8,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B1:PT58A-PadD12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D13": {
+   "xy": [
+    166.6,
+    120.4
+   ],
+   "net": "unconnected-(U12A-B1:PT62A-PadD13)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "D14": {
+   "xy": [
+    167.4,
+    120.4
+   ],
+   "net": "FT_D10",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[10]"
+  },
+  "D15": {
+   "xy": [
+    168.2,
+    120.4
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "D16": {
+   "xy": [
+    169.0,
+    120.4
+   ],
+   "net": "FT_D9",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[9]"
+  },
+  "E1": {
+   "xy": [
+    157.0,
+    121.2
+   ],
+   "net": "unconnected-(U12C-B7:PL11D-PadE1)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E2": {
+   "xy": [
+    157.8,
+    121.2
+   ],
+   "net": "unconnected-(U12C-B7:PL8B-PadE2)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E3": {
+   "xy": [
+    158.6,
+    121.2
+   ],
+   "net": "unconnected-(U12C-B7:PL5C-PadE3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E4": {
+   "xy": [
+    159.4,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B0:PT9A-PadE4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E5": {
+   "xy": [
+    160.2,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B0:PT13A-PadE5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E6": {
+   "xy": [
+    161.0,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B0:PT20A-PadE6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E7": {
+   "xy": [
+    161.8,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B0:PT24A{slash}GR_PCLK0_1-PadE7)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E8": {
+   "xy": [
+    162.6,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B1:PT33A{slash}PCLKT1_1-PadE8)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E9": {
+   "xy": [
+    163.4,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B1:PT40B-PadE9)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E10": {
+   "xy": [
+    164.2,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B1:PT47B-PadE10)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E11": {
+   "xy": [
+    165.0,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B1:PT51B-PadE11)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E12": {
+   "xy": [
+    165.8,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B1:PT58B-PadE12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E13": {
+   "xy": [
+    166.6,
+    121.2
+   ],
+   "net": "unconnected-(U12A-B1:PT62B-PadE13)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E14": {
+   "xy": [
+    167.4,
+    121.2
+   ],
+   "net": "unconnected-(U12B-B2:PR5C-PadE14)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "E15": {
+   "xy": [
+    168.2,
+    121.2
+   ],
+   "net": "FT_D8",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[8]"
+  },
+  "E16": {
+   "xy": [
+    169.0,
+    121.2
+   ],
+   "net": "FT_D7",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[7]"
+  },
+  "F1": {
+   "xy": [
+    157.0,
+    122.0
+   ],
+   "net": "ADC_D6",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[6]"
+  },
+  "F2": {
+   "xy": [
+    157.8,
+    122.0
+   ],
+   "net": "unconnected-(U12C-B7:PL11C-PadF2)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "F3": {
+   "xy": [
+    158.6,
+    122.0
+   ],
+   "net": "unconnected-(U12C-B7:PL5D-PadF3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "F4": {
+   "xy": [
+    159.4,
+    122.0
+   ],
+   "net": "ADC_D2",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[2]"
+  },
+  "F5": {
+   "xy": [
+    160.2,
+    122.0
+   ],
+   "net": "ADC_D11",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[11]"
+  },
+  "F6": {
+   "xy": [
+    161.0,
+    122.0
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "F7": {
+   "xy": [
+    161.8,
+    122.0
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "F8": {
+   "xy": [
+    162.6,
+    122.0
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "F9": {
+   "xy": [
+    163.4,
+    122.0
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "F10": {
+   "xy": [
+    164.2,
+    122.0
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "F11": {
+   "xy": [
+    165.0,
+    122.0
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "F12": {
+   "xy": [
+    165.8,
+    122.0
+   ],
+   "net": "unconnected-(U12B-B2:PR8D-PadF12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "F13": {
+   "xy": [
+    166.6,
+    122.0
+   ],
+   "net": "unconnected-(U12B-B2:PR8C-PadF13)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "F14": {
+   "xy": [
+    167.4,
+    122.0
+   ],
+   "net": "unconnected-(U12B-B2:PR5D-PadF14)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "F15": {
+   "xy": [
+    168.2,
+    122.0
+   ],
+   "net": "FT_D6",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[6]"
+  },
+  "F16": {
+   "xy": [
+    169.0,
+    122.0
+   ],
+   "net": "FT_D5",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[5]"
+  },
+  "G1": {
+   "xy": [
+    157.0,
+    122.8
+   ],
+   "net": "ADC_D8",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[8]"
+  },
+  "G2": {
+   "xy": [
+    157.8,
+    122.8
+   ],
+   "net": "unconnected-(U12C-B7:PL14B-PadG2)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "G3": {
+   "xy": [
+    158.6,
+    122.8
+   ],
+   "net": "ADC_SCLK",
+   "role": "bus_adc",
+   "lpf_signal": "adc_sclk"
+  },
+  "G4": {
+   "xy": [
+    159.4,
+    122.8
+   ],
+   "net": "ADC_D0",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[0]"
+  },
+  "G5": {
+   "xy": [
+    160.2,
+    122.8
+   ],
+   "net": "ADC_D9",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[9]"
+  },
+  "G6": {
+   "xy": [
+    161.0,
+    122.8
+   ],
+   "net": "1V1",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "G7": {
+   "xy": [
+    161.8,
+    122.8
+   ],
+   "net": "1V1",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "G8": {
+   "xy": [
+    162.6,
+    122.8
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "G9": {
+   "xy": [
+    163.4,
+    122.8
+   ],
+   "net": "1V1",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "G10": {
+   "xy": [
+    164.2,
+    122.8
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "G11": {
+   "xy": [
+    165.0,
+    122.8
+   ],
+   "net": "2V5",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "G12": {
+   "xy": [
+    165.8,
+    122.8
+   ],
+   "net": "unconnected-(U12B-B2:PR11A-PadG12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "G13": {
+   "xy": [
+    166.6,
+    122.8
+   ],
+   "net": "unconnected-(U12B-B2:PR11B-PadG13)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "G14": {
+   "xy": [
+    167.4,
+    122.8
+   ],
+   "net": "unconnected-(U12B-B2:PR14C{slash}VREF1_2-PadG14)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "G15": {
+   "xy": [
+    168.2,
+    122.8
+   ],
+   "net": "FT_D4",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[4]"
+  },
+  "G16": {
+   "xy": [
+    169.0,
+    122.8
+   ],
+   "net": "FT_D3",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[3]"
+  },
+  "H1": {
+   "xy": [
+    157.0,
+    123.6
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "H2": {
+   "xy": [
+    157.8,
+    123.6
+   ],
+   "net": "ADC_CSB",
+   "role": "bus_adc",
+   "lpf_signal": "adc_csb"
+  },
+  "H3": {
+   "xy": [
+    158.6,
+    123.6
+   ],
+   "net": "ADC_D1",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[1]"
+  },
+  "H4": {
+   "xy": [
+    159.4,
+    123.6
+   ],
+   "net": "ADC_D5",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[5]"
+  },
+  "H5": {
+   "xy": [
+    160.2,
+    123.6
+   ],
+   "net": "ADC_D12",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[12]"
+  },
+  "H6": {
+   "xy": [
+    161.0,
+    123.6
+   ],
+   "net": "1V8_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "H7": {
+   "xy": [
+    161.8,
+    123.6
+   ],
+   "net": "1V8_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "H8": {
+   "xy": [
+    162.6,
+    123.6
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "H9": {
+   "xy": [
+    163.4,
+    123.6
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "H10": {
+   "xy": [
+    164.2,
+    123.6
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "H11": {
+   "xy": [
+    165.0,
+    123.6
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "H12": {
+   "xy": [
+    165.8,
+    123.6
+   ],
+   "net": "unconnected-(U12B-B2:PR17A-PadH12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "H13": {
+   "xy": [
+    166.6,
+    123.6
+   ],
+   "net": "unconnected-(U12B-B2:PR17B-PadH13)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "H14": {
+   "xy": [
+    167.4,
+    123.6
+   ],
+   "net": "unconnected-(U12B-B2:PR14D-PadH14)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "H15": {
+   "xy": [
+    168.2,
+    123.6
+   ],
+   "net": "FT_D16",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[16]"
+  },
+  "H16": {
+   "xy": [
+    169.0,
+    123.6
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "J1": {
+   "xy": [
+    157.0,
+    124.4
+   ],
+   "net": "ADC_DCO",
+   "role": "bus_adc",
+   "lpf_signal": "adc_dco"
+  },
+  "J2": {
+   "xy": [
+    157.8,
+    124.4
+   ],
+   "net": "ADC_D4",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[4]"
+  },
+  "J3": {
+   "xy": [
+    158.6,
+    124.4
+   ],
+   "net": "ADC_D3",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[3]"
+  },
+  "J4": {
+   "xy": [
+    159.4,
+    124.4
+   ],
+   "net": "ADC_D10",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[10]"
+  },
+  "J5": {
+   "xy": [
+    160.2,
+    124.4
+   ],
+   "net": "ADC_D13",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[13]"
+  },
+  "J6": {
+   "xy": [
+    161.0,
+    124.4
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "J7": {
+   "xy": [
+    161.8,
+    124.4
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "J8": {
+   "xy": [
+    162.6,
+    124.4
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "J9": {
+   "xy": [
+    163.4,
+    124.4
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "J10": {
+   "xy": [
+    164.2,
+    124.4
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "J11": {
+   "xy": [
+    165.0,
+    124.4
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "J12": {
+   "xy": [
+    165.8,
+    124.4
+   ],
+   "net": "unconnected-(U12B-B2:PR17D-PadJ12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "J13": {
+   "xy": [
+    166.6,
+    124.4
+   ],
+   "net": "unconnected-(U12B-B2:PR17C-PadJ13)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "J14": {
+   "xy": [
+    167.4,
+    124.4
+   ],
+   "net": "unconnected-(U12B-B2:PR20C{slash}GR_PCLK2_0-PadJ14)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "J15": {
+   "xy": [
+    168.2,
+    124.4
+   ],
+   "net": "FT_D17",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[17]"
+  },
+  "J16": {
+   "xy": [
+    169.0,
+    124.4
+   ],
+   "net": "FT_CLK",
+   "role": "bus_ft",
+   "lpf_signal": "ft_clk"
+  },
+  "K1": {
+   "xy": [
+    157.0,
+    125.2
+   ],
+   "net": "ADC_SDIO",
+   "role": "bus_adc",
+   "lpf_signal": "adc_sdio"
+  },
+  "K2": {
+   "xy": [
+    157.8,
+    125.2
+   ],
+   "net": "ADC_OR",
+   "role": "bus_adc",
+   "lpf_signal": "adc_or"
+  },
+  "K3": {
+   "xy": [
+    158.6,
+    125.2
+   ],
+   "net": "ADC_D7",
+   "role": "bus_adc",
+   "lpf_signal": "adc_d[7]"
+  },
+  "K4": {
+   "xy": [
+    159.4,
+    125.2
+   ],
+   "net": "unconnected-(U12C-B6:PL29A{slash}GR_PCLK6_0-PadK4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "K5": {
+   "xy": [
+    160.2,
+    125.2
+   ],
+   "net": "unconnected-(U12C-B6:PL29B-PadK5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "K6": {
+   "xy": [
+    161.0,
+    125.2
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "K7": {
+   "xy": [
+    161.8,
+    125.2
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "K8": {
+   "xy": [
+    162.6,
+    125.2
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "K9": {
+   "xy": [
+    163.4,
+    125.2
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "K10": {
+   "xy": [
+    164.2,
+    125.2
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "K11": {
+   "xy": [
+    165.0,
+    125.2
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "K12": {
+   "xy": [
+    165.8,
+    125.2
+   ],
+   "net": "unconnected-(U12B-B3:PR29B-PadK12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "K13": {
+   "xy": [
+    166.6,
+    125.2
+   ],
+   "net": "unconnected-(U12B-B3:PR29A{slash}GR_PCLK3_0-PadK13)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "K14": {
+   "xy": [
+    167.4,
+    125.2
+   ],
+   "net": "FT_D18",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[18]"
+  },
+  "K15": {
+   "xy": [
+    168.2,
+    125.2
+   ],
+   "net": "FT_D2",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[2]"
+  },
+  "K16": {
+   "xy": [
+    169.0,
+    125.2
+   ],
+   "net": "FT_D0",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[0]"
+  },
+  "L1": {
+   "xy": [
+    157.0,
+    126.0
+   ],
+   "net": "unconnected-(U12C-B6:PL26A{slash}PCLKT6_1-PadL1)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "L2": {
+   "xy": [
+    157.8,
+    126.0
+   ],
+   "net": "/FPGA/LED1",
+   "role": "signal",
+   "lpf_signal": "led[1]"
+  },
+  "L3": {
+   "xy": [
+    158.6,
+    126.0
+   ],
+   "net": "unconnected-(U12C-B6:PL32C-PadL3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "L4": {
+   "xy": [
+    159.4,
+    126.0
+   ],
+   "net": "unconnected-(U12C-B6:PL29C{slash}GR_PCLK6_1-PadL4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "L5": {
+   "xy": [
+    160.2,
+    126.0
+   ],
+   "net": "unconnected-(U12C-B6:PL29D-PadL5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "L6": {
+   "xy": [
+    161.0,
+    126.0
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "L7": {
+   "xy": [
+    161.8,
+    126.0
+   ],
+   "net": "2V5",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "L8": {
+   "xy": [
+    162.6,
+    126.0
+   ],
+   "net": "1V1",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "L9": {
+   "xy": [
+    163.4,
+    126.0
+   ],
+   "net": "1V1",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "L10": {
+   "xy": [
+    164.2,
+    126.0
+   ],
+   "net": "1V1",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "L11": {
+   "xy": [
+    165.0,
+    126.0
+   ],
+   "net": "3V3_D",
+   "role": "power",
+   "lpf_signal": null
+  },
+  "L12": {
+   "xy": [
+    165.8,
+    126.0
+   ],
+   "net": "unconnected-(U12B-B3:PR29D-PadL12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "L13": {
+   "xy": [
+    166.6,
+    126.0
+   ],
+   "net": "FT_D1",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[1]"
+  },
+  "L14": {
+   "xy": [
+    167.4,
+    126.0
+   ],
+   "net": "FT_D19",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[19]"
+  },
+  "L15": {
+   "xy": [
+    168.2,
+    126.0
+   ],
+   "net": "FT_D20",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[20]"
+  },
+  "L16": {
+   "xy": [
+    169.0,
+    126.0
+   ],
+   "net": "FT_D21",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[21]"
+  },
+  "M1": {
+   "xy": [
+    157.0,
+    126.8
+   ],
+   "net": "/FPGA/REF10M",
+   "role": "signal",
+   "lpf_signal": "ref10m"
+  },
+  "M2": {
+   "xy": [
+    157.8,
+    126.8
+   ],
+   "net": "unconnected-(U12C-B6:PL26D{slash}PCLKC6_0-PadM2)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M3": {
+   "xy": [
+    158.6,
+    126.8
+   ],
+   "net": "unconnected-(U12C-B6:PL32D-PadM3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M4": {
+   "xy": [
+    159.4,
+    126.8
+   ],
+   "net": "unconnected-(U12C-B6:PL35C-PadM4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M5": {
+   "xy": [
+    160.2,
+    126.8
+   ],
+   "net": "unconnected-(U12C-B6:PL44C-PadM5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M6": {
+   "xy": [
+    161.0,
+    126.8
+   ],
+   "net": "unconnected-(U12C-B6:PL47A-PadM6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M7": {
+   "xy": [
+    161.8,
+    126.8
+   ],
+   "net": "/FPGA/FLASH_IO2",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "M8": {
+   "xy": [
+    162.6,
+    126.8
+   ],
+   "net": "unconnected-(U12D-B8:PB15B{slash}DOUT{slash}CSON-PadM8)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M9": {
+   "xy": [
+    163.4,
+    126.8
+   ],
+   "net": "unconnected-(U12D-B8:PB18A{slash}WRITEN-PadM9)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M10": {
+   "xy": [
+    164.2,
+    126.8
+   ],
+   "net": "/FPGA/FPGA_TDO",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "M11": {
+   "xy": [
+    165.0,
+    126.8
+   ],
+   "net": "unconnected-(U12B-B3:PR47A-PadM11)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M12": {
+   "xy": [
+    165.8,
+    126.8
+   ],
+   "net": "unconnected-(U12B-B3:PR44C-PadM12)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "M13": {
+   "xy": [
+    166.6,
+    126.8
+   ],
+   "net": "FT_D22",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[22]"
+  },
+  "M14": {
+   "xy": [
+    167.4,
+    126.8
+   ],
+   "net": "FT_D23",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[23]"
+  },
+  "M15": {
+   "xy": [
+    168.2,
+    126.8
+   ],
+   "net": "FT_D24",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[24]"
+  },
+  "M16": {
+   "xy": [
+    169.0,
+    126.8
+   ],
+   "net": "FT_D26",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[26]"
+  },
+  "N1": {
+   "xy": [
+    157.0,
+    127.6
+   ],
+   "net": "LMK_SCL",
+   "role": "signal",
+   "lpf_signal": "lmk_scl"
+  },
+  "N2": {
+   "xy": [
+    157.8,
+    127.6
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "N3": {
+   "xy": [
+    158.6,
+    127.6
+   ],
+   "net": "unconnected-(U12C-B6:PL35D-PadN3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "N4": {
+   "xy": [
+    159.4,
+    127.6
+   ],
+   "net": "unconnected-(U12C-B6:PL38A-PadN4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "N5": {
+   "xy": [
+    160.2,
+    127.6
+   ],
+   "net": "unconnected-(U12C-B6:PL44D-PadN5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "N6": {
+   "xy": [
+    161.0,
+    127.6
+   ],
+   "net": "unconnected-(U12C-B6:PL47B-PadN6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "N7": {
+   "xy": [
+    161.8,
+    127.6
+   ],
+   "net": "/FPGA/FLASH_IO3",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "N8": {
+   "xy": [
+    162.6,
+    127.6
+   ],
+   "net": "unconnected-(U12D-B8:PB15A{slash}HOLDN{slash}DI{slash}BUSY{slash}CSSPIN{slash}CEN-PadN8)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "N9": {
+   "xy": [
+    163.4,
+    127.6
+   ],
+   "net": "/FPGA/CCLK_FPGA",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "N10": {
+   "xy": [
+    164.2,
+    127.6
+   ],
+   "net": "/FPGA/FPGA_CFG0",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "N11": {
+   "xy": [
+    165.0,
+    127.6
+   ],
+   "net": "FT_D25",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[25]"
+  },
+  "N12": {
+   "xy": [
+    165.8,
+    127.6
+   ],
+   "net": "FT_D27",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[27]"
+  },
+  "N13": {
+   "xy": [
+    166.6,
+    127.6
+   ],
+   "net": "FT_D28",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[28]"
+  },
+  "N14": {
+   "xy": [
+    167.4,
+    127.6
+   ],
+   "net": "FT_D29",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[29]"
+  },
+  "N15": {
+   "xy": [
+    168.2,
+    127.6
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "N16": {
+   "xy": [
+    169.0,
+    127.6
+   ],
+   "net": "FT_D30",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[30]"
+  },
+  "P1": {
+   "xy": [
+    157.0,
+    128.4
+   ],
+   "net": "LMK_SDA",
+   "role": "signal",
+   "lpf_signal": "lmk_sda"
+  },
+  "P2": {
+   "xy": [
+    157.8,
+    128.4
+   ],
+   "net": "unconnected-(U12C-B6:PL32B-PadP2)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "P3": {
+   "xy": [
+    158.6,
+    128.4
+   ],
+   "net": "unconnected-(U12C-B6:PL38B-PadP3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "P4": {
+   "xy": [
+    159.4,
+    128.4
+   ],
+   "net": "unconnected-(U12C-B6:PL41A-PadP4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "P5": {
+   "xy": [
+    160.2,
+    128.4
+   ],
+   "net": "unconnected-(U12C-B6:PL47D{slash}LLC_GPLL0C_IN-PadP5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "P6": {
+   "xy": [
+    161.0,
+    128.4
+   ],
+   "net": "unconnected-(U12C-B6:PL47C{slash}LLC_GPLL0T_IN-PadP6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "P7": {
+   "xy": [
+    161.8,
+    128.4
+   ],
+   "net": "unconnected-(U12D-B8:PB6B{slash}D4{slash}MOSI2{slash}IO4-PadP7)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "P8": {
+   "xy": [
+    162.6,
+    128.4
+   ],
+   "net": "unconnected-(U12D-B8:PB13B{slash}CS1N-PadP8)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "P9": {
+   "xy": [
+    163.4,
+    128.4
+   ],
+   "net": "/FPGA/FPGA_DONE",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "P10": {
+   "xy": [
+    164.2,
+    128.4
+   ],
+   "net": "/FPGA/FPGA_CFG1",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "P11": {
+   "xy": [
+    165.0,
+    128.4
+   ],
+   "net": "FT_D31",
+   "role": "bus_ft",
+   "lpf_signal": "ft_data[31]"
+  },
+  "P12": {
+   "xy": [
+    165.8,
+    128.4
+   ],
+   "net": "FT_BE0",
+   "role": "bus_ft",
+   "lpf_signal": "ft_be[0]"
+  },
+  "P13": {
+   "xy": [
+    166.6,
+    128.4
+   ],
+   "net": "FT_BE1",
+   "role": "bus_ft",
+   "lpf_signal": "ft_be[1]"
+  },
+  "P14": {
+   "xy": [
+    167.4,
+    128.4
+   ],
+   "net": "FT_BE2",
+   "role": "bus_ft",
+   "lpf_signal": "ft_be[2]"
+  },
+  "P15": {
+   "xy": [
+    168.2,
+    128.4
+   ],
+   "net": "FT_BE3",
+   "role": "bus_ft",
+   "lpf_signal": "ft_be[3]"
+  },
+  "P16": {
+   "xy": [
+    169.0,
+    128.4
+   ],
+   "net": "FT_TXE_N",
+   "role": "bus_ft",
+   "lpf_signal": "ft_txe_n"
+  },
+  "R1": {
+   "xy": [
+    157.0,
+    129.2
+   ],
+   "net": "RLY_PAD",
+   "role": "signal",
+   "lpf_signal": "rly_pad"
+  },
+  "R2": {
+   "xy": [
+    157.8,
+    129.2
+   ],
+   "net": "unconnected-(U12C-B6:PL38C-PadR2)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "R3": {
+   "xy": [
+    158.6,
+    129.2
+   ],
+   "net": "unconnected-(U12C-B6:PL41B-PadR3)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "R4": {
+   "xy": [
+    159.4,
+    129.2
+   ],
+   "net": "unconnected-(U12C-B6:PL41C-PadR4)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "R5": {
+   "xy": [
+    160.2,
+    129.2
+   ],
+   "net": "unconnected-(U12C-B6:PL44A-PadR5)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "R6": {
+   "xy": [
+    161.0,
+    129.2
+   ],
+   "net": "unconnected-(U12D-B8:PB4B{slash}D6{slash}IO6-PadR6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "R7": {
+   "xy": [
+    161.8,
+    129.2
+   ],
+   "net": "unconnected-(U12D-B8:PB6A{slash}D5{slash}MISO2{slash}IO5-PadR7)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "R8": {
+   "xy": [
+    162.6,
+    129.2
+   ],
+   "net": "/FPGA/FLASH_CS_N",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "R9": {
+   "xy": [
+    163.4,
+    129.2
+   ],
+   "net": "/FPGA/FPGA_PROGRAM_N",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "R10": {
+   "xy": [
+    164.2,
+    129.2
+   ],
+   "net": "/FPGA/FPGA_CFG2",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "R11": {
+   "xy": [
+    165.0,
+    129.2
+   ],
+   "net": "/FPGA/FPGA_TDI",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "R12": {
+   "xy": [
+    165.8,
+    129.2
+   ],
+   "net": "FT_RXF_N",
+   "role": "bus_ft",
+   "lpf_signal": "ft_rxf_n"
+  },
+  "R13": {
+   "xy": [
+    166.6,
+    129.2
+   ],
+   "net": "FT_WR_N",
+   "role": "bus_ft",
+   "lpf_signal": "ft_wr_n"
+  },
+  "R14": {
+   "xy": [
+    167.4,
+    129.2
+   ],
+   "net": "FT_RD_N",
+   "role": "bus_ft",
+   "lpf_signal": "ft_rd_n"
+  },
+  "R15": {
+   "xy": [
+    168.2,
+    129.2
+   ],
+   "net": "FT_OE_N",
+   "role": "bus_ft",
+   "lpf_signal": "ft_oe_n"
+  },
+  "R16": {
+   "xy": [
+    169.0,
+    129.2
+   ],
+   "net": "FT_RESET_N",
+   "role": "bus_ft",
+   "lpf_signal": "ft_reset_n"
+  },
+  "T1": {
+   "xy": [
+    157.0,
+    130.0
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "T2": {
+   "xy": [
+    157.8,
+    130.0
+   ],
+   "net": "RLY_LNA",
+   "role": "signal",
+   "lpf_signal": "rly_lna"
+  },
+  "T3": {
+   "xy": [
+    158.6,
+    130.0
+   ],
+   "net": "LNA_EN",
+   "role": "signal",
+   "lpf_signal": "lna_en"
+  },
+  "T4": {
+   "xy": [
+    159.4,
+    130.0
+   ],
+   "net": "/FPGA/LED0",
+   "role": "signal",
+   "lpf_signal": "led[0]"
+  },
+  "T5": {
+   "xy": [
+    160.2,
+    130.0
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "T6": {
+   "xy": [
+    161.0,
+    130.0
+   ],
+   "net": "unconnected-(U12D-B8:PB4A{slash}D7{slash}IO7-PadT6)",
+   "role": "unused",
+   "lpf_signal": null
+  },
+  "T7": {
+   "xy": [
+    161.8,
+    130.0
+   ],
+   "net": "/FPGA/FLASH_IO1",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "T8": {
+   "xy": [
+    162.6,
+    130.0
+   ],
+   "net": "/FPGA/FLASH_IO0",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "T9": {
+   "xy": [
+    163.4,
+    130.0
+   ],
+   "net": "/FPGA/FPGA_INIT_N",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "T10": {
+   "xy": [
+    164.2,
+    130.0
+   ],
+   "net": "/FPGA/FPGA_TCK",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "T11": {
+   "xy": [
+    165.0,
+    130.0
+   ],
+   "net": "/FPGA/FPGA_TMS",
+   "role": "signal",
+   "lpf_signal": null
+  },
+  "T12": {
+   "xy": [
+    165.8,
+    130.0
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  },
+  "T13": {
+   "xy": [
+    166.6,
+    130.0
+   ],
+   "net": "FT_WAKEUP_N",
+   "role": "bus_ft",
+   "lpf_signal": "ft_wakeup_n"
+  },
+  "T14": {
+   "xy": [
+    167.4,
+    130.0
+   ],
+   "net": "FT_GPIO0",
+   "role": "bus_ft",
+   "lpf_signal": null
+  },
+  "T15": {
+   "xy": [
+    168.2,
+    130.0
+   ],
+   "net": "FT_GPIO1",
+   "role": "bus_ft",
+   "lpf_signal": null
+  },
+  "T16": {
+   "xy": [
+    169.0,
+    130.0
+   ],
+   "net": "GND",
+   "role": "gnd",
+   "lpf_signal": null
+  }
+ },
+ "vias": [
+  {
+   "xy": [
+    163.72,
+    128.0
+   ],
+   "net": "/FPGA/CCLK_FPGA",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "037bd6d0-29cc-4935-bff9-a6e37e105623"
+  },
+  {
+   "xy": [
+    162.189,
+    126.467
+   ],
+   "net": "/FPGA/FLASH_IO2",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "232481d0-163e-4b37-bf97-f82f78b26545"
+  },
+  {
+   "xy": [
+    162.133,
+    128.011
+   ],
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "34a088f3-7a3f-4eae-b1b0-3d45b9c59c83"
+  },
+  {
+   "xy": [
+    163.027,
+    128.027
+   ],
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "52a7ebbb-5784-46fa-a2c0-bbd7449ec723"
+  },
+  {
+   "xy": [
+    158.224,
+    130.536
+   ],
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "d0144d78-18af-4dfc-8bc7-12035d0bd4c2"
+  },
+  {
+   "xy": [
+    168.691,
+    131.152
+   ],
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "57ee90de-7fcd-4484-baf3-07f249865be1"
+  },
+  {
+   "xy": [
+    165.204,
+    130.853
+   ],
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "5dbcfbff-560c-4f3c-be49-1f06580efced"
+  },
+  {
+   "xy": [
+    164.929,
+    131.364
+   ],
+   "net": "/FPGA/LED0",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "53ab1c8f-68eb-449c-b656-f81f92339080"
+  },
+  {
+   "xy": [
+    159.671,
+    130.991
+   ],
+   "net": "/FPGA/LED0",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "ad94af82-cb5a-4f22-b2bd-5c1bbae8da0e"
+  },
+  {
+   "xy": [
+    157.427,
+    126.373
+   ],
+   "net": "/FPGA/LED1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "201e0fcc-f693-4c09-8f91-7abb3817ec87"
+  },
+  {
+   "xy": [
+    158.5,
+    117.373
+   ],
+   "net": "/FPGA/PMOD0_1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "139806af-8dc6-41d5-86f9-42a802590173"
+  },
+  {
+   "xy": [
+    158.972,
+    118.428
+   ],
+   "net": "/FPGA/PMOD0_4",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "2fbae2a2-1fae-4d14-b297-0351117f55ae"
+  },
+  {
+   "xy": [
+    159.73,
+    119.192
+   ],
+   "net": "/FPGA/PMOD0_5",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "a6e54c57-b3e6-4573-87dc-5c5976a865f5"
+  },
+  {
+   "xy": [
+    161.372,
+    118.428
+   ],
+   "net": "/FPGA/PMOD0_7",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "881ee0b5-90f2-4be3-b031-1caa74c24684"
+  },
+  {
+   "xy": [
+    164.414,
+    116.866
+   ],
+   "net": "/FPGA/PMOD1_0",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "6ddf6e8d-2449-4936-a8b2-10e1c1912754"
+  },
+  {
+   "xy": [
+    165.0,
+    117.278
+   ],
+   "net": "/FPGA/PMOD1_1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "84dd54a9-ad31-4c9b-bf93-d37d0cb1c285"
+  },
+  {
+   "xy": [
+    166.6,
+    117.07
+   ],
+   "net": "/FPGA/PMOD1_2",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "d6b6966f-a3e8-4c06-b259-4bd924489a83"
+  },
+  {
+   "xy": [
+    165.744,
+    117.106
+   ],
+   "net": "/FPGA/PMOD1_2",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "f2a4c050-19b3-4a82-b25c-a25e26026bbf"
+  },
+  {
+   "xy": [
+    162.886,
+    116.742
+   ],
+   "net": "/FPGA/PMOD1_4",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "3dd354a6-dfc9-4238-84c5-7203b8e1c0b2"
+  },
+  {
+   "xy": [
+    164.533,
+    118.389
+   ],
+   "net": "/FPGA/PMOD1_4",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "9ff59226-6ae1-4f38-99a9-e28c3dd57f6e"
+  },
+  {
+   "xy": [
+    165.333,
+    118.389
+   ],
+   "net": "/FPGA/PMOD1_5",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "ae1b55c3-a1a6-421c-afeb-1ba03fe0607c"
+  },
+  {
+   "xy": [
+    167.042,
+    127.168
+   ],
+   "net": "/FPGA/PMOD1_7",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "f43e38a5-5fc4-4365-a53a-4e556051cac5"
+  },
+  {
+   "xy": [
+    160.6,
+    122.4
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "7ce11570-a178-47d9-a3bb-4ece806c4841"
+  },
+  {
+   "xy": [
+    170.01,
+    119.356
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "862858c8-e29c-4d1a-97bf-b2613a603c03"
+  },
+  {
+   "xy": [
+    156.06,
+    120.513
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "9d8481d8-7099-4535-b9f5-a2dee45cdbb6"
+  },
+  {
+   "xy": [
+    161.4,
+    122.4
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "a30ce482-977b-44d5-9978-79b4881fc541"
+  },
+  {
+   "xy": [
+    163.8,
+    122.4
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "a362d433-6ef6-45f5-8d08-8fa955cc661f"
+  },
+  {
+   "xy": [
+    164.6,
+    126.4
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "cdca9a5f-3462-40ff-9a22-20d9b4fe79a9"
+  },
+  {
+   "xy": [
+    162.99,
+    126.39
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "dfd3c658-5461-489f-9938-c1ba788a5b49"
+  },
+  {
+   "xy": [
+    157.736,
+    131.188
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "e2af149d-f5cb-40d0-b625-62fc5de43852"
+  },
+  {
+   "xy": [
+    163.8,
+    126.4
+   ],
+   "net": "1V1",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "fb152cd1-7360-46a9-bc27-0ec2a53c67f0"
+  },
+  {
+   "xy": [
+    160.637,
+    123.963
+   ],
+   "net": "1V8_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "69cfe6e0-1ab2-4781-b820-073c5a59574b"
+  },
+  {
+   "xy": [
+    161.41,
+    123.21
+   ],
+   "net": "1V8_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "96576f3f-4694-479f-b1f3-357f2e2b0822"
+  },
+  {
+   "xy": [
+    164.6,
+    122.4
+   ],
+   "net": "2V5",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "bc537118-91e2-492c-9b7f-2db452cb737c"
+  },
+  {
+   "xy": [
+    163.775,
+    120.8
+   ],
+   "net": "2V5",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "fd22792c-2e1e-4a6d-b1f3-5b44adc8475f"
+  },
+  {
+   "xy": [
+    160.662,
+    121.615
+   ],
+   "net": "3V3_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "061388ee-92af-45f5-a663-bd8d9ab91b71"
+  },
+  {
+   "xy": [
+    165.385,
+    126.338
+   ],
+   "net": "3V3_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "0a586900-8d55-4fb3-bd2d-357e56e633d7"
+  },
+  {
+   "xy": [
+    165.39,
+    122.39
+   ],
+   "net": "3V3_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "15c7ceb1-5e17-4180-b6f0-2996a7985d78"
+  },
+  {
+   "xy": [
+    168.282,
+    117.244
+   ],
+   "net": "3V3_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "19441577-d7b4-4bae-836e-fb52f61b1ac0"
+  },
+  {
+   "xy": [
+    161.41,
+    124.01
+   ],
+   "net": "3V3_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "73adc64f-a137-4225-bc5e-97345debb229"
+  },
+  {
+   "xy": [
+    160.637,
+    126.363
+   ],
+   "net": "3V3_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "b86a1aff-bafd-4e11-a85b-5f870dae2c25"
+  },
+  {
+   "xy": [
+    165.4,
+    123.2
+   ],
+   "net": "3V3_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "d66229aa-4874-40a6-9c64-79000101aecd"
+  },
+  {
+   "xy": [
+    161.4,
+    124.8
+   ],
+   "net": "3V3_D",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "f7d43f4e-9fc5-4520-a77c-b658cfa30851"
+  },
+  {
+   "xy": [
+    159.8,
+    130.4
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "04b75f6a-e21f-4ec1-965f-0564e1a51c5e"
+  },
+  {
+   "xy": [
+    162.2,
+    125.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "0cd009ec-afcf-46da-9393-3cbb3123fbe6"
+  },
+  {
+   "xy": [
+    156.6,
+    123.2
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "0f71dc46-9c8e-47d5-ac85-06083a162f66"
+  },
+  {
+   "xy": [
+    164.6,
+    123.2
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "2695fab1-64e7-4e7f-8eff-0b511ad0afa1"
+  },
+  {
+   "xy": [
+    157.4,
+    128.0
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "2974e4b1-c851-4ddf-bbff-187f0166a06c"
+  },
+  {
+   "xy": [
+    163.8,
+    124.8
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "32f305c7-9ae1-475d-bab4-5ea86ab01e6d"
+  },
+  {
+   "xy": [
+    162.2,
+    123.2
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "3ace11dc-b0e6-4aa2-8f0b-735fef572e36"
+  },
+  {
+   "xy": [
+    169.4,
+    123.2
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "3aeea278-6217-45b7-b3eb-3e56c9bf803f"
+  },
+  {
+   "xy": [
+    169.4,
+    117.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "40eb9a04-bdbe-4554-b613-6dc50ee32b0f"
+  },
+  {
+   "xy": [
+    158.378,
+    131.388
+   ],
+   "net": "GND",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "434cb202-f73b-4e05-b4eb-3057ad8ac368"
+  },
+  {
+   "xy": [
+    161.4,
+    125.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "48f94660-f409-46ad-9260-dc2bf1d60eff"
+  },
+  {
+   "xy": [
+    162.2,
+    122.4
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "4b4aab76-20fd-4393-900a-d8d86249ffad"
+  },
+  {
+   "xy": [
+    169.4,
+    130.4
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "4e0f64c4-7750-47a6-99cb-0322550f07ca"
+  },
+  {
+   "xy": [
+    157.4,
+    120.0
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "4f3867b6-0e33-45f8-88c6-a6510a44c47e"
+  },
+  {
+   "xy": [
+    156.6,
+    130.4
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "57fc82ce-d8cb-4deb-94a9-d9b1a84d4969"
+  },
+  {
+   "xy": [
+    163.8,
+    121.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "6f5cd47e-a43a-4697-8879-5f9585f6de34"
+  },
+  {
+   "xy": [
+    163.8,
+    125.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "7036209d-7781-4fb1-8f4b-e02ad4eca24c"
+  },
+  {
+   "xy": [
+    160.6,
+    125.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "75d91649-bcb1-4a2e-8198-6192876aad76"
+  },
+  {
+   "xy": [
+    162.2,
+    121.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "98c39f14-3ae3-431b-bece-9f4a75592474"
+  },
+  {
+   "xy": [
+    162.2,
+    124.8
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "a86388ad-f8d9-47dd-bbe0-88333e2ae7ee"
+  },
+  {
+   "xy": [
+    156.6,
+    117.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "b0872cb0-adb2-4290-90a2-95ccae1ce5c6"
+  },
+  {
+   "xy": [
+    168.6,
+    120.0
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "bc5d1634-972a-449c-b26f-cacfe9f31304"
+  },
+  {
+   "xy": [
+    169.985,
+    120.915
+   ],
+   "net": "GND",
+   "locked": false,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "bd51f030-2cec-4ecd-8994-d86532a270e2"
+  },
+  {
+   "xy": [
+    164.6,
+    124.8
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "c373b174-716d-4300-bd39-e4775b8da3a7"
+  },
+  {
+   "xy": [
+    164.6,
+    125.6
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "d2458d44-56b1-478c-8499-cbef46e8cfd7"
+  },
+  {
+   "xy": [
+    163.8,
+    123.2
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "f3b9665b-b74b-426c-8b2f-401447031ab3"
+  },
+  {
+   "xy": [
+    168.6,
+    128.0
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "fc6dfc78-c3d6-47d2-ab8f-6c7cea4c8279"
+  },
+  {
+   "xy": [
+    166.2,
+    130.4
+   ],
+   "net": "GND",
+   "locked": true,
+   "pad": 0.45,
+   "drill": 0.2,
+   "uuid": "fdffa91b-94d4-439b-b463-5af240f4ddbc"
+  }
+ ],
+ "tracks": [
+  {
+   "a": [
+    163.593,
+    127.793
+   ],
+   "b": [
+    163.72,
+    127.92
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/CCLK_FPGA",
+   "locked": false
+  },
+  {
+   "a": [
+    163.4,
+    127.6
+   ],
+   "b": [
+    163.593,
+    127.793
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/CCLK_FPGA",
+   "locked": false
+  },
+  {
+   "a": [
+    163.72,
+    127.92
+   ],
+   "b": [
+    163.72,
+    128.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/CCLK_FPGA",
+   "locked": false
+  },
+  {
+   "a": [
+    164.625,
+    128.905
+   ],
+   "b": [
+    168.974,
+    128.905
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/CCLK_FPGA",
+   "locked": false
+  },
+  {
+   "a": [
+    168.974,
+    128.905
+   ],
+   "b": [
+    171.99,
+    125.889
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/CCLK_FPGA",
+   "locked": false
+  },
+  {
+   "a": [
+    163.72,
+    128.0
+   ],
+   "b": [
+    164.625,
+    128.905
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/CCLK_FPGA",
+   "locked": false
+  },
+  {
+   "a": [
+    162.6,
+    129.2
+   ],
+   "b": [
+    162.407,
+    129.393
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_CS_N",
+   "locked": false
+  },
+  {
+   "a": [
+    162.199,
+    131.226
+   ],
+   "b": [
+    161.696,
+    131.729
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_CS_N",
+   "locked": false
+  },
+  {
+   "a": [
+    162.407,
+    129.393
+   ],
+   "b": [
+    162.199,
+    129.601
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_CS_N",
+   "locked": false
+  },
+  {
+   "a": [
+    162.199,
+    129.601
+   ],
+   "b": [
+    162.199,
+    131.226
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_CS_N",
+   "locked": false
+  },
+  {
+   "a": [
+    162.793,
+    130.193
+   ],
+   "b": [
+    163.529,
+    130.929
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO0",
+   "locked": false
+  },
+  {
+   "a": [
+    163.529,
+    130.929
+   ],
+   "b": [
+    163.529,
+    134.28
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO0",
+   "locked": false
+  },
+  {
+   "a": [
+    162.6,
+    130.0
+   ],
+   "b": [
+    162.793,
+    130.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO0",
+   "locked": false
+  },
+  {
+   "a": [
+    161.542,
+    130.0
+   ],
+   "b": [
+    158.011,
+    133.531
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO1",
+   "locked": false
+  },
+  {
+   "a": [
+    161.8,
+    130.0
+   ],
+   "b": [
+    161.542,
+    130.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO1",
+   "locked": false
+  },
+  {
+   "a": [
+    162.133,
+    126.467
+   ],
+   "b": [
+    162.189,
+    126.467
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO2",
+   "locked": false
+  },
+  {
+   "a": [
+    161.993,
+    126.607
+   ],
+   "b": [
+    162.133,
+    126.467
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO2",
+   "locked": false
+  },
+  {
+   "a": [
+    161.8,
+    126.8
+   ],
+   "b": [
+    161.993,
+    126.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO2",
+   "locked": false
+  },
+  {
+   "a": [
+    161.484,
+    126.467
+   ],
+   "b": [
+    155.981,
+    131.97
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FLASH_IO2",
+   "locked": false
+  },
+  {
+   "a": [
+    162.189,
+    126.467
+   ],
+   "b": [
+    161.484,
+    126.467
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FLASH_IO2",
+   "locked": false
+  },
+  {
+   "a": [
+    161.8,
+    127.6
+   ],
+   "b": [
+    161.993,
+    127.793
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false
+  },
+  {
+   "a": [
+    162.133,
+    127.933
+   ],
+   "b": [
+    162.133,
+    128.011
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false
+  },
+  {
+   "a": [
+    161.993,
+    127.793
+   ],
+   "b": [
+    162.133,
+    127.933
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false
+  },
+  {
+   "a": [
+    163.699,
+    129.577
+   ],
+   "b": [
+    167.885,
+    129.577
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false
+  },
+  {
+   "a": [
+    167.885,
+    129.577
+   ],
+   "b": [
+    169.413,
+    131.105
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false
+  },
+  {
+   "a": [
+    169.413,
+    131.105
+   ],
+   "b": [
+    169.413,
+    131.256
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false
+  },
+  {
+   "a": [
+    162.133,
+    128.011
+   ],
+   "b": [
+    163.699,
+    129.577
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false
+  },
+  {
+   "a": [
+    169.413,
+    131.256
+   ],
+   "b": [
+    167.503,
+    133.166
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FLASH_IO3",
+   "locked": false
+  },
+  {
+   "a": [
+    163.4,
+    128.4
+   ],
+   "b": [
+    163.207,
+    128.207
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false
+  },
+  {
+   "a": [
+    163.207,
+    128.207
+   ],
+   "b": [
+    163.027,
+    128.027
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false
+  },
+  {
+   "a": [
+    156.031,
+    131.915
+   ],
+   "b": [
+    157.41,
+    130.536
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false
+  },
+  {
+   "a": [
+    157.41,
+    130.536
+   ],
+   "b": [
+    158.224,
+    130.536
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false
+  },
+  {
+   "a": [
+    162.203,
+    127.203
+   ],
+   "b": [
+    163.027,
+    128.027
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false
+  },
+  {
+   "a": [
+    158.224,
+    130.536
+   ],
+   "b": [
+    161.557,
+    127.203
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false
+  },
+  {
+   "a": [
+    161.557,
+    127.203
+   ],
+   "b": [
+    162.203,
+    127.203
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FPGA_DONE",
+   "locked": false
+  },
+  {
+   "a": [
+    164.2,
+    130.273
+   ],
+   "b": [
+    164.2,
+    130.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TCK",
+   "locked": false
+  },
+  {
+   "a": [
+    164.2,
+    131.934
+   ],
+   "b": [
+    164.2,
+    130.273
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TCK",
+   "locked": false
+  },
+  {
+   "a": [
+    164.598,
+    129.602
+   ],
+   "b": [
+    164.807,
+    129.393
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false
+  },
+  {
+   "a": [
+    164.598,
+    130.247
+   ],
+   "b": [
+    164.598,
+    129.602
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false
+  },
+  {
+   "a": [
+    168.882,
+    131.152
+   ],
+   "b": [
+    170.2,
+    132.47
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false
+  },
+  {
+   "a": [
+    168.691,
+    131.152
+   ],
+   "b": [
+    168.882,
+    131.152
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false
+  },
+  {
+   "a": [
+    164.807,
+    129.393
+   ],
+   "b": [
+    165.0,
+    129.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false
+  },
+  {
+   "a": [
+    165.204,
+    130.853
+   ],
+   "b": [
+    164.598,
+    130.247
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false
+  },
+  {
+   "a": [
+    165.503,
+    131.152
+   ],
+   "b": [
+    165.204,
+    130.853
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false
+  },
+  {
+   "a": [
+    168.691,
+    131.152
+   ],
+   "b": [
+    165.503,
+    131.152
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/FPGA_TDI",
+   "locked": false
+  },
+  {
+   "a": [
+    167.607,
+    132.607
+   ],
+   "b": [
+    165.193,
+    130.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TMS",
+   "locked": false
+  },
+  {
+   "a": [
+    165.193,
+    130.193
+   ],
+   "b": [
+    165.0,
+    130.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/FPGA_TMS",
+   "locked": false
+  },
+  {
+   "a": [
+    166.57,
+    132.296
+   ],
+   "b": [
+    165.638,
+    131.364
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/LED0",
+   "locked": false
+  },
+  {
+   "a": [
+    159.116,
+    130.284
+   ],
+   "b": [
+    159.116,
+    130.436
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/LED0",
+   "locked": false
+  },
+  {
+   "a": [
+    165.638,
+    131.364
+   ],
+   "b": [
+    164.929,
+    131.364
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/LED0",
+   "locked": false
+  },
+  {
+   "a": [
+    159.4,
+    130.0
+   ],
+   "b": [
+    159.116,
+    130.284
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/LED0",
+   "locked": false
+  },
+  {
+   "a": [
+    159.116,
+    130.436
+   ],
+   "b": [
+    159.671,
+    130.991
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/LED0",
+   "locked": false
+  },
+  {
+   "a": [
+    159.671,
+    130.991
+   ],
+   "b": [
+    160.044,
+    131.364
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/LED0",
+   "locked": false
+  },
+  {
+   "a": [
+    160.044,
+    131.364
+   ],
+   "b": [
+    164.929,
+    131.364
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/LED0",
+   "locked": false
+  },
+  {
+   "a": [
+    157.8,
+    126.0
+   ],
+   "b": [
+    157.607,
+    126.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/LED1",
+   "locked": false
+  },
+  {
+   "a": [
+    157.607,
+    126.193
+   ],
+   "b": [
+    157.427,
+    126.373
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/LED1",
+   "locked": false
+  },
+  {
+   "a": [
+    155.306,
+    128.494
+   ],
+   "b": [
+    157.427,
+    126.373
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/LED1",
+   "locked": false
+  },
+  {
+   "a": [
+    157.8,
+    118.0
+   ],
+   "b": [
+    157.607,
+    117.807
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_0",
+   "locked": false
+  },
+  {
+   "a": [
+    157.607,
+    117.807
+   ],
+   "b": [
+    157.0,
+    117.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_0",
+   "locked": false
+  },
+  {
+   "a": [
+    157.0,
+    117.2
+   ],
+   "b": [
+    157.0,
+    114.378
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_0",
+   "locked": false
+  },
+  {
+   "a": [
+    158.6,
+    117.728
+   ],
+   "b": [
+    158.6,
+    118.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_1",
+   "locked": false
+  },
+  {
+   "a": [
+    158.6,
+    117.473
+   ],
+   "b": [
+    158.6,
+    117.728
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_1",
+   "locked": false
+  },
+  {
+   "a": [
+    158.5,
+    117.373
+   ],
+   "b": [
+    158.6,
+    117.473
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_1",
+   "locked": false
+  },
+  {
+   "a": [
+    155.47,
+    114.343
+   ],
+   "b": [
+    158.5,
+    117.373
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_1",
+   "locked": false
+  },
+  {
+   "a": [
+    159.54,
+    116.773
+   ],
+   "b": [
+    159.54,
+    114.378
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_2",
+   "locked": false
+  },
+  {
+   "a": [
+    159.4,
+    116.913
+   ],
+   "b": [
+    159.54,
+    116.773
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_2",
+   "locked": false
+  },
+  {
+   "a": [
+    159.4,
+    118.0
+   ],
+   "b": [
+    159.4,
+    116.913
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_2",
+   "locked": false
+  },
+  {
+   "a": [
+    160.2,
+    116.973
+   ],
+   "b": [
+    160.811,
+    116.362
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_3",
+   "locked": false
+  },
+  {
+   "a": [
+    160.2,
+    118.0
+   ],
+   "b": [
+    160.2,
+    116.973
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_3",
+   "locked": false
+  },
+  {
+   "a": [
+    158.6,
+    118.8
+   ],
+   "b": [
+    158.793,
+    118.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_4",
+   "locked": false
+  },
+  {
+   "a": [
+    158.793,
+    118.607
+   ],
+   "b": [
+    158.972,
+    118.428
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_4",
+   "locked": false
+  },
+  {
+   "a": [
+    159.607,
+    118.428
+   ],
+   "b": [
+    163.939,
+    114.096
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_4",
+   "locked": false
+  },
+  {
+   "a": [
+    158.972,
+    118.428
+   ],
+   "b": [
+    159.607,
+    118.428
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_4",
+   "locked": false
+  },
+  {
+   "a": [
+    159.73,
+    119.13
+   ],
+   "b": [
+    159.593,
+    118.993
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    159.73,
+    119.192
+   ],
+   "b": [
+    159.73,
+    119.13
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    159.593,
+    118.993
+   ],
+   "b": [
+    159.4,
+    118.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    158.762,
+    119.192
+   ],
+   "b": [
+    159.73,
+    119.192
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    163.35,
+    113.963
+   ],
+   "b": [
+    160.025,
+    117.288
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    160.025,
+    117.288
+   ],
+   "b": [
+    159.348,
+    117.288
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    158.239,
+    118.669
+   ],
+   "b": [
+    158.762,
+    119.192
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    159.348,
+    117.288
+   ],
+   "b": [
+    158.239,
+    118.397
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    158.239,
+    118.397
+   ],
+   "b": [
+    158.239,
+    118.669
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_5",
+   "locked": false
+  },
+  {
+   "a": [
+    160.393,
+    118.607
+   ],
+   "b": [
+    160.2,
+    118.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_6",
+   "locked": false
+  },
+  {
+   "a": [
+    160.6,
+    117.607
+   ],
+   "b": [
+    160.6,
+    118.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_6",
+   "locked": false
+  },
+  {
+   "a": [
+    161.037,
+    117.17
+   ],
+   "b": [
+    160.6,
+    117.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_6",
+   "locked": false
+  },
+  {
+   "a": [
+    166.479,
+    114.096
+   ],
+   "b": [
+    163.405,
+    117.17
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_6",
+   "locked": false
+  },
+  {
+   "a": [
+    163.405,
+    117.17
+   ],
+   "b": [
+    161.037,
+    117.17
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_6",
+   "locked": false
+  },
+  {
+   "a": [
+    160.6,
+    118.4
+   ],
+   "b": [
+    160.393,
+    118.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_6",
+   "locked": false
+  },
+  {
+   "a": [
+    161.193,
+    118.607
+   ],
+   "b": [
+    161.372,
+    118.428
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_7",
+   "locked": false
+  },
+  {
+   "a": [
+    161.0,
+    118.8
+   ],
+   "b": [
+    161.193,
+    118.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD0_7",
+   "locked": false
+  },
+  {
+   "a": [
+    161.372,
+    118.428
+   ],
+   "b": [
+    161.372,
+    117.316
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_7",
+   "locked": false
+  },
+  {
+   "a": [
+    161.372,
+    117.316
+   ],
+   "b": [
+    163.829,
+    114.859
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD0_7",
+   "locked": false
+  },
+  {
+   "a": [
+    164.414,
+    116.866
+   ],
+   "b": [
+    164.2,
+    117.08
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_0",
+   "locked": false
+  },
+  {
+   "a": [
+    164.2,
+    117.728
+   ],
+   "b": [
+    164.2,
+    118.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_0",
+   "locked": false
+  },
+  {
+   "a": [
+    164.2,
+    117.08
+   ],
+   "b": [
+    164.2,
+    117.728
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_0",
+   "locked": false
+  },
+  {
+   "a": [
+    164.414,
+    116.866
+   ],
+   "b": [
+    165.515,
+    115.765
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_0",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    117.278
+   ],
+   "b": [
+    165.0,
+    117.728
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_1",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    117.728
+   ],
+   "b": [
+    165.0,
+    118.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_1",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    116.991
+   ],
+   "b": [
+    165.0,
+    117.278
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_1",
+   "locked": false
+  },
+  {
+   "a": [
+    165.565,
+    116.426
+   ],
+   "b": [
+    165.0,
+    116.991
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_1",
+   "locked": false
+  },
+  {
+   "a": [
+    165.744,
+    117.106
+   ],
+   "b": [
+    165.8,
+    117.162
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_2",
+   "locked": false
+  },
+  {
+   "a": [
+    165.8,
+    117.728
+   ],
+   "b": [
+    165.8,
+    118.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_2",
+   "locked": false
+  },
+  {
+   "a": [
+    166.6,
+    117.07
+   ],
+   "b": [
+    166.6,
+    116.261
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_2",
+   "locked": false
+  },
+  {
+   "a": [
+    165.8,
+    117.162
+   ],
+   "b": [
+    165.8,
+    117.728
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_2",
+   "locked": false
+  },
+  {
+   "a": [
+    166.6,
+    117.07
+   ],
+   "b": [
+    165.78,
+    117.07
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_2",
+   "locked": false
+  },
+  {
+   "a": [
+    165.78,
+    117.07
+   ],
+   "b": [
+    165.744,
+    117.106
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_2",
+   "locked": false
+  },
+  {
+   "a": [
+    166.793,
+    117.807
+   ],
+   "b": [
+    169.635,
+    114.965
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_3",
+   "locked": false
+  },
+  {
+   "a": [
+    166.6,
+    118.0
+   ],
+   "b": [
+    166.793,
+    117.807
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_3",
+   "locked": false
+  },
+  {
+   "a": [
+    162.886,
+    116.742
+   ],
+   "b": [
+    162.886,
+    114.591
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_4",
+   "locked": false
+  },
+  {
+   "a": [
+    164.393,
+    118.607
+   ],
+   "b": [
+    164.533,
+    118.467
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_4",
+   "locked": false
+  },
+  {
+   "a": [
+    164.533,
+    118.467
+   ],
+   "b": [
+    164.533,
+    118.389
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_4",
+   "locked": false
+  },
+  {
+   "a": [
+    164.2,
+    118.8
+   ],
+   "b": [
+    164.393,
+    118.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_4",
+   "locked": false
+  },
+  {
+   "a": [
+    164.533,
+    118.389
+   ],
+   "b": [
+    162.886,
+    116.742
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_4",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    118.8
+   ],
+   "b": [
+    165.193,
+    118.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_5",
+   "locked": false
+  },
+  {
+   "a": [
+    165.193,
+    118.607
+   ],
+   "b": [
+    165.333,
+    118.467
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_5",
+   "locked": false
+  },
+  {
+   "a": [
+    165.333,
+    118.467
+   ],
+   "b": [
+    165.333,
+    118.389
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_5",
+   "locked": false
+  },
+  {
+   "a": [
+    163.457,
+    116.513
+   ],
+   "b": [
+    165.333,
+    118.389
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_5",
+   "locked": false
+  },
+  {
+   "a": [
+    163.457,
+    116.122
+   ],
+   "b": [
+    163.457,
+    116.513
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_5",
+   "locked": false
+  },
+  {
+   "a": [
+    166.172,
+    116.085
+   ],
+   "b": [
+    166.172,
+    118.428
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_6",
+   "locked": false
+  },
+  {
+   "a": [
+    165.993,
+    118.607
+   ],
+   "b": [
+    165.8,
+    118.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_6",
+   "locked": false
+  },
+  {
+   "a": [
+    166.172,
+    118.428
+   ],
+   "b": [
+    165.993,
+    118.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_6",
+   "locked": false
+  },
+  {
+   "a": [
+    166.173,
+    127.059
+   ],
+   "b": [
+    166.282,
+    127.168
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_7",
+   "locked": false
+  },
+  {
+   "a": [
+    166.173,
+    119.227
+   ],
+   "b": [
+    166.173,
+    127.059
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_7",
+   "locked": false
+  },
+  {
+   "a": [
+    166.282,
+    127.168
+   ],
+   "b": [
+    167.042,
+    127.168
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_7",
+   "locked": false
+  },
+  {
+   "a": [
+    166.6,
+    118.8
+   ],
+   "b": [
+    166.407,
+    118.993
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_7",
+   "locked": false
+  },
+  {
+   "a": [
+    166.407,
+    118.993
+   ],
+   "b": [
+    166.173,
+    119.227
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/PMOD1_7",
+   "locked": false
+  },
+  {
+   "a": [
+    171.026,
+    123.184
+   ],
+   "b": [
+    167.042,
+    127.168
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "/FPGA/PMOD1_7",
+   "locked": false
+  },
+  {
+   "a": [
+    155.831,
+    127.969
+   ],
+   "b": [
+    156.807,
+    126.993
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/REF10M",
+   "locked": false
+  },
+  {
+   "a": [
+    153.02,
+    133.476
+   ],
+   "b": [
+    155.831,
+    130.665
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/REF10M",
+   "locked": false
+  },
+  {
+   "a": [
+    156.807,
+    126.993
+   ],
+   "b": [
+    157.0,
+    126.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/REF10M",
+   "locked": false
+  },
+  {
+   "a": [
+    155.831,
+    130.665
+   ],
+   "b": [
+    155.831,
+    127.969
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "/FPGA/REF10M",
+   "locked": false
+  },
+  {
+   "a": [
+    164.393,
+    126.193
+   ],
+   "b": [
+    164.6,
+    126.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    163.593,
+    122.607
+   ],
+   "b": [
+    163.8,
+    122.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    164.2,
+    126.0
+   ],
+   "b": [
+    164.393,
+    126.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    171.486,
+    120.832
+   ],
+   "b": [
+    170.01,
+    119.356
+   ],
+   "w": 0.4,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    161.607,
+    122.607
+   ],
+   "b": [
+    161.4,
+    122.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    161.0,
+    122.8
+   ],
+   "b": [
+    160.807,
+    122.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    161.8,
+    122.8
+   ],
+   "b": [
+    161.607,
+    122.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    162.6,
+    126.0
+   ],
+   "b": [
+    162.883,
+    126.283
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    163.593,
+    126.193
+   ],
+   "b": [
+    163.8,
+    126.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    163.4,
+    122.8
+   ],
+   "b": [
+    163.593,
+    122.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    162.883,
+    126.283
+   ],
+   "b": [
+    162.99,
+    126.39
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    160.807,
+    122.607
+   ],
+   "b": [
+    160.6,
+    122.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    163.4,
+    126.0
+   ],
+   "b": [
+    163.593,
+    126.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    156.813,
+    132.111
+   ],
+   "b": [
+    157.736,
+    131.188
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    155.079,
+    121.494
+   ],
+   "b": [
+    156.06,
+    120.513
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "1V1",
+   "locked": false
+  },
+  {
+   "a": [
+    161.517,
+    123.317
+   ],
+   "b": [
+    161.41,
+    123.21
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.8,
+    123.6
+   ],
+   "b": [
+    161.517,
+    123.317
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.0,
+    123.6
+   ],
+   "b": [
+    160.717,
+    123.883
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    160.717,
+    123.883
+   ],
+   "b": [
+    160.637,
+    123.963
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.41,
+    123.21
+   ],
+   "b": [
+    159.96,
+    123.21
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    159.142,
+    120.552
+   ],
+   "b": [
+    157.06,
+    118.47
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    157.06,
+    118.47
+   ],
+   "b": [
+    153.955,
+    118.47
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    159.142,
+    122.392
+   ],
+   "b": [
+    159.142,
+    120.552
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    159.96,
+    123.21
+   ],
+   "b": [
+    159.142,
+    122.392
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    160.637,
+    123.963
+   ],
+   "b": [
+    154.822,
+    123.963
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "1V8_D",
+   "locked": false
+  },
+  {
+   "a": [
+    163.775,
+    120.8
+   ],
+   "b": [
+    156.525,
+    120.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    156.525,
+    120.05
+   ],
+   "b": [
+    153.875,
+    120.05
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    161.8,
+    126.0
+   ],
+   "b": [
+    161.4,
+    126.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    165.0,
+    122.8
+   ],
+   "b": [
+    164.6,
+    122.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    159.8,
+    127.2
+   ],
+   "b": [
+    159.8,
+    120.85
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    161.4,
+    127.2
+   ],
+   "b": [
+    159.8,
+    127.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    161.4,
+    126.4
+   ],
+   "b": [
+    161.4,
+    127.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    156.525,
+    120.8
+   ],
+   "b": [
+    156.525,
+    120.05
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    164.6,
+    121.625
+   ],
+   "b": [
+    163.775,
+    120.8
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    164.6,
+    122.4
+   ],
+   "b": [
+    164.6,
+    121.625
+   ],
+   "w": 0.15,
+   "layer": "B.Cu",
+   "net": "2V5",
+   "locked": true
+  },
+  {
+   "a": [
+    164.2,
+    122.0
+   ],
+   "b": [
+    164.398,
+    121.802
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.198,
+    124.598
+   ],
+   "b": [
+    165.198,
+    125.002
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.8,
+    124.4
+   ],
+   "b": [
+    161.517,
+    124.117
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    160.717,
+    126.283
+   ],
+   "b": [
+    161.0,
+    126.0
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.283,
+    126.283
+   ],
+   "b": [
+    165.338,
+    126.338
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    168.282,
+    117.244
+   ],
+   "b": [
+    169.872,
+    115.654
+   ],
+   "w": 0.4,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    124.4
+   ],
+   "b": [
+    165.198,
+    124.598
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    164.802,
+    121.802
+   ],
+   "b": [
+    165.0,
+    122.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.198,
+    125.802
+   ],
+   "b": [
+    165.0,
+    126.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.283,
+    122.283
+   ],
+   "b": [
+    165.39,
+    122.39
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.338,
+    126.338
+   ],
+   "b": [
+    165.385,
+    126.338
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    122.0
+   ],
+   "b": [
+    165.283,
+    122.283
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.283,
+    123.317
+   ],
+   "b": [
+    165.4,
+    123.2
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.198,
+    125.398
+   ],
+   "b": [
+    165.198,
+    125.802
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    160.637,
+    126.363
+   ],
+   "b": [
+    160.717,
+    126.283
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.199,
+    121.801
+   ],
+   "b": [
+    161.0,
+    122.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.0,
+    124.4
+   ],
+   "b": [
+    161.283,
+    124.117
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.283,
+    124.117
+   ],
+   "b": [
+    161.39,
+    124.01
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.0,
+    122.0
+   ],
+   "b": [
+    160.717,
+    121.717
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    123.6
+   ],
+   "b": [
+    165.283,
+    123.317
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.39,
+    124.01
+   ],
+   "b": [
+    161.41,
+    124.01
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.8,
+    122.0
+   ],
+   "b": [
+    161.601,
+    121.801
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.8,
+    124.4
+   ],
+   "b": [
+    161.607,
+    124.593
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    126.0
+   ],
+   "b": [
+    165.283,
+    126.283
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    125.2
+   ],
+   "b": [
+    165.198,
+    125.398
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    124.0
+   ],
+   "b": [
+    165.0,
+    123.6
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    160.662,
+    121.662
+   ],
+   "b": [
+    160.662,
+    121.615
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.517,
+    124.117
+   ],
+   "b": [
+    161.41,
+    124.01
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.198,
+    125.002
+   ],
+   "b": [
+    165.0,
+    125.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    164.398,
+    121.802
+   ],
+   "b": [
+    164.802,
+    121.802
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    160.717,
+    121.717
+   ],
+   "b": [
+    160.662,
+    121.662
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.607,
+    124.593
+   ],
+   "b": [
+    161.4,
+    124.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.0,
+    124.4
+   ],
+   "b": [
+    165.0,
+    124.0
+   ],
+   "w": 0.32,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.601,
+    121.801
+   ],
+   "b": [
+    161.199,
+    121.801
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.4,
+    123.724
+   ],
+   "b": [
+    165.4,
+    123.2
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    166.233,
+    125.49
+   ],
+   "b": [
+    166.233,
+    119.293
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.114,
+    124.01
+   ],
+   "b": [
+    165.4,
+    123.724
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    159.431,
+    125.545
+   ],
+   "b": [
+    159.431,
+    126.076
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.4,
+    122.4
+   ],
+   "b": [
+    165.4,
+    123.2
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    160.662,
+    121.615
+   ],
+   "b": [
+    162.984,
+    119.293
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    159.431,
+    126.076
+   ],
+   "b": [
+    159.718,
+    126.363
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    159.718,
+    126.363
+   ],
+   "b": [
+    160.637,
+    126.363
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.385,
+    126.338
+   ],
+   "b": [
+    166.233,
+    125.49
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    166.233,
+    119.293
+   ],
+   "b": [
+    168.282,
+    117.244
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.41,
+    124.01
+   ],
+   "b": [
+    165.114,
+    124.01
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    161.4,
+    124.8
+   ],
+   "b": [
+    160.176,
+    124.8
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    165.39,
+    122.39
+   ],
+   "b": [
+    165.4,
+    122.4
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    160.176,
+    124.8
+   ],
+   "b": [
+    159.431,
+    125.545
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    162.984,
+    119.293
+   ],
+   "b": [
+    166.233,
+    119.293
+   ],
+   "w": 0.4,
+   "layer": "B.Cu",
+   "net": "3V3_D",
+   "locked": false
+  },
+  {
+   "a": [
+    156.214,
+    125.6
+   ],
+   "b": [
+    155.212,
+    126.602
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "ADC_OR",
+   "locked": false
+  },
+  {
+   "a": [
+    157.8,
+    125.2
+   ],
+   "b": [
+    157.607,
+    125.393
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "ADC_OR",
+   "locked": false
+  },
+  {
+   "a": [
+    157.4,
+    125.6
+   ],
+   "b": [
+    156.214,
+    125.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "ADC_OR",
+   "locked": false
+  },
+  {
+   "a": [
+    157.607,
+    125.393
+   ],
+   "b": [
+    157.4,
+    125.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "ADC_OR",
+   "locked": false
+  },
+  {
+   "a": [
+    169.193,
+    117.807
+   ],
+   "b": [
+    169.4,
+    117.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.593,
+    124.593
+   ],
+   "b": [
+    163.8,
+    124.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    157.607,
+    120.207
+   ],
+   "b": [
+    157.4,
+    120.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    162.407,
+    124.593
+   ],
+   "b": [
+    162.2,
+    124.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    168.393,
+    127.793
+   ],
+   "b": [
+    168.6,
+    128.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    164.2,
+    123.6
+   ],
+   "b": [
+    164.393,
+    123.407
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    164.2,
+    125.2
+   ],
+   "b": [
+    164.393,
+    125.393
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    164.2,
+    124.4
+   ],
+   "b": [
+    164.393,
+    124.593
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    157.0,
+    130.0
+   ],
+   "b": [
+    156.807,
+    130.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    162.407,
+    123.407
+   ],
+   "b": [
+    162.2,
+    123.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    157.607,
+    127.793
+   ],
+   "b": [
+    157.4,
+    128.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    165.993,
+    130.193
+   ],
+   "b": [
+    166.2,
+    130.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    169.193,
+    123.407
+   ],
+   "b": [
+    169.4,
+    123.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    168.2,
+    127.6
+   ],
+   "b": [
+    168.393,
+    127.793
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    160.2,
+    130.0
+   ],
+   "b": [
+    160.007,
+    130.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    157.0,
+    123.6
+   ],
+   "b": [
+    156.807,
+    123.407
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    162.6,
+    124.4
+   ],
+   "b": [
+    162.407,
+    124.593
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    162.407,
+    121.807
+   ],
+   "b": [
+    162.2,
+    121.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.593,
+    123.407
+   ],
+   "b": [
+    163.8,
+    123.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    168.601,
+    119.999
+   ],
+   "b": [
+    169.566,
+    119.999
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    162.6,
+    125.2
+   ],
+   "b": [
+    162.873,
+    125.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    162.6,
+    125.2
+   ],
+   "b": [
+    162.2,
+    125.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    169.193,
+    130.193
+   ],
+   "b": [
+    169.4,
+    130.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.4,
+    125.2
+   ],
+   "b": [
+    163.593,
+    125.393
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    158.378,
+    131.558
+   ],
+   "b": [
+    158.378,
+    131.388
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    164.2,
+    122.8
+   ],
+   "b": [
+    164.2,
+    123.6
+   ],
+   "w": 0.2,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    162.6,
+    122.8
+   ],
+   "b": [
+    162.407,
+    122.607
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    161.8,
+    125.2
+   ],
+   "b": [
+    161.993,
+    125.007
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    156.807,
+    130.193
+   ],
+   "b": [
+    156.6,
+    130.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    169.566,
+    119.999
+   ],
+   "b": [
+    169.985,
+    120.418
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    165.8,
+    130.0
+   ],
+   "b": [
+    165.993,
+    130.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    157.0,
+    118.0
+   ],
+   "b": [
+    156.807,
+    117.807
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.593,
+    125.393
+   ],
+   "b": [
+    163.8,
+    125.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    164.393,
+    124.593
+   ],
+   "b": [
+    164.6,
+    124.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.4,
+    122.0
+   ],
+   "b": [
+    163.593,
+    121.807
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    168.2,
+    120.4
+   ],
+   "b": [
+    168.393,
+    120.207
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    169.0,
+    130.0
+   ],
+   "b": [
+    169.193,
+    130.193
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    164.393,
+    123.407
+   ],
+   "b": [
+    164.6,
+    123.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    161.0,
+    125.2
+   ],
+   "b": [
+    160.807,
+    125.393
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    162.6,
+    123.6
+   ],
+   "b": [
+    162.407,
+    123.407
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    161.993,
+    125.007
+   ],
+   "b": [
+    162.2,
+    124.8
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    162.873,
+    125.2
+   ],
+   "b": [
+    163.128,
+    125.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    156.807,
+    123.407
+   ],
+   "b": [
+    156.6,
+    123.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    168.6,
+    120.0
+   ],
+   "b": [
+    168.601,
+    119.999
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.593,
+    121.807
+   ],
+   "b": [
+    163.8,
+    121.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.4,
+    123.6
+   ],
+   "b": [
+    163.593,
+    123.407
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    157.8,
+    127.6
+   ],
+   "b": [
+    157.607,
+    127.793
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    169.0,
+    123.6
+   ],
+   "b": [
+    169.193,
+    123.407
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    169.985,
+    120.418
+   ],
+   "b": [
+    169.985,
+    120.915
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    160.007,
+    130.193
+   ],
+   "b": [
+    159.8,
+    130.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.4,
+    124.4
+   ],
+   "b": [
+    163.593,
+    124.593
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    164.393,
+    125.393
+   ],
+   "b": [
+    164.6,
+    125.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    163.128,
+    125.2
+   ],
+   "b": [
+    163.4,
+    125.2
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": false
+  },
+  {
+   "a": [
+    162.407,
+    122.607
+   ],
+   "b": [
+    162.2,
+    122.4
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    157.8,
+    120.4
+   ],
+   "b": [
+    157.607,
+    120.207
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    168.393,
+    120.207
+   ],
+   "b": [
+    168.6,
+    120.0
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    160.627,
+    125.573
+   ],
+   "b": [
+    160.6,
+    125.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    162.6,
+    122.0
+   ],
+   "b": [
+    162.407,
+    121.807
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    156.807,
+    117.807
+   ],
+   "b": [
+    156.6,
+    117.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    169.0,
+    118.0
+   ],
+   "b": [
+    169.193,
+    117.807
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    160.807,
+    125.393
+   ],
+   "b": [
+    160.627,
+    125.573
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  },
+  {
+   "a": [
+    161.8,
+    125.2
+   ],
+   "b": [
+    161.4,
+    125.6
+   ],
+   "w": 0.15,
+   "layer": "F.Cu",
+   "net": "GND",
+   "locked": true
+  }
+ ],
+ "inner_zones": [
+  {
+   "net": "1V1",
+   "layer": "In2.Cu",
+   "priority": 3,
+   "bbox": [
+    155.5,
+    116.5,
+    170.5,
+    131.5
+   ],
+   "outline": [
+    [
+     155.5,
+     116.5
+    ],
+    [
+     170.5,
+     116.5
+    ],
+    [
+     170.5,
+     131.5
+    ],
+    [
+     155.5,
+     131.5
+    ]
+   ]
+  },
+  {
+   "net": "GND",
+   "layer": "In2.Cu",
+   "priority": 0,
+   "bbox": [
+    100.3,
+    100.3,
+    199.7,
+    159.7
+   ],
+   "outline": [
+    [
+     100.3,
+     100.3
+    ],
+    [
+     199.7,
+     100.3
+    ],
+    [
+     199.7,
+     159.7
+    ],
+    [
+     100.3,
+     159.7
+    ]
+   ]
+  },
+  {
+   "net": "3V3_D",
+   "layer": "In2.Cu",
+   "priority": 1,
+   "bbox": [
+    152.0,
+    100.3,
+    199.7,
+    142.0
+   ],
+   "outline": [
+    [
+     152.0,
+     100.3
+    ],
+    [
+     199.7,
+     100.3
+    ],
+    [
+     199.7,
+     142.0
+    ],
+    [
+     152.0,
+     142.0
+    ]
+   ]
+  },
+  {
+   "net": "1V8_A",
+   "layer": "In2.Cu",
+   "priority": 2,
+   "bbox": [
+    134.0,
+    108.0,
+    152.0,
+    134.0
+   ],
+   "outline": [
+    [
+     134.0,
+     108.0
+    ],
+    [
+     152.0,
+     108.0
+    ],
+    [
+     152.0,
+     134.0
+    ],
+    [
+     134.0,
+     134.0
+    ]
+   ]
+  }
+ ],
+ "ball_pad_mm": 0.32,
+ "pitch_mm": 0.8,
+ "rules": {
+  "track": 0.15,
+  "clearance": 0.09
+ },
+ "parts": {
+  "C54": {
+   "value": "100n",
+   "xy": [
+    148.391,
+    147.156
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    147.44,
+    146.65,
+    149.35,
+    147.66
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.911,
+      147.156
+     ],
+     "net": "1V8_A"
+    },
+    "2": {
+     "xy": [
+      148.871,
+      147.156
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C98": {
+   "value": "100n",
+   "xy": [
+    170.603,
+    134.036
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    169.65,
+    133.53,
+    171.56,
+    134.54
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      170.123,
+      134.036
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      171.083,
+      134.036
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R34": {
+   "value": "22",
+   "xy": [
+    136.475,
+    145.854
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    135.5,
+    145.34,
+    137.45,
+    146.37
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      135.965,
+      145.854
+     ],
+     "net": "/ADC and clock/ADC_D8_R"
+    },
+    "2": {
+     "xy": [
+      136.985,
+      145.854
+     ],
+     "net": "ADC_D8"
+    }
+   }
+  },
+  "R40": {
+   "value": "22",
+   "xy": [
+    136.791,
+    147.395
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    135.82,
+    146.88,
+    137.77,
+    147.91
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      136.281,
+      147.395
+     ],
+     "net": "/ADC and clock/ADC_DCO_R"
+    },
+    "2": {
+     "xy": [
+      137.301,
+      147.395
+     ],
+     "net": "ADC_DCO"
+    }
+   }
+  },
+  "R33": {
+   "value": "22",
+   "xy": [
+    145.171,
+    145.5
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    144.2,
+    144.99,
+    146.15,
+    146.01
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      144.661,
+      145.5
+     ],
+     "net": "/ADC and clock/ADC_D7_R"
+    },
+    "2": {
+     "xy": [
+      145.681,
+      145.5
+     ],
+     "net": "ADC_D7"
+    }
+   }
+  },
+  "L5": {
+   "value": "270n 0805HP 2%",
+   "xy": [
+    132.8,
+    113.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    131.0,
+    112.11,
+    134.59,
+    113.89
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      131.738,
+      113.0
+     ],
+     "net": "/RF front end/LPF1_N2"
+    },
+    "2": {
+     "xy": [
+      133.863,
+      113.0
+     ],
+     "net": "/RF front end/LPF1_N4"
+    }
+   }
+  },
+  "R9": {
+   "value": "0.47",
+   "xy": [
+    159.38,
+    150.576
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    158.41,
+    150.06,
+    160.35,
+    151.09
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      158.87,
+      150.576
+     ],
+     "net": "/Power/3V3_PF"
+    },
+    "2": {
+     "xy": [
+      159.89,
+      150.576
+     ],
+     "net": "/Power/3V3_D_F"
+    }
+   }
+  },
+  "C75": {
+   "value": "100n",
+   "xy": [
+    182.789,
+    131.095
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    181.83,
+    130.59,
+    183.74,
+    131.6
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      182.309,
+      131.095
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      183.269,
+      131.095
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "L3": {
+   "value": "1u",
+   "xy": [
+    135.782,
+    153.605
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    133.99,
+    152.71,
+    137.58,
+    154.5
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      134.72,
+      153.605
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      136.845,
+      153.605
+     ],
+     "net": "/Power/3V3_PF"
+    }
+   }
+  },
+  "R1": {
+   "value": "100k",
+   "xy": [
+    194.768,
+    138.011
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    193.79,
+    137.5,
+    195.74,
+    138.53
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      194.258,
+      138.011
+     ],
+     "net": "/Power/VBUS_F"
+    },
+    "2": {
+     "xy": [
+      195.278,
+      138.011
+     ],
+     "net": "/Power/LS_ON"
+    }
+   }
+  },
+  "R4": {
+   "value": "120k 1%",
+   "xy": [
+    184.0,
+    154.85
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    183.49,
+    153.88,
+    184.51,
+    155.82
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      184.0,
+      154.34
+     ],
+     "net": "/Power/FB_1V1"
+    },
+    "2": {
+     "xy": [
+      184.0,
+      155.36
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R53": {
+   "value": "10k",
+   "xy": [
+    153.637,
+    125.606
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.66,
+    125.09,
+    154.61,
+    126.12
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.127,
+      125.606
+     ],
+     "net": "/FPGA/FPGA_DONE"
+    },
+    "2": {
+     "xy": [
+      154.147,
+      125.606
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "C85": {
+   "value": "100n",
+   "xy": [
+    172.41,
+    128.659
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.46,
+    128.15,
+    173.37,
+    129.16
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      171.93,
+      128.659
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      172.89,
+      128.659
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R65": {
+   "value": "330",
+   "xy": [
+    154.0,
+    137.732
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    153.03,
+    137.22,
+    154.97,
+    138.25
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.49,
+      137.732
+     ],
+     "net": "/FPGA/D5_K"
+    },
+    "2": {
+     "xy": [
+      154.51,
+      137.732
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R7": {
+   "value": "49.9k 1%",
+   "xy": [
+    173.5,
+    154.85
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    172.99,
+    153.88,
+    174.01,
+    155.82
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      173.5,
+      154.34
+     ],
+     "net": "/Power/FB_3V3"
+    },
+    "2": {
+     "xy": [
+      173.5,
+      155.36
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C74": {
+   "value": "10u",
+   "xy": [
+    186.004,
+    131.448
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    184.48,
+    130.67,
+    187.53,
+    132.22
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      185.229,
+      131.448
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      186.779,
+      131.448
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C41": {
+   "value": "62p C0G 2%",
+   "xy": [
+    138.0,
+    127.9
+   ],
+   "rot": 180.0,
+   "locked": true,
+   "courtyard": [
+    136.25,
+    126.88,
+    139.75,
+    128.93
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      138.95,
+      127.9
+     ],
+     "net": "/RF front end/LPF2_IN"
+    },
+    "2": {
+     "xy": [
+      137.05,
+      127.9
+     ],
+     "net": "/RF front end/LPF2_N2"
+    }
+   }
+  },
+  "C24": {
+   "value": "1u",
+   "xy": [
+    128.995,
+    149.086
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    128.04,
+    148.58,
+    129.95,
+    149.59
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      128.515,
+      149.086
+     ],
+     "net": "1V8_A"
+    },
+    "2": {
+     "xy": [
+      129.475,
+      149.086
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C71": {
+   "value": "100n",
+   "xy": [
+    179.791,
+    129.395
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    178.84,
+    128.89,
+    180.75,
+    129.9
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      179.311,
+      129.395
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "2": {
+     "xy": [
+      180.271,
+      129.395
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R26": {
+   "value": "22",
+   "xy": [
+    145.5,
+    141.188
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    144.53,
+    140.67,
+    146.47,
+    141.7
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      144.99,
+      141.188
+     ],
+     "net": "/ADC and clock/ADC_D0_R"
+    },
+    "2": {
+     "xy": [
+      146.01,
+      141.188
+     ],
+     "net": "ADC_D0"
+    }
+   }
+  },
+  "U12": {
+   "value": "LFE5U-25F-6BG256C",
+   "xy": [
+    163.0,
+    124.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    154.96,
+    115.95,
+    171.04,
+    132.04
+   ],
+   "pads": "see balls"
+  },
+  "U8": {
+   "value": "AD9649BCPZ-80",
+   "xy": [
+    141.0,
+    141.0
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    137.85,
+    137.85,
+    144.15,
+    144.15
+   ],
+   "pads": {
+    "": {
+     "xy": [
+      141.875,
+      140.125
+     ],
+     "net": ""
+    },
+    "1": {
+     "xy": [
+      139.25,
+      143.438
+     ],
+     "net": "/ADC and clock/ADC_CLKP"
+    },
+    "2": {
+     "xy": [
+      139.75,
+      143.438
+     ],
+     "net": "/ADC and clock/ADC_CLKN"
+    },
+    "3": {
+     "xy": [
+      140.25,
+      143.438
+     ],
+     "net": "1V8_A"
+    },
+    "4": {
+     "xy": [
+      140.75,
+      143.438
+     ],
+     "net": "ADC_CSB"
+    },
+    "5": {
+     "xy": [
+      141.25,
+      143.438
+     ],
+     "net": "ADC_SCLK"
+    },
+    "6": {
+     "xy": [
+      141.75,
+      143.438
+     ],
+     "net": "ADC_SDIO"
+    },
+    "7": {
+     "xy": [
+      142.25,
+      143.438
+     ],
+     "net": "/ADC and clock/ADC_D0_R"
+    },
+    "8": {
+     "xy": [
+      142.75,
+      143.438
+     ],
+     "net": "/ADC and clock/ADC_D1_R"
+    },
+    "9": {
+     "xy": [
+      143.438,
+      142.75
+     ],
+     "net": "/ADC and clock/ADC_D2_R"
+    },
+    "10": {
+     "xy": [
+      143.438,
+      142.25
+     ],
+     "net": "/ADC and clock/ADC_D3_R"
+    },
+    "11": {
+     "xy": [
+      143.438,
+      141.75
+     ],
+     "net": "/ADC and clock/ADC_D4_R"
+    },
+    "12": {
+     "xy": [
+      143.438,
+      141.25
+     ],
+     "net": "/ADC and clock/ADC_D5_R"
+    },
+    "13": {
+     "xy": [
+      143.438,
+      140.75
+     ],
+     "net": "1V8_D"
+    },
+    "14": {
+     "xy": [
+      143.438,
+      140.25
+     ],
+     "net": "/ADC and clock/ADC_D6_R"
+    },
+    "15": {
+     "xy": [
+      143.438,
+      139.75
+     ],
+     "net": "/ADC and clock/ADC_D7_R"
+    },
+    "16": {
+     "xy": [
+      143.438,
+      139.25
+     ],
+     "net": "/ADC and clock/ADC_D8_R"
+    },
+    "17": {
+     "xy": [
+      142.75,
+      138.562
+     ],
+     "net": "/ADC and clock/ADC_D9_R"
+    },
+    "18": {
+     "xy": [
+      142.25,
+      138.562
+     ],
+     "net": "/ADC and clock/ADC_D10_R"
+    },
+    "19": {
+     "xy": [
+      141.75,
+      138.562
+     ],
+     "net": "/ADC and clock/ADC_D11_R"
+    },
+    "20": {
+     "xy": [
+      141.25,
+      138.562
+     ],
+     "net": "/ADC and clock/ADC_D12_R"
+    },
+    "21": {
+     "xy": [
+      140.75,
+      138.562
+     ],
+     "net": "/ADC and clock/ADC_D13_R"
+    },
+    "22": {
+     "xy": [
+      140.25,
+      138.562
+     ],
+     "net": "/ADC and clock/ADC_DCO_R"
+    },
+    "23": {
+     "xy": [
+      139.75,
+      138.562
+     ],
+     "net": "/ADC and clock/ADC_OR_R"
+    },
+    "24": {
+     "xy": [
+      139.25,
+      138.562
+     ],
+     "net": "1V8_A"
+    },
+    "25": {
+     "xy": [
+      138.562,
+      139.25
+     ],
+     "net": "/ADC and clock/ADC_VREF"
+    },
+    "26": {
+     "xy": [
+      138.562,
+      139.75
+     ],
+     "net": "GND"
+    },
+    "27": {
+     "xy": [
+      138.562,
+      140.25
+     ],
+     "net": "ADC_VCM"
+    },
+    "28": {
+     "xy": [
+      138.562,
+      140.75
+     ],
+     "net": "/ADC and clock/ADC_RBIAS"
+    },
+    "29": {
+     "xy": [
+      138.562,
+      141.25
+     ],
+     "net": "1V8_A"
+    },
+    "30": {
+     "xy": [
+      138.562,
+      141.75
+     ],
+     "net": "ADC_VINN"
+    },
+    "31": {
+     "xy": [
+      138.562,
+      142.25
+     ],
+     "net": "ADC_VINP"
+    },
+    "32": {
+     "xy": [
+      138.562,
+      142.75
+     ],
+     "net": "1V8_A"
+    },
+    "33": {
+     "xy": [
+      142.45,
+      139.55
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "H4": {
+   "value": "MountingHole_2.7mm_M2.5",
+   "xy": [
+    196.5,
+    156.5
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    193.51,
+    153.5,
+    199.49,
+    159.5
+   ],
+   "pads": {
+    "": {
+     "xy": [
+      196.5,
+      156.5
+     ],
+     "net": ""
+    }
+   }
+  },
+  "C82": {
+   "value": "10u",
+   "xy": [
+    173.011,
+    120.832
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.49,
+    120.06,
+    174.54,
+    121.61
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      172.236,
+      120.832
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      173.786,
+      120.832
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R29": {
+   "value": "22",
+   "xy": [
+    145.743,
+    142.771
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    144.77,
+    142.26,
+    146.72,
+    143.29
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      145.233,
+      142.771
+     ],
+     "net": "/ADC and clock/ADC_D3_R"
+    },
+    "2": {
+     "xy": [
+      146.253,
+      142.771
+     ],
+     "net": "ADC_D3"
+    }
+   }
+  },
+  "C90": {
+   "value": "100n",
+   "xy": [
+    153.59,
+    119.341
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.63,
+    118.84,
+    154.54,
+    119.85
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.11,
+      119.341
+     ],
+     "net": "2V5"
+    },
+    "2": {
+     "xy": [
+      154.07,
+      119.341
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C51": {
+   "value": "100n",
+   "xy": [
+    136.735,
+    149.113
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    135.78,
+    148.61,
+    137.69,
+    149.62
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      136.255,
+      149.113
+     ],
+     "net": "/ADC and clock/ADC_VREF"
+    },
+    "2": {
+     "xy": [
+      137.215,
+      149.113
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C110": {
+   "value": "100n",
+   "xy": [
+    176.255,
+    142.142
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    175.3,
+    141.64,
+    177.21,
+    142.65
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      175.775,
+      142.142
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      176.735,
+      142.142
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C100": {
+   "value": "100n",
+   "xy": [
+    174.096,
+    142.67
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    173.14,
+    142.16,
+    175.05,
+    143.18
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      173.616,
+      142.67
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      174.576,
+      142.67
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R18": {
+   "value": "100",
+   "xy": [
+    175.0,
+    124.0
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    174.03,
+    123.48,
+    175.97,
+    124.52
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      174.49,
+      124.0
+     ],
+     "net": "RLY_LNA"
+    },
+    "2": {
+     "xy": [
+      175.51,
+      124.0
+     ],
+     "net": "/RF front end/Q2_G"
+    }
+   }
+  },
+  "C63": {
+   "value": "100n",
+   "xy": [
+    191.638,
+    122.2
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    190.68,
+    121.69,
+    192.59,
+    122.7
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      191.158,
+      122.2
+     ],
+     "net": "/USB 3 bridge/FT_TXN"
+    },
+    "2": {
+     "xy": [
+      192.118,
+      122.2
+     ],
+     "net": "/USB 3 bridge/USB_SSTXN"
+    }
+   }
+  },
+  "R57": {
+   "value": "4.7k",
+   "xy": [
+    168.996,
+    142.353
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    168.02,
+    141.84,
+    169.97,
+    142.87
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      168.486,
+      142.353
+     ],
+     "net": "/FPGA/FPGA_TCK"
+    },
+    "2": {
+     "xy": [
+      169.506,
+      142.353
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C12": {
+   "value": "100n",
+   "xy": [
+    131.995,
+    146.827
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    131.04,
+    146.32,
+    132.95,
+    147.33
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      131.515,
+      146.827
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      132.475,
+      146.827
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R39": {
+   "value": "22",
+   "xy": [
+    147.807,
+    144.337
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    146.83,
+    143.82,
+    148.78,
+    144.85
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.297,
+      144.337
+     ],
+     "net": "/ADC and clock/ADC_D13_R"
+    },
+    "2": {
+     "xy": [
+      148.317,
+      144.337
+     ],
+     "net": "ADC_D13"
+    }
+   }
+  },
+  "L11": {
+   "value": "180n 0805HP 2%",
+   "xy": [
+    138.0,
+    130.0
+   ],
+   "rot": 180.0,
+   "locked": true,
+   "courtyard": [
+    136.21,
+    129.1,
+    139.79,
+    130.9
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      139.062,
+      130.0
+     ],
+     "net": "/RF front end/LPF2_IN"
+    },
+    "2": {
+     "xy": [
+      136.938,
+      130.0
+     ],
+     "net": "/RF front end/LPF2_N2"
+    }
+   }
+  },
+  "C18": {
+   "value": "1u",
+   "xy": [
+    152.38,
+    152.576
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    151.43,
+    152.07,
+    153.34,
+    153.08
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      151.9,
+      152.576
+     ],
+     "net": "1V8_D"
+    },
+    "2": {
+     "xy": [
+      152.86,
+      152.576
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R30": {
+   "value": "22",
+   "xy": [
+    145.427,
+    138.864
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    144.45,
+    138.35,
+    146.4,
+    139.38
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      144.917,
+      138.864
+     ],
+     "net": "/ADC and clock/ADC_D4_R"
+    },
+    "2": {
+     "xy": [
+      145.937,
+      138.864
+     ],
+     "net": "ADC_D4"
+    }
+   }
+  },
+  "L7": {
+   "value": "82n 0805HP 2%",
+   "xy": [
+    142.6,
+    114.062
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    141.71,
+    112.27,
+    143.5,
+    115.86
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      142.6,
+      112.999
+     ],
+     "net": "/RF front end/LPF1_OUT"
+    },
+    "2": {
+     "xy": [
+      142.6,
+      115.124
+     ],
+     "net": "/RF front end/TRAP1"
+    }
+   }
+  },
+  "R25": {
+   "value": "33",
+   "xy": [
+    133.8,
+    135.92
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    132.82,
+    135.41,
+    134.78,
+    136.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      133.29,
+      135.92
+     ],
+     "net": "/RF front end/AIN_N_T"
+    },
+    "2": {
+     "xy": [
+      134.31,
+      135.92
+     ],
+     "net": "ADC_VINN"
+    }
+   }
+  },
+  "R64": {
+   "value": "330",
+   "xy": [
+    154.0,
+    136.0
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    153.03,
+    135.49,
+    154.97,
+    136.51
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.49,
+      136.0
+     ],
+     "net": "/FPGA/D4_K"
+    },
+    "2": {
+     "xy": [
+      154.51,
+      136.0
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C49": {
+   "value": "100n",
+   "xy": [
+    145.93,
+    148.111
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    144.97,
+    147.61,
+    146.88,
+    148.62
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      145.45,
+      148.111
+     ],
+     "net": "ADC_VCM"
+    },
+    "2": {
+     "xy": [
+      146.41,
+      148.111
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "L6": {
+   "value": "270n 0805HP 2%",
+   "xy": [
+    138.0,
+    113.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    136.21,
+    112.11,
+    139.79,
+    113.89
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      136.938,
+      113.0
+     ],
+     "net": "/RF front end/LPF1_N4"
+    },
+    "2": {
+     "xy": [
+      139.062,
+      113.0
+     ],
+     "net": "/RF front end/LPF1_OUT"
+    }
+   }
+  },
+  "C79": {
+   "value": "100n",
+   "xy": [
+    180.469,
+    130.919
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    179.51,
+    130.41,
+    181.42,
+    131.42
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      179.989,
+      130.919
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      180.949,
+      130.919
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "J6": {
+   "value": "PMOD1",
+   "xy": [
+    175.5,
+    113.415
+   ],
+   "rot": 90.0,
+   "locked": false,
+   "courtyard": [
+    173.69,
+    100.28,
+    190.01,
+    115.23
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      175.5,
+      113.415
+     ],
+     "net": "/FPGA/PMOD1_0"
+    },
+    "2": {
+     "xy": [
+      175.5,
+      110.875
+     ],
+     "net": "/FPGA/PMOD1_1"
+    },
+    "3": {
+     "xy": [
+      178.04,
+      113.415
+     ],
+     "net": "/FPGA/PMOD1_2"
+    },
+    "4": {
+     "xy": [
+      178.04,
+      110.875
+     ],
+     "net": "/FPGA/PMOD1_3"
+    },
+    "5": {
+     "xy": [
+      180.58,
+      113.415
+     ],
+     "net": "GND"
+    },
+    "6": {
+     "xy": [
+      180.58,
+      110.875
+     ],
+     "net": "3V3_D"
+    },
+    "7": {
+     "xy": [
+      183.12,
+      113.415
+     ],
+     "net": "/FPGA/PMOD1_4"
+    },
+    "8": {
+     "xy": [
+      183.12,
+      110.875
+     ],
+     "net": "/FPGA/PMOD1_5"
+    },
+    "9": {
+     "xy": [
+      185.66,
+      113.415
+     ],
+     "net": "/FPGA/PMOD1_6"
+    },
+    "10": {
+     "xy": [
+      185.66,
+      110.875
+     ],
+     "net": "/FPGA/PMOD1_7"
+    },
+    "11": {
+     "xy": [
+      188.2,
+      113.415
+     ],
+     "net": "GND"
+    },
+    "12": {
+     "xy": [
+      188.2,
+      110.875
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "U11": {
+   "value": "FT601Q-B-T",
+   "xy": [
+    184.0,
+    123.0
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    178.82,
+    117.83,
+    189.18,
+    128.18
+   ],
+   "pads": {
+    "": {
+     "xy": [
+      186.1,
+      121.06
+     ],
+     "net": ""
+    },
+    "1": {
+     "xy": [
+      180.4,
+      127.438
+     ],
+     "net": "GND"
+    },
+    "2": {
+     "xy": [
+      180.8,
+      127.438
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "3": {
+     "xy": [
+      181.2,
+      127.438
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "4": {
+     "xy": [
+      181.6,
+      127.438
+     ],
+     "net": "FT_BE0"
+    },
+    "5": {
+     "xy": [
+      182.0,
+      127.438
+     ],
+     "net": "FT_BE1"
+    },
+    "6": {
+     "xy": [
+      182.4,
+      127.438
+     ],
+     "net": "FT_BE2"
+    },
+    "7": {
+     "xy": [
+      182.8,
+      127.438
+     ],
+     "net": "FT_BE3"
+    },
+    "8": {
+     "xy": [
+      183.2,
+      127.438
+     ],
+     "net": "FT_TXE_N"
+    },
+    "9": {
+     "xy": [
+      183.6,
+      127.438
+     ],
+     "net": "FT_RXF_N"
+    },
+    "10": {
+     "xy": [
+      184.0,
+      127.438
+     ],
+     "net": "/USB 3 bridge/FT_SIWU"
+    },
+    "11": {
+     "xy": [
+      184.4,
+      127.438
+     ],
+     "net": "FT_WR_N"
+    },
+    "12": {
+     "xy": [
+      184.8,
+      127.438
+     ],
+     "net": "FT_RD_N"
+    },
+    "13": {
+     "xy": [
+      185.2,
+      127.438
+     ],
+     "net": "FT_OE_N"
+    },
+    "14": {
+     "xy": [
+      185.6,
+      127.438
+     ],
+     "net": "3V3_D"
+    },
+    "15": {
+     "xy": [
+      186.0,
+      127.438
+     ],
+     "net": "FT_RESET_N"
+    },
+    "16": {
+     "xy": [
+      186.4,
+      127.438
+     ],
+     "net": "FT_WAKEUP_N"
+    },
+    "17": {
+     "xy": [
+      186.8,
+      127.438
+     ],
+     "net": "FT_GPIO0"
+    },
+    "18": {
+     "xy": [
+      187.2,
+      127.438
+     ],
+     "net": "FT_GPIO1"
+    },
+    "19": {
+     "xy": [
+      187.6,
+      127.438
+     ],
+     "net": "unconnected-(U11-Reserved-Pad19)"
+    },
+    "20": {
+     "xy": [
+      188.438,
+      126.6
+     ],
+     "net": "3V3_D"
+    },
+    "21": {
+     "xy": [
+      188.438,
+      126.2
+     ],
+     "net": "/USB 3 bridge/FT_XI"
+    },
+    "22": {
+     "xy": [
+      188.438,
+      125.8
+     ],
+     "net": "/USB 3 bridge/FT_XO"
+    },
+    "23": {
+     "xy": [
+      188.438,
+      125.4
+     ],
+     "net": "/USB 3 bridge/USB_D_P"
+    },
+    "24": {
+     "xy": [
+      188.438,
+      125.0
+     ],
+     "net": "3V3_D"
+    },
+    "25": {
+     "xy": [
+      188.438,
+      124.6
+     ],
+     "net": "/USB 3 bridge/USB_D_N"
+    },
+    "26": {
+     "xy": [
+      188.438,
+      124.2
+     ],
+     "net": "GND"
+    },
+    "27": {
+     "xy": [
+      188.438,
+      123.8
+     ],
+     "net": "/USB 3 bridge/FT_RREF"
+    },
+    "28": {
+     "xy": [
+      188.438,
+      123.4
+     ],
+     "net": "/USB 3 bridge/FT_VDDA"
+    },
+    "29": {
+     "xy": [
+      188.438,
+      123.0
+     ],
+     "net": "GND"
+    },
+    "30": {
+     "xy": [
+      188.438,
+      122.6
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "31": {
+     "xy": [
+      188.438,
+      122.2
+     ],
+     "net": "/USB 3 bridge/FT_TXN"
+    },
+    "32": {
+     "xy": [
+      188.438,
+      121.8
+     ],
+     "net": "/USB 3 bridge/FT_TXP"
+    },
+    "33": {
+     "xy": [
+      188.438,
+      121.4
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "34": {
+     "xy": [
+      188.438,
+      121.0
+     ],
+     "net": "/USB 3 bridge/USB_SSRXN"
+    },
+    "35": {
+     "xy": [
+      188.438,
+      120.6
+     ],
+     "net": "/USB 3 bridge/USB_SSRXP"
+    },
+    "36": {
+     "xy": [
+      188.438,
+      120.2
+     ],
+     "net": "GND"
+    },
+    "37": {
+     "xy": [
+      188.438,
+      119.8
+     ],
+     "net": "/USB 3 bridge/FT_VBUS"
+    },
+    "38": {
+     "xy": [
+      188.438,
+      119.4
+     ],
+     "net": "3V3_D"
+    },
+    "39": {
+     "xy": [
+      187.6,
+      118.562
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "40": {
+     "xy": [
+      187.2,
+      118.562
+     ],
+     "net": "FT_D0"
+    },
+    "41": {
+     "xy": [
+      186.8,
+      118.562
+     ],
+     "net": "FT_D1"
+    },
+    "42": {
+     "xy": [
+      186.4,
+      118.562
+     ],
+     "net": "FT_D2"
+    },
+    "43": {
+     "xy": [
+      186.0,
+      118.562
+     ],
+     "net": "FT_D3"
+    },
+    "44": {
+     "xy": [
+      185.6,
+      118.562
+     ],
+     "net": "FT_D4"
+    },
+    "45": {
+     "xy": [
+      185.2,
+      118.562
+     ],
+     "net": "FT_D5"
+    },
+    "46": {
+     "xy": [
+      184.8,
+      118.562
+     ],
+     "net": "FT_D6"
+    },
+    "47": {
+     "xy": [
+      184.4,
+      118.562
+     ],
+     "net": "FT_D7"
+    },
+    "48": {
+     "xy": [
+      184.0,
+      118.562
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "49": {
+     "xy": [
+      183.6,
+      118.562
+     ],
+     "net": "3V3_D"
+    },
+    "50": {
+     "xy": [
+      183.2,
+      118.562
+     ],
+     "net": "FT_D8"
+    },
+    "51": {
+     "xy": [
+      182.8,
+      118.562
+     ],
+     "net": "FT_D9"
+    },
+    "52": {
+     "xy": [
+      182.4,
+      118.562
+     ],
+     "net": "FT_D10"
+    },
+    "53": {
+     "xy": [
+      182.0,
+      118.562
+     ],
+     "net": "FT_D11"
+    },
+    "54": {
+     "xy": [
+      181.6,
+      118.562
+     ],
+     "net": "FT_D12"
+    },
+    "55": {
+     "xy": [
+      181.2,
+      118.562
+     ],
+     "net": "FT_D13"
+    },
+    "56": {
+     "xy": [
+      180.8,
+      118.562
+     ],
+     "net": "FT_D14"
+    },
+    "57": {
+     "xy": [
+      180.4,
+      118.562
+     ],
+     "net": "FT_D15"
+    },
+    "58": {
+     "xy": [
+      179.562,
+      119.4
+     ],
+     "net": "FT_CLK"
+    },
+    "59": {
+     "xy": [
+      179.562,
+      119.8
+     ],
+     "net": "3V3_D"
+    },
+    "60": {
+     "xy": [
+      179.562,
+      120.2
+     ],
+     "net": "FT_D16"
+    },
+    "61": {
+     "xy": [
+      179.562,
+      120.6
+     ],
+     "net": "FT_D17"
+    },
+    "62": {
+     "xy": [
+      179.562,
+      121.0
+     ],
+     "net": "FT_D18"
+    },
+    "63": {
+     "xy": [
+      179.562,
+      121.4
+     ],
+     "net": "FT_D19"
+    },
+    "64": {
+     "xy": [
+      179.562,
+      121.8
+     ],
+     "net": "FT_D20"
+    },
+    "65": {
+     "xy": [
+      179.562,
+      122.2
+     ],
+     "net": "FT_D21"
+    },
+    "66": {
+     "xy": [
+      179.562,
+      122.6
+     ],
+     "net": "FT_D22"
+    },
+    "67": {
+     "xy": [
+      179.562,
+      123.0
+     ],
+     "net": "FT_D23"
+    },
+    "68": {
+     "xy": [
+      179.562,
+      123.4
+     ],
+     "net": "3V3_D"
+    },
+    "69": {
+     "xy": [
+      179.562,
+      123.8
+     ],
+     "net": "FT_D24"
+    },
+    "70": {
+     "xy": [
+      179.562,
+      124.2
+     ],
+     "net": "FT_D25"
+    },
+    "71": {
+     "xy": [
+      179.562,
+      124.6
+     ],
+     "net": "FT_D26"
+    },
+    "72": {
+     "xy": [
+      179.562,
+      125.0
+     ],
+     "net": "FT_D27"
+    },
+    "73": {
+     "xy": [
+      179.562,
+      125.4
+     ],
+     "net": "FT_D28"
+    },
+    "74": {
+     "xy": [
+      179.562,
+      125.8
+     ],
+     "net": "FT_D29"
+    },
+    "75": {
+     "xy": [
+      179.562,
+      126.2
+     ],
+     "net": "FT_D30"
+    },
+    "76": {
+     "xy": [
+      179.562,
+      126.6
+     ],
+     "net": "FT_D31"
+    },
+    "77": {
+     "xy": [
+      184.0,
+      123.0
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C95": {
+   "value": "10u",
+   "xy": [
+    170.608,
+    135.553
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    169.08,
+    134.78,
+    172.13,
+    136.33
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      169.833,
+      135.553
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      171.383,
+      135.553
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R31": {
+   "value": "22",
+   "xy": [
+    145.587,
+    144.222
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    144.61,
+    143.71,
+    146.56,
+    144.74
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      145.077,
+      144.222
+     ],
+     "net": "/ADC and clock/ADC_D5_R"
+    },
+    "2": {
+     "xy": [
+      146.097,
+      144.222
+     ],
+     "net": "ADC_D5"
+    }
+   }
+  },
+  "C35": {
+   "value": "39p C0G 2%",
+   "xy": [
+    142.6,
+    117.0
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    142.09,
+    116.05,
+    143.1,
+    117.95
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      142.6,
+      116.52
+     ],
+     "net": "/RF front end/TRAP1"
+    },
+    "2": {
+     "xy": [
+      142.6,
+      117.48
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R21": {
+   "value": "17.8 1%",
+   "xy": [
+    142.5,
+    124.2
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    141.99,
+    123.22,
+    143.01,
+    125.17
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      142.5,
+      123.69
+     ],
+     "net": "/RF front end/LNA_O"
+    },
+    "2": {
+     "xy": [
+      142.5,
+      124.71
+     ],
+     "net": "/RF front end/LNA_PAD_OUT"
+    }
+   }
+  },
+  "FB3": {
+   "value": "600R@100MHz",
+   "xy": [
+    185.391,
+    129.537
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    183.87,
+    128.76,
+    186.92,
+    130.31
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      184.603,
+      129.537
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      186.179,
+      129.537
+     ],
+     "net": "/USB 3 bridge/FT_VDDA"
+    }
+   }
+  },
+  "U2": {
+   "value": "TPS62A02ADRLR",
+   "xy": [
+    184.0,
+    152.6
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    183.0,
+    151.35,
+    185.0,
+    153.84
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      184.5,
+      151.887
+     ],
+     "net": "GND"
+    },
+    "2": {
+     "xy": [
+      184.0,
+      151.887
+     ],
+     "net": "/Power/SW_1V1"
+    },
+    "3": {
+     "xy": [
+      183.5,
+      151.887
+     ],
+     "net": "5V_SW"
+    },
+    "4": {
+     "xy": [
+      183.5,
+      153.312
+     ],
+     "net": "5V_SW"
+    },
+    "5": {
+     "xy": [
+      184.0,
+      153.312
+     ],
+     "net": "/Power/FB_1V1"
+    },
+    "6": {
+     "xy": [
+      184.5,
+      153.312
+     ],
+     "net": "/Power/PG_1V1"
+    }
+   }
+  },
+  "R38": {
+   "value": "22",
+   "xy": [
+    148.325,
+    142.8
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    147.35,
+    142.28,
+    149.3,
+    143.31
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.815,
+      142.8
+     ],
+     "net": "/ADC and clock/ADC_D12_R"
+    },
+    "2": {
+     "xy": [
+      148.835,
+      142.8
+     ],
+     "net": "ADC_D12"
+    }
+   }
+  },
+  "C13": {
+   "value": "10u",
+   "xy": [
+    170.95,
+    152.15
+   ],
+   "rot": 180.0,
+   "locked": true,
+   "courtyard": [
+    169.43,
+    151.38,
+    172.47,
+    152.93
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      171.725,
+      152.15
+     ],
+     "net": "5V_SW"
+    },
+    "2": {
+     "xy": [
+      170.175,
+      152.15
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C81": {
+   "value": "10u",
+   "xy": [
+    173.011,
+    127.168
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.49,
+    126.39,
+    174.54,
+    127.94
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      172.236,
+      127.168
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      173.786,
+      127.168
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C39": {
+   "value": "100n",
+   "xy": [
+    142.5,
+    121.5
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    142.0,
+    120.55,
+    143.0,
+    122.45
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      142.5,
+      121.02
+     ],
+     "net": "/RF front end/LNA_RFOUT"
+    },
+    "2": {
+     "xy": [
+      142.5,
+      121.98
+     ],
+     "net": "/RF front end/LNA_O"
+    }
+   }
+  },
+  "U10": {
+   "value": "W25Q128JVSIQ",
+   "xy": [
+    160.0,
+    138.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    155.31,
+    135.06,
+    164.69,
+    140.94
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      156.412,
+      136.095
+     ],
+     "net": "/FPGA/FLASH_CS_N"
+    },
+    "2": {
+     "xy": [
+      156.412,
+      137.365
+     ],
+     "net": "/FPGA/FLASH_IO1"
+    },
+    "3": {
+     "xy": [
+      156.412,
+      138.635
+     ],
+     "net": "/FPGA/FLASH_IO2"
+    },
+    "4": {
+     "xy": [
+      156.412,
+      139.905
+     ],
+     "net": "GND"
+    },
+    "5": {
+     "xy": [
+      163.588,
+      139.905
+     ],
+     "net": "/FPGA/FLASH_IO0"
+    },
+    "6": {
+     "xy": [
+      163.588,
+      138.635
+     ],
+     "net": "/FPGA/FPGA_CCLK"
+    },
+    "7": {
+     "xy": [
+      163.588,
+      137.365
+     ],
+     "net": "/FPGA/FLASH_IO3"
+    },
+    "8": {
+     "xy": [
+      163.588,
+      136.095
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "C101": {
+   "value": "100n",
+   "xy": [
+    167.474,
+    144.443
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    166.52,
+    143.94,
+    168.43,
+    144.95
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      166.994,
+      144.443
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      167.954,
+      144.443
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "FB2": {
+   "value": "600R@100MHz",
+   "xy": [
+    146.5,
+    150.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    144.97,
+    149.22,
+    148.03,
+    150.78
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      145.713,
+      150.0
+     ],
+     "net": "3V3_A"
+    },
+    "2": {
+     "xy": [
+      147.287,
+      150.0
+     ],
+     "net": "/ADC and clock/3V3_CLK"
+    }
+   }
+  },
+  "C93": {
+   "value": "100n",
+   "xy": [
+    153.696,
+    130.76
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.74,
+    130.25,
+    154.65,
+    131.26
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.216,
+      130.76
+     ],
+     "net": "1V8_D"
+    },
+    "2": {
+     "xy": [
+      154.176,
+      130.76
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C8": {
+   "value": "100n",
+   "xy": [
+    131.382,
+    145.176
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    130.43,
+    144.67,
+    132.34,
+    145.68
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      130.902,
+      145.176
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      131.862,
+      145.176
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C47": {
+   "value": "10p C0G",
+   "xy": [
+    135.31,
+    141.48
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    134.81,
+    140.53,
+    135.81,
+    142.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      135.31,
+      141.0
+     ],
+     "net": "ADC_VINP"
+    },
+    "2": {
+     "xy": [
+      135.31,
+      141.96
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "L10": {
+   "value": "15u bias choke",
+   "xy": [
+    139.5,
+    120.55
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    137.1,
+    119.31,
+    141.9,
+    121.8
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      137.925,
+      120.55
+     ],
+     "net": "5V_LNA"
+    },
+    "2": {
+     "xy": [
+      141.075,
+      120.55
+     ],
+     "net": "/RF front end/LNA_RFOUT"
+    }
+   }
+  },
+  "C78": {
+   "value": "100n",
+   "xy": [
+    190.681,
+    128.442
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    189.73,
+    127.94,
+    191.64,
+    128.95
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      190.201,
+      128.442
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      191.161,
+      128.442
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C37": {
+   "value": "47p C0G 2%",
+   "xy": [
+    148.2,
+    117.0
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    147.69,
+    116.05,
+    148.71,
+    117.95
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      148.2,
+      116.52
+     ],
+     "net": "/RF front end/TRAP3"
+    },
+    "2": {
+     "xy": [
+      148.2,
+      117.48
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C52": {
+   "value": "10u",
+   "xy": [
+    151.0,
+    141.188
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    149.47,
+    140.41,
+    152.53,
+    141.96
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      150.225,
+      141.188
+     ],
+     "net": "1V8_A"
+    },
+    "2": {
+     "xy": [
+      151.775,
+      141.188
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C62": {
+   "value": "100n",
+   "xy": [
+    144.3,
+    148.35
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    143.79,
+    147.4,
+    144.81,
+    149.31
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      144.3,
+      148.83
+     ],
+     "net": "/ADC and clock/LMK_OUTN"
+    },
+    "2": {
+     "xy": [
+      144.3,
+      147.87
+     ],
+     "net": "/ADC and clock/ADC_CLKP"
+    }
+   }
+  },
+  "C44": {
+   "value": "160p C0G 2%",
+   "xy": [
+    130.2,
+    130.48
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    129.69,
+    129.53,
+    130.71,
+    131.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      130.2,
+      130.0
+     ],
+     "net": "/RF front end/LPF2_N4"
+    },
+    "2": {
+     "xy": [
+      130.2,
+      130.96
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C83": {
+   "value": "100n",
+   "xy": [
+    153.515,
+    127.167
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.56,
+    126.66,
+    154.47,
+    127.67
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.035,
+      127.167
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      153.995,
+      127.167
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C16": {
+   "value": "1u",
+   "xy": [
+    161.5,
+    147.912
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    160.54,
+    147.41,
+    162.46,
+    148.42
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      161.02,
+      147.912
+     ],
+     "net": "2V5"
+    },
+    "2": {
+     "xy": [
+      161.98,
+      147.912
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R6": {
+   "value": "226k 1%",
+   "xy": [
+    174.6,
+    154.85
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    174.09,
+    153.88,
+    175.12,
+    155.82
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      174.6,
+      155.36
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      174.6,
+      154.34
+     ],
+     "net": "/Power/FB_3V3"
+    }
+   }
+  },
+  "R42": {
+   "value": "10k 1%",
+   "xy": [
+    147.566,
+    145.758
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    146.59,
+    145.24,
+    148.54,
+    146.27
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.056,
+      145.758
+     ],
+     "net": "/ADC and clock/ADC_RBIAS"
+    },
+    "2": {
+     "xy": [
+      148.076,
+      145.758
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C105": {
+   "value": "100n",
+   "xy": [
+    164.474,
+    142.422
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    163.52,
+    141.92,
+    165.43,
+    142.93
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      163.994,
+      142.422
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      164.954,
+      142.422
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C17": {
+   "value": "100n",
+   "xy": [
+    154.711,
+    149.11
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    153.76,
+    148.6,
+    155.67,
+    149.62
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      154.231,
+      149.11
+     ],
+     "net": "2V5"
+    },
+    "2": {
+     "xy": [
+      155.191,
+      149.11
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C6": {
+   "value": "22u",
+   "xy": [
+    186.9,
+    149.5
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    185.88,
+    147.75,
+    187.93,
+    151.25
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      186.9,
+      148.55
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      186.9,
+      150.45
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R48": {
+   "value": "1.6k 1%",
+   "xy": [
+    190.451,
+    123.986
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    189.48,
+    123.47,
+    191.43,
+    124.5
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      189.941,
+      123.986
+     ],
+     "net": "/USB 3 bridge/FT_RREF"
+    },
+    "2": {
+     "xy": [
+      190.961,
+      123.986
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C92": {
+   "value": "10u",
+   "xy": [
+    172.893,
+    130.791
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.37,
+    130.02,
+    174.42,
+    131.57
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      172.118,
+      130.791
+     ],
+     "net": "1V8_D"
+    },
+    "2": {
+     "xy": [
+      173.668,
+      130.791
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C64": {
+   "value": "100n",
+   "xy": [
+    191.738,
+    120.625
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    190.78,
+    120.12,
+    192.69,
+    121.13
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      191.258,
+      120.625
+     ],
+     "net": "/USB 3 bridge/FT_TXP"
+    },
+    "2": {
+     "xy": [
+      192.218,
+      120.625
+     ],
+     "net": "/USB 3 bridge/USB_SSTXP"
+    }
+   }
+  },
+  "R56": {
+   "value": "1k",
+   "xy": [
+    172.363,
+    122.394
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.39,
+    121.88,
+    173.34,
+    122.91
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      171.853,
+      122.394
+     ],
+     "net": "/FPGA/FPGA_CFG2"
+    },
+    "2": {
+     "xy": [
+      172.873,
+      122.394
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C99": {
+   "value": "100n",
+   "xy": [
+    173.464,
+    135.394
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    172.51,
+    134.89,
+    174.42,
+    135.9
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      172.984,
+      135.394
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      173.944,
+      135.394
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C104": {
+   "value": "100n",
+   "xy": [
+    170.6,
+    145.472
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    169.65,
+    144.97,
+    171.56,
+    145.98
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      170.12,
+      145.472
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      171.08,
+      145.472
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C19": {
+   "value": "100n",
+   "xy": [
+    149.995,
+    152.739
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    149.04,
+    152.23,
+    150.95,
+    153.24
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      149.515,
+      152.739
+     ],
+     "net": "1V8_D"
+    },
+    "2": {
+     "xy": [
+      150.475,
+      152.739
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C84": {
+   "value": "100n",
+   "xy": [
+    153.515,
+    120.833
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.56,
+    120.33,
+    154.47,
+    121.34
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.035,
+      120.833
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      153.995,
+      120.833
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C43": {
+   "value": "30p C0G 2%",
+   "xy": [
+    132.8,
+    127.9
+   ],
+   "rot": 180.0,
+   "locked": true,
+   "courtyard": [
+    131.06,
+    126.88,
+    134.54,
+    128.93
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      133.75,
+      127.9
+     ],
+     "net": "/RF front end/LPF2_N2"
+    },
+    "2": {
+     "xy": [
+      131.85,
+      127.9
+     ],
+     "net": "/RF front end/LPF2_N4"
+    }
+   }
+  },
+  "J1": {
+   "value": "USB3 Micro-B",
+   "xy": [
+    197.35,
+    124.0
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    194.65,
+    115.89,
+    201.84,
+    132.12
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      195.875,
+      127.975
+     ],
+     "net": "VBUS"
+    },
+    "2": {
+     "xy": [
+      195.875,
+      127.325
+     ],
+     "net": "/USB 3 bridge/USB_D_N"
+    },
+    "3": {
+     "xy": [
+      195.875,
+      126.675
+     ],
+     "net": "/USB 3 bridge/USB_D_P"
+    },
+    "4": {
+     "xy": [
+      195.875,
+      126.025
+     ],
+     "net": "unconnected-(J1-ID-Pad4)"
+    },
+    "5": {
+     "xy": [
+      195.875,
+      125.375
+     ],
+     "net": "GND"
+    },
+    "6": {
+     "xy": [
+      195.875,
+      121.275
+     ],
+     "net": "/USB 3 bridge/USB_SSTXN"
+    },
+    "7": {
+     "xy": [
+      195.875,
+      120.625
+     ],
+     "net": "/USB 3 bridge/USB_SSTXP"
+    },
+    "8": {
+     "xy": [
+      195.875,
+      119.975
+     ],
+     "net": "GND"
+    },
+    "9": {
+     "xy": [
+      195.875,
+      119.325
+     ],
+     "net": "/USB 3 bridge/USB_SSRXN"
+    },
+    "10": {
+     "xy": [
+      195.875,
+      118.675
+     ],
+     "net": "/USB 3 bridge/USB_SSRXP"
+    },
+    "11": {
+     "xy": [
+      198.55,
+      117.575
+     ],
+     "net": "/USB 3 bridge/USB_SHIELD"
+    }
+   }
+  },
+  "C77": {
+   "value": "100n",
+   "xy": [
+    188.897,
+    116.861
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    187.94,
+    116.36,
+    189.85,
+    117.37
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      188.417,
+      116.861
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      189.377,
+      116.861
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C48": {
+   "value": "10p C0G",
+   "xy": [
+    135.31,
+    135.44
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    134.81,
+    134.49,
+    135.81,
+    136.4
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      135.31,
+      135.92
+     ],
+     "net": "ADC_VINN"
+    },
+    "2": {
+     "xy": [
+      135.31,
+      134.96
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C15": {
+   "value": "1u",
+   "xy": [
+    156.995,
+    150.739
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    156.04,
+    150.23,
+    157.95,
+    151.24
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      156.515,
+      150.739
+     ],
+     "net": "/Power/3V3_D_F"
+    },
+    "2": {
+     "xy": [
+      157.475,
+      150.739
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "U1": {
+   "value": "TPS22918DBVR",
+   "xy": [
+    192.0,
+    146.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    189.91,
+    144.25,
+    194.09,
+    147.75
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      190.863,
+      145.05
+     ],
+     "net": "/Power/VBUS_F"
+    },
+    "2": {
+     "xy": [
+      190.863,
+      146.0
+     ],
+     "net": "GND"
+    },
+    "3": {
+     "xy": [
+      190.863,
+      146.95
+     ],
+     "net": "/Power/LS_ON"
+    },
+    "4": {
+     "xy": [
+      193.137,
+      146.95
+     ],
+     "net": "/Power/LS_CT"
+    },
+    "5": {
+     "xy": [
+      193.137,
+      146.0
+     ],
+     "net": "unconnected-(U1-QOD-Pad5)"
+    },
+    "6": {
+     "xy": [
+      193.137,
+      145.05
+     ],
+     "net": "5V_SW"
+    }
+   }
+  },
+  "U4": {
+   "value": "TLV75525PDBVR",
+   "xy": [
+    158.0,
+    148.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    155.91,
+    146.25,
+    160.09,
+    149.75
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      156.863,
+      147.05
+     ],
+     "net": "/Power/3V3_D_F"
+    },
+    "2": {
+     "xy": [
+      156.863,
+      148.0
+     ],
+     "net": "GND"
+    },
+    "3": {
+     "xy": [
+      156.863,
+      148.95
+     ],
+     "net": "/Power/3V3_D_F"
+    },
+    "4": {
+     "xy": [
+      159.137,
+      148.95
+     ],
+     "net": "unconnected-(U4-NC-Pad4)"
+    },
+    "5": {
+     "xy": [
+      159.137,
+      147.05
+     ],
+     "net": "2V5"
+    }
+   }
+  },
+  "L12": {
+   "value": "270n 0805HP 2%",
+   "xy": [
+    132.8,
+    130.0
+   ],
+   "rot": 180.0,
+   "locked": true,
+   "courtyard": [
+    131.0,
+    129.1,
+    134.59,
+    130.9
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      133.863,
+      130.0
+     ],
+     "net": "/RF front end/LPF2_N2"
+    },
+    "2": {
+     "xy": [
+      131.738,
+      130.0
+     ],
+     "net": "/RF front end/LPF2_N4"
+    }
+   }
+  },
+  "C58": {
+   "value": "100n",
+   "xy": [
+    150.871,
+    142.792
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    149.92,
+    142.29,
+    151.83,
+    143.3
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      150.391,
+      142.792
+     ],
+     "net": "1V8_D"
+    },
+    "2": {
+     "xy": [
+      151.351,
+      142.792
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "K2": {
+   "value": "HFD4/5-SR",
+   "xy": [
+    145.5,
+    131.6
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    141.96,
+    126.31,
+    149.04,
+    136.9
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.6,
+      135.4
+     ],
+     "net": "5V_SW"
+    },
+    "2": {
+     "xy": [
+      147.6,
+      132.2
+     ],
+     "net": "/RF front end/LNA_BYP"
+    },
+    "3": {
+     "xy": [
+      147.6,
+      130.0
+     ],
+     "net": "/RF front end/NOTCH_OUT"
+    },
+    "4": {
+     "xy": [
+      147.6,
+      127.8
+     ],
+     "net": "/RF front end/LNA_IN"
+    },
+    "5": {
+     "xy": [
+      143.4,
+      127.8
+     ],
+     "net": "/RF front end/LNA_PAD_OUT"
+    },
+    "6": {
+     "xy": [
+      143.4,
+      130.0
+     ],
+     "net": "/RF front end/LPF2_IN"
+    },
+    "7": {
+     "xy": [
+      143.4,
+      132.2
+     ],
+     "net": "/RF front end/LNA_BYP"
+    },
+    "8": {
+     "xy": [
+      143.4,
+      135.4
+     ],
+     "net": "/RF front end/K2_COIL"
+    }
+   }
+  },
+  "C103": {
+   "value": "100n",
+   "xy": [
+    174.229,
+    143.936
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    173.27,
+    143.43,
+    175.18,
+    144.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      173.749,
+      143.936
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      174.709,
+      143.936
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C65": {
+   "value": "4.7n 250V",
+   "xy": [
+    192.89,
+    126.706
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    191.37,
+    125.93,
+    194.41,
+    127.48
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      192.115,
+      126.706
+     ],
+     "net": "/USB 3 bridge/USB_SHIELD"
+    },
+    "2": {
+     "xy": [
+      193.665,
+      126.706
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C40": {
+   "value": "62p C0G 2%",
+   "xy": [
+    140.6,
+    130.48
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    140.09,
+    129.53,
+    141.1,
+    131.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      140.6,
+      130.0
+     ],
+     "net": "/RF front end/LPF2_IN"
+    },
+    "2": {
+     "xy": [
+      140.6,
+      130.96
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C96": {
+   "value": "10u",
+   "xy": [
+    170.603,
+    143.964
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    169.08,
+    143.19,
+    172.13,
+    144.74
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      169.828,
+      143.964
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      171.378,
+      143.964
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R20": {
+   "value": "294 1%",
+   "xy": [
+    141.0,
+    122.9
+   ],
+   "rot": 180.0,
+   "locked": true,
+   "courtyard": [
+    140.03,
+    122.39,
+    141.97,
+    123.42
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      141.51,
+      122.9
+     ],
+     "net": "/RF front end/LNA_O"
+    },
+    "2": {
+     "xy": [
+      140.49,
+      122.9
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R50": {
+   "value": "50 (place at FPGA)",
+   "xy": [
+    172.5,
+    124.0
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.53,
+    123.48,
+    173.47,
+    124.52
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      171.99,
+      124.0
+     ],
+     "net": "/FPGA/CCLK_FPGA"
+    },
+    "2": {
+     "xy": [
+      173.01,
+      124.0
+     ],
+     "net": "/FPGA/FPGA_CCLK"
+    }
+   }
+  },
+  "C94": {
+   "value": "100n",
+   "xy": [
+    153.247,
+    117.906
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.29,
+    117.4,
+    154.2,
+    118.41
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      152.767,
+      117.906
+     ],
+     "net": "1V8_D"
+    },
+    "2": {
+     "xy": [
+      153.727,
+      117.906
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "Y1": {
+   "value": "30MHz 20pF X322530MSB4SI",
+   "xy": [
+    191.0,
+    131.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    188.85,
+    129.21,
+    193.15,
+    132.79
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      189.9,
+      131.85
+     ],
+     "net": "/USB 3 bridge/FT_XI"
+    },
+    "2": {
+     "xy": [
+      192.1,
+      131.85
+     ],
+     "net": "GND"
+    },
+    "3": {
+     "xy": [
+      192.1,
+      130.15
+     ],
+     "net": "/USB 3 bridge/FT_XO"
+    },
+    "4": {
+     "xy": [
+      189.9,
+      130.15
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R46": {
+   "value": "1M",
+   "xy": [
+    193.39,
+    125.197
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    192.41,
+    124.68,
+    194.37,
+    125.71
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      192.88,
+      125.197
+     ],
+     "net": "/USB 3 bridge/USB_SHIELD"
+    },
+    "2": {
+     "xy": [
+      193.9,
+      125.197
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R28": {
+   "value": "22",
+   "xy": [
+    145.5,
+    140.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    144.53,
+    139.49,
+    146.47,
+    140.51
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      144.99,
+      140.0
+     ],
+     "net": "/ADC and clock/ADC_D2_R"
+    },
+    "2": {
+     "xy": [
+      146.01,
+      140.0
+     ],
+     "net": "ADC_D2"
+    }
+   }
+  },
+  "R24": {
+   "value": "33",
+   "xy": [
+    133.8,
+    141.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    132.82,
+    140.49,
+    134.78,
+    141.51
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      133.29,
+      141.0
+     ],
+     "net": "/RF front end/AIN_P_T"
+    },
+    "2": {
+     "xy": [
+      134.31,
+      141.0
+     ],
+     "net": "ADC_VINP"
+    }
+   }
+  },
+  "C30": {
+   "value": "130p C0G 2%",
+   "xy": [
+    130.2,
+    113.48
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    129.69,
+    112.53,
+    130.71,
+    114.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      130.2,
+      113.0
+     ],
+     "net": "/RF front end/LPF1_N2"
+    },
+    "2": {
+     "xy": [
+      130.2,
+      113.96
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R3": {
+   "value": "100k 1%",
+   "xy": [
+    185.1,
+    154.85
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    184.59,
+    153.88,
+    185.62,
+    155.82
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      185.1,
+      155.36
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      185.1,
+      154.34
+     ],
+     "net": "/Power/FB_1V1"
+    }
+   }
+  },
+  "F1": {
+   "value": "1.1A",
+   "xy": [
+    195.0,
+    136.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    192.68,
+    134.82,
+    197.32,
+    137.18
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      193.6,
+      136.0
+     ],
+     "net": "VBUS"
+    },
+    "2": {
+     "xy": [
+      196.4,
+      136.0
+     ],
+     "net": "/Power/VBUS_F"
+    }
+   }
+  },
+  "L8": {
+   "value": "180n 0805HP 2%",
+   "xy": [
+    145.4,
+    113.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    143.6,
+    112.11,
+    147.19,
+    113.89
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      144.338,
+      113.0
+     ],
+     "net": "/RF front end/LPF1_OUT"
+    },
+    "2": {
+     "xy": [
+      146.463,
+      113.0
+     ],
+     "net": "/RF front end/NOTCH_OUT"
+    }
+   }
+  },
+  "R60": {
+   "value": "10k",
+   "xy": [
+    158.997,
+    134.075
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    158.02,
+    133.56,
+    159.97,
+    134.59
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      158.487,
+      134.075
+     ],
+     "net": "/FPGA/FLASH_IO3"
+    },
+    "2": {
+     "xy": [
+      159.507,
+      134.075
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "R32": {
+   "value": "22",
+   "xy": [
+    136.647,
+    144.549
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    135.67,
+    144.03,
+    137.62,
+    145.06
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      136.137,
+      144.549
+     ],
+     "net": "/ADC and clock/ADC_D6_R"
+    },
+    "2": {
+     "xy": [
+      137.157,
+      144.549
+     ],
+     "net": "ADC_D6"
+    }
+   }
+  },
+  "R22": {
+   "value": "294 1%",
+   "xy": [
+    141.0,
+    125.3
+   ],
+   "rot": 180.0,
+   "locked": true,
+   "courtyard": [
+    140.03,
+    124.78,
+    141.97,
+    125.81
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      141.51,
+      125.3
+     ],
+     "net": "/RF front end/LNA_PAD_OUT"
+    },
+    "2": {
+     "xy": [
+      140.49,
+      125.3
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R37": {
+   "value": "22",
+   "xy": [
+    147.811,
+    139.573
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    146.84,
+    139.06,
+    148.79,
+    140.09
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.301,
+      139.573
+     ],
+     "net": "/ADC and clock/ADC_D11_R"
+    },
+    "2": {
+     "xy": [
+      148.321,
+      139.573
+     ],
+     "net": "ADC_D11"
+    }
+   }
+  },
+  "D1": {
+   "value": "SMF5.0A",
+   "xy": [
+    195.0,
+    140.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    192.75,
+    138.81,
+    197.25,
+    141.19
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      193.6,
+      140.0
+     ],
+     "net": "/Power/VBUS_F"
+    },
+    "2": {
+     "xy": [
+      196.4,
+      140.0
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C60": {
+   "value": "100n",
+   "xy": [
+    137.021,
+    150.405
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    136.07,
+    149.9,
+    137.98,
+    150.91
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      136.541,
+      150.405
+     ],
+     "net": "/ADC and clock/3V3_CLK"
+    },
+    "2": {
+     "xy": [
+      137.501,
+      150.405
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C57": {
+   "value": "1u",
+   "xy": [
+    150.363,
+    139.582
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    149.41,
+    139.08,
+    151.32,
+    140.09
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      149.883,
+      139.582
+     ],
+     "net": "1V8_D"
+    },
+    "2": {
+     "xy": [
+      150.843,
+      139.582
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C14": {
+   "value": "10u",
+   "xy": [
+    156.995,
+    145.086
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    155.47,
+    144.31,
+    158.52,
+    145.86
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      156.22,
+      145.086
+     ],
+     "net": "/Power/3V3_D_F"
+    },
+    "2": {
+     "xy": [
+      157.77,
+      145.086
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C3": {
+   "value": "1n",
+   "xy": [
+    190.995,
+    148.739
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    190.04,
+    148.23,
+    191.95,
+    149.24
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      190.515,
+      148.739
+     ],
+     "net": "/Power/LS_CT"
+    },
+    "2": {
+     "xy": [
+      191.475,
+      148.739
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C36": {
+   "value": "15p C0G 2%",
+   "xy": [
+    145.4,
+    110.9
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    143.66,
+    109.88,
+    147.15,
+    111.92
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      144.45,
+      110.9
+     ],
+     "net": "/RF front end/LPF1_OUT"
+    },
+    "2": {
+     "xy": [
+      146.35,
+      110.9
+     ],
+     "net": "/RF front end/NOTCH_OUT"
+    }
+   }
+  },
+  "C11": {
+   "value": "22u",
+   "xy": [
+    178.5,
+    149.5
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    177.47,
+    147.75,
+    179.53,
+    151.25
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      178.5,
+      148.55
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      178.5,
+      150.45
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "L9": {
+   "value": "47n 0805HP 2%",
+   "xy": [
+    148.2,
+    114.062
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    147.31,
+    112.27,
+    149.09,
+    115.86
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      148.2,
+      112.999
+     ],
+     "net": "/RF front end/NOTCH_OUT"
+    },
+    "2": {
+     "xy": [
+      148.2,
+      115.124
+     ],
+     "net": "/RF front end/TRAP3"
+    }
+   }
+  },
+  "R49": {
+   "value": "10k",
+   "xy": [
+    182.221,
+    129.439
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    181.25,
+    128.92,
+    183.2,
+    129.95
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      181.711,
+      129.439
+     ],
+     "net": "/USB 3 bridge/FT_SIWU"
+    },
+    "2": {
+     "xy": [
+      182.731,
+      129.439
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "R45": {
+   "value": "4.7k",
+   "xy": [
+    136.946,
+    151.952
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    135.97,
+    151.44,
+    137.92,
+    152.47
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      136.436,
+      151.952
+     ],
+     "net": "LMK_SCL"
+    },
+    "2": {
+     "xy": [
+      137.456,
+      151.952
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "C2": {
+   "value": "100n",
+   "xy": [
+    198.478,
+    140.0
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    197.52,
+    139.5,
+    199.43,
+    140.5
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      197.998,
+      140.0
+     ],
+     "net": "/Power/VBUS_F"
+    },
+    "2": {
+     "xy": [
+      198.958,
+      140.0
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R35": {
+   "value": "22",
+   "xy": [
+    148.0,
+    141.188
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    147.03,
+    140.67,
+    148.97,
+    141.7
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.49,
+      141.188
+     ],
+     "net": "/ADC and clock/ADC_D9_R"
+    },
+    "2": {
+     "xy": [
+      148.51,
+      141.188
+     ],
+     "net": "ADC_D9"
+    }
+   }
+  },
+  "D4": {
+   "value": "LED green",
+   "xy": [
+    165.782,
+    133.084
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    164.26,
+    132.31,
+    167.31,
+    133.86
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      164.994,
+      133.084
+     ],
+     "net": "/FPGA/D4_K"
+    },
+    "2": {
+     "xy": [
+      166.57,
+      133.084
+     ],
+     "net": "/FPGA/LED0"
+    }
+   }
+  },
+  "R5": {
+   "value": "100k",
+   "xy": [
+    186.2,
+    154.85
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    185.69,
+    153.88,
+    186.72,
+    155.82
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      186.2,
+      154.34
+     ],
+     "net": "/Power/PG_1V1"
+    },
+    "2": {
+     "xy": [
+      186.2,
+      155.36
+     ],
+     "net": "1V1"
+    }
+   }
+  },
+  "C55": {
+   "value": "100n",
+   "xy": [
+    134.141,
+    147.761
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    133.19,
+    147.26,
+    135.1,
+    148.27
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      133.661,
+      147.761
+     ],
+     "net": "1V8_A"
+    },
+    "2": {
+     "xy": [
+      134.621,
+      147.761
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R36": {
+   "value": "22",
+   "xy": [
+    145.88,
+    146.802
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    144.91,
+    146.29,
+    146.85,
+    147.32
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      145.37,
+      146.802
+     ],
+     "net": "/ADC and clock/ADC_D10_R"
+    },
+    "2": {
+     "xy": [
+      146.39,
+      146.802
+     ],
+     "net": "ADC_D10"
+    }
+   }
+  },
+  "C38": {
+   "value": "100n",
+   "xy": [
+    148.6,
+    123.5
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    148.09,
+    122.55,
+    149.1,
+    124.45
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      148.6,
+      123.98
+     ],
+     "net": "/RF front end/LNA_IN"
+    },
+    "2": {
+     "xy": [
+      148.6,
+      123.02
+     ],
+     "net": "/RF front end/LNA_RFIN"
+    }
+   }
+  },
+  "R2": {
+   "value": "100k",
+   "xy": [
+    193.38,
+    148.576
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    192.41,
+    148.06,
+    194.35,
+    149.09
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      192.87,
+      148.576
+     ],
+     "net": "/Power/LS_ON"
+    },
+    "2": {
+     "xy": [
+      193.89,
+      148.576
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "U3": {
+   "value": "TPS62A02ADRLR (forced PWM)",
+   "xy": [
+    173.5,
+    152.6
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    172.5,
+    151.35,
+    174.5,
+    153.84
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      174.0,
+      151.887
+     ],
+     "net": "GND"
+    },
+    "2": {
+     "xy": [
+      173.5,
+      151.887
+     ],
+     "net": "/Power/SW_3V3"
+    },
+    "3": {
+     "xy": [
+      173.0,
+      151.887
+     ],
+     "net": "5V_SW"
+    },
+    "4": {
+     "xy": [
+      173.0,
+      153.312
+     ],
+     "net": "5V_SW"
+    },
+    "5": {
+     "xy": [
+      173.5,
+      153.312
+     ],
+     "net": "/Power/FB_3V3"
+    },
+    "6": {
+     "xy": [
+      174.0,
+      153.312
+     ],
+     "net": "/Power/PG_3V3"
+    }
+   }
+  },
+  "D3": {
+   "value": "1N4148W",
+   "xy": [
+    152.685,
+    146.454
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    150.29,
+    145.26,
+    155.08,
+    147.65
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      151.035,
+      146.454
+     ],
+     "net": "5V_SW"
+    },
+    "2": {
+     "xy": [
+      154.335,
+      146.454
+     ],
+     "net": "/RF front end/K2_COIL"
+    }
+   }
+  },
+  "R51": {
+   "value": "10k",
+   "xy": [
+    171.386,
+    142.214
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    170.41,
+    141.7,
+    172.36,
+    142.73
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      170.876,
+      142.214
+     ],
+     "net": "/FPGA/FPGA_PROGRAM_N"
+    },
+    "2": {
+     "xy": [
+      171.896,
+      142.214
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "Q2": {
+   "value": "2N7002",
+   "xy": [
+    162.309,
+    145.005
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    160.33,
+    143.26,
+    164.28,
+    146.75
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      161.371,
+      144.055
+     ],
+     "net": "/RF front end/Q2_G"
+    },
+    "2": {
+     "xy": [
+      161.371,
+      145.955
+     ],
+     "net": "GND"
+    },
+    "3": {
+     "xy": [
+      163.246,
+      145.005
+     ],
+     "net": "/RF front end/K2_COIL"
+    }
+   }
+  },
+  "C53": {
+   "value": "100n",
+   "xy": [
+    149.957,
+    144.352
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    149.0,
+    143.85,
+    150.91,
+    144.86
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      149.477,
+      144.352
+     ],
+     "net": "1V8_A"
+    },
+    "2": {
+     "xy": [
+      150.437,
+      144.352
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "L1": {
+   "value": "1u 2A shielded",
+   "xy": [
+    184.0,
+    149.5
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    182.16,
+    147.66,
+    185.84,
+    151.34
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      184.0,
+      150.6
+     ],
+     "net": "/Power/SW_1V1"
+    },
+    "2": {
+     "xy": [
+      184.0,
+      148.4
+     ],
+     "net": "1V1"
+    }
+   }
+  },
+  "R55": {
+   "value": "1k",
+   "xy": [
+    153.637,
+    122.394
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.66,
+    121.88,
+    154.61,
+    122.91
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.127,
+      122.394
+     ],
+     "net": "/FPGA/FPGA_CFG1"
+    },
+    "2": {
+     "xy": [
+      154.147,
+      122.394
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "J5": {
+   "value": "PMOD0",
+   "xy": [
+    157.0,
+    113.415
+   ],
+   "rot": 90.0,
+   "locked": false,
+   "courtyard": [
+    155.19,
+    100.28,
+    171.51,
+    115.23
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      157.0,
+      113.415
+     ],
+     "net": "/FPGA/PMOD0_0"
+    },
+    "2": {
+     "xy": [
+      157.0,
+      110.875
+     ],
+     "net": "/FPGA/PMOD0_1"
+    },
+    "3": {
+     "xy": [
+      159.54,
+      113.415
+     ],
+     "net": "/FPGA/PMOD0_2"
+    },
+    "4": {
+     "xy": [
+      159.54,
+      110.875
+     ],
+     "net": "/FPGA/PMOD0_3"
+    },
+    "5": {
+     "xy": [
+      162.08,
+      113.415
+     ],
+     "net": "GND"
+    },
+    "6": {
+     "xy": [
+      162.08,
+      110.875
+     ],
+     "net": "3V3_D"
+    },
+    "7": {
+     "xy": [
+      164.62,
+      113.415
+     ],
+     "net": "/FPGA/PMOD0_4"
+    },
+    "8": {
+     "xy": [
+      164.62,
+      110.875
+     ],
+     "net": "/FPGA/PMOD0_5"
+    },
+    "9": {
+     "xy": [
+      167.16,
+      113.415
+     ],
+     "net": "/FPGA/PMOD0_6"
+    },
+    "10": {
+     "xy": [
+      167.16,
+      110.875
+     ],
+     "net": "/FPGA/PMOD0_7"
+    },
+    "11": {
+     "xy": [
+      169.7,
+      113.415
+     ],
+     "net": "GND"
+    },
+    "12": {
+     "xy": [
+      169.7,
+      110.875
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "R13": {
+   "value": "100",
+   "xy": [
+    172.304,
+    117.24
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.33,
+    116.72,
+    173.28,
+    117.75
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      171.794,
+      117.24
+     ],
+     "net": "RLY_PAD"
+    },
+    "2": {
+     "xy": [
+      172.814,
+      117.24
+     ],
+     "net": "/RF front end/Q1_G"
+    }
+   }
+  },
+  "C32": {
+   "value": "160p C0G 2%",
+   "xy": [
+    135.4,
+    113.48
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    134.9,
+    112.53,
+    135.91,
+    114.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      135.4,
+      113.0
+     ],
+     "net": "/RF front end/LPF1_N4"
+    },
+    "2": {
+     "xy": [
+      135.4,
+      113.96
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R44": {
+   "value": "4.7k",
+   "xy": [
+    146.013,
+    151.581
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    145.04,
+    151.07,
+    146.99,
+    152.1
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      145.503,
+      151.581
+     ],
+     "net": "LMK_SDA"
+    },
+    "2": {
+     "xy": [
+      146.523,
+      151.581
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "C42": {
+   "value": "130p C0G 2%",
+   "xy": [
+    135.4,
+    130.48
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    134.9,
+    129.53,
+    135.91,
+    131.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      135.4,
+      130.0
+     ],
+     "net": "/RF front end/LPF2_N2"
+    },
+    "2": {
+     "xy": [
+      135.4,
+      130.96
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C9": {
+   "value": "10u",
+   "xy": [
+    181.45,
+    152.15
+   ],
+   "rot": 180.0,
+   "locked": true,
+   "courtyard": [
+    179.93,
+    151.38,
+    182.97,
+    152.93
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      182.225,
+      152.15
+     ],
+     "net": "5V_SW"
+    },
+    "2": {
+     "xy": [
+      180.675,
+      152.15
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C72": {
+   "value": "100n",
+   "xy": [
+    177.574,
+    127.054
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    176.62,
+    126.55,
+    178.53,
+    127.56
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      177.094,
+      127.054
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "2": {
+     "xy": [
+      178.054,
+      127.054
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C87": {
+   "value": "100n",
+   "xy": [
+    157.293,
+    132.813
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    156.34,
+    132.31,
+    158.25,
+    133.32
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      156.813,
+      132.813
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      157.773,
+      132.813
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "U5": {
+   "value": "TPS7A2018PDBVR",
+   "xy": [
+    151.0,
+    150.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    148.91,
+    148.25,
+    153.09,
+    151.75
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      149.863,
+      149.05
+     ],
+     "net": "/Power/3V3_D_F"
+    },
+    "2": {
+     "xy": [
+      149.863,
+      150.0
+     ],
+     "net": "GND"
+    },
+    "3": {
+     "xy": [
+      149.863,
+      150.95
+     ],
+     "net": "/Power/3V3_D_F"
+    },
+    "4": {
+     "xy": [
+      152.137,
+      150.95
+     ],
+     "net": "unconnected-(U5-NC-Pad4)"
+    },
+    "5": {
+     "xy": [
+      152.137,
+      149.05
+     ],
+     "net": "1V8_D"
+    }
+   }
+  },
+  "R27": {
+   "value": "22",
+   "xy": [
+    142.391,
+    145.467
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    141.42,
+    144.95,
+    143.37,
+    145.98
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      141.881,
+      145.467
+     ],
+     "net": "/ADC and clock/ADC_D1_R"
+    },
+    "2": {
+     "xy": [
+      142.901,
+      145.467
+     ],
+     "net": "ADC_D1"
+    }
+   }
+  },
+  "C108": {
+   "value": "100n",
+   "xy": [
+    176.811,
+    140.614
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    175.86,
+    140.11,
+    177.77,
+    141.12
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      176.331,
+      140.614
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      177.291,
+      140.614
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C7": {
+   "value": "22u",
+   "xy": [
+    189.0,
+    149.5
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    187.97,
+    147.75,
+    190.03,
+    151.25
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      189.0,
+      148.55
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      189.0,
+      150.45
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C10": {
+   "value": "22u",
+   "xy": [
+    176.4,
+    149.5
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    175.38,
+    147.75,
+    177.43,
+    151.25
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      176.4,
+      148.55
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      176.4,
+      150.45
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C25": {
+   "value": "100n",
+   "xy": [
+    131.38,
+    149.249
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    130.43,
+    148.74,
+    132.34,
+    149.75
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      130.9,
+      149.249
+     ],
+     "net": "1V8_A"
+    },
+    "2": {
+     "xy": [
+      131.86,
+      149.249
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R23": {
+   "value": "200 1%",
+   "xy": [
+    132.0,
+    138.46
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    131.49,
+    137.49,
+    132.51,
+    139.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      132.0,
+      138.97
+     ],
+     "net": "/RF front end/AIN_P_T"
+    },
+    "2": {
+     "xy": [
+      132.0,
+      137.95
+     ],
+     "net": "/RF front end/AIN_N_T"
+    }
+   }
+  },
+  "C70": {
+   "value": "4.7u",
+   "xy": [
+    176.893,
+    120.793
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    175.37,
+    120.02,
+    178.42,
+    121.57
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      176.118,
+      120.793
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "2": {
+     "xy": [
+      177.668,
+      120.793
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C67": {
+   "value": "33p C0G",
+   "xy": [
+    177.512,
+    122.787
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    176.56,
+    122.28,
+    178.47,
+    123.29
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      177.032,
+      122.787
+     ],
+     "net": "/USB 3 bridge/FT_XO"
+    },
+    "2": {
+     "xy": [
+      177.992,
+      122.787
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C61": {
+   "value": "100n",
+   "xy": [
+    144.3,
+    151.35
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    143.79,
+    150.4,
+    144.81,
+    152.31
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      144.3,
+      151.83
+     ],
+     "net": "/ADC and clock/LMK_OUTP"
+    },
+    "2": {
+     "xy": [
+      144.3,
+      150.87
+     ],
+     "net": "/ADC and clock/ADC_CLKN"
+    }
+   }
+  },
+  "C76": {
+   "value": "100n",
+   "xy": [
+    177.434,
+    118.617
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    176.48,
+    118.11,
+    178.39,
+    119.12
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      176.954,
+      118.617
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      177.914,
+      118.617
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C102": {
+   "value": "100n",
+   "xy": [
+    172.883,
+    133.738
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.93,
+    133.23,
+    173.84,
+    134.24
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      172.403,
+      133.738
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      173.363,
+      133.738
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C50": {
+   "value": "1u",
+   "xy": [
+    134.319,
+    146.442
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    133.36,
+    145.94,
+    135.27,
+    146.95
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      133.839,
+      146.442
+     ],
+     "net": "/ADC and clock/ADC_VREF"
+    },
+    "2": {
+     "xy": [
+      134.799,
+      146.442
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "U9": {
+   "value": "LMK61E2-100M00SIAR",
+   "xy": [
+    141.0,
+    150.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    138.21,
+    146.21,
+    143.79,
+    153.79
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      139.15,
+      147.46
+     ],
+     "net": "/ADC and clock/3V3_CLK"
+    },
+    "2": {
+     "xy": [
+      139.15,
+      150.0
+     ],
+     "net": "GND"
+    },
+    "3": {
+     "xy": [
+      139.15,
+      152.54
+     ],
+     "net": "GND"
+    },
+    "4": {
+     "xy": [
+      142.85,
+      152.54
+     ],
+     "net": "/ADC and clock/LMK_OUTP"
+    },
+    "5": {
+     "xy": [
+      142.85,
+      150.0
+     ],
+     "net": "/ADC and clock/LMK_OUTN"
+    },
+    "6": {
+     "xy": [
+      142.85,
+      147.46
+     ],
+     "net": "/ADC and clock/3V3_CLK"
+    },
+    "7": {
+     "xy": [
+      141.0,
+      147.135
+     ],
+     "net": "LMK_SDA"
+    },
+    "8": {
+     "xy": [
+      141.0,
+      152.865
+     ],
+     "net": "LMK_SCL"
+    }
+   }
+  },
+  "R43": {
+   "value": "100",
+   "xy": [
+    139.26,
+    145.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    138.28,
+    144.49,
+    140.24,
+    145.51
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      138.75,
+      145.0
+     ],
+     "net": "/ADC and clock/ADC_CLKP"
+    },
+    "2": {
+     "xy": [
+      139.77,
+      145.0
+     ],
+     "net": "/ADC and clock/ADC_CLKN"
+    }
+   }
+  },
+  "C68": {
+   "value": "4.7u",
+   "xy": [
+    183.003,
+    116.764
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    181.48,
+    115.99,
+    184.53,
+    117.54
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      182.228,
+      116.764
+     ],
+     "net": "/USB 3 bridge/FT_VDDA"
+    },
+    "2": {
+     "xy": [
+      183.778,
+      116.764
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R54": {
+   "value": "1k",
+   "xy": [
+    153.5,
+    124.0
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.53,
+    123.48,
+    154.47,
+    124.52
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      152.99,
+      124.0
+     ],
+     "net": "/FPGA/FPGA_CFG0"
+    },
+    "2": {
+     "xy": [
+      154.01,
+      124.0
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C97": {
+   "value": "100n",
+   "xy": [
+    166.838,
+    142.873
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    165.88,
+    142.37,
+    167.79,
+    143.38
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      166.358,
+      142.873
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      167.318,
+      142.873
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C31": {
+   "value": "30p C0G 2%",
+   "xy": [
+    132.8,
+    110.9
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    131.06,
+    109.88,
+    134.54,
+    111.92
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      131.85,
+      110.9
+     ],
+     "net": "/RF front end/LPF1_N2"
+    },
+    "2": {
+     "xy": [
+      133.75,
+      110.9
+     ],
+     "net": "/RF front end/LPF1_N4"
+    }
+   }
+  },
+  "R8": {
+   "value": "100k",
+   "xy": [
+    175.7,
+    154.85
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    175.19,
+    153.88,
+    176.22,
+    155.82
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      175.7,
+      154.34
+     ],
+     "net": "/Power/PG_3V3"
+    },
+    "2": {
+     "xy": [
+      175.7,
+      155.36
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "C91": {
+   "value": "100n",
+   "xy": [
+    172.41,
+    119.341
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.46,
+    118.84,
+    173.37,
+    119.85
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      171.93,
+      119.341
+     ],
+     "net": "2V5"
+    },
+    "2": {
+     "xy": [
+      172.89,
+      119.341
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R47": {
+   "value": "1k",
+   "xy": [
+    193.261,
+    123.598
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    192.29,
+    123.08,
+    194.24,
+    124.11
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      192.751,
+      123.598
+     ],
+     "net": "VBUS"
+    },
+    "2": {
+     "xy": [
+      193.771,
+      123.598
+     ],
+     "net": "/USB 3 bridge/FT_VBUS"
+    }
+   }
+  },
+  "C89": {
+   "value": "10u",
+   "xy": [
+    166.554,
+    134.937
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    165.03,
+    134.16,
+    168.08,
+    135.71
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      165.779,
+      134.937
+     ],
+     "net": "2V5"
+    },
+    "2": {
+     "xy": [
+      167.329,
+      134.937
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R41": {
+   "value": "22",
+   "xy": [
+    147.807,
+    138.038
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    146.83,
+    137.52,
+    148.78,
+    138.55
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.297,
+      138.038
+     ],
+     "net": "/ADC and clock/ADC_OR_R"
+    },
+    "2": {
+     "xy": [
+      148.317,
+      138.038
+     ],
+     "net": "ADC_OR"
+    }
+   }
+  },
+  "C34": {
+   "value": "91p C0G 2%",
+   "xy": [
+    140.6,
+    113.48
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    140.09,
+    112.53,
+    141.1,
+    114.44
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      140.6,
+      113.0
+     ],
+     "net": "/RF front end/LPF1_OUT"
+    },
+    "2": {
+     "xy": [
+      140.6,
+      113.96
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C107": {
+   "value": "100n",
+   "xy": [
+    177.0,
+    139.0
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    176.04,
+    138.5,
+    177.96,
+    139.5
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      176.52,
+      139.0
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      177.48,
+      139.0
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "R58": {
+   "value": "4.7k",
+   "xy": [
+    161.389,
+    141.699
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    160.41,
+    141.18,
+    162.36,
+    142.21
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      160.879,
+      141.699
+     ],
+     "net": "/FPGA/FLASH_CS_N"
+    },
+    "2": {
+     "xy": [
+      161.899,
+      141.699
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "U7": {
+   "value": "TPS7A2018PDBVR",
+   "xy": [
+    130.0,
+    152.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    127.91,
+    150.25,
+    132.09,
+    153.75
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      128.863,
+      151.05
+     ],
+     "net": "3V3_A"
+    },
+    "2": {
+     "xy": [
+      128.863,
+      152.0
+     ],
+     "net": "GND"
+    },
+    "3": {
+     "xy": [
+      128.863,
+      152.95
+     ],
+     "net": "3V3_A"
+    },
+    "4": {
+     "xy": [
+      131.137,
+      152.95
+     ],
+     "net": "unconnected-(U7-NC-Pad4)"
+    },
+    "5": {
+     "xy": [
+      131.137,
+      151.05
+     ],
+     "net": "1V8_A"
+    }
+   }
+  },
+  "J3": {
+   "value": "TC2050 JTAG",
+   "xy": [
+    170.0,
+    139.0
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    164.62,
+    136.66,
+    175.38,
+    141.34
+   ],
+   "pads": {
+    "": {
+     "xy": [
+      173.81,
+      140.016
+     ],
+     "net": ""
+    },
+    "1": {
+     "xy": [
+      167.46,
+      139.635
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      168.73,
+      139.635
+     ],
+     "net": "/FPGA/FPGA_TMS"
+    },
+    "3": {
+     "xy": [
+      170.0,
+      139.635
+     ],
+     "net": "GND"
+    },
+    "4": {
+     "xy": [
+      171.27,
+      139.635
+     ],
+     "net": "/FPGA/FPGA_TCK"
+    },
+    "5": {
+     "xy": [
+      172.54,
+      139.635
+     ],
+     "net": "GND"
+    },
+    "6": {
+     "xy": [
+      172.54,
+      138.365
+     ],
+     "net": "/FPGA/FPGA_TDO"
+    },
+    "7": {
+     "xy": [
+      171.27,
+      138.365
+     ],
+     "net": "unconnected-(J3-Pad7)"
+    },
+    "8": {
+     "xy": [
+      170.0,
+      138.365
+     ],
+     "net": "/FPGA/FPGA_TDI"
+    },
+    "9": {
+     "xy": [
+      168.73,
+      138.365
+     ],
+     "net": "GND"
+    },
+    "10": {
+     "xy": [
+      167.46,
+      138.365
+     ],
+     "net": "/FPGA/FPGA_PROGRAM_N"
+    }
+   }
+  },
+  "U13": {
+   "value": "PHA-13LN+",
+   "xy": [
+    145.5,
+    122.5
+   ],
+   "rot": -90.0,
+   "locked": true,
+   "courtyard": [
+    142.96,
+    119.61,
+    148.04,
+    124.8
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      147.0,
+      120.55
+     ],
+     "net": "/RF front end/LNA_RFIN"
+    },
+    "2": {
+     "xy": [
+      145.5,
+      120.638
+     ],
+     "net": "GND"
+    },
+    "3": {
+     "xy": [
+      144.0,
+      120.55
+     ],
+     "net": "/RF front end/LNA_RFOUT"
+    }
+   }
+  },
+  "C59": {
+   "value": "10u",
+   "xy": [
+    142.391,
+    154.803
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    140.87,
+    154.03,
+    143.92,
+    155.58
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      141.616,
+      154.803
+     ],
+     "net": "/ADC and clock/3V3_CLK"
+    },
+    "2": {
+     "xy": [
+      143.166,
+      154.803
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C1": {
+   "value": "22u",
+   "xy": [
+    194.771,
+    142.491
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    193.03,
+    141.47,
+    196.52,
+    143.52
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      193.821,
+      142.491
+     ],
+     "net": "/Power/VBUS_F"
+    },
+    "2": {
+     "xy": [
+      195.721,
+      142.491
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C56": {
+   "value": "100n",
+   "xy": [
+    149.957,
+    138.023
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    149.0,
+    137.52,
+    150.91,
+    138.53
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      149.477,
+      138.023
+     ],
+     "net": "1V8_A"
+    },
+    "2": {
+     "xy": [
+      150.437,
+      138.023
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C86": {
+   "value": "100n",
+   "xy": [
+    168.707,
+    132.813
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    167.75,
+    132.31,
+    169.66,
+    133.32
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      168.227,
+      132.813
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      169.187,
+      132.813
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C106": {
+   "value": "100n",
+   "xy": [
+    175.727,
+    135.925
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    174.77,
+    135.42,
+    176.68,
+    136.43
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      175.247,
+      135.925
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      176.207,
+      135.925
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C88": {
+   "value": "100n",
+   "xy": [
+    153.59,
+    128.659
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    152.63,
+    128.15,
+    154.54,
+    129.16
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      153.11,
+      128.659
+     ],
+     "net": "1V1"
+    },
+    "2": {
+     "xy": [
+      154.07,
+      128.659
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C33": {
+   "value": "11p C0G 2%",
+   "xy": [
+    138.0,
+    110.9
+   ],
+   "rot": 0.0,
+   "locked": true,
+   "courtyard": [
+    136.25,
+    109.88,
+    139.75,
+    111.92
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      137.05,
+      110.9
+     ],
+     "net": "/RF front end/LPF1_N4"
+    },
+    "2": {
+     "xy": [
+      138.95,
+      110.9
+     ],
+     "net": "/RF front end/LPF1_OUT"
+    }
+   }
+  },
+  "R59": {
+   "value": "10k",
+   "xy": [
+    158.997,
+    141.82
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    158.02,
+    141.31,
+    159.97,
+    142.34
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      158.487,
+      141.82
+     ],
+     "net": "/FPGA/FLASH_IO2"
+    },
+    "2": {
+     "xy": [
+      159.507,
+      141.82
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "C69": {
+   "value": "100n",
+   "xy": [
+    186.16,
+    117.057
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    185.21,
+    116.55,
+    187.12,
+    117.56
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      185.68,
+      117.057
+     ],
+     "net": "/USB 3 bridge/FT_VDDA"
+    },
+    "2": {
+     "xy": [
+      186.64,
+      117.057
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "D5": {
+   "value": "LED green",
+   "xy": [
+    161.793,
+    133.423
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    160.27,
+    132.65,
+    163.32,
+    134.2
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      161.006,
+      133.423
+     ],
+     "net": "/FPGA/D5_K"
+    },
+    "2": {
+     "xy": [
+      162.581,
+      133.423
+     ],
+     "net": "/FPGA/LED1"
+    }
+   }
+  },
+  "R52": {
+   "value": "10k",
+   "xy": [
+    172.363,
+    125.606
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    171.39,
+    125.09,
+    173.34,
+    126.12
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      171.853,
+      125.606
+     ],
+     "net": "/FPGA/FPGA_INIT_N"
+    },
+    "2": {
+     "xy": [
+      172.873,
+      125.606
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "L2": {
+   "value": "1u 2A shielded",
+   "xy": [
+    173.5,
+    149.5
+   ],
+   "rot": 90.0,
+   "locked": true,
+   "courtyard": [
+    171.66,
+    147.66,
+    175.34,
+    151.34
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      173.5,
+      150.6
+     ],
+     "net": "/Power/SW_3V3"
+    },
+    "2": {
+     "xy": [
+      173.5,
+      148.4
+     ],
+     "net": "3V3_D"
+    }
+   }
+  },
+  "C80": {
+   "value": "100n",
+   "xy": [
+    177.319,
+    128.442
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    176.36,
+    127.94,
+    178.27,
+    128.95
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      176.839,
+      128.442
+     ],
+     "net": "3V3_D"
+    },
+    "2": {
+     "xy": [
+      177.799,
+      128.442
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C66": {
+   "value": "33p C0G",
+   "xy": [
+    177.611,
+    124.382
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    176.66,
+    123.88,
+    178.57,
+    124.89
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      177.131,
+      124.382
+     ],
+     "net": "/USB 3 bridge/FT_XI"
+    },
+    "2": {
+     "xy": [
+      178.091,
+      124.382
+     ],
+     "net": "GND"
+    }
+   }
+  },
+  "C73": {
+   "value": "100n",
+   "xy": [
+    179.791,
+    116.98
+   ],
+   "rot": 0.0,
+   "locked": false,
+   "courtyard": [
+    178.84,
+    116.47,
+    180.75,
+    117.48
+   ],
+   "pads": {
+    "1": {
+     "xy": [
+      179.311,
+      116.98
+     ],
+     "net": "/USB 3 bridge/FT_1V0"
+    },
+    "2": {
+     "xy": [
+      180.271,
+      116.98
+     ],
+     "net": "GND"
+    }
+   }
+  }
+ }
+}

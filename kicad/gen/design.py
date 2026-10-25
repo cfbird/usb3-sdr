@@ -142,11 +142,15 @@ def adc_clk():
           C("ADC_VREF", "GND", "1u"), C("ADC_VREF", "GND", "100n"), R("ADC_RBIAS", "GND", "10k 1%")]
     s += decouple("1V8_A", ["10u", "100n", "100n", "100n", "100n"]) + decouple("1V8_D", ["1u", "100n"])
     # LMK61E2: ADD = GND -> I2C address 0x58 (SNAS674C Table 7-1); OE tied high
-    s += [("U9", "usb3sdr:LMK61E2-SIA", "LMK61E2-100M00SIAR", None,
+    # 8-pin I2C-programmable LMK61E2 (SNAS674C). Not LMK61E2-100M00SIAR: that is a 6-pin fixed-100 MHz part, no I2C.
+    s += [("U9", "usb3sdr:LMK61E2-SIA", "LMK61E2-SIAR", None,
            {"1": "3V3_CLK", "2": "GND", "3": "GND", "4": "LMK_OUTP", "5": "LMK_OUTN", "6": "3V3_CLK",
             "7": "LMK_SDA", "8": "LMK_SCL"}, 1),
           FB("3V3_A", "3V3_CLK"), *decouple("3V3_CLK", ["10u", "100n"]),
-          C("LMK_OUTP", "ADC_CLKP", "100n"), C("LMK_OUTN", "ADC_CLKN", "100n"), R("ADC_CLKP", "ADC_CLKN", "100"),
+          # Polarity deliberately swapped (OUTP -> CLK-, OUTN -> CLK+): both parts number their pins counter-clockwise,
+          # so facing P->P / N->N would have to cross. Inverting the AC-coupled clock only moves the sampling edge
+          # by half a period; DCO follows it (AD9649 Fig. 50 circuit).
+          C("LMK_OUTP", "ADC_CLKN", "100n"), C("LMK_OUTN", "ADC_CLKP", "100n"), R("ADC_CLKP", "ADC_CLKN", "100"),
           R("LMK_SDA", "3V3_D", "4.7k"), R("LMK_SCL", "3V3_D", "4.7k"), PWR("3V3_CLK")]
     return s
 
@@ -200,8 +204,8 @@ def fpga(lpf_path, iodb_units):
                 mm = re.match(r"(adc_d|ft_data|ft_be)(\d+)", sig)
                 net = {"adc_d": "ADC_D", "ft_data": "FT_D", "ft_be": "FT_BE"}[mm.group(1)] + mm.group(2)
             ball_net[ball] = net
-    # FT601 GPIO0/1 go to the two spare FT-pool balls (provisional, like the rest of the FT map)
-    ball_net.update({"P13": "FT_GPIO0", "P14": "FT_GPIO1"})
+    # FT601 GPIO0/1 are wired but unused by the gateware; balls placed in FT601 pin order (notes/pinswap/)
+    ball_net.update({"T14": "FT_GPIO0", "T15": "FT_GPIO1"})
     # config flash on bank 8 (balls from prjtrellis function names): CSN R8, MOSI/D0 T8, MISO/D1 T7, D2 M7, D3 N7
     ball_net.update({"R8": "FLASH_CS_N", "T8": "FLASH_IO0", "T7": "FLASH_IO1", "M7": "FLASH_IO2", "N7": "FLASH_IO3"})
     # two PMODs on banks 0/1, outer rings

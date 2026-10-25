@@ -1,0 +1,54 @@
+I have completed the bus timing budgets, routing constraints, and length-verification script requested in [BRIEF_timing.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/BRIEF_timing.md):
+
+- **Timing Report & Derivations:** [agy_timing.md](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing.md)
+- **Runnable Length & Timing Checker:** [agy_timing_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing_check.py)
+
+---
+
+### Summary of Verdicts, Math & Routing Constraints
+
+#### 0. PCB Velocity Model (`JLC04161H-7628` 4-Layer Stackup)
+- **`F.Cu` microstrip (`w = 0.15 mm` over `In1.Cu` `GND`, $h = 0.2104\text{ mm}$, $\varepsilon_r = 4.4$)**: $\varepsilon_{\text{eff}} \approx 3.24$, $Z_0 \approx \mathbf{64\text{ }\Omega}$, $c_{\text{trace}} \approx \mathbf{0.094\text{ pF/mm}}$, propagation delay $\tau_F = \mathbf{6.00\text{ ps/mm}}$.
+- **`B.Cu` microstrip + 2-via transition**: $\tau_B = \mathbf{6.75\text{ ps/mm}}$ nominal ($\mathbf{6.50\text{–}7.00\text{ ps/mm}}$ range). All setup/hold checks evaluate fast traces at $\tau_{\min} = \mathbf{6.00\text{ ps/mm}}$ and slow traces at $\tau_{\max} = \mathbf{7.00\text{ ps/mm}}$.
+
+---
+
+#### 1. FT601 245 Synchronous FIFO (`100 MHz`, $T_{\text{CLK}} = 10.0\text{ ns}$, Bank 2/3 `LVCMOS33`)
+- **Datasheet Timing ([DS_FT600Q-FT601Q-IC-Datasheet.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/DS_FT600Q-FT601Q-IC-Datasheet.pdf) p. 17, Table 4.2 & Fig. 4.8):**
+  - **DISPUTED (minor nomenclature):** Table 4.2 defines only **`T1..T4`** (not `T1..T9`).
+  - **VERIFIED (`T1..T4` @ $100\text{ MHz}$):**
+    - Slave Drive (`FT601 -> FPGA`): $T_1 = \mathbf{3.0\text{ ns}}$ min setup before $\uparrow\text{CLK}$ ($t_{\text{CO,max}} = 7.0\text{ ns}$); $T_2 = \mathbf{3.5\text{ ns}}$ min hold after $\uparrow\text{CLK}$ ($t_{\text{CO,min}} = 3.5\text{ ns}$).
+    - Master Drive (`FPGA -> FT601`): $T_3 = \mathbf{1.0\text{ ns}}$ min setup before $\uparrow\text{CLK}$; $T_4 = \mathbf{4.8\text{ ns}}$ min hold after $\uparrow\text{CLK}$.
+- **ECP5 Speed `-6` IO Timing (`prjtrellis` `speed_6/cells.json`, VERIFIED):**
+  - `IOLOGIC:MODE=IREG` (`IFS1P3DX`): $t_{\text{SU}} = \mathbf{439\text{ ps}}$, $t_{\text{H}} = \mathbf{311\text{ ps}}$.
+  - `IOLOGIC:MODE=OREG` / `TSREG` (`OFS1P3DX`): $t_{\text{CO,OREG}} = \mathbf{1200\text{ ps}}$, $t_{\text{CO,TSREG}} = \mathbf{1031\text{ ps}}$.
+  - `PIO:IOTYPE=LVCMOS33`: `PAD->PADDI` $= [990, 1140]\text{ ps}$; `PADDO->PAD` $= [1988, 2674]\text{ ps}$; `PADDT->PAD` $= [2203, 3023]\text{ ps}$.
+- **(c) Verdict on Open Item 1 (*"FT601 output hold, T4 = 4.8 ns, PLL phase"* in [STATUS.md](file:///home/user1/collab/projects/usb3-sdr/STATUS.md)): `VERIFIED` — Real Problem:**
+  1. In [`ft601_245.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/ft601_245.v) today, outputs (`dout`, `be_out`, `wr_n`, `rd_n`, `oe_n`, `doe`) are fabric flip-flops (`TRELLIS_FF`), where fabric routing adds up to $4.41\text{ ns}$ (`doe -> ft_data[6].T` in [new1.log](file:///home/user1/collab/projects/usb3-sdr/gateware/build/pnr_cmp/new1.log#L670-L680)), causing both $> 3.5\text{ ns}$ bit-to-bit skew and slow-corner setup failure ($> 9.0\text{ ns}$). Moving outputs and `doe` into `OFS1P3DX` IO registers (`OREG`/`TSREG`) is mandatory.
+  2. With `OFS1P3DX`, internal delay `CLK -> PAD` is $[3.188, 3.874]\text{ ns}$ at speed `-6` ($2.23\text{ ns}$ at $0.70\times$ fast PVT corner). Because `FT601` requires transitions at `U11` strictly inside $[T_4, T_{\text{CLK}} - T_3] = [\mathbf{4.80\text{ ns}}, \mathbf{9.00\text{ ns}}]$, a $0^\circ$ PLL violates $T_4$ by $-2.40\text{ ns}$, and an uncompensated global clock violates $T_4$ at the fast PVT corner by $\sim -0.87\text{ ns}$.
+  3. **Fix:** Clock `OFS1P3DX` (`OREG` and `TSREG`) from an `EHXPLLL` output shifted by **$+135^\circ$ ($+3.75\text{ ns}$, valid window $+105^\circ\text{ to }+160^\circ$)** while keeping `IFS1P3DX` inputs on $0^\circ$ `CLKOP` (or use a single clock at **$+115^\circ = +3.20\text{ ns}$**). Note that `DELAYG` (`25 ps/tap`, max $3.175\text{ ns}$) cannot delay the `PADDT` tristate path (`doe`), so `EHXPLLL` phase shift is superior.
+- **(a) & (b) FT601 Routing Constraints:**
+  - **Max absolute length:** $L_{\text{FT}} \le \mathbf{35.0\text{ mm}}$ (unterminated SI limit $\sim 37\text{ mm}$; timing limit $85\text{ mm}$; actual board octilinear max is $24.78\text{ mm}$ on `FT_D1`).
+  - **Max length skew vs `FT_CLK`:** $|L_{\text{FT\_sig}} - L_{\text{FT\_CLK}}| \le \mathbf{15.0\text{ mm}}$ ($\pm 105\text{ ps}$; actual board octilinear skew is $[-1.49, +10.65]\text{ mm}$). **Do not add serpentine trombones** on the FT601 bus, as $\tau_{\text{clk}} + \tau_{\text{sig}}$ adds on the write path.
+
+---
+
+#### 2. AD9649 CMOS Outputs (`80 MSPS`, $T_{\text{CLK}} = 12.5\text{ ns}$, Bank 7 `LVCMOS18`)
+- **Datasheet Timing ([AD9649_RevB.pdf](file:///home/user1/collab/projects/usb3-sdr/refs/datasheets/AD9649_RevB.pdf) p. 7 Table 4 & Fig. 2, p. 17, p. 28 Table 16, VERIFIED):**
+  - $t_{\text{PD}} = \mathbf{3.0\text{ ns}}$ typ, $t_{\text{DCO}} = \mathbf{3.0\text{ ns}}$ typ, $t_{\text{SKEW}} = t_{\text{DCO}} - t_{\text{PD}} = \mathbf{+0.1\text{ ns}}$ typ at $C_{\text{LOAD}} = 5\text{ pF}$ ($< 10\text{ pF}$ recommended on p. 17).
+  - **Adversarial catch (Fig. 2, p. 7):** By default (`Register 0x16 = 0x00`), $\uparrow\text{DCO}$ is **edge-aligned** ($+100\text{ ps}$ after `DATA` transition). Default capture at `J1` works because the ECP5 global clock tree insertion delay ($t_{\text{GCLK}} \in [1.20, 1.80]\text{ ns}$) delays `DCO` relative to `DATA`, giving **$+424\text{ ps}$ worst-case setup slack** and **$+9893\text{ ps}$ hold slack**. Writing **`Register 0x16 = 0x80`** (invert `DCO` polarity, p. 28 Table 16) in [`boot_seq.v`](file:///home/user1/collab/projects/usb3-sdr/gateware/rtl/boot_seq.v) centers $\uparrow\text{DCO}$ at $6.25\text{ ns}$ and raises both setup and hold slack to **$> +3.6\text{ ns}$** ($+5474\text{ ps}$ setup / $+3643\text{ ps}$ hold).
+- **Signal Integrity of $22\text{ }\Omega$ Series Resistors + $30\text{–}50\text{ mm}$ Traces:**
+  - **No additional components needed:** $R_{\text{out,ADC}} (30\text{–}40\text{ }\Omega) + R_s (22\text{ }\Omega) = 52\text{–}62\text{ }\Omega \approx Z_0 (64\text{ }\Omega)$ provides near-ideal source termination, and $C_{\text{total}} = C_{\text{trace}} + C_{\text{pin}} \approx 7.8\text{–}9.7\text{ pF} < 10\text{ pF}$ for $L \le 50\text{ mm}$.
+  - **Critical placement rule for `R26..R41`:** Keep the pre-resistor stub `U8 -> R` (`ADC_*_R`) $\le \mathbf{6.0\text{ mm}}$ (in `data.json`, spiral placement put `R40`, `R32`, `R34`, `R28` on the SW side of `U8` with $\sim 10\text{ mm}$ stubs; placing `R26..R41` along `U8`'s East/North edges keeps total routed lengths to $23.2\text{–}29.7\text{ mm}$).
+- **AD9649 Routing Constraints:**
+  - **Max total length (`U8 -> R -> U12`):** $L_{\text{ADC}} \le \mathbf{50.0\text{ mm}}$ (keeps $C_{\text{total}} < 10\text{ pF}$).
+  - **Max `U8 -> R` stub length (`ADC_*_R`):** $L_{\text{ADC\_stub}} \le \mathbf{6.0\text{ mm}}$.
+  - **Max length skew vs `ADC_DCO`:** $|L_{\text{ADC\_sig}} - L_{\text{ADC\_DCO}}| \le \mathbf{20.0\text{ mm}}$ (actual relocated-resistor board skew is $[-1.43, +5.12]\text{ mm}$).
+
+---
+
+#### 3. Verification Script ([agy_timing_check.py](file:///home/user1/collab/projects/usb3-sdr/notes/pinswap/agy_timing_check.py))
+Run from the repo root with a board-extracted JSON file (`{"net": length_mm, ...}`) or with no arguments for the built-in self-test:
+```bash
+python3 notes/pinswap/agy_timing_check.py [path/to/lengths.json] [-v]
+```

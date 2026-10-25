@@ -58,9 +58,55 @@ module top (
     assign lmk_scl = scl_oe ? 1'b0 : 1'bz;
     assign lmk_sda = sda_oe ? 1'b0 : 1'bz;
 
-    // ------------------------------------------------------------------ FT601 domain reset
+    // ------------------------------------------------------------------ FT601 domain clock & reset
+    // EHXPLLL: CLKOP (0 deg) closes the global-clock feedback loop; CLKOS (+112.5 deg = +3.125 ns at 600 MHz VCO)
+    // clocks all FT601 IOLOGIC (IFS1P3DX, OFS1P3DX, OFS1P3BX) and FT601 domain logic to satisfy T4 = 4.8 ns hold
+    // while keeping read hold > 0.7 ns and avoiding ECP5 bidirectional IOLOGIC clock conflicts.
+    wire clk_ft, ft_pll_lock;
+`ifdef ECP5_IOREG
+    wire ft_clk_fb;
+    (* FREQUENCY_PIN_CLKI="100" *)
+    (* FREQUENCY_PIN_CLKOP="100" *)
+    (* FREQUENCY_PIN_CLKOS="100" *)
+    (* ICP_CURRENT="12" *) (* LPF_RESISTOR="8" *) (* MFG_ENABLE_FILTEROPAMP="1" *) (* MFG_GMCREF_SEL="2" *)
+    EHXPLLL #(
+        .PLLRST_ENA("DISABLED"),
+        .INTFB_WAKE("DISABLED"),
+        .STDBY_ENABLE("DISABLED"),
+        .DPHASE_SOURCE("DISABLED"),
+        .OUTDIVIDER_MUXA("DIVA"),
+        .OUTDIVIDER_MUXB("DIVB"),
+        .OUTDIVIDER_MUXC("DIVC"),
+        .OUTDIVIDER_MUXD("DIVD"),
+        .CLKI_DIV(1),
+        .CLKOP_ENABLE("ENABLED"),
+        .CLKOP_DIV(6),
+        .CLKOP_CPHASE(2),
+        .CLKOP_FPHASE(0),
+        .CLKOS_ENABLE("ENABLED"),
+        .CLKOS_DIV(6),
+        .CLKOS_CPHASE(3),
+        .CLKOS_FPHASE(7),
+        .FEEDBK_PATH("CLKOP"),
+        .CLKFB_DIV(1)
+    ) u_ft_pll (
+        .RST(1'b0), .STDBY(1'b0),
+        .CLKI(ft_clk),
+        .CLKOP(ft_clk_fb),
+        .CLKOS(clk_ft),
+        .CLKFB(ft_clk_fb),
+        .PHASESEL0(1'b0), .PHASESEL1(1'b0),
+        .PHASEDIR(1'b1), .PHASESTEP(1'b1), .PHASELOADREG(1'b1),
+        .PLLWAKESYNC(1'b0), .ENCLKOP(1'b0),
+        .LOCK(ft_pll_lock)
+    );
+`else
+    assign clk_ft = ft_clk;
+    assign ft_pll_lock = 1'b1;
+`endif
+
     reg [7:0] por_ft = 0;
-    always @(posedge ft_clk) if (!por_ft[7]) por_ft <= por_ft + 1'b1;
+    always @(posedge clk_ft) if (!por_ft[7]) por_ft <= por_ft + 1'b1;
     wire rst_ft = !por_ft[7];
 
     wire status_sent, tx_pop, ft_order_err;
@@ -122,11 +168,11 @@ module top (
     async_fifo #(.DW(32), .AW(12)) u_fifo (
         .wr_clk(clk_adc), .wr_rst(rst_adc | clr_ovf), .wr_data(wdata), .wr_en(wen),
         .wr_full(fifo_full), .wr_overflow(fifo_ovf),
-        .rd_clk(ft_clk), .rd_rst(rst_ft), .rd_data(fifo_q), .rd_en(fifo_pop), .rd_empty(fifo_empty));
+        .rd_clk(clk_ft), .rd_rst(rst_ft), .rd_data(fifo_q), .rd_en(fifo_pop), .rd_empty(fifo_empty));
 
     // ------------------------------------------------------------------ FT601 domain
     reg [2:0] ovf_sync = 0, boot_sync_ft = 0;
-    always @(posedge ft_clk) begin
+    always @(posedge clk_ft) begin
         ovf_sync     <= {ovf_sync[1:0], fifo_ovf};
         boot_sync_ft <= {boot_sync_ft[1:0], boot_done};
     end
@@ -136,7 +182,7 @@ module top (
     reg        r_commit = 0, status_req = 0;
     wire [31:0] rx_data;
     wire        rx_valid;
-    always @(posedge ft_clk) begin
+    always @(posedge clk_ft) begin
         if (rx_valid && rx_data[31:24] == 8'hC0) case (rx_data[23:16])
             8'h00: r_ctrl   <= rx_data[15:0];
             8'h01: r_nco_lo <= rx_data[15:0];
@@ -161,17 +207,27 @@ module top (
     assign      status_sent = tx_pop && use_status;
     assign fifo_pop = tx_pop && !use_status;
 
-    wire [31:0] dout;
-    wire [3:0]  be_out;
+    wire [31:0] dout, dout_t, ft_din;
+    wire [3:0]  be_out, be_t;
     wire        doe;
     ft601_245 u_ft (
-        .clk(ft_clk), .rst(rst_ft),
+        .clk(clk_ft), .rst(rst_ft),
         .txe_n(ft_txe_n), .rxf_n(ft_rxf_n), .wr_n(ft_wr_n), .rd_n(ft_rd_n), .oe_n(ft_oe_n),
-        .dout(dout), .be_out(be_out), .doe(doe), .din(ft_data),
+        .dout(dout), .be_out(be_out), .doe(doe), .dout_t(dout_t), .be_t(be_t), .din(ft_din),
         .tx_data(tx_data), .tx_empty(tx_empty), .tx_pop(tx_pop),
         .rx_data(rx_data), .rx_valid(rx_valid), .order_err(ft_order_err));
+`ifdef ECP5_IOREG
+    generate for (g = 0; g < 32; g = g + 1) begin : g_ft_data_io
+        BB u_bb (.I(dout[g]), .T(dout_t[g]), .O(ft_din[g]), .B(ft_data[g]));
+    end endgenerate
+    generate for (g = 0; g < 4; g = g + 1) begin : g_ft_be_io
+        BB u_bb (.I(be_out[g]), .T(be_t[g]), .O(), .B(ft_be[g]));
+    end endgenerate
+`else
     assign ft_data = doe ? dout   : 32'bz;
     assign ft_be   = doe ? be_out : 4'bz;
+    assign ft_din  = ft_data;
+`endif
     assign ft_reset_n  = !rst_boot;          // from the internal oscillator: FT601 CLK may not run while in reset
     assign ft_wakeup_n = 1'b1;
 

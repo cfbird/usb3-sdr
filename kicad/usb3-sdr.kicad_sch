@@ -2,7 +2,7 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid "0fd21f4d-9109-45ef-8f72-4b18b5f55bfa")
+	(uuid "dc83e4bc-5675-4dc4-bce4-881d4d86e04e")
 	(paper "A3")
 	(title_block
 		(title "usb3-sdr Rev A")
@@ -26,7 +26,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "86bbe94e-4550-4890-a9f9-2c4e86ccd0a7")
+		(uuid "4b6481a5-078f-4f7c-89e9-210d91c5a268")
 		(property "Sheetname" "Power"
 			(at 30 39.3 0)
 			(effects
@@ -47,7 +47,7 @@
 		)
 		(instances
 			(project "usb3-sdr"
-				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+				(path "/dc83e4bc-5675-4dc4-bce4-881d4d86e04e"
 					(page "2")
 				)
 			)
@@ -68,7 +68,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "06422148-ae1e-4f9b-b5cd-0f4f74180ac6")
+		(uuid "70574b25-63fc-40c1-8130-a19aadc488f3")
 		(property "Sheetname" "RF front end"
 			(at 150 39.3 0)
 			(effects
@@ -89,7 +89,7 @@
 		)
 		(instances
 			(project "usb3-sdr"
-				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+				(path "/dc83e4bc-5675-4dc4-bce4-881d4d86e04e"
 					(page "3")
 				)
 			)
@@ -110,7 +110,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "d7d2ad4d-a6d3-431c-97be-f2c10fa3ccad")
+		(uuid "1aefea96-3ff9-4f99-944b-7a55b1d5b1fb")
 		(property "Sheetname" "ADC and clock"
 			(at 270 39.3 0)
 			(effects
@@ -131,7 +131,7 @@
 		)
 		(instances
 			(project "usb3-sdr"
-				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+				(path "/dc83e4bc-5675-4dc4-bce4-881d4d86e04e"
 					(page "4")
 				)
 			)
@@ -152,7 +152,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "566c5d97-0413-4baa-9790-86df02814a87")
+		(uuid "14b9be70-a2f4-402e-8553-f237824d44c0")
 		(property "Sheetname" "USB 3 bridge"
 			(at 30 109.3 0)
 			(effects
@@ -173,7 +173,7 @@
 		)
 		(instances
 			(project "usb3-sdr"
-				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+				(path "/dc83e4bc-5675-4dc4-bce4-881d4d86e04e"
 					(page "5")
 				)
 			)
@@ -194,7 +194,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "28f4b367-87d4-44e6-b30d-1d1dabd766b0")
+		(uuid "1cc5f071-67f1-4c70-988d-505251594a7a")
 		(property "Sheetname" "FPGA"
 			(at 150 109.3 0)
 			(effects
@@ -215,7 +215,7 @@
 		)
 		(instances
 			(project "usb3-sdr"
-				(path "/0fd21f4d-9109-45ef-8f72-4b18b5f55bfa"
+				(path "/dc83e4bc-5675-4dc4-bce4-881d4d86e04e"
 					(page "6")
 				)
 			)
