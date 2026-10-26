@@ -12,7 +12,7 @@ Order: rip, moves (+ rip of copper the moves invalidate), add tracks/vias, fill,
   - copper DRC errors (shorts, clearance, hole clearance, crossing, courtyards, edge) not present on the work board;
   - unconnected count, nets the plan closed, nets it broke (open now, complete before), FT nets still open;
   - plan items DRC calls dangling;
-  - agy_timing_check.py result for FT601 / ADC.
+  - agy_timing_check.py -v: reference clocks and every FAIL line (FT601 / ADC).
 The work board is never touched.
 usage: python3 kicad/gen/u11_trial.py plan.json [--keep DIR] [--base DIR]   (base: board dir to start from, default kicad/work)
 """
@@ -119,16 +119,17 @@ def main(plan_path, keep=None, work=WORK):
     print("  closed:", sorted(n.split("/")[-1] for n in ob if n not in oa))
     print("  BROKEN:", sorted(n.split("/")[-1] for n in oa if n not in ob))
     print("  FT still open:", sorted(n.split("/")[-1] for n in oa if "FT_" in n))
+    print("  all still open:", sorted(f"{n.split('/')[-1]}x{c}" if c > 1 else n.split("/")[-1] for n, c in oa.items()))
     ids = set(added)
     dang = [i["description"] + f" @({i['pos']['x']:.2f},{i['pos']['y']:.2f})" for v in d["violations"]
             if v["type"] in ("via_dangling", "track_dangling") for i in v["items"] if i["uuid"] in ids]
     print(f"\nplan items dangling: {len(dang)}")
     for s in dang:
         print("  " + s)
-    r = subprocess.run([sys.executable, os.path.join(ROOT, "notes/pinswap/agy_timing_check.py"), pcb],
+    r = subprocess.run([sys.executable, os.path.join(ROOT, "notes/pinswap/agy_timing_check.py"), "-v", pcb],
                        capture_output=True, text=True)
     print("\ntiming check:")
-    print("\n".join(l for l in r.stdout.splitlines() if re.search(r"FAIL|PASS|FT|SUMMARY", l))[:4000])
+    print("\n".join(l for l in r.stdout.splitlines() if re.search(r"FAIL|Reference|SUMMARY", l))[:6000])
     print(f"\nboard: {pcb}" if keep else "")
     if not keep:
         shutil.rmtree(tmp)
