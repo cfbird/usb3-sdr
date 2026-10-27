@@ -29,8 +29,8 @@ Note: make_all.sh rebuilds the PCB placement from scratch, so stop using it once
 - FPGA ball map re-assigned so the FT601 and ADC buses are planar; LPF, schematic and board synced; nextpnr passes.
 - Gateware: FT601 outputs and tristates in IO registers on a +112.5 deg PLL clock; AD9649 DCO inverted at boot
   (reg 0x16 = 0x80); all sims pass.
-- **Work board fully routed: 0 unconnected, schematic parity 0, copper clean, no dangling copper** (left: the 10
-  inherent SMA edge-clearance items and silk warnings). 8 single-layer vias and 3 loose stubs removed 2026-10-26
+- **Work board fully routed: 0 unconnected, schematic parity 0, copper clean, no dangling copper** (left: only the 10
+  inherent SMA edge-clearance items). 8 single-layer vias and 3 loose stubs removed 2026-10-26
   (backup kicad/deeppcb/work_before_cleanup.kicad_pcb).
 - Timing (notes/pinswap/agy_timing_check.py): all ADC and FT601 nets pass (ADC_DCO 30.75 mm, data skew -3..+12 mm;
   FT601 11.2-28.5 mm). Its one FAIL, FT_SIWU_N, is a checker name mismatch (the net is FT_SIWU, routed).
@@ -40,7 +40,9 @@ Note: make_all.sh rebuilds the PCB placement from scratch, so stop using it once
 - FT601 centre pad has 7 GND vias (0.2 mm drill). Seven ADC nets run at 0.10 mm width / 0.13 mm gap (min 0.09).
 
 ## Next steps
-1. Silk clean-up (199 overlaps, 140 over copper, 4 at the edge).
+1. Silk: done 2026-10-26 with kicad/gen/silk_refs.py (0 silk warnings). 189 labels placed (24 at 0.8 mm), 42 hidden
+   where no unambiguous free spot exists (mostly ADC series resistors and FPGA/flash decaps; they keep their F.Fab
+   reference for assembly drawings). List: notes/silk_refs_report.json. Backup kicad/deeppcb/work_before_silk.
 2. Confirm the fab can make 0.10 mm tracks with 0.13 mm gaps (ADC lines beside NOTCH_OUT) and 0.2 mm drills.
 3. FT601 centre-pad thermal: 7 vias, estimated dT_J ~23 C (unverified; FTDI gives no theta_JA).
 4. Fix the FT_SIWU_N name in agy_timing_check.py; set pcb_build.py's In2 rect to GND if the generator is ever re-run.
