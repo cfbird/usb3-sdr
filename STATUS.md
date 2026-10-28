@@ -1,4 +1,4 @@
-# usb3-sdr: status and next steps (saved 2026-10-26)
+# usb3-sdr: status and next steps (saved 2026-10-27)
 
 USB3 direct-sampling HF SDR: AD9649 (14b 80 MSPS) → ECP5 LFE5U-25F (DDC) → FT601 → USB 3. Built with AGY via
 `collab` (see ~/collab/PROTOCOL.md). AGY verdicts and Claude's checks: notes/review_claude_of_math.md.
@@ -24,6 +24,47 @@ cd gateware && make && make sim    # bitstream + DDC / FT601 / boot sims
 ```
 Note: make_all.sh rebuilds the PCB placement from scratch, so stop using it once you hand-edit or import a routed board.
 
+## Resume here (paused 2026-10-27, machine shut down for a day or so)
+Re-verified on 2026-10-27 just before pausing (KiCad 9.0.9), `kicad/work/usb3-sdr.kicad_pcb`
+md5 `5321d0e53865aac0650e96a38c56d2b9`:
+```
+kicad-cli pcb drc --schematic-parity --severity-all --format json -o /tmp/drc.json kicad/work/usb3-sdr.kicad_pcb
+  -> violations: copper_edge_clearance x10 (J2/J4 SMA pads flush with the edge, inherent); unconnected 0; parity 0
+python3 kicad/gen/rf_spacing.py kicad/work/usb3-sdr.kicad_pcb          -> 0 pairs
+python3 notes/pinswap/agy_timing_check.py kicad/work/usb3-sdr.kicad_pcb -> only "FT_SIWU_N missing/unrouted"
+                                                                          (checker name bug; the net is FT_SIWU)
+```
+The layout is functionally complete. What is left is checking and fab prep, not routing (list below).
+
+**Waiting on the user:** download the Amphenol 132289 customer drawing by browser (amphenolrf.com part page or the
+LCSC C3172723 datasheet link) into `refs/datasheets/`. Scripted downloads get 403 or an HTML page, so don't retry.
+Then check notes/sma_edge_check.md's four points: leg length from the flange face, flange thickness, centre-pin
+size and height above the board top, and whether the flange face sits on the board edge.
+
+**Suggested order after that:**
+1. Fix `agy_timing_check.py` (FT_SIWU_N -> FT_SIWU) so the timing check is clean; set the In2 rect to GND in
+   `kicad/gen/pcb_build.py` (~line 321).
+2. Pick the fab and check its limits against the board: track/gap 0.10/0.13 mm (seven ADC nets), 0.2 mm drill /
+   0.45 mm via, 4 layers with a 0.21 mm F.Cu-In1 dielectric, 0.5 mm edge clearance, SMA pads to the edge.
+3. Shield-can outlines over the RF rows (none drawn yet).
+4. J1 footprint vs BOM part (footprint is a Connfly part, BOM says Amphenol GSB343133HR): make them agree.
+5. FT601 thermal (7 centre-pad vias, ~23 C rise is an estimate, unverified).
+6. Fab outputs: Gerbers, drill, pick-and-place, BOM with LCSC numbers, then the final DRC.
+7. Before ordering: LMK61E2 80 MHz program in TICS Pro; buy the ADT4-6T+ (low stock); U9 is **LMK61E2-SIAR**.
+
+**Working rules carried over:**
+- Every pcbnew script needs the `.kicad_pro` next to the board, or the defaults overwrite the rules.
+  `BOARD.Remove()` breaks the SWIG wrappers, so delete through `repair_conflicts.delete_by_uuid`.
+- Don't run `kicad/gen/make_all.sh` over the routed board; it rebuilds placement from scratch.
+- Every edit to kicad/work: back up first as `kicad/deeppcb/work_before_<step>.kicad_pcb`, then
+  DRC + parity + `rf_spacing.py` + timing.
+- AGY plans go through `kicad/gen/u11_trial.py PLAN --keep DIR` (real fill + DRC on a temp copy) and a written
+  Claude review before adoption. AGY's own checker has passed broken polygons before, and in r2 it ripped a via it
+  called "dangling" that was a plane feed.
+- DeepPCB: use `routingType=CurrentProtectedWiring`. About 26 min of credit is left. Not needed now that the board is routed.
+- Scratch from the 2026-10-22..27 sessions (trial boards, DeepPCB job files, helper scripts, DRC dumps) is archived
+  locally, not in git, at `~/collab/projects/usb3-sdr-scratch/2026-10-27/`.
+
 ## State (2026-10-26)
 - Schematic: ERC 2 expected violations (USB3 RX pair driven by the host). Netlist 203/203, LPF 71/71.
 - FPGA ball map re-assigned so the FT601 and ADC buses are planar; LPF, schematic and board synced; nextpnr passes.
@@ -46,7 +87,9 @@ Note: make_all.sh rebuilds the PCB placement from scratch, so stop using it once
 2. Confirm the fab can make 0.10 mm tracks with 0.13 mm gaps (ADC lines beside NOTCH_OUT) and 0.2 mm drills.
 3. FT601 centre-pad thermal: 7 vias, estimated dT_J ~23 C (unverified; FTDI gives no theta_JA).
 4. Fix the FT_SIWU_N name in agy_timing_check.py; set pcb_build.py's In2 rect to GND if the generator is ever re-run.
-5. Check the SMA edge position against the Amphenol 132289 drawing; shield-can outlines over the RF rows.
+5. SMA edge: J2/J4 flange face sits exactly on the board edge per the KiCad footprint and model (notes/sma_edge_check.md);
+   still to confirm against the Amphenol 132289 drawing (user to download by browser into refs/datasheets/).
+   Shield-can outlines over the RF rows.
 6. Open from earlier: J1 footprint (Connfly) vs BOM (Amphenol); confirm the LMK61E2 80 MHz program in TICS Pro
    (notes/pinswap/agy_clock_polarity.md); buy ADT4-6T+ soon (low LCSC stock).
    **U9: buy LMK61E2-SIAR (8-pin, I2C), NOT LMK61E2-100M00SIAR / LCSC C2871770** (6-pin, fixed 100 MHz, no I2C). See notes/bom.md note 1.
